@@ -10,7 +10,7 @@ OBJS=$(SRCS:.c=.o)
 all:$(OBJS)
 	g++ -o $(EXEC) $(OBJS)
 	@echo build succ
-.cpp .o:
+.c .o:
 	gcc -o $@ -c $<
 clean:
 	@rm -f $(OBJS) $(EXEC)
