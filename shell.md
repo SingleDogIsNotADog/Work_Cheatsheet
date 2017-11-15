@@ -18,7 +18,7 @@ $ iconv -f gb2312 -t utf8 file_in -o file_out # file_in和file_out可以是同�
 
 ```
 $ find ./* -name "*" -exec touch {} \;
-``
+```
 
 **字符串替换**
 
