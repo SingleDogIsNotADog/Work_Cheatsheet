@@ -35,3 +35,9 @@ $ git pull origin master
 $ git help
 $ git help add
 ```
+
+**正确显示中文**
+
+```
+$ git config core.quotepath false
+```
