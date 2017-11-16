@@ -12,7 +12,6 @@ bool XxXConfig::Init(const std::string &configname, std::string *err)
 {
 	INIT_CFG_START();
 
-	// 其他配置信息
 	INIT_CFG_LIST(other, InitOtherCfg);
 
 	return true;
