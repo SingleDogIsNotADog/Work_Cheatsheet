@@ -26,7 +26,7 @@ public:
 	const XxXOtherConfig & GetOtherCfg() { return m_other_cfg; }
 
 protected:
-	int InitOtherCfg(TiXmlElement *RootElement);
+	int InitOtherCfg(TiXmlElement *root_element);
 
 private:
 	XxXOtherConfig m_other_cfg;
