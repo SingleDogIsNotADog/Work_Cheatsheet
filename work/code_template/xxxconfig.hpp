@@ -8,8 +8,10 @@
 // 其它
 struct XxXOtherConfig
 {
-	XxXOtherConfig() {}
-
+	XxXOtherConfig() { this->Reset(); }
+	void Reset()
+	{
+	}
 	
 };
 
