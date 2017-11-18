@@ -18,8 +18,8 @@ struct XXXParam
 	
 };
 
-typedef char XXXParamHex[sizeof(XXXParam) * 2 + 1];		// 存放到数据库字段的长度
-UNSTD_STATIC_CHECK(sizeof(XXXParamHex) < 64);			// 数据库字段已定义大小为64字节
+typedef char XXXParamHex[sizeof(XXXParam) * 2 + 1];
+UNSTD_STATIC_CHECK(sizeof(XXXParamHex) < 64);
 
 #pragma pack(pop)
 
