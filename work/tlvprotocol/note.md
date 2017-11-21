@@ -23,3 +23,5 @@ struct TLVTypeTraits<const char*>
 # 写buffer的特殊姿势
 
 通常的写buffer的方法，是使用sprintf，它使用格式化的方式将数据写入buffer，并返回实际写入的字符数。而且，会在末尾写入空字符。但需要序列化到buffer的数据不需要这个末尾的空字符，因此需要另一种写法。
+
+见[示例代码](./src/main.cpp)。
