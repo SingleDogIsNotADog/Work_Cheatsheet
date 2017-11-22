@@ -1,4 +1,6 @@
 #include <iostream>
+#include "size.h"
+#include "./tlvprotocol/tlvprotocol.h"
 
 using namespace std;
 
@@ -34,9 +36,35 @@ void test_write_buffer()
 	p += sizeof(bool);
 }
 
+void test_size()
+{
+	int a = 0;
+	string s;
+
+	cout << size(a) << endl;
+	cout << size(s) << endl;
+}
+
+static char buffer[BUFF_SIZE];
+void test_serialize()
+{
+	// 初始化
+	TLVSerializer tlv_s;
+	tlv_s.Reset(buffer, BUFF_SIZE);
+
+	// 往里面push数据
+	int a = 10;
+	tlv_s.Push(a);
+	cout << tlv_s.Size() << endl;	// 1 + 4 = 8
+}
+
 int main()
 {
-	test_write_buffer();
+	//test_write_buffer();
+	
+	//test_size();
+	
+	test_serialize();
 
 	return 0;
 }
