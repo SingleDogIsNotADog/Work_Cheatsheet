@@ -62,19 +62,52 @@ void test_serialize()
 	TLVSerializer tlv_s;
 	tlv_s.Reset(buffer, BUFF_SIZE);
 
-	// 往里面push数据
+	// 往里面push一个int
 	int a = 10;
 	tlv_s.Push(a);
-	cout << tlv_s.Size() << endl;	// 1 + 4 = 8
+
+	// 往里面push一个bool
+	bool b = true;
+	tlv_s.Push(b);
+
+	// 往里面push一个字符串
+	const char *str = "hello";
+	tlv_s.Push(str);
+
+	cout << tlv_s.Size() << endl;	// (1+4) + (1+1) + (1+4+6) = 18
+}
+
+void test_unserialize()
+{
+	// 初始化
+	TLVUnserializer tlv_us;
+	tlv_us.Reset(buffer, BUFF_SIZE);
+
+	// 从里面Pop一个int
+	int a = 0;
+	tlv_us.Pop(&a);
+	cout << a << endl;
+
+	// 从里面Pop一个bool
+	bool b = false;
+	tlv_us.Pop(&b);
+	cout << b << endl;
+
+	// 从里面Pop一个字符串
+	const char *str = nullptr;
+	tlv_us.Pop(&str);
+	string s(str);
+	cout << s << endl;
 }
 
 int main()
 {
-	test_write_buffer();
+	//test_write_buffer();
 	
 	//test_size();
 	
-	//test_serialize();
+	test_serialize();
+	test_unserialize();
 
 	return 0;
 }
