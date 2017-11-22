@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "size.h"
 #include "./tlvprotocol/tlvprotocol.h"
 
@@ -11,6 +12,7 @@ void test_write_buffer()
 	char buffer[BUFF_SIZE] = {0};
 	int a = 66;
 	bool b = true;
+	const char *s = "hello";
 	
 	char *p = buffer;
 
@@ -22,8 +24,12 @@ void test_write_buffer()
 	*((bool*)p) = b;
 	p += sizeof(bool);
 
+	// 写入一个字符串
+	strcpy(p, s);
+	p += (strlen(s) + 1);
+
 	int write_sz = p - buffer;
-	cout << "write size: " << write_sz << endl;	// 5
+	cout << "write size: " << write_sz << endl;	// 4 + 1 + 6
 
 	p = buffer;
 	
@@ -34,6 +40,10 @@ void test_write_buffer()
 	// 再读出一个bool
 	cout << *((bool*)p) << endl;
 	p += sizeof(bool);
+
+	// 再读出一个字符串
+	cout << p << endl;
+	p += (strlen(s) + 1);
 }
 
 void test_size()
@@ -60,11 +70,11 @@ void test_serialize()
 
 int main()
 {
-	//test_write_buffer();
+	test_write_buffer();
 	
 	//test_size();
 	
-	test_serialize();
+	//test_serialize();
 
 	return 0;
 }
