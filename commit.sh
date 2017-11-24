@@ -11,13 +11,13 @@ show_status() {
 }
 
 if ! show_status; then
-	return
+	exit 0
 fi
 
 echo "Is it ok[y|n]: "
 read is_ok
 if [ "$is_ok" != "y" ]; then
-	return
+	exit 0
 fi
 
 git add *
