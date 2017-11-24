@@ -28,3 +28,10 @@ word是一个字符串"hello world"，将里面的hello替换成hi：
 $ word="hello world"
 $ word=$(echo $word | sed 's/hello/hi/g')
 ```
+
+或者使用参数扩展，这种方式效率更高：
+
+```
+$ word="hello world"
+$ word=${word//hello/hi}
+```
