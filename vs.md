@@ -1,3 +1,5 @@
+[TOC]
+
 # 相关设置
 
 **设置字体**
@@ -13,6 +15,10 @@
 **资源管理器中跟踪源文件**
 
 工具 -> 项目和解决方案 -> 常规，勾选在解决方案资源管理器中跟踪活动项
+
+**取消中文的红色下划线**
+
+顶部VAssistX -> Visual Assist Options -> Underlining -> 去掉Underline Spelling
 
 # VS快捷键
 
