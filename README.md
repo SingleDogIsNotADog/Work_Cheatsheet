@@ -6,6 +6,8 @@
 
 [makefile](./makefile.md)
 
+[cmake](./cmake.md)
+
 [vim](./vim.md)
 
 [vs](./vs.md)
