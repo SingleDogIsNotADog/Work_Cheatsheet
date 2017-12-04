@@ -25,15 +25,36 @@ INCLUDE_DIRECTORIES(.)
 FILE(GLOB_RECURSE SRC_FILES "*.cpp")
 
 SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-ADD_EXECUTABLE(program_${BUILD_TYPE} ${SRC_FILES})
+ADD_EXECUTABLE(program_${CMAKE_BUILD_TYPE} ${SRC_FILES})
 
-TARGET_LINK_LIBRARIES(program_${BUILD_TYPE} pthread rt)
+TARGET_LINK_LIBRARIES(program_${CMAKE_BUILD_TYPE} pthread rt)
 ```
 
 # 一个build脚本模板
 
 ```
 #! /bin/bash
+
+# usage: $ sh build.sh [rebuild | clear]
+
+clear()
+{
+	if [ ! -d tmp_build ]; then
+		return
+	fi
+
+	cd tmp_build
+	make clean
+	cd ..
+	rm -rf tmp_build
+}
+
+if [ "$1" = "rebuild" ]; then
+	clear
+elif [ "$1" = "clear" ]; then
+	clear
+	exit
+fi
 
 mkdir -p tmp_build
 cd tmp_build

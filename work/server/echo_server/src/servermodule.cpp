@@ -54,7 +54,7 @@ int ServerModule::Start()
 	m_network->RegisterCallback(&net_callback);
 
 	// ¿ªÆô¼àÌý
-	m_network->Listen(SERVER_PORT, 64);
+	m_network->Listen(ECHO_SERVER_PORT, 64);
 
 	return IModule::Succeed;
 }

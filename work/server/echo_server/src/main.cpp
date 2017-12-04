@@ -22,6 +22,8 @@ int main(int argc, char *argv[])
 	SysPath::Up(&config.work_path);
 	game.Run(config);
 
+#ifdef _WIN32
 	system("pause");
+#endif
 	return 0;
 }

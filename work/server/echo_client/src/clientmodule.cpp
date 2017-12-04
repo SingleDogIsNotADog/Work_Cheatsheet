@@ -48,7 +48,7 @@ int ClientModule::Start()
 	m_network->RegisterCallback(&net_callback);
 
 	// Á¬½Ó
-	if (!m_network->Connect("127.0.0.1", SERVER_PORT, &m_server_netid))
+	if (!m_network->Connect("127.0.0.1", ECHO_SERVER_PORT, &m_server_netid))
 	{
 		std::cout << "Connect fail" << std::endl;
 		auto game = (Game*)Interface();
