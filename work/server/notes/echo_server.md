@@ -18,6 +18,10 @@ IModule执行流程：Init -> Start -> Update -> Stop -> Release
 
 如果IModule的这些方法之一执行失败，那么就不再继续执行后续方法，除了Release，Release方法将在Game Stop的时候被执行。
 
+如果函数返回IModule::Succeed，那么就准备执行下一个函数。
+
+如果函数返回IMdoule::Pending，那么下一次循环继续执行此函数。
+
 **生命周期**
 
 当所有的IMudule的Init、Start、Update、Stop、Release都正确执行后，Run方法结束，当Game对象析构的时候，执行IModule::Free方法，让其自己释放。
