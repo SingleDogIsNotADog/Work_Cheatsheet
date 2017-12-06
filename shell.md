@@ -1,4 +1,4 @@
-### 时间相关
+# 时间相关
 
 **获取当前时间戳**
 
@@ -6,7 +6,14 @@
 $ date +%s
 ```
 
-### 其他
+# 打包、解包
+
+```
+$ tar -zcv -f file.tar.gz <filelist> # 将文件打包成file.tar.gz
+$ tar -zxv -f file.tar.gz # 在当前路径解压file.tar.gz
+```
+
+# 其他
 
 **将文件编码转换，并输出到文件**
 
