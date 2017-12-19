@@ -2,14 +2,13 @@
 #ifndef __MSG_XXX_HPP__
 #define __MSG_XXX_HPP__
 
-#include "servercommon/XXXdef.hpp"
+#include "servercommon/xxxdef.hpp"
 
-#pragma pack(push) 
-#pragma pack(4)
+#pragma pack(push, 4)
 
 namespace Protocol
 {
-	enum XXX_REQ_TYPE 							// 操作类型
+	enum XXX_REQ_TYPE
 	{
 		XXX_REQ_TYPE_INFO = 0,
 		XXX_REQ_TYPE_XXX,
@@ -17,10 +16,11 @@ namespace Protocol
 		XXX_REQ_TYPE_MAX,
 	};
 
-	class CSXXXOperaReq							// 协议号
+	// 协议号
+	class CSXxXOperaReq
 	{
 	public:
-		CSXXXOperaReq();
+		CSXxXOperaReq();
 		MessageHeader header;
 
 		unsigned short req_type;
@@ -29,16 +29,17 @@ namespace Protocol
 		unsigned short param_3;
 	};
 
-	class SCXXXInfo			 					// 协议号
+	// 协议号
+	class SCXxXInfo
 	{
 	public:
-		SCXXXInfo();
+		SCXxXInfo();
 		MessageHeader header;
 
-		// 发给客户端的数据
+		
 	};
 }
 
 #pragma pack(pop)
 
-#endif
+#endif // __MSG_XXX_HPP__

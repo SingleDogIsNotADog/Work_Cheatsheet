@@ -6,21 +6,18 @@
 
 #pragma pack(push, 4)
 
-struct XXXParam
+struct XxXParam
 {
-	XXXParam() { this->Reset(); }
+	XxXParam() { this->Reset(); }
 
 	void Reset()
-	{
-		
+	{	
 	}
-
-	
 };
 
-typedef char XXXParamHex[sizeof(XXXParam) * 2 + 1];
-UNSTD_STATIC_CHECK(sizeof(XXXParamHex) < 64);
+using XxXParamHex = char[sizeof(XxXParam) * 2 + 1];
+static_assert(sizeof(XxXParamHex) < 64, "Incorrect size");
 
 #pragma pack(pop)
 
-#endif
+#endif // __XXX_DEF_HPP__

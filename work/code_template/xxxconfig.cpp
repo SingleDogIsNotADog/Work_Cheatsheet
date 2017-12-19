@@ -1,13 +1,5 @@
 #include "xxxconfig.hpp"
 
-XxXConfig::XxXConfig()
-{
-}
-
-XxXConfig::~XxXConfig()
-{
-}
-
 bool XxXConfig::Init(const std::string &configname, std::string *err)
 {
 	INIT_CFG_START();
@@ -25,7 +17,7 @@ int XxXConfig::InitOtherCfg(TiXmlElement *root_element)
 		return -10000;
 	}
 
-	// read value
+	// ...
 	
 	return 0;
 }
