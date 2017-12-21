@@ -11,3 +11,5 @@
 [vim](./vim.md)
 
 [vs](./vs.md)
+
+[sublime](./sublime.md)
