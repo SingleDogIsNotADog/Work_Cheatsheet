@@ -1,4 +1,4 @@
-// 系统数据存储结构
+// 系统相关定义
 #ifndef __XXX_DEF_HPP__
 #define __XXX_DEF_HPP__
 
