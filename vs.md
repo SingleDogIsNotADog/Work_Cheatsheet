@@ -1,4 +1,4 @@
-# 相关设置
+﻿# 相关设置
 
 **设置字体**
 
@@ -17,6 +17,12 @@
 **取消中文的红色下划线**
 
 顶部VAssistX -> Visual Assist Options -> Underlining -> 去掉Underline Spelling
+
+**禁用IntelliSense**
+
+这个功能会吃内存，而且和VA的功能有重叠，所以可以禁用掉。
+
+工具->选项->文本编辑器->c++ ->高级 右边 Intellisense False 改为 Ture
 
 # VS快捷键
 
@@ -47,6 +53,8 @@
 - 大写转小写：ctrl + u
 
 - 小写转大写：ctrl + shift + u
+
+- 格式化代码：ctrl + k, ctrl + d
 
 # VS其他功能
 
