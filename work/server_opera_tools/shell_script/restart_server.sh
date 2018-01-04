@@ -4,6 +4,8 @@ server_name=$(sh ./get_server_name.sh)
 server_path=/$server_name
 old_path=$(pwd)
 
+trap 'rm -f $server_path/workspace/publish_debug/oper.lock' INT
+
 check_status()
 {
 	if [ "$1" != "0" ]; then

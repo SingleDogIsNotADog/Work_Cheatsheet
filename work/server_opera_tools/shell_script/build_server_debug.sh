@@ -23,7 +23,7 @@ main()
 	svn up .
 
 	echo "Building ..."
-	sh cbuild.sh debug | grep warning
+	sh cbuild.sh debug
 	echo "Down"
 
 	cd $old_path

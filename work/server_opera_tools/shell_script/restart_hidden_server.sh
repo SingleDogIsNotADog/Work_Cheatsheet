@@ -5,6 +5,8 @@ hidden_server_path=/$server_name/hidden_server
 server_path=/$server_name
 old_path=$(pwd)
 
+trap 'rm -f $hidden_server_path/publish_debug/oper.lock' INT
+
 main()
 {
 	echo "Begin to restart hidden server $server_name"

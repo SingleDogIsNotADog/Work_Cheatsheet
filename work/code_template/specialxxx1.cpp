@@ -32,7 +32,8 @@ void SpecialXxX::OnRoleEnterScene(Role *role)
 		bool is_first_enter = (INVALID_USER_ID == m_owner_user_id);
 		if (is_first_enter)
 		{
-			
+			m_owner_user_id = role->GetUserId();
+			m_owner_objid = role->GetId();
 		}
 
 		m_owner_user_id = role->GetUserId();

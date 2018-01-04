@@ -9,6 +9,7 @@ echo.
 echo 1. 重读配置
 echo 2. 重启服务器
 echo 3. 重启跨服
+echo 4. 编译可执行文件
 echo.
 echo 0. 退出
 echo.
@@ -20,6 +21,8 @@ if %choice%==1 (
 	start /w restart_server.bat
 ) else if %choice%==3 (
 	start /w restart_hidden_server.bat
+) else if %choice%==4 (
+	start /w build_server.bat
 ) else (
 	echo Bye
 	goto end

@@ -7,8 +7,9 @@ dblogs=/${server}/temp/log/dblog
 
 main()
 {
-	grep 'Camp::LoadCampMemCache' $serious_logs
-	grep -r 'RoleInit_4' $dblogs
+	grep 's' $serious_logs
+	#grep -r 'RoleInit_4' $dblogs
+	#grep -r '__RoleSave' $dblogs
 }
 
 main
