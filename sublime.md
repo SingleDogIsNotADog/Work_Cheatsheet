@@ -24,7 +24,9 @@ Ctrl+Shift+F：全局查找
 
 Ctrl+H：替换
 
-Ctrl+R：前往 method
+Ctrl+R：前往本文件的method
+
+Ctrl+Shift+R: 全局搜索method
 
 Ctrl+Shift+M：选中当前括号内容，重复可选着括号本身
 
