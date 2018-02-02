@@ -51,3 +51,7 @@ Alt+Shift+ -：跳到下一个编辑位置
 [
     { "keys": ["ctrl+alt+p"], "command": "prompt_select_workspace" }
 ]
+
+# 设置文本语法高亮
+
+点击右下角边缘处
