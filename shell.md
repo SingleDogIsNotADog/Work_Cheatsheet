@@ -1,7 +1,8 @@
-[TOC]
-
 # 常用快捷键
 
+<details>
+<summary>View details</summary>
+	
 ```
 CTRL+C              # 结束当前命令
 CTRL+D              # 删除光标前的字符，同 <Delete> ，或者没有内容时，退出会话，或者交互模式输入文件结束符EOF
@@ -11,7 +12,12 @@ CTRL+W              # 删除光标左边的一个单词
 CTRL+Z              # 暂停前台进程返回 bash，需要时可用 fg 将其切换回前台
 ```
 
+</details>
+
 # Shell命令
+
+<details>
+<summary>View details</summary>
 
 ## Bash基本操作
 
@@ -125,7 +131,12 @@ tar -zcv -f file.tar.gz {filelist} # 将文件打包成file.tar.gz
 tar -zxv -f file.tar.gz            # 在当前路径解压file.tar.gz
 ```
 
+</details>
+
 # Shell脚本
+
+<details>
+<summary>View details</summary>
 
 ## 变量操作
 
@@ -324,7 +335,12 @@ showkey -a                           # 取得按键的 ASCII 码
 lsof -i port:80                      # 哪个程序在使用 80 端口？
 ```
 
+</details>
+
 # 文本处理
+
+<details>
+<summary>View details</summary>
 
 ## cut
 
@@ -353,6 +369,8 @@ sed -i -r 's/^\s+//g' file         # 删除文件每行头部空格
 sed '/^$/d' file                   # 删除文件空行并打印
 sed -i 's/\s\+$//' file            # 删除文件每行末尾多余空格
 ```
+
+</details>
 
 # 参考资料
 
