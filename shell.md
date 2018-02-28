@@ -402,6 +402,15 @@ lsof -i port:80                      # 哪个程序在使用 80 端口？
 <details>
 <summary>View details</summary>
 
+## grep
+
+```
+grep 'Error' file                  # 在file中检索包含Error的行
+grep -r 'Error' *                  # 在当前目录及其子目录中检索包含Error的行
+grep -l 'Error' *                  # 在当前目录及其子目录中检索包含Error的行，只输出相关文件名
+grep -v 'Error' file               # 在file中检索包含Error的行，只输出不匹配的行
+```
+
 ## cut
 
 ```
