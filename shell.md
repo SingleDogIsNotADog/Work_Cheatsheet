@@ -443,4 +443,4 @@ sed -i 's/\s\+$//' file            # 删除文件每行末尾多余空格
 
 # 参考资料
 
-https://github.com/demon90s/awesome-cheatsheets/blob/master/languages/bash.sh
+https://github.com/skywind3000/awesome-cheatsheets
