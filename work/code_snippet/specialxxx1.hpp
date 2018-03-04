@@ -34,4 +34,4 @@ private:
 	bool m_is_pass;												// 是否通关
 };
 
-#endif // __SPECIAL_DAILY_TASK_FB_H__
+#endif // __SPECIAL_XXX_H__
