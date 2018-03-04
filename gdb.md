@@ -29,6 +29,7 @@ $ gdb prog core_file
 ```
 $ set args [arg_list] # 设置程序的启动参数
 $ bt                  # 查看调用堆栈
+$ f n                 # 跳到第n个stack frame
 $ p variable          # 查看变量内容
 $ n                   # step over
 $ s                   # step in
