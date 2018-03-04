@@ -1,3 +1,13 @@
+# path
+
+项目目录: /proj
+
+src目录：/proj/workspace/server/src
+
+log目录：/proj/temp/log
+
+运行目录：/proj/workspace/publish_debug
+
 # 学习笔记
 
 [echo_server](./echo_server/notes/echo_server.md): 使用服务端引擎搭建的最简单的服务端框架。
