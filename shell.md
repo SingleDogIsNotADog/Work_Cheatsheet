@@ -437,6 +437,8 @@ sed -i 's/find/replace/g' file     # 替换文件中所有出现的字符并且�
 sed -i -r 's/^\s+//g' file         # 删除文件每行头部空格
 sed '/^$/d' file                   # 删除文件空行并打印
 sed -i 's/\s\+$//' file            # 删除文件每行末尾多余空格
+
+sed '1i\Hello' file                # 在文件file的第一行插入Hello
 ```
 
 </details>
