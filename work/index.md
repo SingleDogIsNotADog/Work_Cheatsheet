@@ -16,6 +16,8 @@ log目录：/proj/temp/log
 
 # 常用代码片段
 
+[杂项小片段](./code_snippet/small_snippet.md)
+
 [配置系统定义](./code_snippet/xxxconfig.hpp)
 
 [配置类1定义](./code_snippet/configstruct1.hpp)
