@@ -402,6 +402,15 @@ lsof -i port:80                      # 哪个程序在使用 80 端口？
 <details>
 <summary>View details</summary>
 
+## grep
+
+```
+grep 'Error' file                  # 在file中检索包含Error的行
+grep -r 'Error' *                  # 在当前目录及其子目录中检索包含Error的行
+grep -l 'Error' *                  # 在当前目录及其子目录中检索包含Error的行，只输出相关文件名
+grep -v 'Error' file               # 在file中检索包含Error的行，只输出不匹配的行
+```
+
 ## cut
 
 ```
@@ -428,10 +437,12 @@ sed -i 's/find/replace/g' file     # 替换文件中所有出现的字符并且�
 sed -i -r 's/^\s+//g' file         # 删除文件每行头部空格
 sed '/^$/d' file                   # 删除文件空行并打印
 sed -i 's/\s\+$//' file            # 删除文件每行末尾多余空格
+
+sed '1i\Hello' file                # 在文件file的第一行插入Hello
 ```
 
 </details>
 
 # 参考资料
 
-https://github.com/demon90s/awesome-cheatsheets/blob/master/languages/bash.sh
+https://github.com/skywind3000/awesome-cheatsheets

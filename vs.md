@@ -1,4 +1,4 @@
-﻿# 相关设置
+# 相关设置
 
 **设置字体**
 
@@ -92,8 +92,20 @@
 
 但是这样添加的头文件可能有格式的问题，比如使用了..，或者windows下的\符号，可能造成Linux下编译失败。因此还要检查一下。
 
-**自定义代码模板**
+**自定义代码片段**
 
 打开编辑器：VAssistX -> Refector -> Edit Refactoring Snippets
 
 然后就可以自行编辑代码模板。
+
+**预编译头**
+
+使用预编译头将比较固定的header file一次性打包编译，可以大量节约编译时间。
+
+方法是：
+
+- 创建一个文件stdafx.h，里面包含那些header file。创建一个precompile.cpp文件，仅包含stdafx.h。然后右键precompile.cpp文件 -> Properties -> C/C++ -> precompiled Header，选择Precompiled Header为：Create(/Yc)
+- 右击项目 -> Properties -> C/C++ -> precompiled Header，选择Precompiled Header为：Use(/Yu)
+- 项目中所有的cpp文件开头都需要`#include "stdafx.h"`
+- OK
+
