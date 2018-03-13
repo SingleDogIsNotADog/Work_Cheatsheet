@@ -100,14 +100,56 @@ void test_unserialize()
 	cout << s << endl;
 }
 
+void other_test1()
+{
+	struct A
+	{
+		int a = 0;
+	};
+
+	struct B
+	{
+		int a = 0;
+		int b = 0;
+	};
+
+	TLVSerializer tlv_s;
+	tlv_s.Reset(buffer, BUFF_SIZE);
+
+	A a; a.a = 10;;
+	B b;
+
+	TLVSerializer tlv_a;
+	tlv_a.Reset(&a, sizeof(a));
+	tlv_a.MoveCurPos(sizeof(a));
+	tlv_s.Push(tlv_a);
+
+	TLVUnserializer tlv_us;
+	tlv_us.Reset(buffer, BUFF_SIZE);
+
+	TLVUnserializer tlv_b;
+	if (tlv_us.Pop(&tlv_b) && tlv_b.Size() <= sizeof(b))
+	{
+		memcpy(&b, tlv_b.Ptr(), tlv_b.Size());
+	}
+	else
+	{
+		cerr << "Pop fail" << endl;
+	}
+
+	cout << b.a << endl;
+}
+
 int main()
 {
 	//test_write_buffer();
 	
 	//test_size();
 	
-	test_serialize();
-	test_unserialize();
+	//test_serialize();
+	//test_unserialize();
+	
+	other_test1();
 
 	return 0;
 }
