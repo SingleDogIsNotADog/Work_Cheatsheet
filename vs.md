@@ -22,7 +22,7 @@
 
 这个功能会吃内存，而且和VA的功能有重叠，所以可以禁用掉。
 
-工具->选项->文本编辑器->c++ ->高级 右边 Intellisense False 改为 Ture
+工具->选项->文本编辑器->c++ ->高级 右边 Disable Intellisense，False 改为 Ture
 
 # VS快捷键
 
@@ -105,7 +105,9 @@
 方法是：
 
 - 创建一个文件stdafx.h，里面包含那些header file。创建一个precompile.cpp文件，仅包含stdafx.h。然后右键precompile.cpp文件 -> Properties -> C/C++ -> precompiled Header，选择Precompiled Header为：Create(/Yc)
-- 右击项目 -> Properties -> C/C++ -> precompiled Header，选择Precompiled Header为：Use(/Yu)
-- 项目中所有的cpp文件开头都需要`#include "stdafx.h"`
-- OK
 
+- 右击项目 -> Properties -> C/C++ -> precompiled Header，选择Precompiled Header为：Use(/Yu)
+
+- 项目中所有的cpp文件开头都需要`#include "stdafx.h"`
+
+- OK
