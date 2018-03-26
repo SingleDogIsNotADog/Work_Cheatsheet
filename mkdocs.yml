@@ -1,0 +1,20 @@
+site_name: Work CheatSheet
+
+pages:
+  - Home: index.md
+  - docs:
+    - shell: shell.md
+    - visual studio: vs.md
+    - vim: vim.md
+    - sublime: sublime.md
+    - git: git.md
+    - gdb: gdb.md
+    - cmake: cmake.md
+    - makefile: makefile.md
+    - svn: svn.md
+  - work:
+    - gm命令: 'work/gm.md'
+    - path: 'work/path.md'
+    - WorkCheateSheet: 'work/WorkCheatsheet.md'
+  - server:
+    - 开发环境搭建: server/开发环境搭建.md
