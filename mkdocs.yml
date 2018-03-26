@@ -19,3 +19,9 @@ pages:
     - question & anwser: 'work/qa.md'
   - server:
     - 开发环境搭建: server/开发环境搭建.md
+    - 发版与热更: server/发版与热更.md
+    - code snippets: server/code_snippets.md
+    - 流程:
+        - 基础流程: server/基础流程.md
+        - 逻辑流程: server/逻辑流程.md
+        - 战斗流程: server/战斗流程.md

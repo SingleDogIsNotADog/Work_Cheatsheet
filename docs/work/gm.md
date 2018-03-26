@@ -17,3 +17,5 @@
 NOTE：该命令不能重置非法位置。
 
 ## 其他
+
+**跳到并完成主线任务：** /gm jumptotrunk:task_id

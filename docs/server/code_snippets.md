@@ -1,4 +1,6 @@
-**发邮件**
+# 代码小片段
+
+## 发邮件
 
 ```
 {
@@ -23,7 +25,7 @@
 }
 ```
 
-**发传闻**
+## 发传闻
 
 ```
 int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), "key",
@@ -33,10 +35,4 @@ if (sendlen > 0)
 {
 	SCENE_MGR->SystemMsgThread(gamestring::GAMESTRING_BUF, sendlen, SYS_MSG_CENTER_ROLL);
 }
-```
-
-**广播形象**
-
-```
-RoleOtherFunc::BroadCastSpecialParamChange
 ```

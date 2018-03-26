@@ -1,5 +1,12 @@
 # Work CheatSheet
 
+## 插命令
+
+```
+# 热更，更多类型见：RELOAD_CONFIG_TYPE
+insert into command (creator, type, cmd) values ("background", 2, "Cmd Reload 6 0 0" );
+```
+
 ## 将消耗物品设置为自动购买
 
 策划配置：
