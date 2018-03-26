@@ -1,7 +1,4 @@
 # 常用快捷键
-
-<details>
-<summary>View details</summary>
 	
 ```
 CTRL+C              # 结束当前命令
@@ -12,17 +9,9 @@ CTRL+W              # 删除光标左边的一个单词
 CTRL+Z              # 暂停前台进程返回 bash，需要时可用 fg 将其切换回前台
 ```
 
-</details>
-
 # Shell命令
 
-<details>
-<summary>View details</summary>
-
 ## Bash基本操作
-
-<details>
-<summary>View details</summary>
 
 ```
 exit                # 退出当前登陆
@@ -36,12 +25,8 @@ clear               # 清初屏幕内容
 reset               # 重置终端（当你不小心 cat 了一个二进制，终端状态乱掉时使用）
 ```
 
-</details>
 
 ## 目录操作
-
-<details>
-<summary>View details</summary>
 
 ```
 cd                  # 返回自己 $HOME 目录
@@ -52,12 +37,7 @@ mkdir {dirname}     # 创建目录
 mkdir -p {dirname}  # 递归创建目录
 ```
 
-</details>
-
 ## 文件操作
-
-<details>
-<summary>View details</summary>
 
 ```
 ls                  # 显示当前目录内容，后面可接目录名：ls {dir} 显示指定目录
@@ -83,12 +63,7 @@ grep {pat} {fn}     # 在文件中查找出现过 pat 的内容
 grep -r {pat} .     # 在当前目录下递归查找所有出现过 pat 的文件内容
 ```
 
-</details>
-
 ## 用户管理
-
-<details>
-<summary>View details</summary>
 
 ```
 whoami              # 显示我的用户名
@@ -100,12 +75,7 @@ su -{user}          # 切换到某用户并登陆（执行登陆脚本）
 id {user}           # 查看用户的 uid，gid 以及所属其他用户组
 ```
 
-</details>
-
 ## 进程管理
-
-<details>
-<summary>View details</summary>
 
 ```
 ps                        # 查看当前会话进程
@@ -129,12 +99,7 @@ trap "" sig1 sig2         # 在脚本中屏蔽某信号
 trap - sig1 sig2          # 恢复默认信号处理行为
 ```
 
-</details>
-
 ## 其他命令
-
-<details>
-<summary>View details</summary>
 
 ```
 ssh user@host             # 以用户 user 登陆到远程主机 host
@@ -159,19 +124,9 @@ tar -zcv -f file.tar.gz {filelist} # 将文件打包成file.tar.gz
 tar -zxv -f file.tar.gz            # 在当前路径解压file.tar.gz
 ```
 
-</details>
-
-</details>
-
 # Shell脚本
 
-<details>
-<summary>View details</summary>
-
 ## 变量操作
-
-<details>
-<summary>View details</summary>
 
 ```
 varname=value             # 定义变量
@@ -212,12 +167,7 @@ num=$((num + 1))          # 变量递增，双括号内的 $ 可以省略
 num=$((1 + (2 + 3) * 2))  # 复杂计算
 ```
 
-</details>
-
 ## 函数
-
-<details>
-<summary>View details</summary>
 
 ```
 # 定义一个新函数
@@ -234,12 +184,7 @@ myfunc                    # 调用函数 myfunc
 myfunc arg1 arg2 arg3     # 带参数的函数调用
 ```
 
-</details>
-
 ## 条件判断
-
-<details>
-<summary>View details</summary>
 
 ```
 statement1 && statement2  # and 操作符
@@ -271,12 +216,7 @@ num1 -gt num2             # 数字判断：num1 > num2
 num1 -ge num2             # 数字判断：num1 >= num2
 ```
 
-</details>
-
 ## 分支控制：if 和经典 test
-
-<details>
-<summary>View details</summary>
 
 ```
 test {expression}         # 判断条件为真的话 test 程序返回0 否则非零
@@ -326,12 +266,7 @@ if [ \( $x -gt 10 \) -a \( $x -lt 20 \) ]; then
 fi
 ```
 
-</details>
-
 ## 流程控制：while / for / case / until
-
-<details>
-<summary>View details</summary>
 
 ```
 # while 循环
@@ -375,12 +310,7 @@ until condition; do
 done
 ```
 
-</details>
-
 ## 其他有趣的脚本
-
-<details>
-<summary>View details</summary>
 
 ```
 # 将文件编码转换，并输出到文件，file_in和file_out可以是同一个文件
@@ -393,14 +323,7 @@ showkey -a                           # 取得按键的 ASCII 码
 lsof -i port:80                      # 哪个程序在使用 80 端口？
 ```
 
-</details>
-
-</details>
-
 # 文本处理
-
-<details>
-<summary>View details</summary>
 
 ## grep
 
@@ -440,8 +363,6 @@ sed -i 's/\s\+$//' file            # 删除文件每行末尾多余空格
 
 sed '1i\Hello' file                # 在文件file的第一行插入Hello
 ```
-
-</details>
 
 # 参考资料
 
