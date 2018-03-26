@@ -1,1 +1,1 @@
-online doc: demon90s.github.io/WorkCheatSheet
+online doc: https://demon90s.github.io/Work_Cheatsheet/
