@@ -8,6 +8,10 @@ host目录：C:\Windows\System32\drivers\etc
 
 ## SVN
 
+星辰：
+
+svn://192.168.11.51:3590/stars
+
 ug04_cn:
 
 server: svn://192.168.9.60/ug04_cn/server

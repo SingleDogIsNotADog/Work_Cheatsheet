@@ -25,3 +25,5 @@ pages:
         - 基础流程: server/基础流程.md
         - 逻辑流程: server/逻辑流程.md
         - 战斗流程: server/战斗流程.md
+  - client:
+    - code snippets: client/code_snippets.md
