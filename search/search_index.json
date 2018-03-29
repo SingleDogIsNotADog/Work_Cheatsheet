@@ -232,7 +232,7 @@
         },
         {
             "location": "/work/gm/",
-            "text": "GM\u547d\u4ee4\n\n\n\u4fee\u6539\u5c5e\u6027\n\n\n\u4fee\u6539\u901f\u5ea6\uff1a\n/gm changespeed:2000\n\n\n\u4fee\u6539\u8840\u91cf\u4e0a\u9650\uff1a\n/gm changemaxhp:2000\n\n\n\u4fee\u6539\u5f53\u524d\u8840\u91cf\uff1a\n/gm sethp:1000\n\n\n\u56de\u590d\uff1a\n/gm recover:\n\n\n\u79fb\u52a8\n\n\n\u91cd\u7f6e\u4f4d\u7f6e\uff1a\n/gm resetpos:x y\n\n\nNOTE\uff1a\u8be5\u547d\u4ee4\u4e0d\u80fd\u91cd\u7f6e\u975e\u6cd5\u4f4d\u7f6e\u3002\n\n\n\u5176\u4ed6\n\n\n\u8df3\u5230\u5e76\u5b8c\u6210\u4e3b\u7ebf\u4efb\u52a1\uff1a\n /gm jumptotrunk:task_id",
+            "text": "GM\u547d\u4ee4\n\n\n\u4fee\u6539\u5c5e\u6027\n\n\n\u4fee\u6539\u901f\u5ea6\uff1a/gm changespeed:2000\n\n\n\u4fee\u6539\u8840\u91cf\u4e0a\u9650\uff1a/gm changemaxhp:2000\n\n\n\u4fee\u6539\u5f53\u524d\u8840\u91cf\uff1a/gm sethp:1000\n\n\n\u56de\u590d\uff1a/gm recover:\n\n\n\u79fb\u52a8\n\n\n\u91cd\u7f6e\u4f4d\u7f6e\uff1a/gm resetpos:x y\n\n\nNOTE\uff1a\u8be5\u547d\u4ee4\u4e0d\u80fd\u91cd\u7f6e\u975e\u6cd5\u4f4d\u7f6e\u3002\n\n\n\u5176\u4ed6\n\n\n\u8bbe\u7f6e\u73a9\u5bb6\u7b49\u7ea7\uff1a/gm setrolelevel:666\n\n\n\u8bbe\u7f6e\u670d\u52a1\u5668\u7b49\u7ea7\uff1a/gm setserverlevelseq:68\n\n\n\u8df3\u5230\u5e76\u5b8c\u6210\u4e3b\u7ebf\u4efb\u52a1\uff1a/gm jumptotrunk:task_id",
             "title": "gm\u547d\u4ee4"
         },
         {
@@ -242,17 +242,17 @@
         },
         {
             "location": "/work/gm/#_1",
-            "text": "\u4fee\u6539\u901f\u5ea6\uff1a /gm changespeed:2000  \u4fee\u6539\u8840\u91cf\u4e0a\u9650\uff1a /gm changemaxhp:2000  \u4fee\u6539\u5f53\u524d\u8840\u91cf\uff1a /gm sethp:1000  \u56de\u590d\uff1a /gm recover:",
+            "text": "\u4fee\u6539\u901f\u5ea6\uff1a/gm changespeed:2000  \u4fee\u6539\u8840\u91cf\u4e0a\u9650\uff1a/gm changemaxhp:2000  \u4fee\u6539\u5f53\u524d\u8840\u91cf\uff1a/gm sethp:1000  \u56de\u590d\uff1a/gm recover:",
             "title": "\u4fee\u6539\u5c5e\u6027"
         },
         {
             "location": "/work/gm/#_2",
-            "text": "\u91cd\u7f6e\u4f4d\u7f6e\uff1a /gm resetpos:x y  NOTE\uff1a\u8be5\u547d\u4ee4\u4e0d\u80fd\u91cd\u7f6e\u975e\u6cd5\u4f4d\u7f6e\u3002",
+            "text": "\u91cd\u7f6e\u4f4d\u7f6e\uff1a/gm resetpos:x y  NOTE\uff1a\u8be5\u547d\u4ee4\u4e0d\u80fd\u91cd\u7f6e\u975e\u6cd5\u4f4d\u7f6e\u3002",
             "title": "\u79fb\u52a8"
         },
         {
             "location": "/work/gm/#_3",
-            "text": "\u8df3\u5230\u5e76\u5b8c\u6210\u4e3b\u7ebf\u4efb\u52a1\uff1a  /gm jumptotrunk:task_id",
+            "text": "\u8bbe\u7f6e\u73a9\u5bb6\u7b49\u7ea7\uff1a/gm setrolelevel:666  \u8bbe\u7f6e\u670d\u52a1\u5668\u7b49\u7ea7\uff1a/gm setserverlevelseq:68  \u8df3\u5230\u5e76\u5b8c\u6210\u4e3b\u7ebf\u4efb\u52a1\uff1a/gm jumptotrunk:task_id",
             "title": "\u5176\u4ed6"
         },
         {
