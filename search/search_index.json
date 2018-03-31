@@ -2,13 +2,18 @@
     "docs": [
         {
             "location": "/",
-            "text": "Ready to work?",
+            "text": "Ready to work?\n\n\nNo, Ready to play.",
             "title": "Home"
         },
         {
             "location": "/#ready-to-work",
             "text": "",
             "title": "Ready to work?"
+        },
+        {
+            "location": "/#no-ready-to-play",
+            "text": "",
+            "title": "No, Ready to play."
         },
         {
             "location": "/shell/",
