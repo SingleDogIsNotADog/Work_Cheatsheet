@@ -27,3 +27,4 @@ pages:
         - 战斗流程: server/战斗流程.md
   - client:
     - code snippets: client/code_snippets.md
+    - tmp: client/tmp.md
