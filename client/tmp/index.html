@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>WorkCheateSheet - Work CheatSheet</title>
+        <title>tmp - Work CheatSheet</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -89,24 +89,24 @@
 </li>
                         </ul>
                     </li>
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">work <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
 <li >
-    <a href="../gm/">gm命令</a>
+    <a href="../../work/gm/">gm命令</a>
 </li>
                             
 <li >
-    <a href="../path/">path</a>
-</li>
-                            
-<li class="active">
-    <a href="./">WorkCheateSheet</a>
+    <a href="../../work/path/">path</a>
 </li>
                             
 <li >
-    <a href="../qa/">question & anwser</a>
+    <a href="../../work/WorkCheatsheet/">WorkCheateSheet</a>
+</li>
+                            
+<li >
+    <a href="../../work/qa/">question & anwser</a>
 </li>
                         </ul>
                     </li>
@@ -167,16 +167,16 @@
   </li>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">client <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
 <li >
-    <a href="../../client/code_snippets/">code snippets</a>
+    <a href="../code_snippets/">code snippets</a>
 </li>
                             
-<li >
-    <a href="../../client/tmp/">tmp</a>
+<li class="active">
+    <a href="./">tmp</a>
 </li>
                         </ul>
                     </li>
@@ -189,12 +189,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../path/">
+                        <a rel="next" href="../code_snippets/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li >
-                        <a rel="prev" href="../qa/">
+                    <li class="disabled">
+                        <a rel="prev" >
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -206,55 +206,70 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#work-cheatsheet">Work CheatSheet</a></li>
-            <li><a href="#_1">插命令</a></li>
-            <li><a href="#_2">将消耗物品设置为自动购买</a></li>
-            <li><a href="#_3">退出副本</a></li>
-            <li><a href="#_4">修改传闻</a></li>
-            <li><a href="#_5">修改错误码</a></li>
-            <li><a href="#_6">敏感词</a></li>
+        <li class="main active"><a href="#_1">代码提交</a></li>
+        <li class="main "><a href="#view">如何修改View</a></li>
+        <li class="main "><a href="#ui">如何从代码里获取一个UI对象</a></li>
+        <li class="main "><a href="#ui_1">UI操作</a></li>
+            <li><a href="#_2">按钮</a></li>
+            <li><a href="#_3">文本</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="work-cheatsheet">Work CheatSheet</h1>
-<h2 id="_1">插命令</h2>
-<pre><code># 热更，更多类型见：RELOAD_CONFIG_TYPE
-insert into command (creator, type, cmd) values (&quot;background&quot;, 2, &quot;Cmd Reload 6 0 0&quot; );
+<h1 id="_1">代码提交</h1>
+<p>提交时忽略文件：.asset, main.unity</p>
+<h1 id="view">如何修改View</h1>
+<ul>
+<li>
+<p>运行游戏，切换到Scene面板，选中相关的UI，找到Hierarchy面板上对应的View</p>
+</li>
+<li>
+<p>关掉游戏</p>
+</li>
+<li>
+<p>在Project下面搜索这个View名字，把View的预制体拖曳到Hierarchy面板里，然后编辑预制体</p>
+</li>
+<li>
+<p>编辑完毕Apply，再把它从Hierarchy面板移除，重启游戏观察改动</p>
+</li>
+</ul>
+<h1 id="ui">如何从代码里获取一个UI对象</h1>
+<p>在UI控件的父节点的Inspector面板中，找到UI Name Table组件，其中有其子节点对应的名字以及其对应的UI控件。</p>
+<p>然后在代码里使用father:FindObj("name")来获取对象：</p>
+<pre><code>self.reward_btn = self:FindObj(&quot;reward_btn&quot;)
 </code></pre>
 
-<h2 id="_2">将消耗物品设置为自动购买</h2>
-<p>策划配置：</p>
+<h1 id="ui_1">UI操作</h1>
+<h2 id="_2">按钮</h2>
+<p><strong>创建：</strong></p>
 <ul>
 <li>
-<p>打开表格：W-被动消耗类.xls</p>
+<p>右键父节点 -&gt; UI -&gt; Button</p>
 </li>
 <li>
-<p>设置物品的字段：get_way，将第一个内容设置为0。</p>
+<p>删掉原有的Button组件</p>
+</li>
+<li>
+<p>添加组件：UI Grayscale, Button Ex, UI Event Bind Click</p>
 </li>
 </ul>
-<p>服务端相关接口：Knapsack::ConsumeItemAutoBuy</p>
-<h2 id="_3">退出副本</h2>
-<p>由服务端通知客户端通关，客户端请求退出副本。</p>
-<p>相关协议：</p>
-<ul>
-<li>
-<p>SC：5499</p>
-</li>
-<li>
-<p>CS：1153</p>
-</li>
-</ul>
-<h2 id="_4">修改传闻</h2>
-<p>打开传闻文件：config\serverconfig\string.xml</p>
-<p>找到对应的字符串，直接修改其内容即可。</p>
-<p>注意：不能调整%的位置，不能删除%，如果需要调整，就得找服务端改对应的代码。</p>
-<h2 id="_5">修改错误码</h2>
-<p>修改错误码需要服务端改代码。</p>
-<p>如果错误码提示很奇怪，那么有可能是客户端没有更新新的错误码。</p>
-<h2 id="_6">敏感词</h2>
-<p>如果是名字类的敏感词，由服务端处理。</p>
-<p>如果是比较长的，比如聊天的，由客户端处理。</p></div>
+<p><strong>设置灰度（UI Grayscale组件）：</strong></p>
+<pre><code>self.reward_btn.grayscale.GrayScale = 255
+</code></pre>
+
+<p><strong>设置是否可点击（Button Ex组件）：</strong></p>
+<pre><code>self.reward_btn.button.interactable = false
+</code></pre>
+
+<p><strong>处理点击事件（UI Event Bind Click组件）：</strong></p>
+<p>self:ListenEvent("reward_click", BindTool.Bind(self.RewardOnClick, self))</p>
+<p>这个reward_click名字可以在父节点的UI Name Table里添加定义。</p>
+<h2 id="_3">文本</h2>
+<p><strong>创建：</strong></p>
+<p>右键父节点 -&gt; UI -&gt; Text</p>
+<p>添加相关的组件。</p>
+<p><strong>绑定到变量：</strong></p>
+<p>为UI添加一个UI Variable Bind Text组件，然后添加一个给它。这样当这个变量修改的时候，文本也会自动跟着修改。</p></div>
         </div>
 
         <footer class="col-md-12">
