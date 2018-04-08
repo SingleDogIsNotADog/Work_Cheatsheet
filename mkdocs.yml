@@ -21,7 +21,11 @@ pages:
     - 开发环境搭建: server/开发环境搭建.md
     - 发版与热更: server/发版与热更.md
     - code snippets:
-        - 小片段: server/small_code_snippets.md
+        - def: server/code_snippets/def.md
+        - config: server/code_snippets/config.md
+        - msg: server/code_snippets/msg.md
+        - role_system: server/code_snippets/role_system.md
+        - 小片段: server/code_snippets/small_code_snippets.md
     - 流程:
         - 基础流程: server/基础流程.md
         - 逻辑流程: server/逻辑流程.md
