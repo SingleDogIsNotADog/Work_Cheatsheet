@@ -235,7 +235,7 @@
 </ul>
 <h1 id="ui">如何从代码里获取一个UI对象</h1>
 <p>在UI控件的父节点的Inspector面板中，找到UI Name Table组件，其中有其子节点对应的名字以及其对应的UI控件。</p>
-<p>然后在代码里使用father:FindObj("name")来获取对象：</p>
+<p>然后在代码里使用father:FindObj(&ldquo;name&rdquo;)来获取对象：</p>
 <pre><code>self.reward_btn = self:FindObj(&quot;reward_btn&quot;)
 </code></pre>
 
@@ -262,7 +262,7 @@
 </code></pre>
 
 <p><strong>处理点击事件（UI Event Bind Click组件）：</strong></p>
-<p>self:ListenEvent("reward_click", BindTool.Bind(self.RewardOnClick, self))</p>
+<p>self:ListenEvent(&ldquo;reward_click&rdquo;, BindTool.Bind(self.RewardOnClick, self))</p>
 <p>这个reward_click名字可以在父节点的UI Name Table里添加定义。</p>
 <h2 id="_3">文本</h2>
 <p><strong>创建：</strong></p>

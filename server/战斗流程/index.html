@@ -220,7 +220,7 @@
 <h2 id="effect">Effect施加流程（死亡流程）</h2>
 <ul>
 <li>
-<p>创建一个EffectBase子类实例（new Effect...）</p>
+<p>创建一个EffectBase子类实例（new Effect&hellip;）</p>
 </li>
 <li>
 <p>对其设置各种参数</p>
@@ -235,7 +235,7 @@
 <p>如果是一次性效果（EFFECT_TYPE_ONCE），那么直接执行：EffectOnce::Effect，对角色施加效果，如果角色死亡，触发：Character::OnDie</p>
 </li>
 <li>
-<p>把效果加入EffectList：EffectList::Add --&gt; EffectList::AddSkillEffect</p>
+<p>把效果加入EffectList：EffectList::Add &ndash;&gt; EffectList::AddSkillEffect</p>
 </li>
 <li>
 <p>做Merge处理，如果无需Merge，转入：EffectList::AddEffectToTypeList</p>
@@ -250,13 +250,13 @@
 <p>如果是特殊效果，还会执行：EffectList::AddSpecialBuff，做一个已拥有特殊效果的标记（m_special_buff_mark）</p>
 </li>
 <li>
-<p><strong>在每一帧循环里，每500毫秒，执行：EffectList::Effect --&gt; EffectBase::Update，判断角色是否死亡，触发：Character::OnDie</strong></p>
+<p><strong>在每一帧循环里，每500毫秒，执行：EffectList::Effect &ndash;&gt; EffectBase::Update，判断角色是否死亡，触发：Character::OnDie</strong></p>
 </li>
 </ul>
 <h2 id="effect_1">场景Effect施加流程</h2>
 <ul>
 <li>
-<p>Scene进入主循环：Scene::Update --&gt; SpecialLogic::Update --&gt; SpecialLogic::UpdateSceneEffectList</p>
+<p>Scene进入主循环：Scene::Update &ndash;&gt; SpecialLogic::Update &ndash;&gt; SpecialLogic::UpdateSceneEffectList</p>
 </li>
 <li>
 <p>对场景内的每一个SceneEffectBase对象，执行：SceneEffectBase::Effect，如果执行失败，该对象会被delete</p>
@@ -280,10 +280,10 @@
 <p><strong>否则继续其他处理，转入基类：Character::PerformSkill，此时又会做一些判断</strong></p>
 </li>
 <li>
-<p>判断是否对角色释放：SkillManager::CheckSkillAttackCharacter --&gt; SkillBase::IsAttackCharacter --&gt; m_is_attack_character，这个成员是构造函数中写死的，非配置</p>
+<p>判断是否对角色释放：SkillManager::CheckSkillAttackCharacter &ndash;&gt; SkillBase::IsAttackCharacter &ndash;&gt; m_is_attack_character，这个成员是构造函数中写死的，非配置</p>
 </li>
 <li>
-<p>判断是否对敌人释放：SkillManager::CheckSkillTargetEnemy --&gt; SkillBase::IsTargetEnemy -&gt; m_attack_enemy，这个成员是构造函数中写死的，非配置</p>
+<p>判断是否对敌人释放：SkillManager::CheckSkillTargetEnemy &ndash;&gt; SkillBase::IsTargetEnemy -&gt; m_attack_enemy，这个成员是构造函数中写死的，非配置</p>
 </li>
 <li>
 <p>判断对方是否是敌人：Character::IsAlive, Character::IsEnemy</p>
@@ -295,7 +295,7 @@
 <p>又是各种判断：安全区不能攻击，遭受了各种Buff不能攻击</p>
 </li>
 <li>
-<p>转入：SkillManager::PerformNextSkill --&gt; SkillBase::Perform，由子类实现技能释放功能（一般就是施加各种Effect）</p>
+<p>转入：SkillManager::PerformNextSkill &ndash;&gt; SkillBase::Perform，由子类实现技能释放功能（一般就是施加各种Effect）</p>
 </li>
 </ul>
 <p>注：计算最终伤害将调用接口：SkillBase::CalcInjureAndType</p>

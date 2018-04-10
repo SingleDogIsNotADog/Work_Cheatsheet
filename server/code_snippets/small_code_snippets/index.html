@@ -207,14 +207,32 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#_1">代码小片段</a></li>
-            <li><a href="#_2">发邮件</a></li>
-            <li><a href="#_3">发传闻</a></li>
+            <li><a href="#_2">发协议</a></li>
+            <li><a href="#_3">发邮件</a></li>
+            <li><a href="#_4">发传闻</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="_1">代码小片段</h1>
-<h2 id="_2">发邮件</h2>
+<h2 id="_2">发协议</h2>
+<pre><code>// 给玩家发
+SEND_TO_ROLE
+
+// 发非定长协议给客户端，协议末尾是一个数组
+SEND_TO_ROLE2
+
+// 发送给周围能看到自己的玩家（包括自己）
+SEND_TO_AREA
+
+// 给场景中的所有玩家发
+Scene::SendToRole
+
+// 给所有在线玩家发
+World::SendToAllGateway
+</code></pre>
+
+<h2 id="_3">发邮件</h2>
 <pre><code>{
     MailContentParam contentparam;
 
@@ -237,7 +255,7 @@
 }
 </code></pre>
 
-<h2 id="_3">发传闻</h2>
+<h2 id="_4">发传闻</h2>
 <pre><code>int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), &quot;key&quot;,
     );
 

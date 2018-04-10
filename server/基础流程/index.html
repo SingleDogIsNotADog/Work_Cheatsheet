@@ -247,25 +247,25 @@
 <h2 id="_3">客户端协议接收流程</h2>
 <ul>
 <li>
-<p>gateway进程启动后，为玩家开启监听端口：GatewayModule::Start --&gt; GatewayModule::ListenForUser</p>
+<p>gateway进程启动后，为玩家开启监听端口：GatewayModule::Start &ndash;&gt; GatewayModule::ListenForUser</p>
 </li>
 <li>
 <p>为玩家开启了端口后，gateway向loginserver索取gameworld的ip和端口，然后连接gameworld。即：发WLRegisterGW到loginserver，loginserver回复协议，gateway处理入口：GatewayModule::OnRegisterGS，然后向gameworld发起连接（InternalComm::NetConnect）</p>
 </li>
 <li>
-<p>开启监听，并成功连接gameworld后，就可以获得如此通讯路径：client --&gt; gateway --&gt; gameworld</p>
+<p>开启监听，并成功连接gameworld后，就可以获得如此通讯路径：client &ndash;&gt; gateway &ndash;&gt; gameworld</p>
 </li>
 <li>
-<p>此后，客户端连接gateway，并给gateway发送协议。gateway处理入口：ServerNetworkCallback::OnRecv --&gt; GatewayModule::OnRecvUserMsg</p>
+<p>此后，客户端连接gateway，并给gateway发送协议。gateway处理入口：ServerNetworkCallback::OnRecv &ndash;&gt; GatewayModule::OnRecvUserMsg</p>
 </li>
 <li>
 <p>gateway不对协议内容做处理，把协议封装进WGNetRecvMsg，然后转发给gameworld</p>
 </li>
 <li>
-<p>gameworld收到协议，处理入口：World::OnRecv --&gt; World::OnRecvMsg --&gt; SceneManager::OnRecv</p>
+<p>gameworld收到协议，处理入口：World::OnRecv &ndash;&gt; World::OnRecvMsg &ndash;&gt; SceneManager::OnRecv</p>
 </li>
 <li>
-<p>如果此时玩家没有在gameworld里创建角色（未登录gs），即没有注册进m_net_to_rolelocal，那么执行：MessageHandler::HandleMessageNoLogin --&gt; MessageHandler::OnReqEnter，之后就是<strong>玩家登入GS流程</strong></p>
+<p>如果此时玩家没有在gameworld里创建角色（未登录gs），即没有注册进m_net_to_rolelocal，那么执行：MessageHandler::HandleMessageNoLogin &ndash;&gt; MessageHandler::OnReqEnter，之后就是<strong>玩家登入GS流程</strong></p>
 </li>
 <li>
 <p>如果玩家已经在gameworld中创建了角色（已登入gs），即已经注册进m_net_to_rolelocal，那么拿到Role所在场景和Role：MessageHandler::GetRoleHelper</p>
@@ -286,7 +286,7 @@
 <p>loginserver进入：LoginServer::OnLoginReq</p>
 </li>
 <li>
-<p>解析协议后，转进：MergeLoginManager::OnLoginReq --&gt; MergeLoginManager::PlatLoginReq</p>
+<p>解析协议后，转进：MergeLoginManager::OnLoginReq &ndash;&gt; MergeLoginManager::PlatLoginReq</p>
 </li>
 <li>
 <p>需要查询数据库中的角色uid，准备发送RMI请求，创建RMI返回对象：RMIUserLoginBackObjectImpl</p>
@@ -295,7 +295,7 @@
 <p>异步发送RMI请求：RMILoginClient::UserLoginAsyn</p>
 </li>
 <li>
-<p>dataccess进入：<code>RMILoginObject::__UserLogin</code> --&gt; RMILoginObject::UserLogin</p>
+<p>dataccess进入：<code>RMILoginObject::__UserLogin</code> &ndash;&gt; RMILoginObject::UserLogin</p>
 </li>
 <li>
 <p>返回RMI请求，loginserver进入：RMIUserLoginBackObjectImpl::UserLoginRet</p>
@@ -307,7 +307,7 @@
 <p>异步发送RMI请求：RMILRoleClient::GetRoleInfoAsyn</p>
 </li>
 <li>
-<p>dataaccess进入：<code>RMIRoleObject::__GetRoleInfo</code> --&gt; RMIRoleObject::GetRoleInfo</p>
+<p>dataaccess进入：<code>RMIRoleObject::__GetRoleInfo</code> &ndash;&gt; RMIRoleObject::GetRoleInfo</p>
 </li>
 <li>
 <p>返回RMI请求，loginserver进入RMIGetRoleInfoBackObjectImpl::GetRoleInfoRet</p>
@@ -334,7 +334,7 @@
 <p>发送RMI请求：RMILoginClient::UserLoginAsyn</p>
 </li>
 <li>
-<p>dataaccess处理函数：<code>RMILoginObject::__UserLogin</code> --&gt; RMILoginObject::UserLogin</p>
+<p>dataaccess处理函数：<code>RMILoginObject::__UserLogin</code> &ndash;&gt; RMILoginObject::UserLogin</p>
 </li>
 <li>
 <p>返回至loginserver：RMIUserLoginBackObjectImplRole::UserLoginRet</p>
@@ -346,7 +346,7 @@
 <p>发送RMI请求：RMILRoleClient::GetRoleInfoAsyn</p>
 </li>
 <li>
-<p>dataaccess处理函数：<code>RMIRoleObject::__GetRoleInfo</code> --&gt; RMIRoleObject::GetRoleInfo</p>
+<p>dataaccess处理函数：<code>RMIRoleObject::__GetRoleInfo</code> &ndash;&gt; RMIRoleObject::GetRoleInfo</p>
 </li>
 <li>
 <p>loginserver返回至：RMIGetRoleInfoBackObjectImplRoleReq::GetRoleInfoRet</p>
@@ -373,7 +373,7 @@
 <p>发送RMI请求：RMILoginClient::UserLoginAsyn</p>
 </li>
 <li>
-<p>dataaccess处理函数入口：<code>RMILoginObject::__UserLogin</code> --&gt; RMILoginObject::UserLogin</p>
+<p>dataaccess处理函数入口：<code>RMILoginObject::__UserLogin</code> &ndash;&gt; RMILoginObject::UserLogin</p>
 </li>
 <li>
 <p>RMI返回loginserver进程，进入：RMIUserLoginBackObjectImplCreate::UserLoginRet</p>
@@ -382,7 +382,7 @@
 <p>需要验证姓名是否重复（role_name_map表），创建RMI返回对象：RMIAddNameInfoBackObjectImpl</p>
 </li>
 <li>
-<p>发送RMI请求：RMILoginClient::AddNameInfoAsyn，dataaccess处理函数入口：<code>RMILoginObject::__AddNameInfo</code> --&gt; RMILoginObject::AddName</p>
+<p>发送RMI请求：RMILoginClient::AddNameInfoAsyn，dataaccess处理函数入口：<code>RMILoginObject::__AddNameInfo</code> &ndash;&gt; RMILoginObject::AddName</p>
 </li>
 <li>
 <p>RMI返回loginserver进程，进入：RMIAddNameInfoBackObjectImpl::AddNameInfoRet</p>
@@ -392,7 +392,7 @@
 </li>
 <li>
 <p>发送RMI请求：RMILRoleClient::CreateRoleAsyn，dataaccess处理函数入口：
-  <code>RMIRoleObject::__CreateRole</code> --&gt; RMIRoleObject::CreateRole</p>
+  <code>RMIRoleObject::__CreateRole</code> &ndash;&gt; RMIRoleObject::CreateRole</p>
 </li>
 <li>
 <p>把新角色信息存入Role相关的数据表</p>
@@ -404,7 +404,7 @@
 <p>需要把uid存入login表，创建RMI返回对象：RMIAddRoleBackObjectImpl，发送RMI请求：RMILoginClient::AddRoleAsyn</p>
 </li>
 <li>
-<p>dataaccess处理函数入口：<code>RMILoginObject::__AddRole</code> --&gt; RMILoginObject::AddRole</p>
+<p>dataaccess处理函数入口：<code>RMILoginObject::__AddRole</code> &ndash;&gt; RMILoginObject::AddRole</p>
 </li>
 <li>
 <p>把玩家uid写入login表</p>
@@ -413,7 +413,7 @@
 <p>RMI返回loginserver进程，进入RMIAddRoleBackObjectImpl::AddRoleRet，给客户端发送创角成功协议：SCCreateRoleAck</p>
 </li>
 <li>
-<p>需要更新role_name_map表，创建RMI返回对象：RMIUpdateNameInfoBackObjectImpl，发送RMI请求：RMILoginClient::UpdateNameInfoAsyn，dataaccess处理函数入口：<code>RMILoginObject::__UpdateNameInfo</code> --&gt; RMILoginObject::UpdateNameInfo，RMI返回loginserver，进入：RMIUpdateNameInfoBackObjectImpl::UpdateNameInfoRet，什么都不需要处理</p>
+<p>需要更新role_name_map表，创建RMI返回对象：RMIUpdateNameInfoBackObjectImpl，发送RMI请求：RMILoginClient::UpdateNameInfoAsyn，dataaccess处理函数入口：<code>RMILoginObject::__UpdateNameInfo</code> &ndash;&gt; RMILoginObject::UpdateNameInfo，RMI返回loginserver，进入：RMIUpdateNameInfoBackObjectImpl::UpdateNameInfoRet，什么都不需要处理</p>
 </li>
 </ul>
 <p>问题：玩家的uid是如何生成的？</p>
@@ -498,7 +498,7 @@
 <p>创建RMI返回对象：RMIRoleSaveBackObjImplLocal</p>
 </li>
 <li>
-<p>发送RMI请求：SceneManager::SaveRole --&gt; RMIRoleClient::RoleSaveAsyn</p>
+<p>发送RMI请求：SceneManager::SaveRole &ndash;&gt; RMIRoleClient::RoleSaveAsyn</p>
 </li>
 <li>
 <p>dataaccess处理函数入口：<code>RMIRoleObject::__RoleSave</code>，把数据块都反序列化</p>
@@ -516,7 +516,7 @@
 <p>首先关闭gateway</p>
 </li>
 <li>
-<p>gameworld收到gateway断开的信息，见：World::OnDisconnect --&gt; SceneManager::OnGateWayDisconnect</p>
+<p>gameworld收到gateway断开的信息，见：World::OnDisconnect &ndash;&gt; SceneManager::OnGateWayDisconnect</p>
 </li>
 <li>
 <p>需要把所有的玩家都登出：SceneManager::LogoutAllRole -&gt; SceneManager::Logout</p>
@@ -538,7 +538,7 @@
 <p>创建RMIBackObject：RMIGetGoldBackObjectImpl，发送RMI请求：RMILoginClient::GetGoldAsyn</p>
 </li>
 <li>
-<p>dataaccess处理函数：<code>RMILoginObject::__GetGold</code> --&gt; RMILoginObject::GetGold，从accountgold表中提取出账号（plat_user_name）中的元宝数</p>
+<p>dataaccess处理函数：<code>RMILoginObject::__GetGold</code> &ndash;&gt; RMILoginObject::GetGold，从accountgold表中提取出账号（plat_user_name）中的元宝数</p>
 </li>
 <li>
 <p>rmi返回gameworld：RMIGetGoldBackObjectImpl::GetGoldRet，如果账号中的元宝大于0，那么调用Money::GetAccountGoldToRole</p>
@@ -547,7 +547,7 @@
 <p>此时需要对账号中的元宝进行消耗，创建RMIBackObject: RMIChangeGoldBackObjectImpl，发送RMI请求：RMILoginClient::ChangeGoldAsyn</p>
 </li>
 <li>
-<p>dataaccess处理函数：<code>RMILoginObject::__ChangeGold</code> --&gt; RMILoginObject::ChangeGold，更新accountgold表中账号记录，把元宝减掉</p>
+<p>dataaccess处理函数：<code>RMILoginObject::__ChangeGold</code> &ndash;&gt; RMILoginObject::ChangeGold，更新accountgold表中账号记录，把元宝减掉</p>
 </li>
 <li>
 <p>rmi返回gameworld：RMIChangeGoldBackObjectImpl::ChangeGoldRet，如果此时玩家在线，那么调用：Money::AddGold</p>

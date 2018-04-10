@@ -291,7 +291,7 @@
 <p>准备转发聊天信息给客户端：SCChannelChat，设置好此协议的内容</p>
 </li>
 <li>
-<p>根据聊天频道（chatdef::ChannelType），把聊天协议广播到对应客户端，以世界聊天举例，即进入：ChatManager::OnWorldChat --&gt; World::SendToAllGateway</p>
+<p>根据聊天频道（chatdef::ChannelType），把聊天协议广播到对应客户端，以世界聊天举例，即进入：ChatManager::OnWorldChat &ndash;&gt; World::SendToAllGateway</p>
 </li>
 </ul>
 <h2 id="_4">做任务流程</h2>
@@ -343,13 +343,13 @@
 <p>进入：NewTaskManager::CommitTask</p>
 </li>
 <li>
-<p>判断能否提交：NewTaskManager::CanCommitTask --&gt; NewTaskManager::IsComplete，IsComplete会对每种类型的任务做特殊性检查</p>
+<p>判断能否提交：NewTaskManager::CanCommitTask &ndash;&gt; NewTaskManager::IsComplete，IsComplete会对每种类型的任务做特殊性检查</p>
 </li>
 <li>
 <p>把任务删除：NewTaskManager::RemoveTask，如果任务完成，则发送奖励：NewTaskManager::DoReward，这里会根据每种任务类型做不同的处理</p>
 </li>
 <li>
-<p>触发任务完成事件：NewTaskManager::OnRemoveTask --&gt; EventHandler::OnCompleteTask</p>
+<p>触发任务完成事件：NewTaskManager::OnRemoveTask &ndash;&gt; EventHandler::OnCompleteTask</p>
 </li>
 </ul>
 <h2 id="_5">采集流程</h2>
@@ -370,7 +370,7 @@
 <p>广播采集信息（SCStartGather），发送采集信息（SCStartGatherTimer）</p>
 </li>
 <li>
-<p>进入之后的帧循环，并更新采集状态。见：Role::Update --&gt; Role::UpdateGather</p>
+<p>进入之后的帧循环，并更新采集状态。见：Role::Update &ndash;&gt; Role::UpdateGather</p>
 </li>
 <li>
 <p>如果采集时间到，说明采集成功。此时进入：GatherObj::Gather，触发采集物被采集事件：EventHandler::OnGather，并检测是否要删除此采集物：GatherObj::RemoveOnGather</p>
@@ -380,10 +380,10 @@
 <h3 id="_7">物品配置初始化流程</h3>
 <ul>
 <li>
-<p>gameworld进程启动，开始初始化配置：ServerLogic::Start --&gt; World::Start --&gt; World::InitGameWorld</p>
+<p>gameworld进程启动，开始初始化配置：ServerLogic::Start &ndash;&gt; World::Start &ndash;&gt; World::InitGameWorld</p>
 </li>
 <li>
-<p>初始化物品配置入口：World::InitItem --&gt; ItemPool::Init，开始从配置文件itemmanager.xml读取配置</p>
+<p>初始化物品配置入口：World::InitItem &ndash;&gt; ItemPool::Init，开始从配置文件itemmanager.xml读取配置</p>
 </li>
 <li>
 <p>读取装备配置，使用宏：LOADEQUIPMENT，于itemmanager.xml中找到装备配置路径，读取之：Equipment::Init，若是读取成功，则会把配置对象（ItemBase）加入物品池（ItemPool::m_item_pool）</p>
@@ -398,7 +398,7 @@
 <h3 id="_8">使用物品流程</h3>
 <ul>
 <li>
-<p>客户端发送使用物品协议：CSUseItem，服务端处理入口：MessageHandler::OnUseItem --&gt; Knapsack::Use</p>
+<p>客户端发送使用物品协议：CSUseItem，服务端处理入口：MessageHandler::OnUseItem &ndash;&gt; Knapsack::Use</p>
 </li>
 <li>
 <p>获取要使用的物品格子（ItemGridData），并对此进行一系列判断：是否合法，角色当前可否使用物品（RoleStatusManager::CanUseItem）</p>
@@ -413,7 +413,7 @@
 <p>若执行成功，会对物品格子（ItemGridData）进行修改，即消耗，若num已经为0，则会清理格子（ItemGridData::Clear）</p>
 </li>
 <li>
-<p>设置DirtyMark，并通知客户端背包已更改：Knapsack::SetItemDirty --&gt; Knapsack::SendknapsackGridInfoToRole</p>
+<p>设置DirtyMark，并通知客户端背包已更改：Knapsack::SetItemDirty &ndash;&gt; Knapsack::SendknapsackGridInfoToRole</p>
 </li>
 </ul>
 <h2 id="_9">邮件相关</h2>
@@ -439,7 +439,7 @@
 <h3 id="_11">查看邮件流程</h3>
 <ul>
 <li>
-<p>客户端发送请求查看邮件列表协议：CSMailGetList，服务端处理入口：MessageHandler::OnGetMailList --&gt; MailRoute::GetMailList</p>
+<p>客户端发送请求查看邮件列表协议：CSMailGetList，服务端处理入口：MessageHandler::OnGetMailList &ndash;&gt; MailRoute::GetMailList</p>
 </li>
 <li>
 <p>转入：UserMailManager::OnFetchMailList</p>
@@ -455,7 +455,7 @@
 <p>此流程和多数全局系统的回档流程类似（使用dirty_mark标记要回档的记录，然后将记录打包发给dataaccess做存储）。</p>
 <ul>
 <li>
-<p>进入帧循环：UserMailManager::Update --&gt; UserMail::Update</p>
+<p>进入帧循环：UserMailManager::Update &ndash;&gt; UserMail::Update</p>
 </li>
 <li>
 <p>检查是否到了回档时间（间隔MAIL_SAVE_DB_INTERVAL）</p>
@@ -465,10 +465,10 @@
 <h3 id="_14">随机活动时间设置流程</h3>
 <ul>
 <li>
-<p>服务器启动后，从数据库初始化随机活动的开启数据：RandActivityManager::Init --&gt; RandActivity::Init</p>
+<p>服务器启动后，从数据库初始化随机活动的开启数据：RandActivityManager::Init &ndash;&gt; RandActivity::Init</p>
 </li>
 <li>
-<p>首次Update，计算所有随机活动的开启时间：RandActivityManager::Update --&gt; RandActivityManager::CalActivityOpenTime --&gt; RandActivity::CalActivityOpenTime</p>
+<p>首次Update，计算所有随机活动的开启时间：RandActivityManager::Update &ndash;&gt; RandActivityManager::CalActivityOpenTime &ndash;&gt; RandActivity::CalActivityOpenTime</p>
 </li>
 <li>
 <p>拿到配置数据数据（S-随机活动开启配置.xls）：RandActivityOpenCfg::GetOpenCfg</p>
@@ -491,7 +491,7 @@
 <p>客户端发送了正确的GM命令，服务端处理函数入口：Gm::ActivityToNextState</p>
 </li>
 <li>
-<p>触发RandActivityManager::OnForceToNextState --&gt; RandActivity::OnForceToNextState</p>
+<p>触发RandActivityManager::OnForceToNextState &ndash;&gt; RandActivity::OnForceToNextState</p>
 </li>
 <li>
 <p>如果活动正在开启状态，则将其结束时间设置为当前时间，在下一帧时使其自动关闭</p>
@@ -514,7 +514,7 @@
 <p>做了一堆杂碎判断（乱七八糟的），转入SceneManager::ChangeScene</p>
 </li>
 <li>
-<p>根据scene_id和scene_key判断场景是否存在，如果不存在，执行：SceneManager::CreateFB --&gt; SceneManager::CreateScene，创建一个副本（通常只有副本才会动态创建）</p>
+<p>根据scene_id和scene_key判断场景是否存在，如果不存在，执行：SceneManager::CreateFB &ndash;&gt; SceneManager::CreateScene，创建一个副本（通常只有副本才会动态创建）</p>
 </li>
 <li>
 <p>执行：SceneManager::ChangeLocalSceneHelper，准备把玩家送入场景</p>
@@ -568,7 +568,7 @@
 <p>客户端请求移动，发送协议：CSObjMove，服务端处理入口：MessageHandler::OnRoleMove</p>
 </li>
 <li>
-<p>转入：Role::Move --&gt; Character::Move</p>
+<p>转入：Role::Move &ndash;&gt; Character::Move</p>
 </li>
 <li>
 <p>做一些检查：移动位置是否合法（Map::Validate），非法检查，角色可否行动（Character::CanCharacterAction，Character::IsDingShen）</p>
@@ -592,7 +592,7 @@
 <p>重置Role状态：Role::ResetRoleStatus，实际上就是重置了采集状态</p>
 </li>
 <li>
-<p>在之后的帧循环里，执行Character::Update --&gt; Character::MoveLogic，更新位置信息，到达位置后，执行：Character::MoveStop，更新状态，并通知客户端移动信息</p>
+<p>在之后的帧循环里，执行Character::Update &ndash;&gt; Character::MoveLogic，更新位置信息，到达位置后，执行：Character::MoveStop，更新状态，并通知客户端移动信息</p>
 </li>
 </ul></div>
         </div>
