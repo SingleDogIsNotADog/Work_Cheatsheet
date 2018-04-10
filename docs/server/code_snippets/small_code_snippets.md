@@ -1,5 +1,24 @@
 # 代码小片段
 
+## 发协议
+
+```
+// 给玩家发
+SEND_TO_ROLE
+
+// 发非定长协议给客户端，协议末尾是一个数组
+SEND_TO_ROLE2
+
+// 发送给周围能看到自己的玩家（包括自己）
+SEND_TO_AREA
+
+// 给场景中的所有玩家发
+Scene::SendToRole
+
+// 给所有在线玩家发
+World::SendToAllGateway
+```
+
 ## 发邮件
 
 ```

@@ -16,6 +16,14 @@
 
 NOTE：该命令不能重置非法位置。
 
+## 国家相关
+
+任命自己为国王：/gm campsetofficer:1
+
+申请怪物攻城活动：/gm campcommonopera:107 0 0 0
+
+设置国家等级（3级，经验值满）：/gm campcommonopera:10000 3 0 0
+
 ## 其他
 
 设置玩家等级：/gm setrolelevel:666
@@ -23,3 +31,7 @@ NOTE：该命令不能重置非法位置。
 设置服务器等级：/gm setserverlevelseq:68
 
 跳到并完成主线任务：/gm jumptotrunk:task_id
+
+切换大臣活动状态：/gm dachenactnextstate:1
+
+切换国旗活动状态：/gm flagactnextstate:1

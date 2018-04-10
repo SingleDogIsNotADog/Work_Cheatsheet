@@ -1,5 +1,8 @@
 site_name: Work CheatSheet
 
+markdown_extensions:
+    - smarty
+
 pages:
   - Home: index.md
   - docs:
@@ -13,10 +16,10 @@ pages:
     - makefile: makefile.md
     - svn: svn.md
   - work:
-    - gm命令: 'work/gm.md'
-    - path: 'work/path.md'
-    - WorkCheateSheet: 'work/WorkCheatsheet.md'
-    - question & anwser: 'work/qa.md'
+    - gm命令: work/gm.md
+    - path: work/path.md
+    - WorkCheateSheet: work/WorkCheatsheet.md
+    - question & anwser: work/qa.md
   - server:
     - 开发环境搭建: server/开发环境搭建.md
     - 发版与热更: server/发版与热更.md
