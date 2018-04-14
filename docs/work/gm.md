@@ -1,4 +1,12 @@
-# GM命令
+# <center>GM命令</center>
+
+---
+
+## 增加资源
+
+增加金钱：/gm addmoney:10000
+
+增加灵液： /gm addlingye:10000
 
 ## 修改属性
 
@@ -25,6 +33,8 @@ NOTE：该命令不能重置非法位置。
 设置国家等级（3级，经验值满）：/gm campcommonopera:10000 3 0 0
 
 ## 其他
+
+开启协议打印开关：/gm printmsgtype:1
 
 设置玩家等级：/gm setrolelevel:666
 

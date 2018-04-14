@@ -1,4 +1,6 @@
-# 代码小片段
+# <center>代码小片段</center>
+
+---
 
 ## 发协议
 
@@ -53,5 +55,17 @@ int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring:
 if (sendlen > 0)
 {
 	SCENE_MGR->SystemMsgThread(gamestring::GAMESTRING_BUF, sendlen, SYS_MSG_CENTER_ROLL);
+}
+```
+
+## 其他
+
+```
+// 获取范围内的Obj对象
+ObjID obj_list[64] = {0};
+int count = scene->GetZoneMatrix()->GetObjByArea(center_pos, x_range, y_range, obj_list, sizeof(obj_list) / sizeof(obj_list[0]));
+for (int i = 0; i < count; ++ i)
+{
+	// ...
 }
 ```

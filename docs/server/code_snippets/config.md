@@ -24,8 +24,8 @@ public:
 	bool IsValidSomeSeqLevel(int seq, int level, bool is_init = false);
 	
 private:
-	int InitOtherCfg(rapidxml::xml_node<> *root_element);
-	int InitSomeCfg(rapidxml::xml_node<> *root_element);
+	int InitOtherCfg(RapidXmlNode *root_element);
+	int InitSomeCfg(RapidXmlNode *root_element);
 
 private:
 	XxXOtherConfig m_other_cfg;
@@ -75,7 +75,7 @@ struct XXXConfig
 {
 	struct CfgItem
 	{
-		int ReadConfig(rapidxml::xml_node<> *data_element, int _seq)
+		int ReadConfig(RapidXmlNode *data_element, int _seq)
 		{
 			if (has_read) return -1;
 			has_read = 1;
@@ -99,7 +99,7 @@ struct XXXConfig
 {
 	struct CfgItem
 	{
-		int ReadConfig(rapidxml::xml_node<> *data_element, int _seq, int _level)
+		int ReadConfig(RapidXmlNode *data_element, int _seq, int _level)
 		{
 			if (has_read) return -1;
 			has_read = 1;
