@@ -49,13 +49,28 @@ World::SendToAllGateway
 ## 发传闻
 
 ```
-int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), "key",
-	);
-
-if (sendlen > 0)
+// 发给全服
 {
-	SCENE_MGR->SystemMsgThread(gamestring::GAMESTRING_BUF, sendlen, SYS_MSG_CENTER_ROLL);
+	int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), "key",
+		);
+
+	if (sendlen > 0)
+	{
+		SCENE_MGR->SystemMsgThread(gamestring::GAMESTRING_BUF, sendlen, SYS_MSG_CENTER_ROLL);
+	}
 }
+
+// 发给国家
+{
+	int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), "key",
+		);
+	
+	if (sendlen > 0)
+	{
+		SCENE_MGR->SystemMsgToCamp(camp_type, gamestring::GAMESTRING_BUF, sendlen);
+	}
+}
+
 ```
 
 ## 其他
