@@ -1,0 +1,759 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Ready to work?\n\n\nNo, Ready to play.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#ready-to-work", 
+            "text": "", 
+            "title": "Ready to work?"
+        }, 
+        {
+            "location": "/#no-ready-to-play", 
+            "text": "", 
+            "title": "No, Ready to play."
+        }, 
+        {
+            "location": "/shell/", 
+            "text": "常用快捷键\n\n\nCTRL+C              # 结束当前命令\nCTRL+D              # 删除光标前的字符，同 \nDelete\n ，或者没有内容时，退出会话，或者交互模式输入文件结束符EOF\nCTRL+K              # 删除光标位置到行末的内容\nCTRL+U              # 删除光标位置到行首的内容\nCTRL+W              # 删除光标左边的一个单词\nCTRL+Z              # 暂停前台进程返回 bash，需要时可用 fg 将其切换回前台\n\n\n\n\nShell命令\n\n\nBash基本操作\n\n\nexit                # 退出当前登陆\nenv                 # 显示环境变量\necho $SHELL         # 显示你在使用什么 SHELL\n\nwhereis bash        # 查找 bash 在哪里\nwhich bash          # 查找哪个程序对应命令 bash\n\nclear               # 清初屏幕内容\nreset               # 重置终端（当你不小心 cat 了一个二进制，终端状态乱掉时使用）\n\n\n\n\n目录操作\n\n\ncd                  # 返回自己 $HOME 目录\ncd {dirname}        # 进入目录\ncd -                # 回到之前的目录\npwd                 # 显示当前所在目录\nmkdir {dirname}     # 创建目录\nmkdir -p {dirname}  # 递归创建目录\n\n\n\n\n文件操作\n\n\nls                  # 显示当前目录内容，后面可接目录名：ls {dir} 显示指定目录\nls -l               # 列表方式显示目录内容，包括文件日期，大小，权限等信息\nls -a               # 显示所有文件和目录，包括隐藏文件（.开头的文件/目录名）\nln -s {fn} {link}   # 给指定文件创建一个软链接\ncp {src} {dest}     # 拷贝文件，cp -r dir1 dir2 可以递归拷贝（目录）\nrm {fn}             # 删除文件，rm -r 递归删除目录，rm -f 强制删除\nmv {src} {dest}     # 移动文件，如果 dest 是目录，则移动，是文件名则覆盖\ntouch {fn}          # 创建或者更新一下制定文件\ncat {fn}            # 输出文件原始内容\nany_cmd \n {fn}      # 执行任意命令并将标准输出重定向到指定文件\nmore {fn}           # 逐屏显示某文件内容，空格翻页，q 退出\nhead {fn}           # 显示文件头部数行，可用 head -3 abc.txt 显示头三行\ntail {fn}           # 显示文件尾部数行，可用 tail -3 abc.txt 显示尾部三行\ntail -f {fn}        # 持续显示文件尾部数据，可用于监控日志\nvim {fn}            # 使用 vim 编辑文件\ndiff {f1} {f2}      # 比较两个文件的内容\nwc {fn}             # 统计文件有多少行，多少个单词\nchmod 644 {fn}      # 修改文件权限为 644，可以接 -R 对目录循环改权限\nchown user1 {fn}    # 修改文件所有人为 user1, chown user1:group1 fn 可以修改组\ngrep {pat} {fn}     # 在文件中查找出现过 pat 的内容\ngrep -r {pat} .     # 在当前目录下递归查找所有出现过 pat 的文件内容\n\n\n\n\n用户管理\n\n\nwhoami              # 显示我的用户名\npasswd              # 修改密码，passwd {user} 可以用于 root 修改别人密码\nlast {user}         # 显示登陆记录\nw                   # 查看谁在线\nsu -                # 切换到 root 用户并登陆（执行登陆脚本）\nsu -{user}          # 切换到某用户并登陆（执行登陆脚本）\nid {user}           # 查看用户的 uid，gid 以及所属其他用户组\n\n\n\n\n进程管理\n\n\nps                        # 查看当前会话进程\nps ax                     # 查看所有进程，类似 ps -e\nps aux                    # 查看所有进程详细信息，类似 ps -ef\nps -u {user}              # 查看某用户进程\nps aux | grep httpd       # 查看名为 httpd 的所有进程\nkill {pid}                # 结束进程\nkill -9 {pid}             # 强制结束进程，9/SIGKILL 是强制不可捕获结束信号\nkill -l                   # 查看所有信号\nkill -l TERM              # 查看 TERM 信号的编号\ntop                       # 查看最活跃的进程\ntop -u {user}             # 查看某用户最活跃的进程\nany_command \n             # 在后台运行某命令，也可用 CTRL+Z 将当前进程挂到后台\njobs                      # 查看所有后台进程（jobs）\nbg                        # 查看后台进程，并切换过去\nfg                        # 切换后台进程到前台\nfg {job}                  # 切换特定后台进程到前台\ntrap cmd sig1 sig2        # 在脚本中设置信号处理命令\ntrap \n sig1 sig2         # 在脚本中屏蔽某信号\ntrap - sig1 sig2          # 恢复默认信号处理行为\n\n\n\n\n其他命令\n\n\nssh user@host             # 以用户 user 登陆到远程主机 host\nssh -p {port} user@host   # 指定端口登陆主机\n\nuname -a                  # 查看内核版本等信息\nman {help}                # 查看帮助\nuptime                    # 查看系统启动时间\ndate                      # 显示日期\ncal                       # 显示日历\nvmstat                    # 显示内存和 CPU 使用情况\nvmstat 10                 # 每 10 秒打印一行内存和 CPU情况，CTRL+C 退出\nfree                      # 显示内存和交换区使用情况\ndf                        # 显示磁盘使用情况\ndu                        # 显示当前目录占用，du . --max-depth=2 可以指定深度\n\nwget {url}                # 下载文件，可加 --no-check-certificate 忽略 ssl 验证\nsz {file}                 # 发送文件到终端，zmodem 协议\nrz                        # 接收终端发送过来的文件\n\ntar -zcv -f file.tar.gz {filelist} # 将文件打包成file.tar.gz\ntar -zxv -f file.tar.gz            # 在当前路径解压file.tar.gz\n\n\n\n\nShell脚本\n\n\n变量操作\n\n\nvarname=value             # 定义变量\necho $varname             # 查看变量内容\n${#varname}               # 返回字符串长度\n\necho $$                   # 查看当前 shell 的进程号\necho $?                   # 查看最近一条命令的返回码\nexport VARNAME=value      # 设置环境变量（将会影响到子进程）\n\narray[0]=valA             # 定义数组\narray[1]=valB\narray[2]=valC\narray=(valA valB valC)    # 另一种方式\n\n${array[i]}               # 取得数组中的元素\n${#array[@]}              # 取得数组的长度\n${#array[i]}              # 取得数组中某个变量的长度\n\n${varname:-word}          # 如果变量不为空则返回变量，否则返回 word\n${varname:=word}          # 如果变量不为空则返回变量，否则赋值成 word 并返回\n${varname:+word}          # 如果变量不为空则返回 word，否则返回 null\n${varname:offset:len}     # 取得字符串的子字符串`\n\n${variable#pattern}       # 如果变量头部匹配 pattern，则删除最小匹配部分返回剩下的\n${variable##pattern}      # 如果变量头部匹配 pattern，则删除最大匹配部分返回剩下的\n${variable%pattern}       # 如果变量尾部匹配 pattern，则删除最小匹配部分返回剩下的\n${variable%%pattern}      # 如果变量尾部匹配 pattern，则删除最大匹配部分返回剩下的\n${variable/pattern/str}   # 将变量中第一个匹配 pattern 的替换成 str，并返回\n${variable//pattern/str}  # 将变量中所有匹配 pattern 的地方替换成 str 并返回\n\n$(cmd)                    # 运行cmd命令，并将标准输出内容捕获并返回\nvarname=$(id -u user)     # 将用户名为 user 的 uid 赋值给 varname 变量\n\nnum=$((1 + 2))            # 计算 1+2 赋值给 num，使用 bash 独有的 $((..)) 计算\nnum=$(($num + 1))         # 变量递增\nnum=$((num + 1))          # 变量递增，双括号内的 $ 可以省略\nnum=$((1 + (2 + 3) * 2))  # 复杂计算\n\n\n\n\n函数\n\n\n# 定义一个新函数\nfunction myfunc() {\n    # $1 代表第一个参数，$N 代表第 N 个参数\n    # $# 代表参数个数\n    # $0 代表被调用者自身的名字\n    # $@ 代表所有参数，类型是个数组 \n    # $* 空格链接起来的所有参数，类型是字符串\n    {shell commands ...}\n}\n\nmyfunc                    # 调用函数 myfunc \nmyfunc arg1 arg2 arg3     # 带参数的函数调用\n\n\n\n\n条件判断\n\n\nstatement1 \n statement2  # and 操作符\nstatement1 || statement2  # or 操作符\n\nexp1 -a exp2              # exp1 和 exp2 同时为真时返回真\nexp1 -o exp2              # exp1 和 exp2 有一个为真就返回真\n! expression              # 如果 expression 为假那返回真\n\nstr1 = str2               # 判断字符串相等，如 [ \n$x\n = \n$y\n ] \n echo yes\nstr1 != str2              # 判断字符串不等，如 [ \n$x\n != \n$y\n ] \n echo yes\nstr1 \n str2               # 字符串小于，如 [ \n$x\n \\\n \n$y\n ] \n echo yes\nstr2 \n str2               # 字符串大于，注意 \n 或 \n 是字面量，输入时要加反斜杆\n-n str1                   # 判断字符串不为空（长度大于零）\n-z str1                   # 判断字符串为空（长度等于零）\n\n-a file                   # 判断文件存在，如 [ -a /tmp/abc ] \n echo \nexists\n\n-d file                   # 判断文件存在，且该文件是一个目录\n-f file                   # 判断文件存在，且该文件是一个普通文件（非目录等）\n-r file                   # 判断文件存在，且可读\n-w file                   # 判断文件存在，且可写\n-x file                   # 判断文件存在，且执行\n\nnum1 -eq num2             # 数字判断：num1 == num2\nnum1 -ne num2             # 数字判断：num1 != num2\nnum1 -lt num2             # 数字判断：num1 \n num2\nnum1 -le num2             # 数字判断：num1 \n= num2\nnum1 -gt num2             # 数字判断：num1 \n num2\nnum1 -ge num2             # 数字判断：num1 \n= num2\n\n\n\n\n分支控制：if 和经典 test\n\n\ntest {expression}         # 判断条件为真的话 test 程序返回0 否则非零\n[ expression ]            # 判断条件为真的话返回0 否则非零\n\ntest \nabc\n = \ndef\n        # 查看返回值 echo $? 显示 1，因为条件为假\ntest \nabc\n != \ndef\n       # 查看返回值 echo $? 显示 0，因为条件为真\n\ntest -e /tmp; echo $?     # 调用 test 判断 /tmp 是否存在，并打印 test 的返回值\n[ -f /tmp ]; echo $?      # 和上面完全等价，/tmp 肯定是存在的，所以输出是 0\n\ntest cond \n cmd1         # 判断条件为真时执行 cmd1\n[ cond ] \n cmd1          # 和上面完全等价\n[ cond ] \n cmd1 || cmd2  # 条件为真执行 cmd1 否则执行 cmd2\n\n# 判断 /etc/passwd 文件是否存在\n# 经典的 if 语句就是判断后面的命令返回值为0的话，认为条件为真，否则为假\nif test -e /etc/passwd; then\n    echo \nalright it exists ... \n\nelse\n    echo \nit doesn't exist ... \n\nfi\n\n# 和上面完全等价，[ 是个和 test 一样的可执行程序，但最后一个参数必须为 ]\n# 这个名字为 \n[\n 的可执行程序一般就在 /bin 或 /usr/bin 下面，比 test 优雅些\nif [ -e /etc/passwd ]; then   \n    echo \nalright it exists ... \n\nelse\n    echo \nit doesn't exist ... \n\nfi\n\n# 和上面两个完全等价\n[ -e /etc/passwd ] \n echo \nalright it exists\n || echo \nit doesn't exist\n\n\n# 判断变量的值\nif [ \n$varname\n = \nfoo\n ]; then\n    echo \nthis is foo\n\nelif [ \n$varname\n = \nbar\n ]; then\n    echo \nthis is bar\n\nelse\n    echo \nneither\n\nfi\n\n# 复杂条件判断，注意，小括号是字面量，实际输入时前面要加反斜杆\nif [ \\( $x -gt 10 \\) -a \\( $x -lt 20 \\) ]; then\n    echo \nyes, between 10 and 20\n\nfi\n\n\n\n\n流程控制：while / for / case / until\n\n\n# while 循环\nwhile condition; do\n    statements\ndone\n\ni=1\nwhile [ $i -le 10 ]; do\n    echo $i; \n    i=$(expr $i + 1)\ndone\n\n# for 循环：上面的 while 语句等价\nfor i in {1..10}; do\n    echo $i\ndone\n\nfor name [in list]; do\n    statements\ndone\n\n# for 列举某目录下面的所有文件\nfor f in /home/*; do \n    echo $f\ndone\n\n# case 判断\ncase expression in \n    pattern1 )\n        statements ;;\n    pattern2 )\n        statements ;;\n    * )\n        otherwise ;;\nesac\n\n# until 语句\nuntil condition; do\n    statements\ndone\n\n\n\n\n其他有趣的脚本\n\n\n# 将文件编码转换，并输出到文件，file_in和file_out可以是同一个文件\niconv -f gb2312 -t utf8 file_in -o file_out\n\n# 将当前目录下的所有文件（包括子目录）的修改时间改为当前时间\nfind ./* -name \n*\n -exec touch {} \\;\n\nshowkey -a                           # 取得按键的 ASCII 码\nlsof -i port:80                      # 哪个程序在使用 80 端口？\n\n\n\n\n文本处理\n\n\ngrep\n\n\ngrep 'Error' file                  # 在file中检索包含Error的行\ngrep -r 'Error' *                  # 在当前目录及其子目录中检索包含Error的行\ngrep -l 'Error' *                  # 在当前目录及其子目录中检索包含Error的行，只输出相关文件名\ngrep -v 'Error' file               # 在file中检索包含Error的行，只输出不匹配的行\n\n\n\n\ncut\n\n\ncut -c 1-16                        # 截取每行头16个字符\ncut -c 1-16 file                   # 截取指定文件中每行头 16个字符\ncut -c3-                           # 截取每行从第三个字符开始到行末的内容\ncut -d':' -f5                      # 截取用冒号分隔的第五列内容\ncut -d';' -f2,10                   # 截取用分号分隔的第二和第十列内容\ncut -d' ' -f3-7                    # 截取空格分隔的三到七列\necho \nhello\n | cut -c1-3           # 显示 hel\necho \nhello sir\n | cut -d' ' -f2   # 显示 sir\n\n\n\n\nawk / sed\n\n\nawk '{print $5}' file              # 打印文件中以空格分隔的第五列\nawk -F ',' '{print $5}' file       # 打印文件中以逗号分隔的第五列\nawk '/str/ {print $2}' file        # 打印文件中包含 str 的所有行的第二列\nawk -F ',' '{print $NF}' file      # 打印逗号分隔的文件中的每行最后一列\n\nsed 's/regex/replace/g' file       # 替换文件中所有出现的字符串\nsed -i 's/find/replace/g' file     # 替换文件中所有出现的字符并且覆盖文件\nsed -i -r 's/^\\s+//g' file         # 删除文件每行头部空格\nsed '/^$/d' file                   # 删除文件空行并打印\nsed -i 's/\\s\\+$//' file            # 删除文件每行末尾多余空格\n\nsed '1i\\Hello' file                # 在文件file的第一行插入Hello\n\n\n\n\n参考资料\n\n\nhttps://github.com/skywind3000/awesome-cheatsheets", 
+            "title": "shell"
+        }, 
+        {
+            "location": "/shell/#_1", 
+            "text": "CTRL+C              # 结束当前命令\nCTRL+D              # 删除光标前的字符，同  Delete  ，或者没有内容时，退出会话，或者交互模式输入文件结束符EOF\nCTRL+K              # 删除光标位置到行末的内容\nCTRL+U              # 删除光标位置到行首的内容\nCTRL+W              # 删除光标左边的一个单词\nCTRL+Z              # 暂停前台进程返回 bash，需要时可用 fg 将其切换回前台", 
+            "title": "常用快捷键"
+        }, 
+        {
+            "location": "/shell/#shell", 
+            "text": "", 
+            "title": "Shell命令"
+        }, 
+        {
+            "location": "/shell/#bash", 
+            "text": "exit                # 退出当前登陆\nenv                 # 显示环境变量\necho $SHELL         # 显示你在使用什么 SHELL\n\nwhereis bash        # 查找 bash 在哪里\nwhich bash          # 查找哪个程序对应命令 bash\n\nclear               # 清初屏幕内容\nreset               # 重置终端（当你不小心 cat 了一个二进制，终端状态乱掉时使用）", 
+            "title": "Bash基本操作"
+        }, 
+        {
+            "location": "/shell/#_2", 
+            "text": "cd                  # 返回自己 $HOME 目录\ncd {dirname}        # 进入目录\ncd -                # 回到之前的目录\npwd                 # 显示当前所在目录\nmkdir {dirname}     # 创建目录\nmkdir -p {dirname}  # 递归创建目录", 
+            "title": "目录操作"
+        }, 
+        {
+            "location": "/shell/#_3", 
+            "text": "ls                  # 显示当前目录内容，后面可接目录名：ls {dir} 显示指定目录\nls -l               # 列表方式显示目录内容，包括文件日期，大小，权限等信息\nls -a               # 显示所有文件和目录，包括隐藏文件（.开头的文件/目录名）\nln -s {fn} {link}   # 给指定文件创建一个软链接\ncp {src} {dest}     # 拷贝文件，cp -r dir1 dir2 可以递归拷贝（目录）\nrm {fn}             # 删除文件，rm -r 递归删除目录，rm -f 强制删除\nmv {src} {dest}     # 移动文件，如果 dest 是目录，则移动，是文件名则覆盖\ntouch {fn}          # 创建或者更新一下制定文件\ncat {fn}            # 输出文件原始内容\nany_cmd   {fn}      # 执行任意命令并将标准输出重定向到指定文件\nmore {fn}           # 逐屏显示某文件内容，空格翻页，q 退出\nhead {fn}           # 显示文件头部数行，可用 head -3 abc.txt 显示头三行\ntail {fn}           # 显示文件尾部数行，可用 tail -3 abc.txt 显示尾部三行\ntail -f {fn}        # 持续显示文件尾部数据，可用于监控日志\nvim {fn}            # 使用 vim 编辑文件\ndiff {f1} {f2}      # 比较两个文件的内容\nwc {fn}             # 统计文件有多少行，多少个单词\nchmod 644 {fn}      # 修改文件权限为 644，可以接 -R 对目录循环改权限\nchown user1 {fn}    # 修改文件所有人为 user1, chown user1:group1 fn 可以修改组\ngrep {pat} {fn}     # 在文件中查找出现过 pat 的内容\ngrep -r {pat} .     # 在当前目录下递归查找所有出现过 pat 的文件内容", 
+            "title": "文件操作"
+        }, 
+        {
+            "location": "/shell/#_4", 
+            "text": "whoami              # 显示我的用户名\npasswd              # 修改密码，passwd {user} 可以用于 root 修改别人密码\nlast {user}         # 显示登陆记录\nw                   # 查看谁在线\nsu -                # 切换到 root 用户并登陆（执行登陆脚本）\nsu -{user}          # 切换到某用户并登陆（执行登陆脚本）\nid {user}           # 查看用户的 uid，gid 以及所属其他用户组", 
+            "title": "用户管理"
+        }, 
+        {
+            "location": "/shell/#_5", 
+            "text": "ps                        # 查看当前会话进程\nps ax                     # 查看所有进程，类似 ps -e\nps aux                    # 查看所有进程详细信息，类似 ps -ef\nps -u {user}              # 查看某用户进程\nps aux | grep httpd       # 查看名为 httpd 的所有进程\nkill {pid}                # 结束进程\nkill -9 {pid}             # 强制结束进程，9/SIGKILL 是强制不可捕获结束信号\nkill -l                   # 查看所有信号\nkill -l TERM              # 查看 TERM 信号的编号\ntop                       # 查看最活跃的进程\ntop -u {user}             # 查看某用户最活跃的进程\nany_command               # 在后台运行某命令，也可用 CTRL+Z 将当前进程挂到后台\njobs                      # 查看所有后台进程（jobs）\nbg                        # 查看后台进程，并切换过去\nfg                        # 切换后台进程到前台\nfg {job}                  # 切换特定后台进程到前台\ntrap cmd sig1 sig2        # 在脚本中设置信号处理命令\ntrap   sig1 sig2         # 在脚本中屏蔽某信号\ntrap - sig1 sig2          # 恢复默认信号处理行为", 
+            "title": "进程管理"
+        }, 
+        {
+            "location": "/shell/#_6", 
+            "text": "ssh user@host             # 以用户 user 登陆到远程主机 host\nssh -p {port} user@host   # 指定端口登陆主机\n\nuname -a                  # 查看内核版本等信息\nman {help}                # 查看帮助\nuptime                    # 查看系统启动时间\ndate                      # 显示日期\ncal                       # 显示日历\nvmstat                    # 显示内存和 CPU 使用情况\nvmstat 10                 # 每 10 秒打印一行内存和 CPU情况，CTRL+C 退出\nfree                      # 显示内存和交换区使用情况\ndf                        # 显示磁盘使用情况\ndu                        # 显示当前目录占用，du . --max-depth=2 可以指定深度\n\nwget {url}                # 下载文件，可加 --no-check-certificate 忽略 ssl 验证\nsz {file}                 # 发送文件到终端，zmodem 协议\nrz                        # 接收终端发送过来的文件\n\ntar -zcv -f file.tar.gz {filelist} # 将文件打包成file.tar.gz\ntar -zxv -f file.tar.gz            # 在当前路径解压file.tar.gz", 
+            "title": "其他命令"
+        }, 
+        {
+            "location": "/shell/#shell_1", 
+            "text": "", 
+            "title": "Shell脚本"
+        }, 
+        {
+            "location": "/shell/#_7", 
+            "text": "varname=value             # 定义变量\necho $varname             # 查看变量内容\n${#varname}               # 返回字符串长度\n\necho $$                   # 查看当前 shell 的进程号\necho $?                   # 查看最近一条命令的返回码\nexport VARNAME=value      # 设置环境变量（将会影响到子进程）\n\narray[0]=valA             # 定义数组\narray[1]=valB\narray[2]=valC\narray=(valA valB valC)    # 另一种方式\n\n${array[i]}               # 取得数组中的元素\n${#array[@]}              # 取得数组的长度\n${#array[i]}              # 取得数组中某个变量的长度\n\n${varname:-word}          # 如果变量不为空则返回变量，否则返回 word\n${varname:=word}          # 如果变量不为空则返回变量，否则赋值成 word 并返回\n${varname:+word}          # 如果变量不为空则返回 word，否则返回 null\n${varname:offset:len}     # 取得字符串的子字符串`\n\n${variable#pattern}       # 如果变量头部匹配 pattern，则删除最小匹配部分返回剩下的\n${variable##pattern}      # 如果变量头部匹配 pattern，则删除最大匹配部分返回剩下的\n${variable%pattern}       # 如果变量尾部匹配 pattern，则删除最小匹配部分返回剩下的\n${variable%%pattern}      # 如果变量尾部匹配 pattern，则删除最大匹配部分返回剩下的\n${variable/pattern/str}   # 将变量中第一个匹配 pattern 的替换成 str，并返回\n${variable//pattern/str}  # 将变量中所有匹配 pattern 的地方替换成 str 并返回\n\n$(cmd)                    # 运行cmd命令，并将标准输出内容捕获并返回\nvarname=$(id -u user)     # 将用户名为 user 的 uid 赋值给 varname 变量\n\nnum=$((1 + 2))            # 计算 1+2 赋值给 num，使用 bash 独有的 $((..)) 计算\nnum=$(($num + 1))         # 变量递增\nnum=$((num + 1))          # 变量递增，双括号内的 $ 可以省略\nnum=$((1 + (2 + 3) * 2))  # 复杂计算", 
+            "title": "变量操作"
+        }, 
+        {
+            "location": "/shell/#_8", 
+            "text": "# 定义一个新函数\nfunction myfunc() {\n    # $1 代表第一个参数，$N 代表第 N 个参数\n    # $# 代表参数个数\n    # $0 代表被调用者自身的名字\n    # $@ 代表所有参数，类型是个数组 \n    # $* 空格链接起来的所有参数，类型是字符串\n    {shell commands ...}\n}\n\nmyfunc                    # 调用函数 myfunc \nmyfunc arg1 arg2 arg3     # 带参数的函数调用", 
+            "title": "函数"
+        }, 
+        {
+            "location": "/shell/#_9", 
+            "text": "statement1   statement2  # and 操作符\nstatement1 || statement2  # or 操作符\n\nexp1 -a exp2              # exp1 和 exp2 同时为真时返回真\nexp1 -o exp2              # exp1 和 exp2 有一个为真就返回真\n! expression              # 如果 expression 为假那返回真\n\nstr1 = str2               # 判断字符串相等，如 [  $x  =  $y  ]   echo yes\nstr1 != str2              # 判断字符串不等，如 [  $x  !=  $y  ]   echo yes\nstr1   str2               # 字符串小于，如 [  $x  \\   $y  ]   echo yes\nstr2   str2               # 字符串大于，注意   或   是字面量，输入时要加反斜杆\n-n str1                   # 判断字符串不为空（长度大于零）\n-z str1                   # 判断字符串为空（长度等于零）\n\n-a file                   # 判断文件存在，如 [ -a /tmp/abc ]   echo  exists \n-d file                   # 判断文件存在，且该文件是一个目录\n-f file                   # 判断文件存在，且该文件是一个普通文件（非目录等）\n-r file                   # 判断文件存在，且可读\n-w file                   # 判断文件存在，且可写\n-x file                   # 判断文件存在，且执行\n\nnum1 -eq num2             # 数字判断：num1 == num2\nnum1 -ne num2             # 数字判断：num1 != num2\nnum1 -lt num2             # 数字判断：num1   num2\nnum1 -le num2             # 数字判断：num1  = num2\nnum1 -gt num2             # 数字判断：num1   num2\nnum1 -ge num2             # 数字判断：num1  = num2", 
+            "title": "条件判断"
+        }, 
+        {
+            "location": "/shell/#if-test", 
+            "text": "test {expression}         # 判断条件为真的话 test 程序返回0 否则非零\n[ expression ]            # 判断条件为真的话返回0 否则非零\n\ntest  abc  =  def         # 查看返回值 echo $? 显示 1，因为条件为假\ntest  abc  !=  def        # 查看返回值 echo $? 显示 0，因为条件为真\n\ntest -e /tmp; echo $?     # 调用 test 判断 /tmp 是否存在，并打印 test 的返回值\n[ -f /tmp ]; echo $?      # 和上面完全等价，/tmp 肯定是存在的，所以输出是 0\n\ntest cond   cmd1         # 判断条件为真时执行 cmd1\n[ cond ]   cmd1          # 和上面完全等价\n[ cond ]   cmd1 || cmd2  # 条件为真执行 cmd1 否则执行 cmd2\n\n# 判断 /etc/passwd 文件是否存在\n# 经典的 if 语句就是判断后面的命令返回值为0的话，认为条件为真，否则为假\nif test -e /etc/passwd; then\n    echo  alright it exists ...  \nelse\n    echo  it doesn't exist ...  \nfi\n\n# 和上面完全等价，[ 是个和 test 一样的可执行程序，但最后一个参数必须为 ]\n# 这个名字为  [  的可执行程序一般就在 /bin 或 /usr/bin 下面，比 test 优雅些\nif [ -e /etc/passwd ]; then   \n    echo  alright it exists ...  \nelse\n    echo  it doesn't exist ...  \nfi\n\n# 和上面两个完全等价\n[ -e /etc/passwd ]   echo  alright it exists  || echo  it doesn't exist \n\n# 判断变量的值\nif [  $varname  =  foo  ]; then\n    echo  this is foo \nelif [  $varname  =  bar  ]; then\n    echo  this is bar \nelse\n    echo  neither \nfi\n\n# 复杂条件判断，注意，小括号是字面量，实际输入时前面要加反斜杆\nif [ \\( $x -gt 10 \\) -a \\( $x -lt 20 \\) ]; then\n    echo  yes, between 10 and 20 \nfi", 
+            "title": "分支控制：if 和经典 test"
+        }, 
+        {
+            "location": "/shell/#while-for-case-until", 
+            "text": "# while 循环\nwhile condition; do\n    statements\ndone\n\ni=1\nwhile [ $i -le 10 ]; do\n    echo $i; \n    i=$(expr $i + 1)\ndone\n\n# for 循环：上面的 while 语句等价\nfor i in {1..10}; do\n    echo $i\ndone\n\nfor name [in list]; do\n    statements\ndone\n\n# for 列举某目录下面的所有文件\nfor f in /home/*; do \n    echo $f\ndone\n\n# case 判断\ncase expression in \n    pattern1 )\n        statements ;;\n    pattern2 )\n        statements ;;\n    * )\n        otherwise ;;\nesac\n\n# until 语句\nuntil condition; do\n    statements\ndone", 
+            "title": "流程控制：while / for / case / until"
+        }, 
+        {
+            "location": "/shell/#_10", 
+            "text": "# 将文件编码转换，并输出到文件，file_in和file_out可以是同一个文件\niconv -f gb2312 -t utf8 file_in -o file_out\n\n# 将当前目录下的所有文件（包括子目录）的修改时间改为当前时间\nfind ./* -name  *  -exec touch {} \\;\n\nshowkey -a                           # 取得按键的 ASCII 码\nlsof -i port:80                      # 哪个程序在使用 80 端口？", 
+            "title": "其他有趣的脚本"
+        }, 
+        {
+            "location": "/shell/#_11", 
+            "text": "", 
+            "title": "文本处理"
+        }, 
+        {
+            "location": "/shell/#grep", 
+            "text": "grep 'Error' file                  # 在file中检索包含Error的行\ngrep -r 'Error' *                  # 在当前目录及其子目录中检索包含Error的行\ngrep -l 'Error' *                  # 在当前目录及其子目录中检索包含Error的行，只输出相关文件名\ngrep -v 'Error' file               # 在file中检索包含Error的行，只输出不匹配的行", 
+            "title": "grep"
+        }, 
+        {
+            "location": "/shell/#cut", 
+            "text": "cut -c 1-16                        # 截取每行头16个字符\ncut -c 1-16 file                   # 截取指定文件中每行头 16个字符\ncut -c3-                           # 截取每行从第三个字符开始到行末的内容\ncut -d':' -f5                      # 截取用冒号分隔的第五列内容\ncut -d';' -f2,10                   # 截取用分号分隔的第二和第十列内容\ncut -d' ' -f3-7                    # 截取空格分隔的三到七列\necho  hello  | cut -c1-3           # 显示 hel\necho  hello sir  | cut -d' ' -f2   # 显示 sir", 
+            "title": "cut"
+        }, 
+        {
+            "location": "/shell/#awk-sed", 
+            "text": "awk '{print $5}' file              # 打印文件中以空格分隔的第五列\nawk -F ',' '{print $5}' file       # 打印文件中以逗号分隔的第五列\nawk '/str/ {print $2}' file        # 打印文件中包含 str 的所有行的第二列\nawk -F ',' '{print $NF}' file      # 打印逗号分隔的文件中的每行最后一列\n\nsed 's/regex/replace/g' file       # 替换文件中所有出现的字符串\nsed -i 's/find/replace/g' file     # 替换文件中所有出现的字符并且覆盖文件\nsed -i -r 's/^\\s+//g' file         # 删除文件每行头部空格\nsed '/^$/d' file                   # 删除文件空行并打印\nsed -i 's/\\s\\+$//' file            # 删除文件每行末尾多余空格\n\nsed '1i\\Hello' file                # 在文件file的第一行插入Hello", 
+            "title": "awk / sed"
+        }, 
+        {
+            "location": "/shell/#_12", 
+            "text": "https://github.com/skywind3000/awesome-cheatsheets", 
+            "title": "参考资料"
+        }, 
+        {
+            "location": "/vs/", 
+            "text": "相关设置\n\n\n设置字体\n\n\n工具 -\n 选项 -\n 环境 -\n 字体和颜色\n\n\n项背颜色的护眼色：204,232,207\n\n\n开启行号\n\n\n工具 -\n 选项 -\n 文本编辑器 -\n 所有语言 -\n 显示，开启行号\n\n\n资源管理器中跟踪源文件\n\n\n工具 -\n 项目和解决方案 -\n 常规，勾选在解决方案资源管理器中跟踪活动项\n\n\n取消中文的红色下划线\n\n\n顶部VAssistX -\n Visual Assist Options -\n Underlining -\n 去掉Underline Spelling\n\n\n禁用IntelliSense\n\n\n这个功能会吃内存，而且和VA的功能有重叠，所以可以禁用掉。\n\n\n工具-\n选项-\n文本编辑器-\nc++ -\n高级 右边 Disable Intellisense，False 改为 Ture\n\n\nVS快捷键\n\n\n\n\n\n\n全局查询：ctrl + shift + f\n\n\n\n\n\n\n搜索文件中的函数：alt + m\n\n\n\n\n\n\n跳到单词下一个位置：ctrl + f3\n\n\n\n\n\n\n跳转大括号：ctrl + }\n\n\n\n\n\n\n生成注释：ctrl + k，ctrl + c\n\n\n\n\n\n\n取消注释：ctrl + k，ctrl + u\n\n\n\n\n\n\nctrl + m + o: 折叠/展开当前块\n\n\n\n\n\n\nctrl + m + l: 折叠/展开所有块\n\n\n\n\n\n\n编译单个cpp文件：ctrl + f7\n\n\n\n\n\n\n删除所有断点：ctrl + shift + f9\n\n\n\n\n\n\n跳出当前函数体：shift + f11\n\n\n\n\n\n\n打开附加到进程窗口：ctrl + alt + p\n\n\n\n\n\n\n大写转小写：ctrl + u\n\n\n\n\n\n\n小写转大写：ctrl + shift + u\n\n\n\n\n\n\n格式化代码：ctrl + k, ctrl + d\n\n\n\n\n\n\nVS其他功能\n\n\n使用断点+条件调试\n\n\n键入F9在一行下断点后，在断点右侧右键，即可开启条件断点。\n\n\n使用书签\n\n\n书签可以标记代码位置，并给予一个说明，可以快速定位。\n\n\n打开书签窗口：视图 -\n 书签窗口\n\n\nVA快捷键\n\n\n\n\n\n\n搜索项目文件：alt + shift + o\n\n\n\n\n\n\n找名字：alt + shift + s\n\n\n\n\n\n\n查询引用：alt + shift + f\n\n\n\n\n\n\n头文件和源文件切换：alt + o\n\n\n\n\n\n\n转到定义：alt + g\n\n\n\n\n\n\n退回上一个视图：alt + 左键\n\n\n\n\n\n\n全局改名：alt + shift + r\n\n\n\n\n\n\nVA其他功能\n\n\n快速包含头文件\n\n\n把鼠标放在类型名字上，按下面的箭头，可以找到自动添加头文件的按钮。\n\n\n但是这样添加的头文件可能有格式的问题，比如使用了..，或者windows下的\\符号，可能造成Linux下编译失败。因此还要检查一下。\n\n\n自定义代码片段\n\n\n打开编辑器：VAssistX -\n Refector -\n Edit Refactoring Snippets\n\n\n然后就可以自行编辑代码模板。\n\n\n预编译头\n\n\n使用预编译头将比较固定的header file一次性打包编译，可以大量节约编译时间。\n\n\n方法是：\n\n\n\n\n\n\n创建一个文件stdafx.h，里面包含那些header file。创建一个precompile.cpp文件，仅包含stdafx.h。然后右键precompile.cpp文件 -\n Properties -\n C/C++ -\n precompiled Header，选择Precompiled Header为：Create(/Yc)\n\n\n\n\n\n\n右击项目 -\n Properties -\n C/C++ -\n precompiled Header，选择Precompiled Header为：Use(/Yu)\n\n\n\n\n\n\n项目中所有的cpp文件开头都需要\n#include \"stdafx.h\"\n\n\n\n\n\n\nOK", 
+            "title": "visual studio"
+        }, 
+        {
+            "location": "/vs/#_1", 
+            "text": "设置字体  工具 -  选项 -  环境 -  字体和颜色  项背颜色的护眼色：204,232,207  开启行号  工具 -  选项 -  文本编辑器 -  所有语言 -  显示，开启行号  资源管理器中跟踪源文件  工具 -  项目和解决方案 -  常规，勾选在解决方案资源管理器中跟踪活动项  取消中文的红色下划线  顶部VAssistX -  Visual Assist Options -  Underlining -  去掉Underline Spelling  禁用IntelliSense  这个功能会吃内存，而且和VA的功能有重叠，所以可以禁用掉。  工具- 选项- 文本编辑器- c++ - 高级 右边 Disable Intellisense，False 改为 Ture", 
+            "title": "相关设置"
+        }, 
+        {
+            "location": "/vs/#vs", 
+            "text": "全局查询：ctrl + shift + f    搜索文件中的函数：alt + m    跳到单词下一个位置：ctrl + f3    跳转大括号：ctrl + }    生成注释：ctrl + k，ctrl + c    取消注释：ctrl + k，ctrl + u    ctrl + m + o: 折叠/展开当前块    ctrl + m + l: 折叠/展开所有块    编译单个cpp文件：ctrl + f7    删除所有断点：ctrl + shift + f9    跳出当前函数体：shift + f11    打开附加到进程窗口：ctrl + alt + p    大写转小写：ctrl + u    小写转大写：ctrl + shift + u    格式化代码：ctrl + k, ctrl + d", 
+            "title": "VS快捷键"
+        }, 
+        {
+            "location": "/vs/#vs_1", 
+            "text": "使用断点+条件调试  键入F9在一行下断点后，在断点右侧右键，即可开启条件断点。  使用书签  书签可以标记代码位置，并给予一个说明，可以快速定位。  打开书签窗口：视图 -  书签窗口", 
+            "title": "VS其他功能"
+        }, 
+        {
+            "location": "/vs/#va", 
+            "text": "搜索项目文件：alt + shift + o    找名字：alt + shift + s    查询引用：alt + shift + f    头文件和源文件切换：alt + o    转到定义：alt + g    退回上一个视图：alt + 左键    全局改名：alt + shift + r", 
+            "title": "VA快捷键"
+        }, 
+        {
+            "location": "/vs/#va_1", 
+            "text": "快速包含头文件  把鼠标放在类型名字上，按下面的箭头，可以找到自动添加头文件的按钮。  但是这样添加的头文件可能有格式的问题，比如使用了..，或者windows下的\\符号，可能造成Linux下编译失败。因此还要检查一下。  自定义代码片段  打开编辑器：VAssistX -  Refector -  Edit Refactoring Snippets  然后就可以自行编辑代码模板。  预编译头  使用预编译头将比较固定的header file一次性打包编译，可以大量节约编译时间。  方法是：    创建一个文件stdafx.h，里面包含那些header file。创建一个precompile.cpp文件，仅包含stdafx.h。然后右键precompile.cpp文件 -  Properties -  C/C++ -  precompiled Header，选择Precompiled Header为：Create(/Yc)    右击项目 -  Properties -  C/C++ -  precompiled Header，选择Precompiled Header为：Use(/Yu)    项目中所有的cpp文件开头都需要 #include \"stdafx.h\"    OK", 
+            "title": "VA其他功能"
+        }, 
+        {
+            "location": "/vim/", 
+            "text": ".vimrc文件设定\n\n\nset nu\nset fileencoding=utf8\nset nobackup\nset autoindent\nset tabstop=4\n\n\n\n\n字符串替换\n\n\n# 将全文的old替换成new\n:%s/old/new/g\n\n# 将20到27行的old替换成new\n:20,27s/old/new/g", 
+            "title": "vim"
+        }, 
+        {
+            "location": "/sublime/", 
+            "text": "快捷键\n\n\nCtrl+Shift+P：打开命令面板\n\n\nCtrl+P：搜索项目中的文件\n\n\nCtrl+G：跳转到第几行\n\n\nCtrl+W：关闭当前打开文件\n\n\nCtrl+Shift+W：关闭所有打开文件\n\n\nCtrl+D：选择单词，重复可增加选择下一个相同的单词\n\n\nCtrl+L：选择行，重复可依次增加选择下一行\n\n\nCtrl+X：删除当前行\n\n\nCtrl+M：跳转到对应括号\n\n\nCtrl+F：查找内容\n\n\nCtrl+Shift+F：全局查找\n\n\nCtrl+H：替换\n\n\nCtrl+R：前往本文件的method\n\n\nCtrl+Shift+R: 全局搜索method\n\n\nCtrl+Shift+M：选中当前括号内容，重复可选着括号本身\n\n\nCtrl+/：注释当前行\n\n\nCtrl+Alt+/：块注释，并Focus到首行，写注释说明用的\n\n\nAlt+F3：选择所有相同的词\n\n\nAlt+Shift+数字：分屏显示，1,2是竖着，8,9是横着\n\n\nAlt+ -：跳回上一个编辑位置\n\n\nAlt+Shift+ -：跳到下一个编辑位置\n\n\n设置快捷键\n\n\n菜单栏 -\n Preferences -\n Key Bindings\n\n\n设置一个切换项目的快捷键：\n\n\n[\n    { \nkeys\n: [\nctrl+alt+p\n], \ncommand\n: \nprompt_select_workspace\n }\n]\n\n\n设置文本语法高亮\n\n\n点击右下角边缘处", 
+            "title": "sublime"
+        }, 
+        {
+            "location": "/sublime/#_1", 
+            "text": "Ctrl+Shift+P：打开命令面板  Ctrl+P：搜索项目中的文件  Ctrl+G：跳转到第几行  Ctrl+W：关闭当前打开文件  Ctrl+Shift+W：关闭所有打开文件  Ctrl+D：选择单词，重复可增加选择下一个相同的单词  Ctrl+L：选择行，重复可依次增加选择下一行  Ctrl+X：删除当前行  Ctrl+M：跳转到对应括号  Ctrl+F：查找内容  Ctrl+Shift+F：全局查找  Ctrl+H：替换  Ctrl+R：前往本文件的method  Ctrl+Shift+R: 全局搜索method  Ctrl+Shift+M：选中当前括号内容，重复可选着括号本身  Ctrl+/：注释当前行  Ctrl+Alt+/：块注释，并Focus到首行，写注释说明用的  Alt+F3：选择所有相同的词  Alt+Shift+数字：分屏显示，1,2是竖着，8,9是横着  Alt+ -：跳回上一个编辑位置  Alt+Shift+ -：跳到下一个编辑位置", 
+            "title": "快捷键"
+        }, 
+        {
+            "location": "/sublime/#_2", 
+            "text": "菜单栏 -  Preferences -  Key Bindings  设置一个切换项目的快捷键：  [\n    {  keys : [ ctrl+alt+p ],  command :  prompt_select_workspace  }\n]", 
+            "title": "设置快捷键"
+        }, 
+        {
+            "location": "/sublime/#_3", 
+            "text": "点击右下角边缘处", 
+            "title": "设置文本语法高亮"
+        }, 
+        {
+            "location": "/git/", 
+            "text": "创建SSH KEY\n\n\n$ ssh-keygen -t rsa -C \nyouremail@example.com\n\n\n\n\n\n在GitHub账号里创建一个SSH key，将\n~/.ssh/id_rsa.pub\n中的内容加入其中。\n\n\n创建版本库\n\n\nSTEP1: 在Github中创建一个空的远程仓库\n\n\nSTEP2: 克隆一份到本地：\n\n\n$ git clone git@github.com:githubname/repos.git\n\n\n\n\n提交版本\n\n\n$ git add *\n$ git commit -m \ncommit log\n\n$ git push origin master\n\n\n\n\n拉取版本\n\n\n$ git pull origin master\n\n\n\n\n请求帮助\n\n\n$ git help\n$ git help add\n\n\n\n\n正确显示中文\n\n\n$ git config core.quotepath false", 
+            "title": "git"
+        }, 
+        {
+            "location": "/gdb/", 
+            "text": "令程序支持gdb调试\n\n\n需要开启编译选项-g\n\n\n如果想让程序能生成core文件，需要修改.bashrc，添加\nulimit -c unlimited\n。\n\n\n启动调试\n\n\n启动并调试一个程序\n\n\n$ gdb prog\n\n\n\n\n附加进程调试\n\n\n$ gdb -p PID\n\n\n\n\n调试一个core文件\n\n\n$ gdb prog core_file\n\n\n\n\n常用调试命令\n\n\n$ set args [arg_list] # 设置程序的启动参数\n$ bt                  # 查看调用堆栈\n$ f n                 # 跳到第n个stack frame\n$ p variable          # 查看变量内容\n$ n                   # step over\n$ s                   # step in\n$ b file:line         # 在文件的某一行设置断点\n$ delete break        # 删除所有的断点\n$ q                   # 退出调试\n$ c                   # 继续执行程序\n# run                 # 开始执行程序\n\n\n\n\n使用脚本调试\n\n\ngdb加入参数-x script，即可使用脚本调试。\n\n\n脚本模板：\n\n\nb somewhere\nc\np some_variables\nq\n\n\n\n\n调试死循环\n\n\n直接gdb附加进程后，使用bt命令查看调用堆栈即可。", 
+            "title": "gdb"
+        }, 
+        {
+            "location": "/gdb/#gdb", 
+            "text": "需要开启编译选项-g  如果想让程序能生成core文件，需要修改.bashrc，添加 ulimit -c unlimited 。", 
+            "title": "令程序支持gdb调试"
+        }, 
+        {
+            "location": "/gdb/#_1", 
+            "text": "启动并调试一个程序  $ gdb prog  附加进程调试  $ gdb -p PID  调试一个core文件  $ gdb prog core_file", 
+            "title": "启动调试"
+        }, 
+        {
+            "location": "/gdb/#_2", 
+            "text": "$ set args [arg_list] # 设置程序的启动参数\n$ bt                  # 查看调用堆栈\n$ f n                 # 跳到第n个stack frame\n$ p variable          # 查看变量内容\n$ n                   # step over\n$ s                   # step in\n$ b file:line         # 在文件的某一行设置断点\n$ delete break        # 删除所有的断点\n$ q                   # 退出调试\n$ c                   # 继续执行程序\n# run                 # 开始执行程序", 
+            "title": "常用调试命令"
+        }, 
+        {
+            "location": "/gdb/#_3", 
+            "text": "gdb加入参数-x script，即可使用脚本调试。  脚本模板：  b somewhere\nc\np some_variables\nq", 
+            "title": "使用脚本调试"
+        }, 
+        {
+            "location": "/gdb/#_4", 
+            "text": "直接gdb附加进程后，使用bt命令查看调用堆栈即可。", 
+            "title": "调试死循环"
+        }, 
+        {
+            "location": "/cmake/", 
+            "text": "CMakeList模板\n\n\n工程目录\n\n\ncmake_minimum_required(VERSION 2.0)\n\nPROJECT(PROJ)\n\nSET(CMAKE_CXX_FLAGS_DEBUG \n-O0 -g3 -Wall -D_DEBUG -fpermissive -std=c++11\n)\nSET(CMAKE_CXX_FLAGS_RELEASE \n-O0 -g -Wall -fpermissive -std=c++11\n)\n\nINCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include)\n\nLINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/lib)\n\nADD_SUBDIRECTORY(program)\n\n\n\n\n项目目录\n\n\nINCLUDE_DIRECTORIES(.)\n\nFILE(GLOB_RECURSE SRC_FILES \n*.cpp\n)\n\nSET(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR})\nADD_EXECUTABLE(program_${CMAKE_BUILD_TYPE} ${SRC_FILES})\n\nTARGET_LINK_LIBRARIES(program_${CMAKE_BUILD_TYPE} pthread rt)\n\n\n\n\n一个build脚本模板\n\n\n#! /bin/bash\n\n# usage: $ sh build.sh [rebuild | clear]\n\nclear()\n{\n    if [ ! -d tmp_build ]; then\n        return\n    fi\n\n    cd tmp_build\n    make clean\n    cd ..\n    rm -rf tmp_build\n}\n\nif [ \n$1\n = \nrebuild\n ]; then\n    clear\nelif [ \n$1\n = \nclear\n ]; then\n    clear\n    exit\nfi\n\nmkdir -p tmp_build\ncd tmp_build\n\ncmake -DCMAKE_BUILD_TYPE=debug ..\ntime make -j8", 
+            "title": "cmake"
+        }, 
+        {
+            "location": "/cmake/#cmakelist", 
+            "text": "工程目录  cmake_minimum_required(VERSION 2.0)\n\nPROJECT(PROJ)\n\nSET(CMAKE_CXX_FLAGS_DEBUG  -O0 -g3 -Wall -D_DEBUG -fpermissive -std=c++11 )\nSET(CMAKE_CXX_FLAGS_RELEASE  -O0 -g -Wall -fpermissive -std=c++11 )\n\nINCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include)\n\nLINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/lib)\n\nADD_SUBDIRECTORY(program)  项目目录  INCLUDE_DIRECTORIES(.)\n\nFILE(GLOB_RECURSE SRC_FILES  *.cpp )\n\nSET(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR})\nADD_EXECUTABLE(program_${CMAKE_BUILD_TYPE} ${SRC_FILES})\n\nTARGET_LINK_LIBRARIES(program_${CMAKE_BUILD_TYPE} pthread rt)", 
+            "title": "CMakeList模板"
+        }, 
+        {
+            "location": "/cmake/#build", 
+            "text": "#! /bin/bash\n\n# usage: $ sh build.sh [rebuild | clear]\n\nclear()\n{\n    if [ ! -d tmp_build ]; then\n        return\n    fi\n\n    cd tmp_build\n    make clean\n    cd ..\n    rm -rf tmp_build\n}\n\nif [  $1  =  rebuild  ]; then\n    clear\nelif [  $1  =  clear  ]; then\n    clear\n    exit\nfi\n\nmkdir -p tmp_build\ncd tmp_build\n\ncmake -DCMAKE_BUILD_TYPE=debug ..\ntime make -j8", 
+            "title": "一个build脚本模板"
+        }, 
+        {
+            "location": "/makefile/", 
+            "text": "Makefile for c\n\n\nEXEC=main\nCFLAGS=-g -Wall -std=c99\n\nSRCS=$(wildcard *.c)\nOBJS=$(SRCS:.c=.o)\n\nall:$(OBJS)\n    g++ -o $(EXEC) $(OBJS)\n    @echo build succ\n.c .o:\n    gcc -o $@ -c $\n\nclean:\n    @rm -f $(OBJS) $(EXEC)\n\n\n\n\nMakefile for c++\n\n\nEXEC=main\nCXXFLAGS=-g -Wall -std=c++11\n\nSRCS=$(wildcard *.cpp)\nOBJS=$(SRCS:.cpp=.o)\n\nall:$(OBJS)\n    g++ -o $(EXEC) $(OBJS)\n    @echo build succ\n.cpp .o:\n    g++ -o $@ -c $\n\nclean:\n    @rm -f $(OBJS) $(EXEC)", 
+            "title": "makefile"
+        }, 
+        {
+            "location": "/svn/", 
+            "text": "筛选后缀文件（比如是.xml的）：\n!.xml", 
+            "title": "svn"
+        }, 
+        {
+            "location": "/work/gm/", 
+            "text": "GM命令\n\n\n\n\n增加资源\n\n\n增加金钱：/gm addmoney:10000\n\n\n增加灵液： /gm addlingye:10000\n\n\n修改属性\n\n\n修改速度：/gm changespeed:2000\n\n\n修改血量上限：/gm changemaxhp:2000\n\n\n修改当前血量：/gm sethp:1000\n\n\n回复：/gm recover:\n\n\n移动\n\n\n重置位置：/gm resetpos:x y\n\n\nNOTE：该命令不能重置非法位置。\n\n\n国家相关\n\n\n任命自己为国王：/gm campsetofficer:1\n\n\n申请怪物攻城活动：/gm campcommonopera:107 0 0 0\n\n\n设置国家等级（3级，经验值满）：/gm campcommonopera:10000 3 0 0\n\n\n其他\n\n\n开启协议打印开关：/gm printmsgtype:1\n\n\n设置玩家等级：/gm setrolelevel:666\n\n\n设置服务器等级：/gm setserverlevelseq:68\n\n\n跳到并完成主线任务：/gm jumptotrunk:task_id\n\n\n切换大臣活动状态：/gm dachenactnextstate:1\n\n\n切换国旗活动状态：/gm flagactnextstate:1", 
+            "title": "gm命令"
+        }, 
+        {
+            "location": "/work/gm/#gm", 
+            "text": "", 
+            "title": "GM命令"
+        }, 
+        {
+            "location": "/work/gm/#_1", 
+            "text": "增加金钱：/gm addmoney:10000  增加灵液： /gm addlingye:10000", 
+            "title": "增加资源"
+        }, 
+        {
+            "location": "/work/gm/#_2", 
+            "text": "修改速度：/gm changespeed:2000  修改血量上限：/gm changemaxhp:2000  修改当前血量：/gm sethp:1000  回复：/gm recover:", 
+            "title": "修改属性"
+        }, 
+        {
+            "location": "/work/gm/#_3", 
+            "text": "重置位置：/gm resetpos:x y  NOTE：该命令不能重置非法位置。", 
+            "title": "移动"
+        }, 
+        {
+            "location": "/work/gm/#_4", 
+            "text": "任命自己为国王：/gm campsetofficer:1  申请怪物攻城活动：/gm campcommonopera:107 0 0 0  设置国家等级（3级，经验值满）：/gm campcommonopera:10000 3 0 0", 
+            "title": "国家相关"
+        }, 
+        {
+            "location": "/work/gm/#_5", 
+            "text": "开启协议打印开关：/gm printmsgtype:1  设置玩家等级：/gm setrolelevel:666  设置服务器等级：/gm setserverlevelseq:68  跳到并完成主线任务：/gm jumptotrunk:task_id  切换大臣活动状态：/gm dachenactnextstate:1  切换国旗活动状态：/gm flagactnextstate:1", 
+            "title": "其他"
+        }, 
+        {
+            "location": "/work/path/", 
+            "text": "Path\n\n\n目录\n\n\n共享目录：\n\\\\192.168.9.60\\asset\n\n\nhost目录：\nC:\\Windows\\System32\\drivers\\etc\n\n\n客户端错误码路径（开发服）：\n/ug04_cn/workspace/tool/generrnum/client\n\n\nSVN\n\n\n星辰：\n\n\nsvn://192.168.11.51:3590/stars\n\n\nug04_cn:\n\n\nserver: svn://192.168.9.60/ug04_cn/server\n\n\nclient: svn://192.168.9.60/ug04_cn/client/u3d_proj\n\n\ndoc: svn://192.168.9.60/ug04_cn/doc/1-国战项目\n\n\nxls: svn://192.168.9.60/ug04_cn/common/xlsdata", 
+            "title": "path"
+        }, 
+        {
+            "location": "/work/path/#path", 
+            "text": "", 
+            "title": "Path"
+        }, 
+        {
+            "location": "/work/path/#_1", 
+            "text": "共享目录： \\\\192.168.9.60\\asset  host目录： C:\\Windows\\System32\\drivers\\etc  客户端错误码路径（开发服）： /ug04_cn/workspace/tool/generrnum/client", 
+            "title": "目录"
+        }, 
+        {
+            "location": "/work/path/#svn", 
+            "text": "星辰：  svn://192.168.11.51:3590/stars  ug04_cn:  server: svn://192.168.9.60/ug04_cn/server  client: svn://192.168.9.60/ug04_cn/client/u3d_proj  doc: svn://192.168.9.60/ug04_cn/doc/1-国战项目  xls: svn://192.168.9.60/ug04_cn/common/xlsdata", 
+            "title": "SVN"
+        }, 
+        {
+            "location": "/work/WorkCheatsheet/", 
+            "text": "Work CheatSheet\n\n\n插命令\n\n\n# 热更，更多类型见：RELOAD_CONFIG_TYPE\ninsert into command (creator, type, cmd) values (\nbackground\n, 2, \nCmd Reload 6 0 0\n );\n\n\n\n\n将消耗物品设置为自动购买\n\n\n策划配置：\n\n\n\n\n\n\n打开表格：W-被动消耗类.xls\n\n\n\n\n\n\n设置物品的字段：get_way，将第一个内容设置为0。\n\n\n\n\n\n\n服务端相关接口：Knapsack::ConsumeItemAutoBuy\n\n\n退出副本\n\n\n由服务端通知客户端通关，客户端请求退出副本。\n\n\n相关协议：\n\n\n\n\n\n\nSC：5499\n\n\n\n\n\n\nCS：1153\n\n\n\n\n\n\n修改传闻\n\n\n打开传闻文件：config\\serverconfig\\string.xml\n\n\n找到对应的字符串，直接修改其内容即可。\n\n\n注意：不能调整%的位置，不能删除%，如果需要调整，就得找服务端改对应的代码。\n\n\n修改错误码\n\n\n修改错误码需要服务端改代码。\n\n\n如果错误码提示很奇怪，那么有可能是客户端没有更新新的错误码。\n\n\n敏感词\n\n\n如果是名字类的敏感词，由服务端处理。\n\n\n如果是比较长的，比如聊天的，由客户端处理。", 
+            "title": "WorkCheateSheet"
+        }, 
+        {
+            "location": "/work/WorkCheatsheet/#work-cheatsheet", 
+            "text": "", 
+            "title": "Work CheatSheet"
+        }, 
+        {
+            "location": "/work/WorkCheatsheet/#_1", 
+            "text": "# 热更，更多类型见：RELOAD_CONFIG_TYPE\ninsert into command (creator, type, cmd) values ( background , 2,  Cmd Reload 6 0 0  );", 
+            "title": "插命令"
+        }, 
+        {
+            "location": "/work/WorkCheatsheet/#_2", 
+            "text": "策划配置：    打开表格：W-被动消耗类.xls    设置物品的字段：get_way，将第一个内容设置为0。    服务端相关接口：Knapsack::ConsumeItemAutoBuy", 
+            "title": "将消耗物品设置为自动购买"
+        }, 
+        {
+            "location": "/work/WorkCheatsheet/#_3", 
+            "text": "由服务端通知客户端通关，客户端请求退出副本。  相关协议：    SC：5499    CS：1153", 
+            "title": "退出副本"
+        }, 
+        {
+            "location": "/work/WorkCheatsheet/#_4", 
+            "text": "打开传闻文件：config\\serverconfig\\string.xml  找到对应的字符串，直接修改其内容即可。  注意：不能调整%的位置，不能删除%，如果需要调整，就得找服务端改对应的代码。", 
+            "title": "修改传闻"
+        }, 
+        {
+            "location": "/work/WorkCheatsheet/#_5", 
+            "text": "修改错误码需要服务端改代码。  如果错误码提示很奇怪，那么有可能是客户端没有更新新的错误码。", 
+            "title": "修改错误码"
+        }, 
+        {
+            "location": "/work/WorkCheatsheet/#_6", 
+            "text": "如果是名字类的敏感词，由服务端处理。  如果是比较长的，比如聊天的，由客户端处理。", 
+            "title": "敏感词"
+        }, 
+        {
+            "location": "/work/qa/", 
+            "text": "各种奇怪的问题\n\n\nQ：弹出提示不对\n\n\nA：如果是牛头不对马嘴的提示信息，则可能是客户端和服务端的提示码没有同步，更新一下客户端。或者是有人修改了客户端的errorcode.lua文件，这个文件应当自动生成。\n\n\nQ：怪物自动消失\n\n\nA：可能是因为怪物配置了消失时间，见G-怪物.xls表的disappear_time字段。\n\n\nQ：副本被刷（可以无限进入）\n\n\nA：一般是未能触发到副本的结束方法，导致未能成功结算。原因可能是判断是否结束的条件出了问题。比如在OnAllMonsterDie里面做判断，然而玩家自己可以召唤怪物，如果玩家提前退出副本，则触发不到OnAllMonsterDie了。\n\n\nQ：数据库中多了一条记录（初始化时提示：Init Duplicate）\n\n\nA：可能由于数据库缓存丢失（RoleCacheManager），导致 DBCommand::Update 失败后继续 DBCommand::Save ，当没有缓存的时候，Save还会插入数据，因此会多出一条数据来。", 
+            "title": "question & anwser"
+        }, 
+        {
+            "location": "/work/qa/#_1", 
+            "text": "", 
+            "title": "各种奇怪的问题"
+        }, 
+        {
+            "location": "/work/qa/#q", 
+            "text": "A：如果是牛头不对马嘴的提示信息，则可能是客户端和服务端的提示码没有同步，更新一下客户端。或者是有人修改了客户端的errorcode.lua文件，这个文件应当自动生成。", 
+            "title": "Q：弹出提示不对"
+        }, 
+        {
+            "location": "/work/qa/#q_1", 
+            "text": "A：可能是因为怪物配置了消失时间，见G-怪物.xls表的disappear_time字段。", 
+            "title": "Q：怪物自动消失"
+        }, 
+        {
+            "location": "/work/qa/#q_2", 
+            "text": "A：一般是未能触发到副本的结束方法，导致未能成功结算。原因可能是判断是否结束的条件出了问题。比如在OnAllMonsterDie里面做判断，然而玩家自己可以召唤怪物，如果玩家提前退出副本，则触发不到OnAllMonsterDie了。", 
+            "title": "Q：副本被刷（可以无限进入）"
+        }, 
+        {
+            "location": "/work/qa/#qinit-duplicate", 
+            "text": "A：可能由于数据库缓存丢失（RoleCacheManager），导致 DBCommand::Update 失败后继续 DBCommand::Save ，当没有缓存的时候，Save还会插入数据，因此会多出一条数据来。", 
+            "title": "Q：数据库中多了一条记录（初始化时提示：Init Duplicate）"
+        }, 
+        {
+            "location": "/server/开发环境搭建/", 
+            "text": "开发环境搭建\n\n\n\n\n步骤\n\n\n\n\n\n\n拉取源代码：新建一个目录，作为项目目录，然后svn拉取\n\n\n\n\n\n\n创建数据库：使用Navicat，连接本地MySql，然后创建一个数据库，使用数据库脚本（table.sql, sql_change.sql）生成数据库\n\n\n\n\n\n\n编译源代码，然后拷贝一份动态链接库和运行脚本到\\src\\Debug目录\n\n\n\n\n\n\n修改相关配置文件\n\n\n\n\n\n\n修改配置文件\n\n\nserverconfig.xml\n\n\n修改GatewayModule -\n GameUser -\n LocalIP为本机IP地址。\n\n\ncommonconfig.xml\n\n\n修改Mysql_DB_Name，Mysql_DB_Username，Mysql_DB_Password。\n\n\n修改Login_Server_Addr -\n User_Connect_Addr，这是为Client开的端口号，需要在开发服的init-query.php文件配置。\n\n\nlocal.xml\n\n\n修改allow_server_id_list -\n server_id，设置成自己的服的ID，这个服ID在开发服的init-query.php配置。", 
+            "title": "开发环境搭建"
+        }, 
+        {
+            "location": "/server/开发环境搭建/#_1", 
+            "text": "", 
+            "title": "开发环境搭建"
+        }, 
+        {
+            "location": "/server/开发环境搭建/#_2", 
+            "text": "拉取源代码：新建一个目录，作为项目目录，然后svn拉取    创建数据库：使用Navicat，连接本地MySql，然后创建一个数据库，使用数据库脚本（table.sql, sql_change.sql）生成数据库    编译源代码，然后拷贝一份动态链接库和运行脚本到\\src\\Debug目录    修改相关配置文件", 
+            "title": "步骤"
+        }, 
+        {
+            "location": "/server/开发环境搭建/#_3", 
+            "text": "serverconfig.xml  修改GatewayModule -  GameUser -  LocalIP为本机IP地址。  commonconfig.xml  修改Mysql_DB_Name，Mysql_DB_Username，Mysql_DB_Password。  修改Login_Server_Addr -  User_Connect_Addr，这是为Client开的端口号，需要在开发服的init-query.php文件配置。  local.xml  修改allow_server_id_list -  server_id，设置成自己的服的ID，这个服ID在开发服的init-query.php配置。", 
+            "title": "修改配置文件"
+        }, 
+        {
+            "location": "/server/发版与热更/", 
+            "text": "发版与热更\n\n\n\n\n发版\n\n\n如果想提交代码变更，执行：\n\n\n cd /项目目录/workspace/server/src\n svn up .\n\n sh cbuild.sh release | grep warning\n\n cd ..\n sh publish_release.sh\n cd ../publish_release\n sh realpublish.sh\n\n cd ../../script\n sh list_version.sh\n sh create_version.sh -s 新版本号 -r\n\n\n\n\n如果只想提交配置，执行：\n\n\ncd /项目目录/script/\nsh create_version.sh -s 新版本号\n\n\n\n\n新版本号如：2018032601，当日每发版一次版本号+1。\n\n\n热更\n\n\ncd /项目目录/script/\nsh list_version.sh # 查看旧版本号\nsh create_version.sh -r -s 旧版本号\n\n\n\n\n其他\n\n\n查询服务器启动错误：\n\n\ncd /项目目录/workspace/publish_debug/runlog\ncat 相关文件\n\n\n\n\n合服要保留的字段：rand_activity_data字段(1和2)，luadata_world_memblocks字段，luadata_page字段(1和2)。", 
+            "title": "发版与热更"
+        }, 
+        {
+            "location": "/server/发版与热更/#_1", 
+            "text": "", 
+            "title": "发版与热更"
+        }, 
+        {
+            "location": "/server/发版与热更/#_2", 
+            "text": "如果想提交代码变更，执行：   cd /项目目录/workspace/server/src\n svn up .\n\n sh cbuild.sh release | grep warning\n\n cd ..\n sh publish_release.sh\n cd ../publish_release\n sh realpublish.sh\n\n cd ../../script\n sh list_version.sh\n sh create_version.sh -s 新版本号 -r  如果只想提交配置，执行：  cd /项目目录/script/\nsh create_version.sh -s 新版本号  新版本号如：2018032601，当日每发版一次版本号+1。", 
+            "title": "发版"
+        }, 
+        {
+            "location": "/server/发版与热更/#_3", 
+            "text": "cd /项目目录/script/\nsh list_version.sh # 查看旧版本号\nsh create_version.sh -r -s 旧版本号", 
+            "title": "热更"
+        }, 
+        {
+            "location": "/server/发版与热更/#_4", 
+            "text": "查询服务器启动错误：  cd /项目目录/workspace/publish_debug/runlog\ncat 相关文件  合服要保留的字段：rand_activity_data字段(1和2)，luadata_world_memblocks字段，luadata_page字段(1和2)。", 
+            "title": "其他"
+        }, 
+        {
+            "location": "/server/coding_tips/", 
+            "text": "Coding Tips\n\n\n\n\n\n\n\n\n操作ObjID时候，要注意重置（比如死亡的时候），不然就可能误用到其他Obj\n\n\n\n\n\n\n升级的前需要判断是否已满级\n\n\n\n\n\n\n给予物品前，应当判断背包是否足够，并且要遵循\n先消耗，后给予的原则\n\n\n\n\n\n\n单人副本，在进入场景时(OnRoleEnterScene)，判断场景中是否已有玩家，如果有，则需要踢出，见下面的代码片段：\n\n\n\n\n\n\nif (m_is_finish || m_uid \n 0)\n{\n    this-\nDelayKickOutRole(role);\n    return;\n}\n\n\n\n\n\n\n执行SceneManager::GoTo后，Role将会失效，不能再使用了。", 
+            "title": "coding tipes"
+        }, 
+        {
+            "location": "/server/coding_tips/#coding-tips", 
+            "text": "操作ObjID时候，要注意重置（比如死亡的时候），不然就可能误用到其他Obj    升级的前需要判断是否已满级    给予物品前，应当判断背包是否足够，并且要遵循 先消耗，后给予的原则    单人副本，在进入场景时(OnRoleEnterScene)，判断场景中是否已有玩家，如果有，则需要踢出，见下面的代码片段：    if (m_is_finish || m_uid   0)\n{\n    this- DelayKickOutRole(role);\n    return;\n}   执行SceneManager::GoTo后，Role将会失效，不能再使用了。", 
+            "title": "Coding Tips"
+        }, 
+        {
+            "location": "/server/code_snippets/def/", 
+            "text": "公用定义\n\n\nxxxdef.hpp\n\n\n// 系统相关定义\n#ifndef __XXX_DEF_HPP__\n#define __XXX_DEF_HPP__\n\n#include \nservercommon.h\n\n\n#pragma pack(push, 4)\n\nstruct XxXParam\n{\n    XxXParam() { this-\nReset(); }\n\n    void Reset()\n    {\n    }\n};\n\nusing XxXParamHex = char[sizeof(XxXParam) * 2 + 1];\nstatic_assert(sizeof(XxXParamHex) \n 64, \nIncorrect size\n);\n\n#pragma pack(pop)\n\n#endif // __XXX_DEF_HPP__", 
+            "title": "def"
+        }, 
+        {
+            "location": "/server/code_snippets/def/#_1", 
+            "text": "xxxdef.hpp  // 系统相关定义\n#ifndef __XXX_DEF_HPP__\n#define __XXX_DEF_HPP__\n\n#include  servercommon.h \n\n#pragma pack(push, 4)\n\nstruct XxXParam\n{\n    XxXParam() { this- Reset(); }\n\n    void Reset()\n    {\n    }\n};\n\nusing XxXParamHex = char[sizeof(XxXParam) * 2 + 1];\nstatic_assert(sizeof(XxXParamHex)   64,  Incorrect size );\n\n#pragma pack(pop)\n\n#endif // __XXX_DEF_HPP__", 
+            "title": "公用定义"
+        }, 
+        {
+            "location": "/server/code_snippets/config/", 
+            "text": "配置类定义\n\n\n配置文件结构体\n\n\nxxxconfig.hpp\n\n\n// 系统配置（X-XXX.xls）\n#ifndef __XXX_CONFIG_HPP__\n#define __XXX_CONFIG_HPP__\n\n#include \nconfig/gameconfigcommon/gameconfigcommon.h\n\n#include \nservercommon/xxxdef.hpp\n\n\nclass XxXConfig\n{\npublic:\n    bool Init(const std::string \nconfigname, std::string *err);\n\n    const XxXOtherConfig \n GetOtherCfg() { return m_other_cfg; }\n    const XxXSomeConfig::CfgItem * GetCfgItem(int seq);\n\n    bool IsValidSomeSeq(int seq, bool is_init = false);\n    bool IsValidSomeSeqLevel(int seq, int level, bool is_init = false);\n\nprivate:\n    int InitOtherCfg(RapidXmlNode *root_element);\n    int InitSomeCfg(RapidXmlNode *root_element);\n\nprivate:\n    XxXOtherConfig m_other_cfg;\n    XxXSomeConfig m_some_cfg;\n};\n\ninline bool XxXConfig::IsValidSomeSeq(int seq, bool is_init)\n{\n    if (seq \n 0 || seq \n= SOME_CFG_MAX_COUNT) return false;\n    if (!is_init \n !m_some_cfg.cfg_item_list[seq].has_read) return false;\n\n    return true;\n}\n\ninline bool XxXConfig::IsValidSomeSeqLevel(int seq, int level, bool is_init)\n{\n    if (seq \n 0 || seq \n= XXX_ITEM_MAX_COUNT || level \n 0 || level \n= XXX_SUB_ITEM_MAX_COUNT) return false;\n    if (!is_init \n !m_some_cfg.cfg_item_list[seq * XXX_SUB_ITEM_MAX_COUNT + level].has_read) return false;\n\n    return true;\n}\n\n#endif // __XXX_CONFIG_HPP__\n\n\n\n\nxxxconfig.cpp\n\n\n#include \nxxxconfig.hpp\n\n\nbool XxXConfig::Init(const std::string \nconfigname, std::string *err)\n{\n    PRE_LOAD_CONFIG2;\n\n    LOAD_CONFIG2(\nother\n, InitOtherCfg);\n\n    return true;\n}\n\n\n\n\n配置表结构体\n\n\nhpp\n\n\nstruct XXXConfig\n{\n    struct CfgItem\n    {\n        int ReadConfig(RapidXmlNode *data_element, int _seq)\n        {\n            if (has_read) return -1;\n            has_read = 1;\n\n            seq = _seq;\n\n            return 0;\n        }\n\n        int has_read = 0;\n        int seq = 0;                    // 索引\n\n    };\n\n    CfgItem cfg_item_list[XXX_MAX_COUNT];\n};\n\n\n\n\nstruct XXXConfig\n{\n    struct CfgItem\n    {\n        int ReadConfig(RapidXmlNode *data_element, int _seq, int _level)\n        {\n            if (has_read) return -1;\n            has_read = 1;\n\n            seq = _seq;\n            level = _level;\n\n            return 0;\n        }\n\n        int has_read = 0;\n        int seq = 0;                    // 索引\n        int level = 0;\n\n    };\n\n    CfgItem cfg_item_list[XXX_ITEM_MAX_COUNT * XXX_SUB_ITEM_MAX_COUNT];\n};\n\n\n\n\ncpp\n\n\nauto data_element = root_element-\nfirst_node(\ndata\n);\nwhile (data_element)\n{\n    int seq = 0;\n    if (!ReadNonNegativeInt(data_element, \nseq\n, seq) || !this-\nIsValidXXXSeq(seq, true)) return -1000;\n\n    int ret = m_xxx_cfg.cfg_item_list[seq].ReadConfig(data_element, seq);\n    if (ret != 0)\n    {\n        return ret;\n    }\n\n    data_element = data_element-\nnext_sibling();\n}\n\nreturn 0;\n\n\n\n\nauto data_element = root_element-\nfirst_node(\ndata\n);\nwhile (data_element)\n{\n    int seq = 0, level = 0;\n    if (!ReadNonNegativeInt(data_element, \nseq\n, seq) || !ReadNonNegativeInt(data_element, \nlevel\n, level)) return -1000;\n\n    if (!this-\nIsValidXXXSeqLevel(seq, level, true)) return -1001;\n\n    int ret = m_xxx_cfg.cfg_item_list[seq * XXX_SUB_ITEM_MAX_COUNT + level].ReadConfig(data_element, seq, level);\n    if (ret != 0)\n    {\n        return ret;\n    }\n\n    data_element = data_element-\nnext_sibling();\n}\n\nreturn 0;", 
+            "title": "config"
+        }, 
+        {
+            "location": "/server/code_snippets/config/#_1", 
+            "text": "", 
+            "title": "配置类定义"
+        }, 
+        {
+            "location": "/server/code_snippets/config/#_2", 
+            "text": "xxxconfig.hpp  // 系统配置（X-XXX.xls）\n#ifndef __XXX_CONFIG_HPP__\n#define __XXX_CONFIG_HPP__\n\n#include  config/gameconfigcommon/gameconfigcommon.h \n#include  servercommon/xxxdef.hpp \n\nclass XxXConfig\n{\npublic:\n    bool Init(const std::string  configname, std::string *err);\n\n    const XxXOtherConfig   GetOtherCfg() { return m_other_cfg; }\n    const XxXSomeConfig::CfgItem * GetCfgItem(int seq);\n\n    bool IsValidSomeSeq(int seq, bool is_init = false);\n    bool IsValidSomeSeqLevel(int seq, int level, bool is_init = false);\n\nprivate:\n    int InitOtherCfg(RapidXmlNode *root_element);\n    int InitSomeCfg(RapidXmlNode *root_element);\n\nprivate:\n    XxXOtherConfig m_other_cfg;\n    XxXSomeConfig m_some_cfg;\n};\n\ninline bool XxXConfig::IsValidSomeSeq(int seq, bool is_init)\n{\n    if (seq   0 || seq  = SOME_CFG_MAX_COUNT) return false;\n    if (!is_init   !m_some_cfg.cfg_item_list[seq].has_read) return false;\n\n    return true;\n}\n\ninline bool XxXConfig::IsValidSomeSeqLevel(int seq, int level, bool is_init)\n{\n    if (seq   0 || seq  = XXX_ITEM_MAX_COUNT || level   0 || level  = XXX_SUB_ITEM_MAX_COUNT) return false;\n    if (!is_init   !m_some_cfg.cfg_item_list[seq * XXX_SUB_ITEM_MAX_COUNT + level].has_read) return false;\n\n    return true;\n}\n\n#endif // __XXX_CONFIG_HPP__  xxxconfig.cpp  #include  xxxconfig.hpp \n\nbool XxXConfig::Init(const std::string  configname, std::string *err)\n{\n    PRE_LOAD_CONFIG2;\n\n    LOAD_CONFIG2( other , InitOtherCfg);\n\n    return true;\n}", 
+            "title": "配置文件结构体"
+        }, 
+        {
+            "location": "/server/code_snippets/config/#_3", 
+            "text": "hpp  struct XXXConfig\n{\n    struct CfgItem\n    {\n        int ReadConfig(RapidXmlNode *data_element, int _seq)\n        {\n            if (has_read) return -1;\n            has_read = 1;\n\n            seq = _seq;\n\n            return 0;\n        }\n\n        int has_read = 0;\n        int seq = 0;                    // 索引\n\n    };\n\n    CfgItem cfg_item_list[XXX_MAX_COUNT];\n};  struct XXXConfig\n{\n    struct CfgItem\n    {\n        int ReadConfig(RapidXmlNode *data_element, int _seq, int _level)\n        {\n            if (has_read) return -1;\n            has_read = 1;\n\n            seq = _seq;\n            level = _level;\n\n            return 0;\n        }\n\n        int has_read = 0;\n        int seq = 0;                    // 索引\n        int level = 0;\n\n    };\n\n    CfgItem cfg_item_list[XXX_ITEM_MAX_COUNT * XXX_SUB_ITEM_MAX_COUNT];\n};  cpp  auto data_element = root_element- first_node( data );\nwhile (data_element)\n{\n    int seq = 0;\n    if (!ReadNonNegativeInt(data_element,  seq , seq) || !this- IsValidXXXSeq(seq, true)) return -1000;\n\n    int ret = m_xxx_cfg.cfg_item_list[seq].ReadConfig(data_element, seq);\n    if (ret != 0)\n    {\n        return ret;\n    }\n\n    data_element = data_element- next_sibling();\n}\n\nreturn 0;  auto data_element = root_element- first_node( data );\nwhile (data_element)\n{\n    int seq = 0, level = 0;\n    if (!ReadNonNegativeInt(data_element,  seq , seq) || !ReadNonNegativeInt(data_element,  level , level)) return -1000;\n\n    if (!this- IsValidXXXSeqLevel(seq, level, true)) return -1001;\n\n    int ret = m_xxx_cfg.cfg_item_list[seq * XXX_SUB_ITEM_MAX_COUNT + level].ReadConfig(data_element, seq, level);\n    if (ret != 0)\n    {\n        return ret;\n    }\n\n    data_element = data_element- next_sibling();\n}\n\nreturn 0;", 
+            "title": "配置表结构体"
+        }, 
+        {
+            "location": "/server/code_snippets/msg/", 
+            "text": "协议类定义\n\n\nmsgxxx.hpp\n\n\n// 系统协议\n#ifndef __MSG_XXX_HPP__\n#define __MSG_XXX_HPP__\n\n#include \nservercommon/xxxdef.hpp\n\n\n#pragma pack(push, 4)\n\nnamespace Protocol\n{\n    enum XXX_REQ_TYPE\n    {\n        XXX_REQ_TYPE_INFO = 0,\n        XXX_REQ_TYPE_XXX,\n\n        XXX_REQ_TYPE_MAX,\n    };\n\n    class CSXxXOperaReq\n    {\n    public:\n        CSXxXOperaReq();\n        MessageHeader header;\n\n        unsigned short req_type;\n        unsigned short param_1;\n        unsigned short param_2;\n        unsigned short param_3;\n    };\n\n    class SCXxXInfo\n    {\n    public:\n        SCXxXInfo();\n        MessageHeader header;\n\n    };\n}\n\n#pragma pack(pop)\n\n#endif // __MSG_XXX_HPP__", 
+            "title": "msg"
+        }, 
+        {
+            "location": "/server/code_snippets/msg/#_1", 
+            "text": "msgxxx.hpp  // 系统协议\n#ifndef __MSG_XXX_HPP__\n#define __MSG_XXX_HPP__\n\n#include  servercommon/xxxdef.hpp \n\n#pragma pack(push, 4)\n\nnamespace Protocol\n{\n    enum XXX_REQ_TYPE\n    {\n        XXX_REQ_TYPE_INFO = 0,\n        XXX_REQ_TYPE_XXX,\n\n        XXX_REQ_TYPE_MAX,\n    };\n\n    class CSXxXOperaReq\n    {\n    public:\n        CSXxXOperaReq();\n        MessageHeader header;\n\n        unsigned short req_type;\n        unsigned short param_1;\n        unsigned short param_2;\n        unsigned short param_3;\n    };\n\n    class SCXxXInfo\n    {\n    public:\n        SCXxXInfo();\n        MessageHeader header;\n\n    };\n}\n\n#pragma pack(pop)\n\n#endif // __MSG_XXX_HPP__", 
+            "title": "协议类定义"
+        }, 
+        {
+            "location": "/server/code_snippets/role_system/", 
+            "text": "角色系统类定义\n\n\nxxx.hpp\n\n\n#ifndef __XXX_HPP__\n#define __XXX_HPP__\n\n#include \nservercommon/xxxdef.hpp\n\n#include \nobj/character/attribute.hpp\n\n\nclass Role;\n\nclass XxX\n{\npublic:\n    XxX() : m_role(nullptr) {}\n    ~XxX() {}\n\n    void SetRole(Role *role) { m_role = role; }\n    void InitParam(Role *role, const XxXParam \nparam) { m_role = role; m_param = param; }\n    void GetInitParam(XxXParam *param)  { *param = m_param; }\n\n    void ReCalcAttr(CharIntAttrs \nbase_add, bool is_recalc);\n\nprivate:\n    Role *m_role;\n    XxXParam m_param;               // 系统参数\n    CharIntAttrs m_attrs_add;       // 属性加成数值\n};\n\n#endif // __XXX_HPP__", 
+            "title": "role_system"
+        }, 
+        {
+            "location": "/server/code_snippets/role_system/#_1", 
+            "text": "xxx.hpp  #ifndef __XXX_HPP__\n#define __XXX_HPP__\n\n#include  servercommon/xxxdef.hpp \n#include  obj/character/attribute.hpp \n\nclass Role;\n\nclass XxX\n{\npublic:\n    XxX() : m_role(nullptr) {}\n    ~XxX() {}\n\n    void SetRole(Role *role) { m_role = role; }\n    void InitParam(Role *role, const XxXParam  param) { m_role = role; m_param = param; }\n    void GetInitParam(XxXParam *param)  { *param = m_param; }\n\n    void ReCalcAttr(CharIntAttrs  base_add, bool is_recalc);\n\nprivate:\n    Role *m_role;\n    XxXParam m_param;               // 系统参数\n    CharIntAttrs m_attrs_add;       // 属性加成数值\n};\n\n#endif // __XXX_HPP__", 
+            "title": "角色系统类定义"
+        }, 
+        {
+            "location": "/server/code_snippets/small_code_snippets/", 
+            "text": "代码小片段\n\n\n\n\n发协议\n\n\n// 给玩家发\nSEND_TO_ROLE\n\n// 发非定长协议给客户端，协议末尾是一个数组\nSEND_TO_ROLE2\n\n// 发送给周围能看到自己的玩家（包括自己）\nSEND_TO_AREA\n\n// 给场景中的所有玩家发\nScene::SendToRole\n\n// 给所有在线玩家发\nWorld::SendToAllGateway\n\n\n\n\n发邮件\n\n\n{\n    MailContentParam contentparam;\n\n    contentparam.virtual_item_list.virtual_item[MAIL_VIRTUAL_ITEM_BIND_GOLD] = reward_gold_bind;\n\n    const ItemBase *item_base = ITEMPOOL-\nGetItem(item_id);\n    if (NULL != item_base)\n    {\n        contentparam.item_list[0].item_id = item_id;\n        contentparam.item_list[0].num = num;\n        contentparam.item_list[0].is_bind = is_bind ? 1 : 0;\n        contentparam.item_list[0].invalid_time = item_base-\nCalInvalidTime();\n    }\n\n    int send_len = MailContent(contentparam.contenttxt, sizeof(contentparam.contenttxt), \nkey\n);\n    if (send_len \n 0)\n    {\n        MailRoute::MailToUser(m_role-\nGetUserId(), SYSTEM_MAIL_REASON_INVALID, contentparam);\n    }\n}\n\n\n\n\n发传闻\n\n\n// 发给全服\n{\n    int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), \nkey\n,\n        );\n\n    if (sendlen \n 0)\n    {\n        SCENE_MGR-\nSystemMsgThread(gamestring::GAMESTRING_BUF, sendlen, SYS_MSG_CENTER_ROLL);\n    }\n}\n\n// 发给国家\n{\n    int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), \nkey\n,\n        );\n\n    if (sendlen \n 0)\n    {\n        SCENE_MGR-\nSystemMsgToCamp(camp_type, gamestring::GAMESTRING_BUF, sendlen);\n    }\n}\n\n\n\n\n\n其他\n\n\n// 获取范围内的Obj对象\nObjID obj_list[64] = {0};\nint count = scene-\nGetZoneMatrix()-\nGetObjByArea(center_pos, x_range, y_range, obj_list, sizeof(obj_list) / sizeof(obj_list[0]));\nfor (int i = 0; i \n count; ++ i)\n{\n    // ...\n}", 
+            "title": "小片段"
+        }, 
+        {
+            "location": "/server/code_snippets/small_code_snippets/#_1", 
+            "text": "", 
+            "title": "代码小片段"
+        }, 
+        {
+            "location": "/server/code_snippets/small_code_snippets/#_2", 
+            "text": "// 给玩家发\nSEND_TO_ROLE\n\n// 发非定长协议给客户端，协议末尾是一个数组\nSEND_TO_ROLE2\n\n// 发送给周围能看到自己的玩家（包括自己）\nSEND_TO_AREA\n\n// 给场景中的所有玩家发\nScene::SendToRole\n\n// 给所有在线玩家发\nWorld::SendToAllGateway", 
+            "title": "发协议"
+        }, 
+        {
+            "location": "/server/code_snippets/small_code_snippets/#_3", 
+            "text": "{\n    MailContentParam contentparam;\n\n    contentparam.virtual_item_list.virtual_item[MAIL_VIRTUAL_ITEM_BIND_GOLD] = reward_gold_bind;\n\n    const ItemBase *item_base = ITEMPOOL- GetItem(item_id);\n    if (NULL != item_base)\n    {\n        contentparam.item_list[0].item_id = item_id;\n        contentparam.item_list[0].num = num;\n        contentparam.item_list[0].is_bind = is_bind ? 1 : 0;\n        contentparam.item_list[0].invalid_time = item_base- CalInvalidTime();\n    }\n\n    int send_len = MailContent(contentparam.contenttxt, sizeof(contentparam.contenttxt),  key );\n    if (send_len   0)\n    {\n        MailRoute::MailToUser(m_role- GetUserId(), SYSTEM_MAIL_REASON_INVALID, contentparam);\n    }\n}", 
+            "title": "发邮件"
+        }, 
+        {
+            "location": "/server/code_snippets/small_code_snippets/#_4", 
+            "text": "// 发给全服\n{\n    int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF),  key ,\n        );\n\n    if (sendlen   0)\n    {\n        SCENE_MGR- SystemMsgThread(gamestring::GAMESTRING_BUF, sendlen, SYS_MSG_CENTER_ROLL);\n    }\n}\n\n// 发给国家\n{\n    int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF),  key ,\n        );\n\n    if (sendlen   0)\n    {\n        SCENE_MGR- SystemMsgToCamp(camp_type, gamestring::GAMESTRING_BUF, sendlen);\n    }\n}", 
+            "title": "发传闻"
+        }, 
+        {
+            "location": "/server/code_snippets/small_code_snippets/#_5", 
+            "text": "// 获取范围内的Obj对象\nObjID obj_list[64] = {0};\nint count = scene- GetZoneMatrix()- GetObjByArea(center_pos, x_range, y_range, obj_list, sizeof(obj_list) / sizeof(obj_list[0]));\nfor (int i = 0; i   count; ++ i)\n{\n    // ...\n}", 
+            "title": "其他"
+        }, 
+        {
+            "location": "/server/基础流程/", 
+            "text": "基础流程\n\n\n进程启动流程\n\n\n\n\n\n\n执行入口函数main\n\n\n\n\n\n\n实例化一个Game，它是一个IModule管理器的实现\n\n\n\n\n\n\n把各种IModule模块注册进Game\n\n\n\n\n\n\nGame调用Run方法\n\n\n\n\n\n\nGame进入Loop循环\n\n\n\n\n\n\n依次执行IModule模块的Init，Start，Update方法\n\n\n\n\n\n\n客户端协议接收流程\n\n\n\n\n\n\ngateway进程启动后，为玩家开启监听端口：GatewayModule::Start \n GatewayModule::ListenForUser\n\n\n\n\n\n\n为玩家开启了端口后，gateway向loginserver索取gameworld的ip和端口，然后连接gameworld。即：发WLRegisterGW到loginserver，loginserver回复协议，gateway处理入口：GatewayModule::OnRegisterGS，然后向gameworld发起连接（InternalComm::NetConnect）\n\n\n\n\n\n\n开启监听，并成功连接gameworld后，就可以获得如此通讯路径：client \n gateway \n gameworld\n\n\n\n\n\n\n此后，客户端连接gateway，并给gateway发送协议。gateway处理入口：ServerNetworkCallback::OnRecv \n GatewayModule::OnRecvUserMsg\n\n\n\n\n\n\ngateway不对协议内容做处理，把协议封装进WGNetRecvMsg，然后转发给gameworld\n\n\n\n\n\n\ngameworld收到协议，处理入口：World::OnRecv \n World::OnRecvMsg \n SceneManager::OnRecv\n\n\n\n\n\n\n如果此时玩家没有在gameworld里创建角色（未登录gs），即没有注册进m_net_to_rolelocal，那么执行：MessageHandler::HandleMessageNoLogin \n MessageHandler::OnReqEnter，之后就是\n玩家登入GS流程\n\n\n\n\n\n\n如果玩家已经在gameworld中创建了角色（已登入gs），即已经注册进m_net_to_rolelocal，那么拿到Role所在场景和Role：MessageHandler::GetRoleHelper\n\n\n\n\n\n\n转进：MessageHandler::HandleMessage\n\n\n\n\n\n\n解包协议号，从协议处理函数列表（m_msg_handler_list）里拿到已经注册好的处理函数，调用之\n\n\n\n\n\n\n登陆loginserver流程（登陆账号，获取所有角色信息）\n\n\n\n\n\n\n客户端在服务器列表中选择了服务器后，确认登陆，发送CSLogin协议\n\n\n\n\n\n\nloginserver进入：LoginServer::OnLoginReq\n\n\n\n\n\n\n解析协议后，转进：MergeLoginManager::OnLoginReq \n MergeLoginManager::PlatLoginReq\n\n\n\n\n\n\n需要查询数据库中的角色uid，准备发送RMI请求，创建RMI返回对象：RMIUserLoginBackObjectImpl\n\n\n\n\n\n\n异步发送RMI请求：RMILoginClient::UserLoginAsyn\n\n\n\n\n\n\ndataccess进入：\nRMILoginObject::__UserLogin\n \n RMILoginObject::UserLogin\n\n\n\n\n\n\n返回RMI请求，loginserver进入：RMIUserLoginBackObjectImpl::UserLoginRet\n\n\n\n\n\n\n需要查询数据库中角色的详细信息（RoleInfoList），准备发送RMI请求，创建RMI返回对象：RMIGetRoleInfoBackObjectImpl\n\n\n\n\n\n\n异步发送RMI请求：RMILRoleClient::GetRoleInfoAsyn\n\n\n\n\n\n\ndataaccess进入：\nRMIRoleObject::__GetRoleInfo\n \n RMIRoleObject::GetRoleInfo\n\n\n\n\n\n\n返回RMI请求，loginserver进入RMIGetRoleInfoBackObjectImpl::GetRoleInfoRet\n\n\n\n\n\n\n转进：MergeLoginManager::AddRoleInfoList\n\n\n\n\n\n\n把玩家信息发送给客户端，即发送协议SCRoleList或SCMergeRoleList\n\n\n\n\n\n\n登陆loginserver流程（登陆角色，获取登陆角色相关信息）\n\n\n\n\n\n\n客户端发送协议CSRoleReq\n\n\n\n\n\n\nloginserver进入：LoginServer::OnRoleReq\n\n\n\n\n\n\n需要先验证账号，创建RMI返回对象：RMIUserLoginBackObjectImplRole\n\n\n\n\n\n\n发送RMI请求：RMILoginClient::UserLoginAsyn\n\n\n\n\n\n\ndataaccess处理函数：\nRMILoginObject::__UserLogin\n \n RMILoginObject::UserLogin\n\n\n\n\n\n\n返回至loginserver：RMIUserLoginBackObjectImplRole::UserLoginRet\n\n\n\n\n\n\n再查询要登陆的角色信息，创建RMI返回对象：RMIGetRoleInfoBackObjectImplRoleReq\n\n\n\n\n\n\n发送RMI请求：RMILRoleClient::GetRoleInfoAsyn\n\n\n\n\n\n\ndataaccess处理函数：\nRMIRoleObject::__GetRoleInfo\n \n RMIRoleObject::GetRoleInfo\n\n\n\n\n\n\nloginserver返回至：RMIGetRoleInfoBackObjectImplRoleReq::GetRoleInfoRet\n\n\n\n\n\n\n把查询到的登陆角色信息发给客户端，发送协议：SCLoginAck\n\n\n\n\n\n\n创建角色流程\n\n\n\n\n\n\n客户端发送创建角色请求协议：CSCreateRole，包含了玩家的创角信息\n\n\n\n\n\n\n服务端处理函数入口：LoginServer::OnCreateRole\n\n\n\n\n\n\n开始向dataaccess发送创角请求，首先验证login表里已经存在的角色uid\n\n\n\n\n\n\n创建RMI返回对象：RMIUserLoginBackObjectImplCreate，里面保存玩家的创角信息\n\n\n\n\n\n\n发送RMI请求：RMILoginClient::UserLoginAsyn\n\n\n\n\n\n\ndataaccess处理函数入口：\nRMILoginObject::__UserLogin\n \n RMILoginObject::UserLogin\n\n\n\n\n\n\nRMI返回loginserver进程，进入：RMIUserLoginBackObjectImplCreate::UserLoginRet\n\n\n\n\n\n\n需要验证姓名是否重复（role_name_map表），创建RMI返回对象：RMIAddNameInfoBackObjectImpl\n\n\n\n\n\n\n发送RMI请求：RMILoginClient::AddNameInfoAsyn，dataaccess处理函数入口：\nRMILoginObject::__AddNameInfo\n \n RMILoginObject::AddName\n\n\n\n\n\n\nRMI返回loginserver进程，进入：RMIAddNameInfoBackObjectImpl::AddNameInfoRet\n\n\n\n\n\n\n开始创建角色，初始化角色信息数据（RoleInitParam），创建RMI返回对象：RMICreateRoleBackObjectImpl\n\n\n\n\n\n\n发送RMI请求：RMILRoleClient::CreateRoleAsyn，dataaccess处理函数入口：\n  \nRMIRoleObject::__CreateRole\n \n RMIRoleObject::CreateRole\n\n\n\n\n\n\n把新角色信息存入Role相关的数据表\n\n\n\n\n\n\nRMI返回loginserver进程，进入RMICreateRoleBackObjectImpl::CreateRoleRet\n\n\n\n\n\n\n需要把uid存入login表，创建RMI返回对象：RMIAddRoleBackObjectImpl，发送RMI请求：RMILoginClient::AddRoleAsyn\n\n\n\n\n\n\ndataaccess处理函数入口：\nRMILoginObject::__AddRole\n \n RMILoginObject::AddRole\n\n\n\n\n\n\n把玩家uid写入login表\n\n\n\n\n\n\nRMI返回loginserver进程，进入RMIAddRoleBackObjectImpl::AddRoleRet，给客户端发送创角成功协议：SCCreateRoleAck\n\n\n\n\n\n\n需要更新role_name_map表，创建RMI返回对象：RMIUpdateNameInfoBackObjectImpl，发送RMI请求：RMILoginClient::UpdateNameInfoAsyn，dataaccess处理函数入口：\nRMILoginObject::__UpdateNameInfo\n \n RMILoginObject::UpdateNameInfo，RMI返回loginserver，进入：RMIUpdateNameInfoBackObjectImpl::UpdateNameInfoRet，什么都不需要处理\n\n\n\n\n\n\n问题：玩家的uid是如何生成的？\n\n\n\n\n\n\n创建角色时调用：RMIRoleObject::CreateRoleId\n\n\n\n\n\n\n从表role_id_map中，插入一行新的纪录，并得到其索引idrole_id_map的值，拿这个值和db_index合为role_id，见RMIRoleObject::CreateRole\n\n\n\n\n\n\n玩家登入GS流程（从DB初始化Role）\n\n\n\n\n\n\n客户端发送请求协议：CSUserEnterGSReq\n\n\n\n\n\n\n服务端处理入口：MessageHandler::OnReqEnter\n\n\n\n\n\n\n获取场景信息，需要初始化Role，进入：Scene::RoleEnterSceneAsyn\n\n\n\n\n\n\n创建RMI返回对象RMIRoleInitBackObjectImpl，然后发送RMI请求：RMIRoleClient::RoleInitAsyn\n\n\n\n\n\n\ndataaccess处理函数：\nRMIRoleObject::__RoleInit\n -\n RMIRoleObject::RoleInit\n\n\n\n\n\n\n拿到玩家数据并序列化传回gs，进入RMIRoleInitBackObjectImpl::RoleInitRet\n\n\n\n\n\n\n玩家数据反序列化后，进入Scene::RoleEnterScene，开始创建Role\n\n\n\n\n\n\n初始化Role：Role::Init，把Role加入场景：Scene::AddObj\n\n\n\n\n\n\n触发Role的进入场景事件：Role::OnEnterScene\n\n\n\n\n\n\n发给客户端进入场景协议：SCEnterScene\n\n\n\n\n\n\n执行：Role::OnLogin\n\n\n\n\n\n\n玩家数据保存流程\n\n\n第一种情况：\n\n\n\n\n\n\n当玩家登出或到了保存时间等情况时，调用：Role::Save\n\n\n\n\n\n\n拿到所有与玩家相关的数据块（各种Param）\n\n\n\n\n\n\n需要向dataaccess请求存储数据\n\n\n\n\n\n\n创建RMI返回对象：RMIRoleSaveBackObjectImplRole\n\n\n\n\n\n\n请求dataaccess：RMIRoleClient::RoleSaveAsyn，把数据块序列化，Call之\n\n\n\n\n\n\ndataaccess处理函数入口：\nRMIRoleObject::__RoleSave\n，把数据块都反序列化\n\n\n\n\n\n\n开始存入数据库：RMIRoleObject::RoleSave，若是跨服，只保存到缓存中，不存数据库：CrossRoleCacheManager::RoleSave\n\n\n\n\n\n\nRMI返回，不需要做什么别的处理\n\n\n\n\n\n\n第二种情况\n\n\n\n\n\n\n当玩家切场景时，也要保存（因为会销毁Role，从而清理DirtyMark）：SceneManager::ChangeLocalSceneHelper\n\n\n\n\n\n\n创建RMI返回对象：RMIRoleSaveBackObjImplLocal\n\n\n\n\n\n\n发送RMI请求：SceneManager::SaveRole \n RMIRoleClient::RoleSaveAsyn\n\n\n\n\n\n\ndataaccess处理函数入口：\nRMIRoleObject::__RoleSave\n，把数据块都反序列化\n\n\n\n\n\n\n开始存入数据库：RMIRoleObject::RoleSave，若是跨服，只保存到缓存中，不存数据库：CrossRoleCacheManager::RoleSave\n\n\n\n\n\n\nRMI返回，不需要做什么别的处理\n\n\n\n\n\n\n关服玩家数据保存流程\n\n\n\n\n\n\n首先关闭gateway\n\n\n\n\n\n\ngameworld收到gateway断开的信息，见：World::OnDisconnect \n SceneManager::OnGateWayDisconnect\n\n\n\n\n\n\n需要把所有的玩家都登出：SceneManager::LogoutAllRole -\n SceneManager::Logout\n\n\n\n\n\n\n执行保存操作：Role::Save，接下来走的是玩家数据保存流程\n\n\n\n\n\n\n为了等待数据保存完毕才关掉其它进程，在关闭gateway后会sleep若干秒，这是一种简单的策略，但看上去不是很保险，不过测试的时候这样用没问题。\n\n\n充值流程\n\n\n\n\n\n\nRole::Update\n\n\n\n\n\n\n每隔一段时间（5分钟），从DB中查询一下元宝信息：Money::GetAccountGoldFromDB\n\n\n\n\n\n\n创建RMIBackObject：RMIGetGoldBackObjectImpl，发送RMI请求：RMILoginClient::GetGoldAsyn\n\n\n\n\n\n\ndataaccess处理函数：\nRMILoginObject::__GetGold\n \n RMILoginObject::GetGold，从accountgold表中提取出账号（plat_user_name）中的元宝数\n\n\n\n\n\n\nrmi返回gameworld：RMIGetGoldBackObjectImpl::GetGoldRet，如果账号中的元宝大于0，那么调用Money::GetAccountGoldToRole\n\n\n\n\n\n\n此时需要对账号中的元宝进行消耗，创建RMIBackObject: RMIChangeGoldBackObjectImpl，发送RMI请求：RMILoginClient::ChangeGoldAsyn\n\n\n\n\n\n\ndataaccess处理函数：\nRMILoginObject::__ChangeGold\n \n RMILoginObject::ChangeGold，更新accountgold表中账号记录，把元宝减掉\n\n\n\n\n\n\nrmi返回gameworld：RMIChangeGoldBackObjectImpl::ChangeGoldRet，如果此时玩家在线，那么调用：Money::AddGold\n\n\n\n\n\n\n增加元宝成功，触发充值事件：EventHandler::OnAddChongzhi\n\n\n\n\n\n\n如果玩家不在线或者Money::AddGold失败，那么需要把元宝加回账号表里\n\n\n\n\n\n\n创建RMIBackObject: RMIChangeGoldBackObjectImplErrorAdd，发送RMI请求：RMILoginClient::ChangeGoldAsyn，dataaccess调用：\nRMILoginObject::__ChangeGold\n\n\n\n\n\n\n把钱加回accountgold表中，RMI返回不做其它事情了\n\n\n\n\n\n\n可以使用sql语句，模拟外服充值：\n\n\nINSERT INTO accountgold(plat_user_name) VALUES('ldw_22');\nUPDATE accountgold SET gold = '1000' WHERE plat_user_name = 'ldw_22';\n\n\n\n\n其中ldw_22是平台名，即 账号名+服 的组合，充值完后，5分钟内就能到账了（外服充值完后会马上通知）。\n\n\n玩家请求跨服流程\n\n\n\n\n\n\n客户端发送请求协议（CSCrossStartReq），请求开始跨服\n\n\n\n\n\n\n服务端处理函数：MessageHandler::OnCrossStartReq -\n RoleCross::OnStartCrossReq\n\n\n\n\n\n\n做一些可否跨服的检查\n\n\n\n\n\n\n拿到玩家的一些数据，准备传给跨服：Role::GetCrossRoleParam\n\n\n\n\n\n\n告诉crossserver有玩家想进入跨服，发送协议GameCrossStartCrossReq\n\n\n\n\n\n\ncrossserver处理函数：CrossServer::OnStartCrossReq\n\n\n\n\n\n\n检查玩家能否跨服CrossActivityManager::CheckCanStartCross\n\n\n\n\n\n\n从协议中提取玩家数据，这里会修正一些东西：玩家名（加原服后缀），场景ID（从cross_common.xml中获取）\n\n\n\n\n\n\n把玩家数据打包进协议CrossGameSaveCrossRoleInfo，发给Hidden GS，做存储用\n\n\n\n\n\n\nhidden gs处理函数：SceneManager::OnSaveCrossRoleInfo -\n CrossUserRegister::OnSaveCrossRoleInfo\n\n\n\n\n\n\n需要创建跨服中的角色，创建RMI返回对象，RMIGCreateCrossRoleBackObjectImpl\n\n\n\n\n\n\n发送RMI请求，RMIGRoleClient::CreateCrossRoleAsyn\n\n\n\n\n\n\ndataaccess处理函数：\nRMIRoleObject::__CreateCrossRole\n -\n RMIRoleObject::CreateCrossRole -\n CrossRoleCacheManager::CreateCrossRole\n\n\n\n\n\n\n返回到hidden gs：RMIGCreateCrossRoleBackObjectImpl::CreateCrossRoleRet\n\n\n\n\n\n\n需要保持跨服中的角色，创建RMI返回对象，RMIGRoleSaveBackObjectImplCrossRole\n\n\n\n\n\n\n发送RMI请求，RMIGRoleClient::RoleSaveAsyn\n\n\n\n\n\n\ndataaccess处理函数：\nRMIRoleObject::__RoleSave\n -\n RMIRoleObject::RoleSave -\n CrossRoleCacheManager::RoleSave\n\n\n\n\n\n\n返回到hidden gs: RMIGRoleSaveBackObjectImplCrossRole::RoleSaveRet\n\n\n\n\n\n\n需要告诉crossserver跨服角色的创建和保存结果，以及跨服的loginserver地址，发送协议GameCrossSaveCrossRoleRet\n\n\n\n\n\n\ncrossserver处理函数：CrossServer::OnSaveCrossRoleRet\n\n\n\n\n\n\ncrossserver转发协议CrossGameStartCrossAck给原服gs，让其通知玩家可以跨服\n\n\n\n\n\n\n原服gs处理函数：SceneManager::OnStartCrossAck -\n RoleCross::OnStartCrossAck\n\n\n\n\n\n\n告诉玩家loginserver地址等跨服信息，发送协议SCCrossEnterServer\n\n\n\n\n\n\n之后玩家走的是登陆跨服的loginserver流程\n\n\n\n\n\n\n跨服数据传回原服流程\n\n\n\n\n这个流程是G18专有的\n\n\n\n\n\n\n\n\n在跨服中，Role::Save\n\n\n\n\n\n\n初始化 RoleSaveCrossParam\n\n\n\n\n\n\n发送协议给原服：CrossGameSyncRoleData\n\n\n\n\n\n\n原服收到协议：SceneManager::OnCrossGameSyncRoleData\n\n\n\n\n\n\n创建RMIBackObj：RMIRoleSaveByCrossBackObjectImpl\n\n\n\n\n\n\n执行RMI请求：RMIRoleClient::RoleSaveByCrossAsyn\n\n\n\n\n\n\n把跨服传来的数据，序列化，传给dataaccess\n\n\n\n\n\n\ndataaccess收到：\nRMIRoleObject::__RoleSaveByCross\n\n\n\n\n\n\ndataaccess反序列化数据后，存储：RMIRoleObject::RoleSaveByCross\n\n\n\n\n\n\nRMI返回：RMIRoleSaveByCrossBackObjectImpl相关方法\n\n\n\n\n\n\n看情况清影子（当玩家登出跨服时），RMIRoleSaveByCrossBackObject::__free", 
+            "title": "基础流程"
+        }, 
+        {
+            "location": "/server/基础流程/#_1", 
+            "text": "", 
+            "title": "基础流程"
+        }, 
+        {
+            "location": "/server/基础流程/#_2", 
+            "text": "执行入口函数main    实例化一个Game，它是一个IModule管理器的实现    把各种IModule模块注册进Game    Game调用Run方法    Game进入Loop循环    依次执行IModule模块的Init，Start，Update方法", 
+            "title": "进程启动流程"
+        }, 
+        {
+            "location": "/server/基础流程/#_3", 
+            "text": "gateway进程启动后，为玩家开启监听端口：GatewayModule::Start   GatewayModule::ListenForUser    为玩家开启了端口后，gateway向loginserver索取gameworld的ip和端口，然后连接gameworld。即：发WLRegisterGW到loginserver，loginserver回复协议，gateway处理入口：GatewayModule::OnRegisterGS，然后向gameworld发起连接（InternalComm::NetConnect）    开启监听，并成功连接gameworld后，就可以获得如此通讯路径：client   gateway   gameworld    此后，客户端连接gateway，并给gateway发送协议。gateway处理入口：ServerNetworkCallback::OnRecv   GatewayModule::OnRecvUserMsg    gateway不对协议内容做处理，把协议封装进WGNetRecvMsg，然后转发给gameworld    gameworld收到协议，处理入口：World::OnRecv   World::OnRecvMsg   SceneManager::OnRecv    如果此时玩家没有在gameworld里创建角色（未登录gs），即没有注册进m_net_to_rolelocal，那么执行：MessageHandler::HandleMessageNoLogin   MessageHandler::OnReqEnter，之后就是 玩家登入GS流程    如果玩家已经在gameworld中创建了角色（已登入gs），即已经注册进m_net_to_rolelocal，那么拿到Role所在场景和Role：MessageHandler::GetRoleHelper    转进：MessageHandler::HandleMessage    解包协议号，从协议处理函数列表（m_msg_handler_list）里拿到已经注册好的处理函数，调用之", 
+            "title": "客户端协议接收流程"
+        }, 
+        {
+            "location": "/server/基础流程/#loginserver", 
+            "text": "客户端在服务器列表中选择了服务器后，确认登陆，发送CSLogin协议    loginserver进入：LoginServer::OnLoginReq    解析协议后，转进：MergeLoginManager::OnLoginReq   MergeLoginManager::PlatLoginReq    需要查询数据库中的角色uid，准备发送RMI请求，创建RMI返回对象：RMIUserLoginBackObjectImpl    异步发送RMI请求：RMILoginClient::UserLoginAsyn    dataccess进入： RMILoginObject::__UserLogin    RMILoginObject::UserLogin    返回RMI请求，loginserver进入：RMIUserLoginBackObjectImpl::UserLoginRet    需要查询数据库中角色的详细信息（RoleInfoList），准备发送RMI请求，创建RMI返回对象：RMIGetRoleInfoBackObjectImpl    异步发送RMI请求：RMILRoleClient::GetRoleInfoAsyn    dataaccess进入： RMIRoleObject::__GetRoleInfo    RMIRoleObject::GetRoleInfo    返回RMI请求，loginserver进入RMIGetRoleInfoBackObjectImpl::GetRoleInfoRet    转进：MergeLoginManager::AddRoleInfoList    把玩家信息发送给客户端，即发送协议SCRoleList或SCMergeRoleList", 
+            "title": "登陆loginserver流程（登陆账号，获取所有角色信息）"
+        }, 
+        {
+            "location": "/server/基础流程/#loginserver_1", 
+            "text": "客户端发送协议CSRoleReq    loginserver进入：LoginServer::OnRoleReq    需要先验证账号，创建RMI返回对象：RMIUserLoginBackObjectImplRole    发送RMI请求：RMILoginClient::UserLoginAsyn    dataaccess处理函数： RMILoginObject::__UserLogin    RMILoginObject::UserLogin    返回至loginserver：RMIUserLoginBackObjectImplRole::UserLoginRet    再查询要登陆的角色信息，创建RMI返回对象：RMIGetRoleInfoBackObjectImplRoleReq    发送RMI请求：RMILRoleClient::GetRoleInfoAsyn    dataaccess处理函数： RMIRoleObject::__GetRoleInfo    RMIRoleObject::GetRoleInfo    loginserver返回至：RMIGetRoleInfoBackObjectImplRoleReq::GetRoleInfoRet    把查询到的登陆角色信息发给客户端，发送协议：SCLoginAck", 
+            "title": "登陆loginserver流程（登陆角色，获取登陆角色相关信息）"
+        }, 
+        {
+            "location": "/server/基础流程/#_4", 
+            "text": "客户端发送创建角色请求协议：CSCreateRole，包含了玩家的创角信息    服务端处理函数入口：LoginServer::OnCreateRole    开始向dataaccess发送创角请求，首先验证login表里已经存在的角色uid    创建RMI返回对象：RMIUserLoginBackObjectImplCreate，里面保存玩家的创角信息    发送RMI请求：RMILoginClient::UserLoginAsyn    dataaccess处理函数入口： RMILoginObject::__UserLogin    RMILoginObject::UserLogin    RMI返回loginserver进程，进入：RMIUserLoginBackObjectImplCreate::UserLoginRet    需要验证姓名是否重复（role_name_map表），创建RMI返回对象：RMIAddNameInfoBackObjectImpl    发送RMI请求：RMILoginClient::AddNameInfoAsyn，dataaccess处理函数入口： RMILoginObject::__AddNameInfo    RMILoginObject::AddName    RMI返回loginserver进程，进入：RMIAddNameInfoBackObjectImpl::AddNameInfoRet    开始创建角色，初始化角色信息数据（RoleInitParam），创建RMI返回对象：RMICreateRoleBackObjectImpl    发送RMI请求：RMILRoleClient::CreateRoleAsyn，dataaccess处理函数入口：\n   RMIRoleObject::__CreateRole    RMIRoleObject::CreateRole    把新角色信息存入Role相关的数据表    RMI返回loginserver进程，进入RMICreateRoleBackObjectImpl::CreateRoleRet    需要把uid存入login表，创建RMI返回对象：RMIAddRoleBackObjectImpl，发送RMI请求：RMILoginClient::AddRoleAsyn    dataaccess处理函数入口： RMILoginObject::__AddRole    RMILoginObject::AddRole    把玩家uid写入login表    RMI返回loginserver进程，进入RMIAddRoleBackObjectImpl::AddRoleRet，给客户端发送创角成功协议：SCCreateRoleAck    需要更新role_name_map表，创建RMI返回对象：RMIUpdateNameInfoBackObjectImpl，发送RMI请求：RMILoginClient::UpdateNameInfoAsyn，dataaccess处理函数入口： RMILoginObject::__UpdateNameInfo    RMILoginObject::UpdateNameInfo，RMI返回loginserver，进入：RMIUpdateNameInfoBackObjectImpl::UpdateNameInfoRet，什么都不需要处理    问题：玩家的uid是如何生成的？    创建角色时调用：RMIRoleObject::CreateRoleId    从表role_id_map中，插入一行新的纪录，并得到其索引idrole_id_map的值，拿这个值和db_index合为role_id，见RMIRoleObject::CreateRole", 
+            "title": "创建角色流程"
+        }, 
+        {
+            "location": "/server/基础流程/#gsdbrole", 
+            "text": "客户端发送请求协议：CSUserEnterGSReq    服务端处理入口：MessageHandler::OnReqEnter    获取场景信息，需要初始化Role，进入：Scene::RoleEnterSceneAsyn    创建RMI返回对象RMIRoleInitBackObjectImpl，然后发送RMI请求：RMIRoleClient::RoleInitAsyn    dataaccess处理函数： RMIRoleObject::__RoleInit  -  RMIRoleObject::RoleInit    拿到玩家数据并序列化传回gs，进入RMIRoleInitBackObjectImpl::RoleInitRet    玩家数据反序列化后，进入Scene::RoleEnterScene，开始创建Role    初始化Role：Role::Init，把Role加入场景：Scene::AddObj    触发Role的进入场景事件：Role::OnEnterScene    发给客户端进入场景协议：SCEnterScene    执行：Role::OnLogin", 
+            "title": "玩家登入GS流程（从DB初始化Role）"
+        }, 
+        {
+            "location": "/server/基础流程/#_5", 
+            "text": "第一种情况：    当玩家登出或到了保存时间等情况时，调用：Role::Save    拿到所有与玩家相关的数据块（各种Param）    需要向dataaccess请求存储数据    创建RMI返回对象：RMIRoleSaveBackObjectImplRole    请求dataaccess：RMIRoleClient::RoleSaveAsyn，把数据块序列化，Call之    dataaccess处理函数入口： RMIRoleObject::__RoleSave ，把数据块都反序列化    开始存入数据库：RMIRoleObject::RoleSave，若是跨服，只保存到缓存中，不存数据库：CrossRoleCacheManager::RoleSave    RMI返回，不需要做什么别的处理    第二种情况    当玩家切场景时，也要保存（因为会销毁Role，从而清理DirtyMark）：SceneManager::ChangeLocalSceneHelper    创建RMI返回对象：RMIRoleSaveBackObjImplLocal    发送RMI请求：SceneManager::SaveRole   RMIRoleClient::RoleSaveAsyn    dataaccess处理函数入口： RMIRoleObject::__RoleSave ，把数据块都反序列化    开始存入数据库：RMIRoleObject::RoleSave，若是跨服，只保存到缓存中，不存数据库：CrossRoleCacheManager::RoleSave    RMI返回，不需要做什么别的处理", 
+            "title": "玩家数据保存流程"
+        }, 
+        {
+            "location": "/server/基础流程/#_6", 
+            "text": "首先关闭gateway    gameworld收到gateway断开的信息，见：World::OnDisconnect   SceneManager::OnGateWayDisconnect    需要把所有的玩家都登出：SceneManager::LogoutAllRole -  SceneManager::Logout    执行保存操作：Role::Save，接下来走的是玩家数据保存流程    为了等待数据保存完毕才关掉其它进程，在关闭gateway后会sleep若干秒，这是一种简单的策略，但看上去不是很保险，不过测试的时候这样用没问题。", 
+            "title": "关服玩家数据保存流程"
+        }, 
+        {
+            "location": "/server/基础流程/#_7", 
+            "text": "Role::Update    每隔一段时间（5分钟），从DB中查询一下元宝信息：Money::GetAccountGoldFromDB    创建RMIBackObject：RMIGetGoldBackObjectImpl，发送RMI请求：RMILoginClient::GetGoldAsyn    dataaccess处理函数： RMILoginObject::__GetGold    RMILoginObject::GetGold，从accountgold表中提取出账号（plat_user_name）中的元宝数    rmi返回gameworld：RMIGetGoldBackObjectImpl::GetGoldRet，如果账号中的元宝大于0，那么调用Money::GetAccountGoldToRole    此时需要对账号中的元宝进行消耗，创建RMIBackObject: RMIChangeGoldBackObjectImpl，发送RMI请求：RMILoginClient::ChangeGoldAsyn    dataaccess处理函数： RMILoginObject::__ChangeGold    RMILoginObject::ChangeGold，更新accountgold表中账号记录，把元宝减掉    rmi返回gameworld：RMIChangeGoldBackObjectImpl::ChangeGoldRet，如果此时玩家在线，那么调用：Money::AddGold    增加元宝成功，触发充值事件：EventHandler::OnAddChongzhi    如果玩家不在线或者Money::AddGold失败，那么需要把元宝加回账号表里    创建RMIBackObject: RMIChangeGoldBackObjectImplErrorAdd，发送RMI请求：RMILoginClient::ChangeGoldAsyn，dataaccess调用： RMILoginObject::__ChangeGold    把钱加回accountgold表中，RMI返回不做其它事情了    可以使用sql语句，模拟外服充值：  INSERT INTO accountgold(plat_user_name) VALUES('ldw_22');\nUPDATE accountgold SET gold = '1000' WHERE plat_user_name = 'ldw_22';  其中ldw_22是平台名，即 账号名+服 的组合，充值完后，5分钟内就能到账了（外服充值完后会马上通知）。", 
+            "title": "充值流程"
+        }, 
+        {
+            "location": "/server/基础流程/#_8", 
+            "text": "客户端发送请求协议（CSCrossStartReq），请求开始跨服    服务端处理函数：MessageHandler::OnCrossStartReq -  RoleCross::OnStartCrossReq    做一些可否跨服的检查    拿到玩家的一些数据，准备传给跨服：Role::GetCrossRoleParam    告诉crossserver有玩家想进入跨服，发送协议GameCrossStartCrossReq    crossserver处理函数：CrossServer::OnStartCrossReq    检查玩家能否跨服CrossActivityManager::CheckCanStartCross    从协议中提取玩家数据，这里会修正一些东西：玩家名（加原服后缀），场景ID（从cross_common.xml中获取）    把玩家数据打包进协议CrossGameSaveCrossRoleInfo，发给Hidden GS，做存储用    hidden gs处理函数：SceneManager::OnSaveCrossRoleInfo -  CrossUserRegister::OnSaveCrossRoleInfo    需要创建跨服中的角色，创建RMI返回对象，RMIGCreateCrossRoleBackObjectImpl    发送RMI请求，RMIGRoleClient::CreateCrossRoleAsyn    dataaccess处理函数： RMIRoleObject::__CreateCrossRole  -  RMIRoleObject::CreateCrossRole -  CrossRoleCacheManager::CreateCrossRole    返回到hidden gs：RMIGCreateCrossRoleBackObjectImpl::CreateCrossRoleRet    需要保持跨服中的角色，创建RMI返回对象，RMIGRoleSaveBackObjectImplCrossRole    发送RMI请求，RMIGRoleClient::RoleSaveAsyn    dataaccess处理函数： RMIRoleObject::__RoleSave  -  RMIRoleObject::RoleSave -  CrossRoleCacheManager::RoleSave    返回到hidden gs: RMIGRoleSaveBackObjectImplCrossRole::RoleSaveRet    需要告诉crossserver跨服角色的创建和保存结果，以及跨服的loginserver地址，发送协议GameCrossSaveCrossRoleRet    crossserver处理函数：CrossServer::OnSaveCrossRoleRet    crossserver转发协议CrossGameStartCrossAck给原服gs，让其通知玩家可以跨服    原服gs处理函数：SceneManager::OnStartCrossAck -  RoleCross::OnStartCrossAck    告诉玩家loginserver地址等跨服信息，发送协议SCCrossEnterServer    之后玩家走的是登陆跨服的loginserver流程", 
+            "title": "玩家请求跨服流程"
+        }, 
+        {
+            "location": "/server/基础流程/#_9", 
+            "text": "这个流程是G18专有的     在跨服中，Role::Save    初始化 RoleSaveCrossParam    发送协议给原服：CrossGameSyncRoleData    原服收到协议：SceneManager::OnCrossGameSyncRoleData    创建RMIBackObj：RMIRoleSaveByCrossBackObjectImpl    执行RMI请求：RMIRoleClient::RoleSaveByCrossAsyn    把跨服传来的数据，序列化，传给dataaccess    dataaccess收到： RMIRoleObject::__RoleSaveByCross    dataaccess反序列化数据后，存储：RMIRoleObject::RoleSaveByCross    RMI返回：RMIRoleSaveByCrossBackObjectImpl相关方法    看情况清影子（当玩家登出跨服时），RMIRoleSaveByCrossBackObject::__free", 
+            "title": "跨服数据传回原服流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/", 
+            "text": "逻辑流程\n\n\n读配置流程\n\n\n\n\nWorld::Start -\n World::InitGameWorld\n\n\n\n\n先加载这些配置：\n\n\n\n\n\n\nCrossConfig\n\n\n\n\n\n\ngamestring::StringInit\n\n\n\n\n\n\nNameFilter\n\n\n\n\n\n\nSharedConfig\n\n\n\n\n\n\nLocalConfig\n\n\n\n\n\n\nCrossCommonConfig，各种Cross活动配置\n\n\n\n\n\n\n然后：\n\n\n\n\n\n\nWorld::InitSkill\n\n\n\n\n\n\nWorld::InitDrop\n\n\n\n\n\n\nWorld::InitMonster\n\n\n\n\n\n\nWorld::InitTask\n\n\n\n\n\n\nWorld::InitGlobalConfig\n\n\n\n\n\n\nWorld::InitScene\n\n\n\n\n\n\nWorld::InitLogicConfig\n\n\n\n\n\n\n最后检查配置：\n\n\n\n\nCheckResourceCenter::Check，但对于逻辑配置，很多都是内部检查的\n\n\n\n\n频道聊天流程\n\n\n\n\n\n\n客户端发送聊天协议：CSChannelChat，此协议末尾跟着消息长度和消息内容\n\n\n\n\n\n\n服务端处理入口；MessageHandler::OnChannelChat -\n ChatManager::OnChannelChat\n\n\n\n\n\n\n拿到ChatUser：ChatManager::GetChatUser\n\n\n\n\n\n\n判断玩家能否发送聊天信息；ChatUser::ChannelCanChat\n\n\n\n\n\n\n准备转发聊天信息给客户端：SCChannelChat，设置好此协议的内容\n\n\n\n\n\n\n根据聊天频道（chatdef::ChannelType），把聊天协议广播到对应客户端，以世界聊天举例，即进入：ChatManager::OnWorldChat \n World::SendToAllGateway\n\n\n\n\n\n\n做任务流程\n\n\n注：此流程没有详细理解，因为基本不需要改动\n\n\n\n\n\n\n接取任务：NewTaskManager::AcceptTask，接取的情况可能有很多种\n\n\n\n\n\n\n判断能否接取此任务：NewTaskManager::CanAcceptTask，检查的内容很多，列举如下：\n\n\n\n\n\n\n\n\n\n\n任务可接取等级\n\n\n前置任务是否完成（TaskRecorder::IsFinished）\n\n\n任务类型特殊性检查\n\n\n\n\n\n\n\n\n除了NewTaskManager::CanAcceptTask，还有一些检查：\n\n\n\n\n\n\n\n\n检查任务接取数量是否已满\n\n\n检查与NPC的距离\n\n\n\n\n\n\n\n\n\n\n执行接取前的行为：NewTaskManager::PreOperate\n\n\n\n\n\n\n创建任务信息，并将其加入任务列表：TaskParam::AddTask\n\n\n\n\n\n\n接取成功，此时玩家身上已有任务。发送任务信息协议：NewTaskManager::SendTaskInfo\n\n\n\n\n\n\n触发任务接收事件：NewTaskManager::OnAddTask\n\n\n\n\n\n\n此后，玩家开始做任务，\n服务端负责观察各种事件，并检测任务进度：NewTaskManager::CheckProgress，如果进度有改变，发送任务信息协议：NewTaskManager::SendTaskInfo\n\n\n\n\n\n\n客户端发送提交任务请求协议：CSTaskCommit，服务端处理入口：MessageHandler::OnTaskCommit\n\n\n\n\n\n\n进入：NewTaskManager::CommitTask\n\n\n\n\n\n\n判断能否提交：NewTaskManager::CanCommitTask \n NewTaskManager::IsComplete，IsComplete会对每种类型的任务做特殊性检查\n\n\n\n\n\n\n把任务删除：NewTaskManager::RemoveTask，如果任务完成，则发送奖励：NewTaskManager::DoReward，这里会根据每种任务类型做不同的处理\n\n\n\n\n\n\n触发任务完成事件：NewTaskManager::OnRemoveTask \n EventHandler::OnCompleteTask\n\n\n\n\n\n\n采集流程\n\n\n\n\n\n\n客户端发送采集请求协议：CSStartGatherReq，服务端处理函数入口：MessageHandler::OnStartGatherReq\n\n\n\n\n\n\n进入：Role::StartGather，开始采集\n\n\n\n\n\n\n做一系列检查，如：采集距离，能否行动（Role::CanCharacterAction），能否采集（RoleStatusManager::CanGather）\n\n\n\n\n\n\n设置采集相关参数，设置当前状态为采集ROLE_STATUS_GATHER\n\n\n\n\n\n\n广播采集信息（SCStartGather），发送采集信息（SCStartGatherTimer）\n\n\n\n\n\n\n进入之后的帧循环，并更新采集状态。见：Role::Update \n Role::UpdateGather\n\n\n\n\n\n\n如果采集时间到，说明采集成功。此时进入：GatherObj::Gather，触发采集物被采集事件：EventHandler::OnGather，并检测是否要删除此采集物：GatherObj::RemoveOnGather\n\n\n\n\n\n\n物品相关\n\n\n物品配置初始化流程\n\n\n\n\n\n\ngameworld进程启动，开始初始化配置：ServerLogic::Start \n World::Start \n World::InitGameWorld\n\n\n\n\n\n\n初始化物品配置入口：World::InitItem \n ItemPool::Init，开始从配置文件itemmanager.xml读取配置\n\n\n\n\n\n\n读取装备配置，使用宏：LOADEQUIPMENT，于itemmanager.xml中找到装备配置路径，读取之：Equipment::Init，若是读取成功，则会把配置对象（ItemBase）加入物品池（ItemPool::m_item_pool）\n\n\n\n\n\n\n读取物品配置，使用宏：LOADITEM，于itemmanager.xml中找到物品配置路径，读取之：ItemBase::Init，执行具体子类的读取方法。若是读取成功，则会把配置对象（ItemBase）加入物品池（ItemPool::m_item_pool）\n\n\n\n\n\n\n若读取失败，最终调用ServerLogic::StopServer结束进程\n\n\n\n\n\n\n使用物品流程\n\n\n\n\n\n\n客户端发送使用物品协议：CSUseItem，服务端处理入口：MessageHandler::OnUseItem \n Knapsack::Use\n\n\n\n\n\n\n获取要使用的物品格子（ItemGridData），并对此进行一系列判断：是否合法，角色当前可否使用物品（RoleStatusManager::CanUseItem）\n\n\n\n\n\n\n执行：ItemBase::Use，实际根据物品类型（ItemBase::ITEM_TYPE），执行子类的相关方法\n，比如常见的被动消耗物品，执行入口：NorexItem::Use\n\n\n\n\n\n\n若Use方法执行失败，那么直接返回，不会进行消耗处理\n\n\n\n\n\n\n若执行成功，会对物品格子（ItemGridData）进行修改，即消耗，若num已经为0，则会清理格子（ItemGridData::Clear）\n\n\n\n\n\n\n设置DirtyMark，并通知客户端背包已更改：Knapsack::SetItemDirty \n Knapsack::SendknapsackGridInfoToRole\n\n\n\n\n\n\n邮件相关\n\n\n发送邮件流程\n\n\n注：发系统邮件，调用接口：MailRoute::MailToUser 即可\n\n\n\n\n\n\n通过各种途径，进入：UserMailManager::SendMail，准备把邮件给UserMail做处理\n\n\n\n\n\n\n设置MailParam数据块，这就是要发给玩家的邮件数据\n\n\n\n\n\n\n添加邮件：UserMail::AddMail\n\n\n\n\n\n\n找到一个坑，把邮件放进去：UserMail::GetFreeMailItemSlot\n\n\n\n\n\n\n告知客户端有新邮件：UserMail::SendMailAck\n\n\n\n\n\n\n查看邮件流程\n\n\n\n\n\n\n客户端发送请求查看邮件列表协议：CSMailGetList，服务端处理入口：MessageHandler::OnGetMailList \n MailRoute::GetMailList\n\n\n\n\n\n\n转入：UserMailManager::OnFetchMailList\n\n\n\n\n\n\n拿到UserMail模块（UserMailManager::GetUserMail），获取玩家身上的邮件列表：UserMail::FetchMailList\n\n\n\n\n\n\n准备协议SCMailListAck，然后从邮件列表中获取邮件，把邮件发送给客户端\n\n\n\n\n\n\n邮件回档流程（存储）\n\n\n此流程和多数全局系统的回档流程类似（使用dirty_mark标记要回档的记录，然后将记录打包发给dataaccess做存储）。\n\n\n\n\n\n\n进入帧循环：UserMailManager::Update \n UserMail::Update\n\n\n\n\n\n\n检查是否到了回档时间（间隔MAIL_SAVE_DB_INTERVAL）\n\n\n\n\n\n\n活动相关\n\n\n随机活动时间设置流程\n\n\n\n\n\n\n服务器启动后，从数据库初始化随机活动的开启数据：RandActivityManager::Init \n RandActivity::Init\n\n\n\n\n\n\n首次Update，计算所有随机活动的开启时间：RandActivityManager::Update \n RandActivityManager::CalActivityOpenTime \n RandActivity::CalActivityOpenTime\n\n\n\n\n\n\n拿到配置数据数据（S-随机活动开启配置.xls）：RandActivityOpenCfg::GetOpenCfg\n\n\n\n\n\n\n设置随机活动的开启、关闭时间：RandActivity::SetRandActivityTime\n\n\n\n\n\n\n把随机获得的开启状态同步到ActivityShadow：ActivityShadow::SetActivityStatus\n\n\n\n\n\n\n如果活动状态有改变，通知客户端（所有）活动的状态RandActivity::NotfiyRandActivityStatus\n\n\n\n\n\n\n强开关（随机）活动流程\n\n\n通过GM命令\n/gm activitynextstate:act_number\n可以强开关（随机）活动。\n\n\n这里以随机活动为例。\n\n\n\n\n\n\n客户端发送了正确的GM命令，服务端处理函数入口：Gm::ActivityToNextState\n\n\n\n\n\n\n触发RandActivityManager::OnForceToNextState \n RandActivity::OnForceToNextState\n\n\n\n\n\n\n如果活动正在开启状态，则将其结束时间设置为当前时间，在下一帧时使其自动关闭\n\n\n\n\n\n\n否则，通过配置dynamic_cfg.xml拿到其中随机活动的配置：DynamicConfig::GetRandActivityCfg\n\n\n\n\n\n\n根据此配置，设置随机活动的开启时间、关闭时间，在下一帧使其自动判开启\n\n\n\n\n\n\n【NOTICE】这里使用的配置是dynamic_cfg.xml，和S-随机活动开启配置.xls不一样！后者是设置自动开启的配置。\n\n\n角色杂项\n\n\n切换场景流程\n\n\n\n\n\n\n通过各种途径（比如MessageHandler::OnTransportReq），执行：SceneManager::GoTo\n\n\n\n\n\n\n做了一堆杂碎判断（乱七八糟的），转入SceneManager::ChangeScene\n\n\n\n\n\n\n根据scene_id和scene_key判断场景是否存在，如果不存在，执行：SceneManager::CreateFB \n SceneManager::CreateScene，创建一个副本（通常只有副本才会动态创建）\n\n\n\n\n\n\n执行：SceneManager::ChangeLocalSceneHelper，准备把玩家送入场景\n\n\n\n\n\n\n玩家离开场景：Scene::RoleLeaveScene，开始清理与Role相关的数据。触发SpecialLogic::OnRoleLeaveScene，删掉Role（Scene::DeleteObj），触发Role::OnLeaveScene，删掉netid对rolelocal的映射：SceneManager::UnregisterRoleLocal\n\n\n\n\n\n\n但由于场景对象是延迟删除，此时（即在SceneManager::ChangeLocalSceneHelper函数里）还可以使用Role（那个小龙的注释，请忽略）\n\n\n\n\n\n\n准备保存Role（SceneManager::SaveRole），为什么切场景要保存？因为DirtyMark会被清理，所以一定要保存，然后清理DirtyMark。保存流程已有另外的描述\n\n\n\n\n\n\n发送完保存请求后，继续拿到Role身上的数据，传入：Scene::RoleEnterScene，创建一个新的Role对象，执行初始化（Role::Init），加入场景（Scene::AddObj），触发Role::OnEnterScene，\n告诉客户端（SCEnterScene）\n，成功进入场景\n\n\n\n\n\n\n把rolelocal重新注册到netid对rolelocal的映射里去，意味着可以调用SceneManager::GetRole(user_id)来获取Role了\n\n\n\n\n\n\n触发：SpecialLogic::OnRoleEnterScene\n\n\n\n\n\n\n升级流程\n\n\n\n\n\n\n通过各种途径，给角色增加经验：Role::AddExp\n\n\n\n\n\n\n根据当前的经验加成，计算加成后的经验：Role::GetAddonExp\n\n\n\n\n\n\nwhile循环，给角色加经验，一旦超过max_exp（从配置roleexp.xml读取），即代表可以升级\n\n\n\n\n\n\n执行升级操作：Role::OnUpgradeLevel\n\n\n\n\n\n\n发协议告知等级改变（SCChaLevelUpgrade），重算属性，触发基础信息改变：Role::OnRoleBaseInfoChange，触发升级事件：EventHandler::OnRoleUpgradeLevel\n\n\n\n\n\n\n继续给角色加经验，直到要加的经验不足以升级为止\n\n\n\n\n\n\n发协议告知经验改变（SCChaExpChange）\n\n\n\n\n\n\n移动流程\n\n\n\n\n\n\n客户端请求移动，发送协议：CSObjMove，服务端处理入口：MessageHandler::OnRoleMove\n\n\n\n\n\n\n转入：Role::Move \n Character::Move\n\n\n\n\n\n\n做一些检查：移动位置是否合法（Map::Validate），非法检查，角色可否行动（Character::CanCharacterAction，Character::IsDingShen）\n\n\n\n\n\n\n停止攻击（Character::StopAttack）\n\n\n\n\n\n\n设置当前的移动参数（posi, dir, dir_distance），分别代表当前位置，当前移动方向，当前移动方向的距离\n\n\n\n\n\n\n更新绑定到Role的观察者：ZoneMatrix::MoveObser\n\n\n\n\n\n\n广播位置信息：Character::SendPosiInfo\n\n\n\n\n\n\n请求移动成功，更新绑定到Role的AOI：ZoneMatrix::MoveAOI\n\n\n\n\n\n\n重置Role状态：Role::ResetRoleStatus，实际上就是重置了采集状态\n\n\n\n\n\n\n在之后的帧循环里，执行Character::Update \n Character::MoveLogic，更新位置信息，到达位置后，执行：Character::MoveStop，更新状态，并通知客户端移动信息", 
+            "title": "逻辑流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_1", 
+            "text": "", 
+            "title": "逻辑流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_2", 
+            "text": "World::Start -  World::InitGameWorld   先加载这些配置：    CrossConfig    gamestring::StringInit    NameFilter    SharedConfig    LocalConfig    CrossCommonConfig，各种Cross活动配置    然后：    World::InitSkill    World::InitDrop    World::InitMonster    World::InitTask    World::InitGlobalConfig    World::InitScene    World::InitLogicConfig    最后检查配置：   CheckResourceCenter::Check，但对于逻辑配置，很多都是内部检查的", 
+            "title": "读配置流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_3", 
+            "text": "客户端发送聊天协议：CSChannelChat，此协议末尾跟着消息长度和消息内容    服务端处理入口；MessageHandler::OnChannelChat -  ChatManager::OnChannelChat    拿到ChatUser：ChatManager::GetChatUser    判断玩家能否发送聊天信息；ChatUser::ChannelCanChat    准备转发聊天信息给客户端：SCChannelChat，设置好此协议的内容    根据聊天频道（chatdef::ChannelType），把聊天协议广播到对应客户端，以世界聊天举例，即进入：ChatManager::OnWorldChat   World::SendToAllGateway", 
+            "title": "频道聊天流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_4", 
+            "text": "注：此流程没有详细理解，因为基本不需要改动    接取任务：NewTaskManager::AcceptTask，接取的情况可能有很多种    判断能否接取此任务：NewTaskManager::CanAcceptTask，检查的内容很多，列举如下：      任务可接取等级  前置任务是否完成（TaskRecorder::IsFinished）  任务类型特殊性检查     除了NewTaskManager::CanAcceptTask，还有一些检查：     检查任务接取数量是否已满  检查与NPC的距离      执行接取前的行为：NewTaskManager::PreOperate    创建任务信息，并将其加入任务列表：TaskParam::AddTask    接取成功，此时玩家身上已有任务。发送任务信息协议：NewTaskManager::SendTaskInfo    触发任务接收事件：NewTaskManager::OnAddTask    此后，玩家开始做任务， 服务端负责观察各种事件，并检测任务进度：NewTaskManager::CheckProgress，如果进度有改变，发送任务信息协议：NewTaskManager::SendTaskInfo    客户端发送提交任务请求协议：CSTaskCommit，服务端处理入口：MessageHandler::OnTaskCommit    进入：NewTaskManager::CommitTask    判断能否提交：NewTaskManager::CanCommitTask   NewTaskManager::IsComplete，IsComplete会对每种类型的任务做特殊性检查    把任务删除：NewTaskManager::RemoveTask，如果任务完成，则发送奖励：NewTaskManager::DoReward，这里会根据每种任务类型做不同的处理    触发任务完成事件：NewTaskManager::OnRemoveTask   EventHandler::OnCompleteTask", 
+            "title": "做任务流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_5", 
+            "text": "客户端发送采集请求协议：CSStartGatherReq，服务端处理函数入口：MessageHandler::OnStartGatherReq    进入：Role::StartGather，开始采集    做一系列检查，如：采集距离，能否行动（Role::CanCharacterAction），能否采集（RoleStatusManager::CanGather）    设置采集相关参数，设置当前状态为采集ROLE_STATUS_GATHER    广播采集信息（SCStartGather），发送采集信息（SCStartGatherTimer）    进入之后的帧循环，并更新采集状态。见：Role::Update   Role::UpdateGather    如果采集时间到，说明采集成功。此时进入：GatherObj::Gather，触发采集物被采集事件：EventHandler::OnGather，并检测是否要删除此采集物：GatherObj::RemoveOnGather", 
+            "title": "采集流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_6", 
+            "text": "", 
+            "title": "物品相关"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_7", 
+            "text": "gameworld进程启动，开始初始化配置：ServerLogic::Start   World::Start   World::InitGameWorld    初始化物品配置入口：World::InitItem   ItemPool::Init，开始从配置文件itemmanager.xml读取配置    读取装备配置，使用宏：LOADEQUIPMENT，于itemmanager.xml中找到装备配置路径，读取之：Equipment::Init，若是读取成功，则会把配置对象（ItemBase）加入物品池（ItemPool::m_item_pool）    读取物品配置，使用宏：LOADITEM，于itemmanager.xml中找到物品配置路径，读取之：ItemBase::Init，执行具体子类的读取方法。若是读取成功，则会把配置对象（ItemBase）加入物品池（ItemPool::m_item_pool）    若读取失败，最终调用ServerLogic::StopServer结束进程", 
+            "title": "物品配置初始化流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_8", 
+            "text": "客户端发送使用物品协议：CSUseItem，服务端处理入口：MessageHandler::OnUseItem   Knapsack::Use    获取要使用的物品格子（ItemGridData），并对此进行一系列判断：是否合法，角色当前可否使用物品（RoleStatusManager::CanUseItem）    执行：ItemBase::Use，实际根据物品类型（ItemBase::ITEM_TYPE），执行子类的相关方法 ，比如常见的被动消耗物品，执行入口：NorexItem::Use    若Use方法执行失败，那么直接返回，不会进行消耗处理    若执行成功，会对物品格子（ItemGridData）进行修改，即消耗，若num已经为0，则会清理格子（ItemGridData::Clear）    设置DirtyMark，并通知客户端背包已更改：Knapsack::SetItemDirty   Knapsack::SendknapsackGridInfoToRole", 
+            "title": "使用物品流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_9", 
+            "text": "", 
+            "title": "邮件相关"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_10", 
+            "text": "注：发系统邮件，调用接口：MailRoute::MailToUser 即可    通过各种途径，进入：UserMailManager::SendMail，准备把邮件给UserMail做处理    设置MailParam数据块，这就是要发给玩家的邮件数据    添加邮件：UserMail::AddMail    找到一个坑，把邮件放进去：UserMail::GetFreeMailItemSlot    告知客户端有新邮件：UserMail::SendMailAck", 
+            "title": "发送邮件流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_11", 
+            "text": "客户端发送请求查看邮件列表协议：CSMailGetList，服务端处理入口：MessageHandler::OnGetMailList   MailRoute::GetMailList    转入：UserMailManager::OnFetchMailList    拿到UserMail模块（UserMailManager::GetUserMail），获取玩家身上的邮件列表：UserMail::FetchMailList    准备协议SCMailListAck，然后从邮件列表中获取邮件，把邮件发送给客户端", 
+            "title": "查看邮件流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_12", 
+            "text": "此流程和多数全局系统的回档流程类似（使用dirty_mark标记要回档的记录，然后将记录打包发给dataaccess做存储）。    进入帧循环：UserMailManager::Update   UserMail::Update    检查是否到了回档时间（间隔MAIL_SAVE_DB_INTERVAL）", 
+            "title": "邮件回档流程（存储）"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_13", 
+            "text": "", 
+            "title": "活动相关"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_14", 
+            "text": "服务器启动后，从数据库初始化随机活动的开启数据：RandActivityManager::Init   RandActivity::Init    首次Update，计算所有随机活动的开启时间：RandActivityManager::Update   RandActivityManager::CalActivityOpenTime   RandActivity::CalActivityOpenTime    拿到配置数据数据（S-随机活动开启配置.xls）：RandActivityOpenCfg::GetOpenCfg    设置随机活动的开启、关闭时间：RandActivity::SetRandActivityTime    把随机获得的开启状态同步到ActivityShadow：ActivityShadow::SetActivityStatus    如果活动状态有改变，通知客户端（所有）活动的状态RandActivity::NotfiyRandActivityStatus", 
+            "title": "随机活动时间设置流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_15", 
+            "text": "通过GM命令 /gm activitynextstate:act_number 可以强开关（随机）活动。  这里以随机活动为例。    客户端发送了正确的GM命令，服务端处理函数入口：Gm::ActivityToNextState    触发RandActivityManager::OnForceToNextState   RandActivity::OnForceToNextState    如果活动正在开启状态，则将其结束时间设置为当前时间，在下一帧时使其自动关闭    否则，通过配置dynamic_cfg.xml拿到其中随机活动的配置：DynamicConfig::GetRandActivityCfg    根据此配置，设置随机活动的开启时间、关闭时间，在下一帧使其自动判开启    【NOTICE】这里使用的配置是dynamic_cfg.xml，和S-随机活动开启配置.xls不一样！后者是设置自动开启的配置。", 
+            "title": "强开关（随机）活动流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_16", 
+            "text": "", 
+            "title": "角色杂项"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_17", 
+            "text": "通过各种途径（比如MessageHandler::OnTransportReq），执行：SceneManager::GoTo    做了一堆杂碎判断（乱七八糟的），转入SceneManager::ChangeScene    根据scene_id和scene_key判断场景是否存在，如果不存在，执行：SceneManager::CreateFB   SceneManager::CreateScene，创建一个副本（通常只有副本才会动态创建）    执行：SceneManager::ChangeLocalSceneHelper，准备把玩家送入场景    玩家离开场景：Scene::RoleLeaveScene，开始清理与Role相关的数据。触发SpecialLogic::OnRoleLeaveScene，删掉Role（Scene::DeleteObj），触发Role::OnLeaveScene，删掉netid对rolelocal的映射：SceneManager::UnregisterRoleLocal    但由于场景对象是延迟删除，此时（即在SceneManager::ChangeLocalSceneHelper函数里）还可以使用Role（那个小龙的注释，请忽略）    准备保存Role（SceneManager::SaveRole），为什么切场景要保存？因为DirtyMark会被清理，所以一定要保存，然后清理DirtyMark。保存流程已有另外的描述    发送完保存请求后，继续拿到Role身上的数据，传入：Scene::RoleEnterScene，创建一个新的Role对象，执行初始化（Role::Init），加入场景（Scene::AddObj），触发Role::OnEnterScene， 告诉客户端（SCEnterScene） ，成功进入场景    把rolelocal重新注册到netid对rolelocal的映射里去，意味着可以调用SceneManager::GetRole(user_id)来获取Role了    触发：SpecialLogic::OnRoleEnterScene", 
+            "title": "切换场景流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_18", 
+            "text": "通过各种途径，给角色增加经验：Role::AddExp    根据当前的经验加成，计算加成后的经验：Role::GetAddonExp    while循环，给角色加经验，一旦超过max_exp（从配置roleexp.xml读取），即代表可以升级    执行升级操作：Role::OnUpgradeLevel    发协议告知等级改变（SCChaLevelUpgrade），重算属性，触发基础信息改变：Role::OnRoleBaseInfoChange，触发升级事件：EventHandler::OnRoleUpgradeLevel    继续给角色加经验，直到要加的经验不足以升级为止    发协议告知经验改变（SCChaExpChange）", 
+            "title": "升级流程"
+        }, 
+        {
+            "location": "/server/逻辑流程/#_19", 
+            "text": "客户端请求移动，发送协议：CSObjMove，服务端处理入口：MessageHandler::OnRoleMove    转入：Role::Move   Character::Move    做一些检查：移动位置是否合法（Map::Validate），非法检查，角色可否行动（Character::CanCharacterAction，Character::IsDingShen）    停止攻击（Character::StopAttack）    设置当前的移动参数（posi, dir, dir_distance），分别代表当前位置，当前移动方向，当前移动方向的距离    更新绑定到Role的观察者：ZoneMatrix::MoveObser    广播位置信息：Character::SendPosiInfo    请求移动成功，更新绑定到Role的AOI：ZoneMatrix::MoveAOI    重置Role状态：Role::ResetRoleStatus，实际上就是重置了采集状态    在之后的帧循环里，执行Character::Update   Character::MoveLogic，更新位置信息，到达位置后，执行：Character::MoveStop，更新状态，并通知客户端移动信息", 
+            "title": "移动流程"
+        }, 
+        {
+            "location": "/server/战斗流程/", 
+            "text": "战斗流程\n\n\nEffect施加流程（死亡流程）\n\n\n\n\n\n\n创建一个EffectBase子类实例（new Effect\n）\n\n\n\n\n\n\n对其设置各种参数\n\n\n\n\n\n\n开始施加效果：Character::AddEffect\n\n\n\n\n\n\n判断能否施加效果，比如：IsAlive, IsWudi, IsInvisible，不能就把Effect delete，return\n\n\n\n\n\n\n如果是一次性效果（EFFECT_TYPE_ONCE），那么直接执行：EffectOnce::Effect，对角色施加效果，如果角色死亡，触发：Character::OnDie\n\n\n\n\n\n\n把效果加入EffectList：EffectList::Add \n EffectList::AddSkillEffect\n\n\n\n\n\n\n做Merge处理，如果无需Merge，转入：EffectList::AddEffectToTypeList\n\n\n\n\n\n\n把效果加入效果列表：m_all_effect_list\n\n\n\n\n\n\n对角色施加一次效果：EffectBase::Effect\n\n\n\n\n\n\n如果是特殊效果，还会执行：EffectList::AddSpecialBuff，做一个已拥有特殊效果的标记（m_special_buff_mark）\n\n\n\n\n\n\n在每一帧循环里，每500毫秒，执行：EffectList::Effect \n EffectBase::Update，判断角色是否死亡，触发：Character::OnDie\n\n\n\n\n\n\n场景Effect施加流程\n\n\n\n\n\n\nScene进入主循环：Scene::Update \n SpecialLogic::Update \n SpecialLogic::UpdateSceneEffectList\n\n\n\n\n\n\n对场景内的每一个SceneEffectBase对象，执行：SceneEffectBase::Effect，如果执行失败，该对象会被delete\n\n\n\n\n\n\n玩家攻击流程\n\n\n\n\n\n\n客户端发送释放技能请求CSPerformSkillReq，服务端处理函数入口：MessageHandler::OnPerformSkill\n\n\n\n\n\n\n进入：Role::PerformSkill，这是Character提供的虚函数，Character有其实现，Role会先做一些自己的处理\n\n\n\n\n\n\n做一些可否使用技能的判断：Role::CanCharacterAction, RoleStatusManager::CanPerformSkill, RoleStatusManager::CanFight\n\n\n\n\n\n\n若客户端传来的是特殊技能，那么执行：SpecialLogic::PerformSkill，然后Return\n\n\n\n\n\n\n否则继续其他处理，转入基类：Character::PerformSkill，此时又会做一些判断\n\n\n\n\n\n\n判断是否对角色释放：SkillManager::CheckSkillAttackCharacter \n SkillBase::IsAttackCharacter \n m_is_attack_character，这个成员是构造函数中写死的，非配置\n\n\n\n\n\n\n判断是否对敌人释放：SkillManager::CheckSkillTargetEnemy \n SkillBase::IsTargetEnemy -\n m_attack_enemy，这个成员是构造函数中写死的，非配置\n\n\n\n\n\n\n判断对方是否是敌人：Character::IsAlive, Character::IsEnemy\n\n\n\n\n\n\n设置下一个技能的信息（技能idx，释放位置，目标obj_id），这里释放位置就是角色自己的位置\n\n\n\n\n\n\n又是各种判断：安全区不能攻击，遭受了各种Buff不能攻击\n\n\n\n\n\n\n转入：SkillManager::PerformNextSkill \n SkillBase::Perform，由子类实现技能释放功能（一般就是施加各种Effect）\n\n\n\n\n\n\n注：计算最终伤害将调用接口：SkillBase::CalcInjureAndType\n\n\n怪物攻击流程\n\n\n\n\n\n\n外部调用：MonsterAIBase::StartAttack，由AI来执行攻击逻辑\n\n\n\n\n\n\n更新角色的动作状态，进入：Character::StartAttack\n\n\n\n\n\n\n如果参数2 perform_skill 为true，则进入：MonsterAIBase::SetNextSkill，准备释放怪物技能\n\n\n\n\n\n\n检测是否触发条件技能（某些情况下才会释放的技能）\n\n\n\n\n\n\n如果未能触发条件技能，则释放怪物的默认技能，进入：MonsterAIBase::PerformSkillByIndex\n\n\n\n\n\n\n一般是立即释放技能，进入：Character::PerformSkill，后面的逻辑和Role的差不多\n\n\n\n\n\n\n怪物死亡流程\n\n\n死亡事件\n\n\n\n\n\n\n效果施加到Character身上，可能会触发：Character::OnDie\n\n\n\n\n\n\nMonster是Character的子类，因此会调用：Monster::OnDie\n\n\n\n\n\n\n做了一些列的处理：Character::OnDie，MonsterAIBase::OnDie\n\n\n\n\n\n\n给奖励，经验、元力等，如Monster::RewardExpOnDead，\n\n\n\n\n\n\n产生掉落物：Monster::DropOnDead\n\n\n\n\n\n\n还会触发一些事件，比如EventHandler::OnMonsterDie\n\n\n\n\n\n\n判断删除对象\n\n\n\n\n\n\nMonster::Update，判断是否活着Character::IsAlive\n\n\n\n\n\n\n如果已死，那么延迟删除之：Scene::DeleteObj\n\n\n\n\n\n\n触发Monster::OnLeaveScene", 
+            "title": "战斗流程"
+        }, 
+        {
+            "location": "/server/战斗流程/#_1", 
+            "text": "", 
+            "title": "战斗流程"
+        }, 
+        {
+            "location": "/server/战斗流程/#effect", 
+            "text": "创建一个EffectBase子类实例（new Effect ）    对其设置各种参数    开始施加效果：Character::AddEffect    判断能否施加效果，比如：IsAlive, IsWudi, IsInvisible，不能就把Effect delete，return    如果是一次性效果（EFFECT_TYPE_ONCE），那么直接执行：EffectOnce::Effect，对角色施加效果，如果角色死亡，触发：Character::OnDie    把效果加入EffectList：EffectList::Add   EffectList::AddSkillEffect    做Merge处理，如果无需Merge，转入：EffectList::AddEffectToTypeList    把效果加入效果列表：m_all_effect_list    对角色施加一次效果：EffectBase::Effect    如果是特殊效果，还会执行：EffectList::AddSpecialBuff，做一个已拥有特殊效果的标记（m_special_buff_mark）    在每一帧循环里，每500毫秒，执行：EffectList::Effect   EffectBase::Update，判断角色是否死亡，触发：Character::OnDie", 
+            "title": "Effect施加流程（死亡流程）"
+        }, 
+        {
+            "location": "/server/战斗流程/#effect_1", 
+            "text": "Scene进入主循环：Scene::Update   SpecialLogic::Update   SpecialLogic::UpdateSceneEffectList    对场景内的每一个SceneEffectBase对象，执行：SceneEffectBase::Effect，如果执行失败，该对象会被delete", 
+            "title": "场景Effect施加流程"
+        }, 
+        {
+            "location": "/server/战斗流程/#_2", 
+            "text": "客户端发送释放技能请求CSPerformSkillReq，服务端处理函数入口：MessageHandler::OnPerformSkill    进入：Role::PerformSkill，这是Character提供的虚函数，Character有其实现，Role会先做一些自己的处理    做一些可否使用技能的判断：Role::CanCharacterAction, RoleStatusManager::CanPerformSkill, RoleStatusManager::CanFight    若客户端传来的是特殊技能，那么执行：SpecialLogic::PerformSkill，然后Return    否则继续其他处理，转入基类：Character::PerformSkill，此时又会做一些判断    判断是否对角色释放：SkillManager::CheckSkillAttackCharacter   SkillBase::IsAttackCharacter   m_is_attack_character，这个成员是构造函数中写死的，非配置    判断是否对敌人释放：SkillManager::CheckSkillTargetEnemy   SkillBase::IsTargetEnemy -  m_attack_enemy，这个成员是构造函数中写死的，非配置    判断对方是否是敌人：Character::IsAlive, Character::IsEnemy    设置下一个技能的信息（技能idx，释放位置，目标obj_id），这里释放位置就是角色自己的位置    又是各种判断：安全区不能攻击，遭受了各种Buff不能攻击    转入：SkillManager::PerformNextSkill   SkillBase::Perform，由子类实现技能释放功能（一般就是施加各种Effect）    注：计算最终伤害将调用接口：SkillBase::CalcInjureAndType", 
+            "title": "玩家攻击流程"
+        }, 
+        {
+            "location": "/server/战斗流程/#_3", 
+            "text": "外部调用：MonsterAIBase::StartAttack，由AI来执行攻击逻辑    更新角色的动作状态，进入：Character::StartAttack    如果参数2 perform_skill 为true，则进入：MonsterAIBase::SetNextSkill，准备释放怪物技能    检测是否触发条件技能（某些情况下才会释放的技能）    如果未能触发条件技能，则释放怪物的默认技能，进入：MonsterAIBase::PerformSkillByIndex    一般是立即释放技能，进入：Character::PerformSkill，后面的逻辑和Role的差不多", 
+            "title": "怪物攻击流程"
+        }, 
+        {
+            "location": "/server/战斗流程/#_4", 
+            "text": "死亡事件    效果施加到Character身上，可能会触发：Character::OnDie    Monster是Character的子类，因此会调用：Monster::OnDie    做了一些列的处理：Character::OnDie，MonsterAIBase::OnDie    给奖励，经验、元力等，如Monster::RewardExpOnDead，    产生掉落物：Monster::DropOnDead    还会触发一些事件，比如EventHandler::OnMonsterDie    判断删除对象    Monster::Update，判断是否活着Character::IsAlive    如果已死，那么延迟删除之：Scene::DeleteObj    触发Monster::OnLeaveScene", 
+            "title": "怪物死亡流程"
+        }, 
+        {
+            "location": "/client/code_snippets/", 
+            "text": "协议\n\n\n协议类型定义在文件protocol_xxx.lua中，xxx是协议号段，比如protocol_069.lua，定义的是6900 - 6999之间的协议。\n\n\nSC协议\n\n\nSCXXX = SCXXX or BaseClass(BaseProtocolStruct)\nfunction SCXXX:__init()\n    self.msg_type = 8888\n    self.count = 0\n    self.item_list = {}\nend\n\nfunction SCXXX:Decode()\n    self.count = MsgAdapter.ReadInt()\n    self.item_list = {}\n\n    for i = 1, self.count do\n        local vo = {}\n        vo.uid = MsgAdapter.ReadInt()\n        vo.name = MsgAdapter.ReadStrN(32)\n        vo.scene_id = MsgAdapter.ReadInt()\n        vo.monster_id = MsgAdapter.ReadUShort()\n        vo.item_id = MsgAdapter.ReadUShort()\n        vo.drop_timestamp = MsgAdapter.ReadUInt()\n\n        self.item_list[i] = vo\n    end\nend\n\n\n\n\nCS协议\n\n\nCSXXX = CSXXX or BaseClass(BaseProtocolStruct)\nfunction CSXXX:__init()\n    self.msg_type = 6666\n    self.is_auto_buy = 0\nend\n\nfunction CSXXX:Encode()\n    MsgAdapter.WriteBegin(self.msg_type)\n    MsgAdapter.WriteInt(self.is_auto_buy)\nend\n\n\n\n\n其他\n\n\n获取配置\n\n\n获取配置数据的接口由ConfigManager提供，它定义在文件：config_manager.lua\n\n\n-- 获取一条配置\nlocal gather_config = ConfigManager.Instance:GetAutoConfig(\ngather_auto\n).gather_list[self.vo.gather_id]\n\n\n\n\nGetAutoConfig获取的是一张表，即gather_auto.lua里定义的表，然后直接访问其成员即可获取一条记录。\n\n\n获取时间相关\n\n\nlocal now_time = TimeCtrl.Instance:GetServerTime()  -- 获取服务器的当前时间\n\n\n\n\n获取场景类型：\n\n\nScene.Instance:GetSceneType()\n\n\n\n\n获取场景中的对象\n\n\n场景中保存着视野中的Obj，可以通过一些列的Get方法获得。\n\n\n-- 获得MainRole\nlocal main_role = Scene.Instance:GetMainRole()\n\n-- 获得所有的Role\nlocal role_list = Scene.Instance:GetRoleList()\n\n\n\n\n拿到背包里某物品的个数\n\n\nItemData.Instance:GetItemNumInBagById(item_id)\n\n\n\n\n获取主角色数据\n\n\nGameVoManager:GetMainRoleVo\n\nlocal main_role_vo = GameVoManager.Instance:GetMainRoleVo()\n\n\n\n\n它返回的是一个MainRoleVo对象，定义在文件game_vo.lua\n\n\n延迟执行函数\n\n\nGlobalTimerQuest:AddDelayTimer(func, time_sec)\n\n\n\n\n测试是否在跨服中\n\n\nif IS_ON_CROSSSERVER then\n    -- do something\nend\n\n\n\n\n播放提示字符串\n\n\nSysMsgCtrl:ErrorRemind\n\n\n\n\n调试打印\n\n\nprint_log(msg)   -- 输出到正常输出窗口\nprint_error(msg) -- 输出的错误输出窗口\n\n\n\n\n这个方法还可以输出调用堆栈，以及输出表的信息。\n\n\n输出调用堆栈\n\n\nprint(debug.traceback())\n\n\n\n\ndebug.traceback()可以返回当前的调用堆栈字符串。\n\n\n将调用堆栈输出至文件：\n\n\nlocal file = io.open(\ntraceback.txt\n, \nw+\n)\nfile:write(debug.traceback())\nfile:flush()", 
+            "title": "code snippets"
+        }, 
+        {
+            "location": "/client/code_snippets/#_1", 
+            "text": "协议类型定义在文件protocol_xxx.lua中，xxx是协议号段，比如protocol_069.lua，定义的是6900 - 6999之间的协议。", 
+            "title": "协议"
+        }, 
+        {
+            "location": "/client/code_snippets/#sc", 
+            "text": "SCXXX = SCXXX or BaseClass(BaseProtocolStruct)\nfunction SCXXX:__init()\n    self.msg_type = 8888\n    self.count = 0\n    self.item_list = {}\nend\n\nfunction SCXXX:Decode()\n    self.count = MsgAdapter.ReadInt()\n    self.item_list = {}\n\n    for i = 1, self.count do\n        local vo = {}\n        vo.uid = MsgAdapter.ReadInt()\n        vo.name = MsgAdapter.ReadStrN(32)\n        vo.scene_id = MsgAdapter.ReadInt()\n        vo.monster_id = MsgAdapter.ReadUShort()\n        vo.item_id = MsgAdapter.ReadUShort()\n        vo.drop_timestamp = MsgAdapter.ReadUInt()\n\n        self.item_list[i] = vo\n    end\nend", 
+            "title": "SC协议"
+        }, 
+        {
+            "location": "/client/code_snippets/#cs", 
+            "text": "CSXXX = CSXXX or BaseClass(BaseProtocolStruct)\nfunction CSXXX:__init()\n    self.msg_type = 6666\n    self.is_auto_buy = 0\nend\n\nfunction CSXXX:Encode()\n    MsgAdapter.WriteBegin(self.msg_type)\n    MsgAdapter.WriteInt(self.is_auto_buy)\nend", 
+            "title": "CS协议"
+        }, 
+        {
+            "location": "/client/code_snippets/#_2", 
+            "text": "获取配置  获取配置数据的接口由ConfigManager提供，它定义在文件：config_manager.lua  -- 获取一条配置\nlocal gather_config = ConfigManager.Instance:GetAutoConfig( gather_auto ).gather_list[self.vo.gather_id]  GetAutoConfig获取的是一张表，即gather_auto.lua里定义的表，然后直接访问其成员即可获取一条记录。  获取时间相关  local now_time = TimeCtrl.Instance:GetServerTime()  -- 获取服务器的当前时间  获取场景类型：  Scene.Instance:GetSceneType()  获取场景中的对象  场景中保存着视野中的Obj，可以通过一些列的Get方法获得。  -- 获得MainRole\nlocal main_role = Scene.Instance:GetMainRole()\n\n-- 获得所有的Role\nlocal role_list = Scene.Instance:GetRoleList()  拿到背包里某物品的个数  ItemData.Instance:GetItemNumInBagById(item_id)  获取主角色数据  GameVoManager:GetMainRoleVo\n\nlocal main_role_vo = GameVoManager.Instance:GetMainRoleVo()  它返回的是一个MainRoleVo对象，定义在文件game_vo.lua  延迟执行函数  GlobalTimerQuest:AddDelayTimer(func, time_sec)  测试是否在跨服中  if IS_ON_CROSSSERVER then\n    -- do something\nend  播放提示字符串  SysMsgCtrl:ErrorRemind  调试打印  print_log(msg)   -- 输出到正常输出窗口\nprint_error(msg) -- 输出的错误输出窗口  这个方法还可以输出调用堆栈，以及输出表的信息。  输出调用堆栈  print(debug.traceback())  debug.traceback()可以返回当前的调用堆栈字符串。  将调用堆栈输出至文件：  local file = io.open( traceback.txt ,  w+ )\nfile:write(debug.traceback())\nfile:flush()", 
+            "title": "其他"
+        }, 
+        {
+            "location": "/client/tmp/", 
+            "text": "代码提交\n\n\n提交时忽略文件：.asset, main.unity\n\n\n如何修改View\n\n\n\n\n\n\n运行游戏，切换到Scene面板，选中相关的UI，找到Hierarchy面板上对应的View\n\n\n\n\n\n\n关掉游戏\n\n\n\n\n\n\n在Project下面搜索这个View名字，把View的预制体拖曳到Hierarchy面板里，然后编辑预制体\n\n\n\n\n\n\n编辑完毕Apply，再把它从Hierarchy面板移除，重启游戏观察改动\n\n\n\n\n\n\n如何从代码里获取一个UI对象\n\n\n在UI控件的父节点的Inspector面板中，找到UI Name Table组件，其中有其子节点对应的名字以及其对应的UI控件。\n\n\n然后在代码里使用father:FindObj(\nname\n)来获取对象：\n\n\nself.reward_btn = self:FindObj(\nreward_btn\n)\n\n\n\n\nUI操作\n\n\n按钮\n\n\n创建：\n\n\n\n\n\n\n右键父节点 -\n UI -\n Button\n\n\n\n\n\n\n删掉原有的Button组件\n\n\n\n\n\n\n添加组件：UI Grayscale, Button Ex, UI Event Bind Click\n\n\n\n\n\n\n设置灰度（UI Grayscale组件）：\n\n\nself.reward_btn.grayscale.GrayScale = 255\n\n\n\n\n设置是否可点击（Button Ex组件）：\n\n\nself.reward_btn.button.interactable = false\n\n\n\n\n处理点击事件（UI Event Bind Click组件）：\n\n\nself:ListenEvent(\nreward_click\n, BindTool.Bind(self.RewardOnClick, self))\n\n\n这个reward_click名字可以在父节点的UI Name Table里添加定义。\n\n\n文本\n\n\n创建：\n\n\n右键父节点 -\n UI -\n Text\n\n\n添加相关的组件。\n\n\n绑定到变量：\n\n\n为UI添加一个UI Variable Bind Text组件，然后添加一个给它。这样当这个变量修改的时候，文本也会自动跟着修改。", 
+            "title": "tmp"
+        }, 
+        {
+            "location": "/client/tmp/#_1", 
+            "text": "提交时忽略文件：.asset, main.unity", 
+            "title": "代码提交"
+        }, 
+        {
+            "location": "/client/tmp/#view", 
+            "text": "运行游戏，切换到Scene面板，选中相关的UI，找到Hierarchy面板上对应的View    关掉游戏    在Project下面搜索这个View名字，把View的预制体拖曳到Hierarchy面板里，然后编辑预制体    编辑完毕Apply，再把它从Hierarchy面板移除，重启游戏观察改动", 
+            "title": "如何修改View"
+        }, 
+        {
+            "location": "/client/tmp/#ui", 
+            "text": "在UI控件的父节点的Inspector面板中，找到UI Name Table组件，其中有其子节点对应的名字以及其对应的UI控件。  然后在代码里使用father:FindObj( name )来获取对象：  self.reward_btn = self:FindObj( reward_btn )", 
+            "title": "如何从代码里获取一个UI对象"
+        }, 
+        {
+            "location": "/client/tmp/#ui_1", 
+            "text": "", 
+            "title": "UI操作"
+        }, 
+        {
+            "location": "/client/tmp/#_2", 
+            "text": "创建：    右键父节点 -  UI -  Button    删掉原有的Button组件    添加组件：UI Grayscale, Button Ex, UI Event Bind Click    设置灰度（UI Grayscale组件）：  self.reward_btn.grayscale.GrayScale = 255  设置是否可点击（Button Ex组件）：  self.reward_btn.button.interactable = false  处理点击事件（UI Event Bind Click组件）：  self:ListenEvent( reward_click , BindTool.Bind(self.RewardOnClick, self))  这个reward_click名字可以在父节点的UI Name Table里添加定义。", 
+            "title": "按钮"
+        }, 
+        {
+            "location": "/client/tmp/#_3", 
+            "text": "创建：  右键父节点 -  UI -  Text  添加相关的组件。  绑定到变量：  为UI添加一个UI Variable Bind Text组件，然后添加一个给它。这样当这个变量修改的时候，文本也会自动跟着修改。", 
+            "title": "文本"
+        }
+    ]
+}
