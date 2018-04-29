@@ -18,4 +18,18 @@ if (m_is_finish || m_uid > 0)
 }
 ```
 
-- 执行SceneManager::GoTo后，Role将会失效，不能再使用了。
+- 副本逻辑设计要注意“开关”，比如OnFinish之前需要设置m_is_finish标记，并：
+
+```
+void OnFinish()
+{
+	if (m_is_finish) return; // 避免多次调用OnFinish
+
+	m_is_finish = 1;
+	// ...
+}
+```
+
+- 要避免值为0的scene_key，其场景将被拒绝创建
+
+- 执行SceneManager::GoTo成功后，Role将会失效，不能再使用了。

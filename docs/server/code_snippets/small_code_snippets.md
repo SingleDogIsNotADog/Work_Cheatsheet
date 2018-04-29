@@ -38,12 +38,16 @@ World::SendToAllGateway
 		contentparam.item_list[0].invalid_time = item_base->CalInvalidTime();
 	}
 
-	int send_len = MailContent(contentparam.contenttxt, sizeof(contentparam.contenttxt), "key");
+	int send_len = gstr::MailContent(contentparam.contenttxt, sizeof(contentparam.contenttxt), "key");
 	if (send_len > 0)
 	{
 		MailRoute::MailToUser(m_role->GetUserId(), SYSTEM_MAIL_REASON_INVALID, contentparam);
 	}
 }
+
+// 简单的发奖励邮件
+gstr::MailContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), "key");
+gamecommon::MailToUser(uid, rewards, gamestring::GAMESTRING_BUF);
 ```
 
 ## 发传闻
