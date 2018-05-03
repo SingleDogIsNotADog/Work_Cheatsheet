@@ -57,6 +57,10 @@
 </li>
                             
 <li >
+    <a href="../../bat/">bat</a>
+</li>
+                            
+<li >
     <a href="../../vs/">visual studio</a>
 </li>
                             
@@ -217,6 +221,7 @@
             <li><a href="#_4">修改传闻</a></li>
             <li><a href="#_5">修改错误码</a></li>
             <li><a href="#_6">敏感词</a></li>
+            <li><a href="#_7">日志报错</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -258,7 +263,10 @@ insert into command (creator, type, cmd) values (&quot;background&quot;, 2, &quo
 <p>如果错误码提示很奇怪，那么有可能是客户端没有更新新的错误码。</p>
 <h2 id="_6">敏感词</h2>
 <p>如果是名字类的敏感词，由服务端处理。</p>
-<p>如果是比较长的，比如聊天的，由客户端处理。</p></div>
+<p>如果是比较长的，比如聊天的，由客户端处理。</p>
+<h2 id="_7">日志报错</h2>
+<p>SeriousError (Critical): [Knapsack::Init Error]</p>
+<p>可能是由于策划在itemmanager.xml中删除了某个item的配置，导致玩家身上的该物品读取配置失败。</p></div>
         </div>
 
         <footer class="col-md-12">

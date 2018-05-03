@@ -57,6 +57,10 @@
 </li>
                             
 <li >
+    <a href="../bat/">bat</a>
+</li>
+                            
+<li >
     <a href="../vs/">visual studio</a>
 </li>
                             
@@ -198,7 +202,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../vs/">
+                        <a rel="prev" href="../bat/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -235,7 +239,7 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="_1">常用快捷键</h1>
-<pre><code>CTRL+C              # 结束当前命令
+<pre><code class="bash">CTRL+C              # 结束当前命令
 CTRL+D              # 删除光标前的字符，同 &lt;Delete&gt; ，或者没有内容时，退出会话，或者交互模式输入文件结束符EOF
 CTRL+K              # 删除光标位置到行末的内容
 CTRL+U              # 删除光标位置到行首的内容
@@ -245,7 +249,7 @@ CTRL+Z              # 暂停前台进程返回 bash，需要时可用 fg 将其�
 
 <h1 id="shell">Shell命令</h1>
 <h2 id="bash">Bash基本操作</h2>
-<pre><code>exit                # 退出当前登陆
+<pre><code class="bash">exit                # 退出当前登陆
 env                 # 显示环境变量
 echo $SHELL         # 显示你在使用什么 SHELL
 
@@ -257,7 +261,7 @@ reset               # 重置终端（当你不小心 cat 了一个二进制，�
 </code></pre>
 
 <h2 id="_2">目录操作</h2>
-<pre><code>cd                  # 返回自己 $HOME 目录
+<pre><code class="bash">cd                  # 返回自己 $HOME 目录
 cd {dirname}        # 进入目录
 cd -                # 回到之前的目录
 pwd                 # 显示当前所在目录
@@ -266,7 +270,7 @@ mkdir -p {dirname}  # 递归创建目录
 </code></pre>
 
 <h2 id="_3">文件操作</h2>
-<pre><code>ls                  # 显示当前目录内容，后面可接目录名：ls {dir} 显示指定目录
+<pre><code class="bash">ls                  # 显示当前目录内容，后面可接目录名：ls {dir} 显示指定目录
 ls -l               # 列表方式显示目录内容，包括文件日期，大小，权限等信息
 ls -a               # 显示所有文件和目录，包括隐藏文件（.开头的文件/目录名）
 ln -s {fn} {link}   # 给指定文件创建一个软链接
@@ -290,7 +294,7 @@ grep -r {pat} .     # 在当前目录下递归查找所有出现过 pat 的文�
 </code></pre>
 
 <h2 id="_4">用户管理</h2>
-<pre><code>whoami              # 显示我的用户名
+<pre><code class="bash">whoami              # 显示我的用户名
 passwd              # 修改密码，passwd {user} 可以用于 root 修改别人密码
 last {user}         # 显示登陆记录
 w                   # 查看谁在线
@@ -300,7 +304,7 @@ id {user}           # 查看用户的 uid，gid 以及所属其他用户组
 </code></pre>
 
 <h2 id="_5">进程管理</h2>
-<pre><code>ps                        # 查看当前会话进程
+<pre><code class="bash">ps                        # 查看当前会话进程
 ps ax                     # 查看所有进程，类似 ps -e
 ps aux                    # 查看所有进程详细信息，类似 ps -ef
 ps -u {user}              # 查看某用户进程
@@ -322,7 +326,7 @@ trap - sig1 sig2          # 恢复默认信号处理行为
 </code></pre>
 
 <h2 id="_6">其他命令</h2>
-<pre><code>ssh user@host             # 以用户 user 登陆到远程主机 host
+<pre><code class="bash">ssh user@host             # 以用户 user 登陆到远程主机 host
 ssh -p {port} user@host   # 指定端口登陆主机
 
 uname -a                  # 查看内核版本等信息
@@ -346,7 +350,7 @@ tar -zxv -f file.tar.gz            # 在当前路径解压file.tar.gz
 
 <h1 id="shell_1">Shell脚本</h1>
 <h2 id="_7">变量操作</h2>
-<pre><code>varname=value             # 定义变量
+<pre><code class="bash">varname=value             # 定义变量
 echo $varname             # 查看变量内容
 ${#varname}               # 返回字符串长度
 
@@ -385,7 +389,7 @@ num=$((1 + (2 + 3) * 2))  # 复杂计算
 </code></pre>
 
 <h2 id="_8">函数</h2>
-<pre><code># 定义一个新函数
+<pre><code class="bash"># 定义一个新函数
 function myfunc() {
     # $1 代表第一个参数，$N 代表第 N 个参数
     # $# 代表参数个数
@@ -400,7 +404,7 @@ myfunc arg1 arg2 arg3     # 带参数的函数调用
 </code></pre>
 
 <h2 id="_9">条件判断</h2>
-<pre><code>statement1 &amp;&amp; statement2  # and 操作符
+<pre><code class="bash">statement1 &amp;&amp; statement2  # and 操作符
 statement1 || statement2  # or 操作符
 
 exp1 -a exp2              # exp1 和 exp2 同时为真时返回真
@@ -430,7 +434,7 @@ num1 -ge num2             # 数字判断：num1 &gt;= num2
 </code></pre>
 
 <h2 id="if-test">分支控制：if 和经典 test</h2>
-<pre><code>test {expression}         # 判断条件为真的话 test 程序返回0 否则非零
+<pre><code class="bash">test {expression}         # 判断条件为真的话 test 程序返回0 否则非零
 [ expression ]            # 判断条件为真的话返回0 否则非零
 
 test &quot;abc&quot; = &quot;def&quot;        # 查看返回值 echo $? 显示 1，因为条件为假
@@ -478,7 +482,7 @@ fi
 </code></pre>
 
 <h2 id="while-for-case-until">流程控制：while / for / case / until</h2>
-<pre><code># while 循环
+<pre><code class="bash"># while 循环
 while condition; do
     statements
 done
@@ -520,7 +524,7 @@ done
 </code></pre>
 
 <h2 id="_10">其他有趣的脚本</h2>
-<pre><code># 将文件编码转换，并输出到文件，file_in和file_out可以是同一个文件
+<pre><code class="bash"># 将文件编码转换，并输出到文件，file_in和file_out可以是同一个文件
 iconv -f gb2312 -t utf8 file_in -o file_out
 
 # 将当前目录下的所有文件（包括子目录）的修改时间改为当前时间
@@ -532,14 +536,14 @@ lsof -i port:80                      # 哪个程序在使用 80 端口？
 
 <h1 id="_11">文本处理</h1>
 <h2 id="grep">grep</h2>
-<pre><code>grep 'Error' file                  # 在file中检索包含Error的行
+<pre><code class="bash">grep 'Error' file                  # 在file中检索包含Error的行
 grep -r 'Error' *                  # 在当前目录及其子目录中检索包含Error的行
 grep -l 'Error' *                  # 在当前目录及其子目录中检索包含Error的行，只输出相关文件名
 grep -v 'Error' file               # 在file中检索包含Error的行，只输出不匹配的行
 </code></pre>
 
 <h2 id="cut">cut</h2>
-<pre><code>cut -c 1-16                        # 截取每行头16个字符
+<pre><code class="bash">cut -c 1-16                        # 截取每行头16个字符
 cut -c 1-16 file                   # 截取指定文件中每行头 16个字符
 cut -c3-                           # 截取每行从第三个字符开始到行末的内容
 cut -d':' -f5                      # 截取用冒号分隔的第五列内容
@@ -550,7 +554,7 @@ echo &quot;hello sir&quot; | cut -d' ' -f2   # 显示 sir
 </code></pre>
 
 <h2 id="awk-sed">awk / sed</h2>
-<pre><code>awk '{print $5}' file              # 打印文件中以空格分隔的第五列
+<pre><code class="bash">awk '{print $5}' file              # 打印文件中以空格分隔的第五列
 awk -F ',' '{print $5}' file       # 打印文件中以逗号分隔的第五列
 awk '/str/ {print $2}' file        # 打印文件中包含 str 的所有行的第二列
 awk -F ',' '{print $NF}' file      # 打印逗号分隔的文件中的每行最后一列
@@ -561,7 +565,7 @@ sed -i -r 's/^\s+//g' file         # 删除文件每行头部空格
 sed '/^$/d' file                   # 删除文件空行并打印
 sed -i 's/\s\+$//' file            # 删除文件每行末尾多余空格
 
-sed '1i\Hello' file                # 在文件file的第一行插入Hello
+sed '1i\Hello' file                # 在文件file的第一行插入Hello
 </code></pre>
 
 <h1 id="_12">参考资料</h1>
