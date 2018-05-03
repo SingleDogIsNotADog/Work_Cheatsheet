@@ -1,6 +1,6 @@
 # 常用快捷键
 	
-```
+```bash
 CTRL+C              # 结束当前命令
 CTRL+D              # 删除光标前的字符，同 <Delete> ，或者没有内容时，退出会话，或者交互模式输入文件结束符EOF
 CTRL+K              # 删除光标位置到行末的内容
@@ -13,7 +13,7 @@ CTRL+Z              # 暂停前台进程返回 bash，需要时可用 fg 将其�
 
 ## Bash基本操作
 
-```
+```bash
 exit                # 退出当前登陆
 env                 # 显示环境变量
 echo $SHELL         # 显示你在使用什么 SHELL
@@ -28,7 +28,7 @@ reset               # 重置终端（当你不小心 cat 了一个二进制，�
 
 ## 目录操作
 
-```
+```bash
 cd                  # 返回自己 $HOME 目录
 cd {dirname}        # 进入目录
 cd -                # 回到之前的目录
@@ -39,7 +39,7 @@ mkdir -p {dirname}  # 递归创建目录
 
 ## 文件操作
 
-```
+```bash
 ls                  # 显示当前目录内容，后面可接目录名：ls {dir} 显示指定目录
 ls -l               # 列表方式显示目录内容，包括文件日期，大小，权限等信息
 ls -a               # 显示所有文件和目录，包括隐藏文件（.开头的文件/目录名）
@@ -65,7 +65,7 @@ grep -r {pat} .     # 在当前目录下递归查找所有出现过 pat 的文�
 
 ## 用户管理
 
-```
+```bash
 whoami              # 显示我的用户名
 passwd              # 修改密码，passwd {user} 可以用于 root 修改别人密码
 last {user}         # 显示登陆记录
@@ -77,7 +77,7 @@ id {user}           # 查看用户的 uid，gid 以及所属其他用户组
 
 ## 进程管理
 
-```
+```bash
 ps                        # 查看当前会话进程
 ps ax                     # 查看所有进程，类似 ps -e
 ps aux                    # 查看所有进程详细信息，类似 ps -ef
@@ -101,7 +101,7 @@ trap - sig1 sig2          # 恢复默认信号处理行为
 
 ## 其他命令
 
-```
+```bash
 ssh user@host             # 以用户 user 登陆到远程主机 host
 ssh -p {port} user@host   # 指定端口登陆主机
 
@@ -128,7 +128,7 @@ tar -zxv -f file.tar.gz            # 在当前路径解压file.tar.gz
 
 ## 变量操作
 
-```
+```bash
 varname=value             # 定义变量
 echo $varname             # 查看变量内容
 ${#varname}               # 返回字符串长度
@@ -169,7 +169,7 @@ num=$((1 + (2 + 3) * 2))  # 复杂计算
 
 ## 函数
 
-```
+```bash
 # 定义一个新函数
 function myfunc() {
 	# $1 代表第一个参数，$N 代表第 N 个参数
@@ -186,7 +186,7 @@ myfunc arg1 arg2 arg3     # 带参数的函数调用
 
 ## 条件判断
 
-```
+```bash
 statement1 && statement2  # and 操作符
 statement1 || statement2  # or 操作符
 
@@ -218,7 +218,7 @@ num1 -ge num2             # 数字判断：num1 >= num2
 
 ## 分支控制：if 和经典 test
 
-```
+```bash
 test {expression}         # 判断条件为真的话 test 程序返回0 否则非零
 [ expression ]            # 判断条件为真的话返回0 否则非零
 
@@ -268,7 +268,7 @@ fi
 
 ## 流程控制：while / for / case / until
 
-```
+```bash
 # while 循环
 while condition; do
 	statements
@@ -312,7 +312,7 @@ done
 
 ## 其他有趣的脚本
 
-```
+```bash
 # 将文件编码转换，并输出到文件，file_in和file_out可以是同一个文件
 iconv -f gb2312 -t utf8 file_in -o file_out
 
@@ -327,7 +327,7 @@ lsof -i port:80                      # 哪个程序在使用 80 端口？
 
 ## grep
 
-```
+```bash
 grep 'Error' file                  # 在file中检索包含Error的行
 grep -r 'Error' *                  # 在当前目录及其子目录中检索包含Error的行
 grep -l 'Error' *                  # 在当前目录及其子目录中检索包含Error的行，只输出相关文件名
@@ -336,7 +336,7 @@ grep -v 'Error' file               # 在file中检索包含Error的行，只输�
 
 ## cut
 
-```
+```bash
 cut -c 1-16                        # 截取每行头16个字符
 cut -c 1-16 file                   # 截取指定文件中每行头 16个字符
 cut -c3-                           # 截取每行从第三个字符开始到行末的内容
@@ -349,7 +349,7 @@ echo "hello sir" | cut -d' ' -f2   # 显示 sir
 
 ## awk / sed
 
-```
+```bash
 awk '{print $5}' file              # 打印文件中以空格分隔的第五列
 awk -F ',' '{print $5}' file       # 打印文件中以逗号分隔的第五列
 awk '/str/ {print $2}' file        # 打印文件中包含 str 的所有行的第二列
@@ -361,7 +361,7 @@ sed -i -r 's/^\s+//g' file         # 删除文件每行头部空格
 sed '/^$/d' file                   # 删除文件空行并打印
 sed -i 's/\s\+$//' file            # 删除文件每行末尾多余空格
 
-sed '1i\Hello' file                # 在文件file的第一行插入Hello
+sed '1i\Hello' file                # 在文件file的第一行插入Hello
 ```
 
 # 参考资料

@@ -46,3 +46,9 @@ insert into command (creator, type, cmd) values ("background", 2, "Cmd Reload 6 
 如果是名字类的敏感词，由服务端处理。
 
 如果是比较长的，比如聊天的，由客户端处理。
+
+## 日志报错
+
+SeriousError (Critical): [Knapsack::Init Error]
+
+可能是由于策划在itemmanager.xml中删除了某个item的配置，导致玩家身上的该物品读取配置失败。

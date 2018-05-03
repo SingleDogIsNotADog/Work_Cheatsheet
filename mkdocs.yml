@@ -7,6 +7,7 @@ pages:
   - Home: index.md
   - docs:
     - shell: shell.md
+    - bat: bat.md
     - visual studio: vs.md
     - vim: vim.md
     - sublime: sublime.md
