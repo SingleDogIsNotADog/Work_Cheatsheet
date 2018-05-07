@@ -18,8 +18,8 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-	
-	<script src="../../js/jquery-1.10.2.min.js"></script>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
         <script src="../../js/bootstrap-3.0.3.min.js"></script>
         <script src="../../js/highlight.pack.js"></script> 
     </head>
@@ -206,6 +206,9 @@
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
+                    <li>
+                        <a href="https://github.com/demon90s/Work_Cheatsheet"><i class="fa fa-github"></i> GitHub</a>
+                    </li>
             </ul>
         </div>
     </div>
@@ -228,7 +231,7 @@
 <h2 id="effect">Effect施加流程（死亡流程）</h2>
 <ul>
 <li>
-<p>创建一个EffectBase子类实例（new Effect&hellip;）</p>
+<p>创建一个EffectBase子类实例（new Effect...）</p>
 </li>
 <li>
 <p>对其设置各种参数</p>
@@ -243,7 +246,7 @@
 <p>如果是一次性效果（EFFECT_TYPE_ONCE），那么直接执行：EffectOnce::Effect，对角色施加效果，如果角色死亡，触发：Character::OnDie</p>
 </li>
 <li>
-<p>把效果加入EffectList：EffectList::Add &ndash;&gt; EffectList::AddSkillEffect</p>
+<p>把效果加入EffectList：EffectList::Add --&gt; EffectList::AddSkillEffect</p>
 </li>
 <li>
 <p>做Merge处理，如果无需Merge，转入：EffectList::AddEffectToTypeList</p>
@@ -258,13 +261,13 @@
 <p>如果是特殊效果，还会执行：EffectList::AddSpecialBuff，做一个已拥有特殊效果的标记（m_special_buff_mark）</p>
 </li>
 <li>
-<p><strong>在每一帧循环里，每500毫秒，执行：EffectList::Effect &ndash;&gt; EffectBase::Update，判断角色是否死亡，触发：Character::OnDie</strong></p>
+<p><strong>在每一帧循环里，每500毫秒，执行：EffectList::Effect --&gt; EffectBase::Update，判断角色是否死亡，触发：Character::OnDie</strong></p>
 </li>
 </ul>
 <h2 id="effect_1">场景Effect施加流程</h2>
 <ul>
 <li>
-<p>Scene进入主循环：Scene::Update &ndash;&gt; SpecialLogic::Update &ndash;&gt; SpecialLogic::UpdateSceneEffectList</p>
+<p>Scene进入主循环：Scene::Update --&gt; SpecialLogic::Update --&gt; SpecialLogic::UpdateSceneEffectList</p>
 </li>
 <li>
 <p>对场景内的每一个SceneEffectBase对象，执行：SceneEffectBase::Effect，如果执行失败，该对象会被delete</p>
@@ -288,10 +291,10 @@
 <p><strong>否则继续其他处理，转入基类：Character::PerformSkill，此时又会做一些判断</strong></p>
 </li>
 <li>
-<p>判断是否对角色释放：SkillManager::CheckSkillAttackCharacter &ndash;&gt; SkillBase::IsAttackCharacter &ndash;&gt; m_is_attack_character，这个成员是构造函数中写死的，非配置</p>
+<p>判断是否对角色释放：SkillManager::CheckSkillAttackCharacter --&gt; SkillBase::IsAttackCharacter --&gt; m_is_attack_character，这个成员是构造函数中写死的，非配置</p>
 </li>
 <li>
-<p>判断是否对敌人释放：SkillManager::CheckSkillTargetEnemy &ndash;&gt; SkillBase::IsTargetEnemy -&gt; m_attack_enemy，这个成员是构造函数中写死的，非配置</p>
+<p>判断是否对敌人释放：SkillManager::CheckSkillTargetEnemy --&gt; SkillBase::IsTargetEnemy -&gt; m_attack_enemy，这个成员是构造函数中写死的，非配置</p>
 </li>
 <li>
 <p>判断对方是否是敌人：Character::IsAlive, Character::IsEnemy</p>
@@ -303,7 +306,7 @@
 <p>又是各种判断：安全区不能攻击，遭受了各种Buff不能攻击</p>
 </li>
 <li>
-<p>转入：SkillManager::PerformNextSkill &ndash;&gt; SkillBase::Perform，由子类实现技能释放功能（一般就是施加各种Effect）</p>
+<p>转入：SkillManager::PerformNextSkill --&gt; SkillBase::Perform，由子类实现技能释放功能（一般就是施加各种Effect）</p>
 </li>
 </ul>
 <p>注：计算最终伤害将调用接口：SkillBase::CalcInjureAndType</p>
@@ -366,11 +369,15 @@
 
         <footer class="col-md-12">
             <hr>
+                <p>Copyright &copy; 2018 Diwen Liu</p>
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>var base_url = '../..';</script>
-        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
-        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -393,7 +400,47 @@
             </div>
         </div>
     </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
+
 
     </body>
 </html>

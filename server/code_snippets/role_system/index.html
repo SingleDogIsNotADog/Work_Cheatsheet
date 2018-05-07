@@ -18,8 +18,8 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-	
-	<script src="../../../js/jquery-1.10.2.min.js"></script>
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
         <script src="../../../js/bootstrap-3.0.3.min.js"></script>
         <script src="../../../js/highlight.pack.js"></script> 
     </head>
@@ -206,6 +206,9 @@
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
+                    <li>
+                        <a href="https://github.com/demon90s/Work_Cheatsheet"><i class="fa fa-github"></i> GitHub</a>
+                    </li>
             </ul>
         </div>
     </div>
@@ -221,43 +224,47 @@
 
 <h1 id="_1">角色系统类定义</h1>
 <p><strong>xxx.hpp</strong></p>
-<pre><code>#ifndef __XXX_HPP__
-#define __XXX_HPP__
+<div class="codehilite"><pre><span></span><span class="err">#</span><span class="nx">ifndef</span> <span class="nx">__XXX_HPP__</span>
+<span class="err">#</span><span class="nx">define</span> <span class="nx">__XXX_HPP__</span>
 
-#include &quot;servercommon/xxxdef.hpp&quot;
-#include &quot;obj/character/attribute.hpp&quot;
+<span class="err">#</span><span class="nx">include</span> <span class="s2">&quot;servercommon/xxxdef.hpp&quot;</span>
+<span class="err">#</span><span class="nx">include</span> <span class="s2">&quot;obj/character/attribute.hpp&quot;</span>
 
-class Role;
+<span class="kr">class</span> <span class="nx">Role</span><span class="p">;</span>
 
-class XxX
-{
-public:
-    XxX() : m_role(nullptr) {}
-    ~XxX() {}
+<span class="kr">class</span> <span class="nx">XxX</span>
+<span class="p">{</span>
+<span class="kr">public</span><span class="o">:</span>
+    <span class="nx">XxX</span><span class="p">()</span> <span class="o">:</span> <span class="nx">m_role</span><span class="p">(</span><span class="nx">nullptr</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="o">~</span><span class="nx">XxX() {</span><span class="p">}</span>
 
-    void SetRole(Role *role) { m_role = role; }
-    void InitParam(Role *role, const XxXParam &amp;param) { m_role = role; m_param = param; }
-    void GetInitParam(XxXParam *param)  { *param = m_param; }
+    <span class="k">void</span> <span class="nx">SetRole</span><span class="p">(</span><span class="nx">Role</span> <span class="o">*</span><span class="nx">role</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m_role</span> <span class="o">=</span> <span class="nx">role</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">void</span> <span class="nx">InitParam</span><span class="p">(</span><span class="nx">Role</span> <span class="o">*</span><span class="nx">role</span><span class="p">,</span> <span class="kr">const</span> <span class="nx">XxXParam</span> <span class="o">&amp;</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m_role</span> <span class="o">=</span> <span class="nx">role</span><span class="p">;</span> <span class="nx">m_param</span> <span class="o">=</span> <span class="nx">param</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">void</span> <span class="nx">GetInitParam</span><span class="p">(</span><span class="nx">XxXParam</span> <span class="o">*</span><span class="nx">param</span><span class="p">)</span>  <span class="p">{</span> <span class="o">*</span><span class="nx">param</span> <span class="o">=</span> <span class="nx">m_param</span><span class="p">;</span> <span class="p">}</span>
 
-    void ReCalcAttr(CharIntAttrs &amp;base_add, bool is_recalc);
+    <span class="k">void</span> <span class="nx">ReCalcAttr</span><span class="p">(</span><span class="nx">CharIntAttrs</span> <span class="o">&amp;</span><span class="nx">base_add</span><span class="p">,</span> <span class="kt">bool</span> <span class="nx">is_recalc</span><span class="p">);</span>
 
-private:
-    Role *m_role;
-    XxXParam m_param;               // 系统参数
-    CharIntAttrs m_attrs_add;       // 属性加成数值
-};
+<span class="kr">private</span><span class="o">:</span>
+    <span class="nx">Role</span> <span class="o">*</span><span class="nx">m_role</span><span class="p">;</span>
+    <span class="nx">XxXParam</span> <span class="nx">m_param</span><span class="p">;</span>               <span class="c1">// 系统参数</span>
+    <span class="nx">CharIntAttrs</span> <span class="nx">m_attrs_add</span><span class="p">;</span>       <span class="c1">// 属性加成数值</span>
+<span class="p">};</span>
 
-#endif // __XXX_HPP__
-</code></pre></div>
+<span class="err">#</span><span class="nx">endif</span> <span class="c1">// __XXX_HPP__</span>
+</pre></div></div>
         </div>
 
         <footer class="col-md-12">
             <hr>
+                <p>Copyright &copy; 2018 Diwen Liu</p>
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>var base_url = '../../..';</script>
-        <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
-        <script src="../../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/require.js"></script>
+        <script src="../../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -280,7 +287,47 @@ private:
             </div>
         </div>
     </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
+
 
     </body>
 </html>

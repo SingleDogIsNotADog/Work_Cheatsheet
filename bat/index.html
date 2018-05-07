@@ -18,8 +18,8 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-	
-	<script src="../js/jquery-1.10.2.min.js"></script>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
         <script src="../js/bootstrap-3.0.3.min.js"></script>
         <script src="../js/highlight.pack.js"></script> 
     </head>
@@ -206,6 +206,9 @@
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
+                    <li>
+                        <a href="https://github.com/demon90s/Work_Cheatsheet"><i class="fa fa-github"></i> GitHub</a>
+                    </li>
             </ul>
         </div>
     </div>
@@ -223,17 +226,18 @@
                 <div class="col-md-9" role="main">
 
 <h2 id="_1">目录相关</h2>
-<pre><code class="dos">md d:\test                              rem 在D盘根目录创建一个目录test
+<div class="codehilite"><pre><span></span>md d:\test                              rem 在D盘根目录创建一个目录test
 md test                                 rem 在当前目录创建一目录test
 
 cd test                                 rem 切换到当前目录下的test目录
 cd /D d:\project\testdos\test           rem 从任意目录切换到d:\project\testdos\test目录
 
 rd /S /Q test                           rem 删除test目录及其所有内容，不询问
-</code></pre>
+</pre></div>
+
 
 <h2 id="_2">文件相关</h2>
-<pre><code class="dos">copy /Y test.txt test\                  rem 把test.txt文件复制到test目录下，不询问
+<div class="codehilite"><pre><span></span>copy /Y test.txt test\                  rem 把test.txt文件复制到test目录下，不询问
 xcopy /S test d:\test2\                 rem 把test目录和其所有内容拷贝到d盘根目录下的test2目录
 
 copy /B file +,,                        rem 更新file的修改日期为当前日期
@@ -242,10 +246,11 @@ ren old_name new_name                   rem 修改文件名
 
 del file_name                           rem 删除文件
 del /S /Q * &gt; nul 2&gt;&amp;1                  rem 此命令删掉了当前目录及其子目录中所有文件，且不会提示任何信息
-</code></pre>
+</pre></div>
+
 
 <h2 id="_3">其他</h2>
-<pre><code class="dos">help copy                               rem 查看copy命令的使用方法
+<div class="codehilite"><pre><span></span>help copy                               rem 查看copy命令的使用方法
 
 title ug04_cn                           rem 把窗口标题设置为ug04_cn
 
@@ -254,10 +259,11 @@ title ug04_cn                           rem 把窗口标题设置为ug04_cn
 echo.                                   rem 输出换行
 
 echo 完毕 &amp; pause &gt; nul                 rem 暂停，输出自定义的提示，这里是完毕
-</code></pre>
+</pre></div>
+
 
 <h2 id="_4">脚本案例</h2>
-<pre><code>@echo off
+<div class="codehilite"><pre><span></span>@echo off
 set /a var=0                            rem 设置一个变量，/a表示此变量是数字
 
 :start
@@ -265,16 +271,20 @@ set /a var+=1
 echo %var%
 if %var% leq 3 goto start
 pause
-</code></pre></div>
+</pre></div></div>
         </div>
 
         <footer class="col-md-12">
             <hr>
+                <p>Copyright &copy; 2018 Diwen Liu</p>
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>var base_url = '..';</script>
-        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
-        <script src="../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -297,7 +307,47 @@ pause
             </div>
         </div>
     </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
+
 
     </body>
 </html>

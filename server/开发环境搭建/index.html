@@ -18,8 +18,8 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-	
-	<script src="../../js/jquery-1.10.2.min.js"></script>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
         <script src="../../js/bootstrap-3.0.3.min.js"></script>
         <script src="../../js/highlight.pack.js"></script> 
     </head>
@@ -206,6 +206,9 @@
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
+                    <li>
+                        <a href="https://github.com/demon90s/Work_Cheatsheet"><i class="fa fa-github"></i> GitHub</a>
+                    </li>
             </ul>
         </div>
     </div>
@@ -221,7 +224,7 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="_1"><center>开发环境搭建</center></h1>
+<h1 id="_1">开发环境搭建</h1>
 <hr />
 <h2 id="_2">搭建原服</h2>
 <p>拉取源代码：新建一个目录，作为项目目录，然后svn拉取。</p>
@@ -240,18 +243,19 @@
 <p>新创建一个目录，可起名为hidden_server。</p>
 <p>进入此目录，创建config目录，拉取项目中的config工作副本。创建scripts目录，拉取项目中的scripts工作副本。</p>
 <p>创建Debug目录，将原服的动态链接库、最新的可执行程序、运行脚本拷贝到此目录中。运行脚本里添加启动crossserver的命令。</p>
-<p>修改跨服的相关配置文件：</p>
+<h3 id="_4">修改跨服的相关配置文件</h3>
 <p><strong>serverconfig.xml</strong></p>
 <p>修改GatewayModule -&gt; GameUser -&gt; LocalIP为本机IP地址。</p>
 <p>将所有端口号（ListenPort）修改一下，和原服相区别。</p>
 <p>添加一个配置节点：</p>
-<pre><code>&lt;CrossServerModule&gt;
-        &lt;ForGlobal&gt;
-            &lt;ListenPort&gt;10777&lt;/ListenPort&gt;
-            &lt;Backlog&gt;64&lt;/Backlog&gt;
-        &lt;/ForGlobal&gt;
-&lt;/CrossServerModule&gt;
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;CrossServerModule&gt;</span>
+        <span class="nt">&lt;ForGlobal&gt;</span>
+            <span class="nt">&lt;ListenPort&gt;</span>10777<span class="nt">&lt;/ListenPort&gt;</span>
+            <span class="nt">&lt;Backlog&gt;</span>64<span class="nt">&lt;/Backlog&gt;</span>
+        <span class="nt">&lt;/ForGlobal&gt;</span>
+<span class="nt">&lt;/CrossServerModule&gt;</span>
+</pre></div>
+
 
 <p><strong>commonconfig.xml</strong></p>
 <p>修改Mysql_DB_Name，Mysql_DB_Username，Mysql_DB_Password。</p>
@@ -262,7 +266,7 @@
 <p><strong>local.xml</strong></p>
 <p>allow_server_id_list -&gt; server_id，设置为2046。</p>
 <p>open_cross设置为1，is_hidden_server设置为1。</p>
-<p>修改原服的配置文件：</p>
+<h3 id="_5">修改原服的配置文件</h3>
 <p><strong>cross.xml</strong></p>
 <p>CrossServerAddr节点需要和跨服的一致。</p>
 <p>open_cross设置为1，is_hidden_server设置为0。</p>
@@ -272,11 +276,15 @@
 
         <footer class="col-md-12">
             <hr>
+                <p>Copyright &copy; 2018 Diwen Liu</p>
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>var base_url = '../..';</script>
-        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
-        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -299,7 +307,47 @@
             </div>
         </div>
     </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
+
 
     </body>
 </html>

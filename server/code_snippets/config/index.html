@@ -18,8 +18,8 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-	
-	<script src="../../../js/jquery-1.10.2.min.js"></script>
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
         <script src="../../../js/bootstrap-3.0.3.min.js"></script>
         <script src="../../../js/highlight.pack.js"></script> 
     </head>
@@ -206,6 +206,9 @@
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
+                    <li>
+                        <a href="https://github.com/demon90s/Work_Cheatsheet"><i class="fa fa-github"></i> GitHub</a>
+                    </li>
             </ul>
         </div>
     </div>
@@ -224,68 +227,70 @@
 <h1 id="_1">配置类定义</h1>
 <h2 id="_2">配置文件结构体</h2>
 <p><strong>xxxconfig.hpp</strong></p>
-<pre><code>// 系统配置（X-XXX.xls）
-#ifndef __XXX_CONFIG_HPP__
-#define __XXX_CONFIG_HPP__
+<div class="codehilite"><pre><span></span><span class="c1">// 系统配置（X-XXX.xls）</span>
+<span class="err">#</span><span class="nx">ifndef</span> <span class="nx">__XXX_CONFIG_HPP__</span>
+<span class="err">#</span><span class="nx">define</span> <span class="nx">__XXX_CONFIG_HPP__</span>
 
-#include &quot;config/gameconfigcommon/gameconfigcommon.h&quot;
-#include &quot;servercommon/xxxdef.hpp&quot;
+<span class="err">#</span><span class="nx">include</span> <span class="s2">&quot;config/gameconfigcommon/gameconfigcommon.h&quot;</span>
+<span class="err">#</span><span class="nx">include</span> <span class="s2">&quot;servercommon/xxxdef.hpp&quot;</span>
 
-class XxXConfig
-{
-public:
-    bool Init(const std::string &amp;configname, std::string *err);
+<span class="kr">class</span> <span class="nx">XxXConfig</span>
+<span class="p">{</span>
+<span class="kr">public</span><span class="o">:</span>
+    <span class="kt">bool</span> <span class="nx">Init</span><span class="p">(</span><span class="kr">const</span> <span class="nx">std</span><span class="o">::</span><span class="kt">string</span> <span class="o">&amp;</span><span class="nx">configname</span><span class="p">,</span> <span class="nx">std</span><span class="o">::</span><span class="kt">string</span> <span class="o">*</span><span class="nx">err</span><span class="p">);</span>
 
-    const XxXOtherConfig &amp; GetOtherCfg() { return m_other_cfg; }
-    const XxXSomeConfig::CfgItem * GetCfgItem(int seq);
+    <span class="kr">const</span> <span class="nx">XxXOtherConfig</span> <span class="o">&amp;</span> <span class="nx">GetOtherCfg() {</span> <span class="k">return</span> <span class="nx">m_other_cfg</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kr">const</span> <span class="nx">XxXSomeConfig</span><span class="o">::</span><span class="nx">CfgItem</span> <span class="o">*</span> <span class="nx">GetCfgItem</span><span class="p">(</span><span class="kr">int</span> <span class="nx">seq</span><span class="p">);</span>
 
-    bool IsValidSomeSeq(int seq, bool is_init = false);
-    bool IsValidSomeSeqLevel(int seq, int level, bool is_init = false);
+    <span class="kt">bool</span> <span class="nx">IsValidSomeSeq</span><span class="p">(</span><span class="kr">int</span> <span class="nx">seq</span><span class="p">,</span> <span class="kt">bool</span> <span class="nx">is_init</span> <span class="o">=</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="nx">IsValidSomeSeqLevel</span><span class="p">(</span><span class="kr">int</span> <span class="nx">seq</span><span class="p">,</span> <span class="kr">int</span> <span class="nx">level</span><span class="p">,</span> <span class="kt">bool</span> <span class="nx">is_init</span> <span class="o">=</span> <span class="kc">false</span><span class="p">);</span>
 
-private:
-    int InitOtherCfg(RapidXmlNode *root_element);
-    int InitSomeCfg(RapidXmlNode *root_element);
+<span class="kr">private</span><span class="o">:</span>
+    <span class="kr">int</span> <span class="nx">InitOtherCfg</span><span class="p">(</span><span class="nx">RapidXmlNode</span> <span class="o">*</span><span class="nx">root_element</span><span class="p">);</span>
+    <span class="kr">int</span> <span class="nx">InitSomeCfg</span><span class="p">(</span><span class="nx">RapidXmlNode</span> <span class="o">*</span><span class="nx">root_element</span><span class="p">);</span>
 
-private:
-    XxXOtherConfig m_other_cfg;
-    XxXSomeConfig m_some_cfg;
-};
+<span class="kr">private</span><span class="o">:</span>
+    <span class="nx">XxXOtherConfig</span> <span class="nx">m_other_cfg</span><span class="p">;</span>
+    <span class="nx">XxXSomeConfig</span> <span class="nx">m_some_cfg</span><span class="p">;</span>
+<span class="p">};</span>
 
-inline bool XxXConfig::IsValidSomeSeq(int seq, bool is_init)
-{
-    if (seq &lt; 0 || seq &gt;= SOME_CFG_MAX_COUNT) return false;
-    if (!is_init &amp;&amp; !m_some_cfg.cfg_item_list[seq].has_read) return false;
+<span class="nx">inline</span> <span class="kt">bool</span> <span class="nx">XxXConfig</span><span class="o">::</span><span class="nx">IsValidSomeSeq</span><span class="p">(</span><span class="kr">int</span> <span class="nx">seq</span><span class="p">,</span> <span class="kt">bool</span> <span class="nx">is_init</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">seq</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">seq</span> <span class="o">&gt;=</span> <span class="nx">SOME_CFG_MAX_COUNT</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">is_init</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">m_some_cfg</span><span class="p">.</span><span class="nx">cfg_item_list</span><span class="p">[</span><span class="nx">seq</span><span class="p">].</span><span class="nx">has_read</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
 
-    return true;
-}
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
 
-inline bool XxXConfig::IsValidSomeSeqLevel(int seq, int level, bool is_init)
-{
-    if (seq &lt; 0 || seq &gt;= XXX_ITEM_MAX_COUNT || level &lt; 0 || level &gt;= XXX_SUB_ITEM_MAX_COUNT) return false;
-    if (!is_init &amp;&amp; !m_some_cfg.cfg_item_list[seq * XXX_SUB_ITEM_MAX_COUNT + level].has_read) return false;
+<span class="nx">inline</span> <span class="kt">bool</span> <span class="nx">XxXConfig</span><span class="o">::</span><span class="nx">IsValidSomeSeqLevel</span><span class="p">(</span><span class="kr">int</span> <span class="nx">seq</span><span class="p">,</span> <span class="kr">int</span> <span class="nx">level</span><span class="p">,</span> <span class="kt">bool</span> <span class="nx">is_init</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">seq</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">seq</span> <span class="o">&gt;=</span> <span class="nx">XXX_ITEM_MAX_COUNT</span> <span class="o">||</span> <span class="nx">level</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">level</span> <span class="o">&gt;=</span> <span class="nx">XXX_SUB_ITEM_MAX_COUNT</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">is_init</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">m_some_cfg</span><span class="p">.</span><span class="nx">cfg_item_list</span><span class="p">[</span><span class="nx">seq</span> <span class="o">*</span> <span class="nx">XXX_SUB_ITEM_MAX_COUNT</span> <span class="o">+</span> <span class="nx">level</span><span class="p">].</span><span class="nx">has_read</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
 
-    return true;
-}
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
 
-#endif // __XXX_CONFIG_HPP__
-</code></pre>
+<span class="err">#</span><span class="nx">endif</span> <span class="c1">// __XXX_CONFIG_HPP__</span>
+</pre></div>
+
 
 <p><strong>xxxconfig.cpp</strong></p>
-<pre><code>#include &quot;xxxconfig.hpp&quot;
+<div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;xxxconfig.hpp&quot;</span><span class="cp"></span>
 
-bool XxXConfig::Init(const std::string &amp;configname, std::string *err)
-{
-    PRE_LOAD_CONFIG2;
+<span class="kt">bool</span> <span class="n">XxXConfig</span><span class="o">::</span><span class="n">Init</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">configname</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">*</span><span class="n">err</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">PRE_LOAD_CONFIG2</span><span class="p">;</span>
 
-    LOAD_CONFIG2(&quot;other&quot;, InitOtherCfg);
+    <span class="n">LOAD_CONFIG2</span><span class="p">(</span><span class="s">&quot;other&quot;</span><span class="p">,</span> <span class="n">InitOtherCfg</span><span class="p">);</span>
 
-    return true;
-}
-</code></pre>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <h2 id="_3">配置表结构体</h2>
 <p><strong>hpp</strong></p>
-<pre><code>struct XXXConfig
+<div class="codehilite"><pre><span></span>struct XXXConfig
 {
     struct CfgItem
     {
@@ -306,9 +311,10 @@ bool XxXConfig::Init(const std::string &amp;configname, std::string *err)
 
     CfgItem cfg_item_list[XXX_MAX_COUNT];
 };
-</code></pre>
+</pre></div>
 
-<pre><code>struct XXXConfig
+
+<div class="codehilite"><pre><span></span>struct XXXConfig
 {
     struct CfgItem
     {
@@ -331,10 +337,11 @@ bool XxXConfig::Init(const std::string &amp;configname, std::string *err)
 
     CfgItem cfg_item_list[XXX_ITEM_MAX_COUNT * XXX_SUB_ITEM_MAX_COUNT];
 };
-</code></pre>
+</pre></div>
+
 
 <p><strong>cpp</strong></p>
-<pre><code>auto data_element = root_element-&gt;first_node(&quot;data&quot;);
+<div class="codehilite"><pre><span></span>auto data_element = root_element-&gt;first_node(&quot;data&quot;);
 while (data_element)
 {
     int seq = 0;
@@ -350,9 +357,10 @@ while (data_element)
 }
 
 return 0;
-</code></pre>
+</pre></div>
 
-<pre><code>auto data_element = root_element-&gt;first_node(&quot;data&quot;);
+
+<div class="codehilite"><pre><span></span>auto data_element = root_element-&gt;first_node(&quot;data&quot;);
 while (data_element)
 {
     int seq = 0, level = 0;
@@ -370,16 +378,20 @@ while (data_element)
 }
 
 return 0;
-</code></pre></div>
+</pre></div></div>
         </div>
 
         <footer class="col-md-12">
             <hr>
+                <p>Copyright &copy; 2018 Diwen Liu</p>
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>var base_url = '../../..';</script>
-        <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
-        <script src="../../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/require.js"></script>
+        <script src="../../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -402,7 +414,47 @@ return 0;
             </div>
         </div>
     </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
+
 
     </body>
 </html>

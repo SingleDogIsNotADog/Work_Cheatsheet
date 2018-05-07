@@ -18,8 +18,8 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-	
-	<script src="../../../js/jquery-1.10.2.min.js"></script>
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
         <script src="../../../js/bootstrap-3.0.3.min.js"></script>
         <script src="../../../js/highlight.pack.js"></script> 
     </head>
@@ -206,6 +206,9 @@
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
+                    <li>
+                        <a href="https://github.com/demon90s/Work_Cheatsheet"><i class="fa fa-github"></i> GitHub</a>
+                    </li>
             </ul>
         </div>
     </div>
@@ -221,39 +224,43 @@
 
 <h1 id="_1">公用定义</h1>
 <p><strong>xxxdef.hpp</strong></p>
-<pre><code>// 系统相关定义
-#ifndef __XXX_DEF_HPP__
-#define __XXX_DEF_HPP__
+<div class="codehilite"><pre><span></span><span class="c1">// 系统相关定义</span>
+<span class="cp">#ifndef __XXX_DEF_HPP__</span>
+<span class="cp">#define __XXX_DEF_HPP__</span>
 
-#include &quot;servercommon.h&quot;
+<span class="cp">#include</span> <span class="cpf">&quot;servercommon.h&quot;</span><span class="cp"></span>
 
-#pragma pack(push, 4)
+<span class="cp">#pragma pack(push, 4)</span>
 
-struct XxXParam
-{
-    XxXParam() { this-&gt;Reset(); }
+<span class="k">struct</span> <span class="n">XxXParam</span>
+<span class="p">{</span>
+    <span class="n">XxXParam</span><span class="p">()</span> <span class="p">{</span> <span class="n">this</span><span class="o">-&gt;</span><span class="n">Reset</span><span class="p">();</span> <span class="p">}</span>
 
-    void Reset()
-    {
-    }
-};
+    <span class="kt">void</span> <span class="n">Reset</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 
-using XxXParamHex = char[sizeof(XxXParam) * 2 + 1];
-static_assert(sizeof(XxXParamHex) &lt; 64, &quot;Incorrect size&quot;);
+<span class="n">using</span> <span class="n">XxXParamHex</span> <span class="o">=</span> <span class="kt">char</span><span class="p">[</span><span class="k">sizeof</span><span class="p">(</span><span class="n">XxXParam</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+<span class="n">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">XxXParamHex</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">64</span><span class="p">,</span> <span class="s">&quot;Incorrect size&quot;</span><span class="p">);</span>
 
-#pragma pack(pop)
+<span class="cp">#pragma pack(pop)</span>
 
-#endif // __XXX_DEF_HPP__
-</code></pre></div>
+<span class="cp">#endif </span><span class="c1">// __XXX_DEF_HPP__</span>
+</pre></div></div>
         </div>
 
         <footer class="col-md-12">
             <hr>
+                <p>Copyright &copy; 2018 Diwen Liu</p>
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>var base_url = '../../..';</script>
-        <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
-        <script src="../../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/require.js"></script>
+        <script src="../../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -276,7 +283,47 @@ static_assert(sizeof(XxXParamHex) &lt; 64, &quot;Incorrect size&quot;);
             </div>
         </div>
     </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
+
 
     </body>
 </html>

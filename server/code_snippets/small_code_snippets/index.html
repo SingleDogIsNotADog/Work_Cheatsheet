@@ -18,8 +18,8 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-	
-	<script src="../../../js/jquery-1.10.2.min.js"></script>
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
         <script src="../../../js/bootstrap-3.0.3.min.js"></script>
         <script src="../../../js/highlight.pack.js"></script> 
     </head>
@@ -206,6 +206,9 @@
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
+                    <li>
+                        <a href="https://github.com/demon90s/Work_Cheatsheet"><i class="fa fa-github"></i> GitHub</a>
+                    </li>
             </ul>
         </div>
     </div>
@@ -218,100 +221,125 @@
             <li><a href="#_2">发协议</a></li>
             <li><a href="#_3">发邮件</a></li>
             <li><a href="#_4">发传闻</a></li>
-            <li><a href="#_5">其他</a></li>
+            <li><a href="#_5">重算属性和战力</a></li>
+            <li><a href="#_6">其他</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="_1"><center>代码小片段</center></h1>
+<h1 id="_1">代码小片段</h1>
 <hr />
 <h2 id="_2">发协议</h2>
-<pre><code>// 给玩家发
-SEND_TO_ROLE
+<div class="codehilite"><pre><span></span><span class="c1">// 给玩家发</span>
+<span class="n">SEND_TO_ROLE</span>
 
-// 发非定长协议给客户端，协议末尾是一个数组
-SEND_TO_ROLE2
+<span class="c1">// 发非定长协议给客户端，协议末尾是一个数组</span>
+<span class="n">SEND_TO_ROLE2</span>
 
-// 发送给周围能看到自己的玩家（包括自己）
-SEND_TO_AREA
+<span class="c1">// 发送给周围能看到自己的玩家（包括自己）</span>
+<span class="n">SEND_TO_AREA</span>
 
-// 给场景中的所有玩家发
-Scene::SendToRole
+<span class="c1">// 给场景中的所有玩家发</span>
+<span class="n">Scene</span><span class="o">::</span><span class="n">SendToRole</span>
 
-// 给所有在线玩家发
-World::SendToAllGateway
-</code></pre>
+<span class="c1">// 给所有在线玩家发</span>
+<span class="n">World</span><span class="o">::</span><span class="n">SendToAllGateway</span>
+</pre></div>
+
 
 <h2 id="_3">发邮件</h2>
-<pre><code>{
-    MailContentParam contentparam;
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="n">MailContentParam</span> <span class="n">contentparam</span><span class="p">;</span>
 
-    contentparam.virtual_item_list.virtual_item[MAIL_VIRTUAL_ITEM_BIND_GOLD] = reward_gold_bind;
+    <span class="n">contentparam</span><span class="p">.</span><span class="n">virtual_item_list</span><span class="p">.</span><span class="n">virtual_item</span><span class="p">[</span><span class="n">MAIL_VIRTUAL_ITEM_BIND_GOLD</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward_gold_bind</span><span class="p">;</span>
 
-    const ItemBase *item_base = ITEMPOOL-&gt;GetItem(item_id);
-    if (NULL != item_base)
-    {
-        contentparam.item_list[0].item_id = item_id;
-        contentparam.item_list[0].num = num;
-        contentparam.item_list[0].is_bind = is_bind ? 1 : 0;
-        contentparam.item_list[0].invalid_time = item_base-&gt;CalInvalidTime();
-    }
+    <span class="k">const</span> <span class="n">ItemBase</span> <span class="o">*</span><span class="n">item_base</span> <span class="o">=</span> <span class="n">ITEMPOOL</span><span class="o">-&gt;</span><span class="n">GetItem</span><span class="p">(</span><span class="n">item_id</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">NULL</span> <span class="o">!=</span> <span class="n">item_base</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">contentparam</span><span class="p">.</span><span class="n">item_list</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">item_id</span><span class="p">;</span>
+        <span class="n">contentparam</span><span class="p">.</span><span class="n">item_list</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">num</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span>
+        <span class="n">contentparam</span><span class="p">.</span><span class="n">item_list</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">is_bind</span> <span class="o">=</span> <span class="n">is_bind</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">contentparam</span><span class="p">.</span><span class="n">item_list</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">invalid_time</span> <span class="o">=</span> <span class="n">item_base</span><span class="o">-&gt;</span><span class="n">CalInvalidTime</span><span class="p">();</span>
+    <span class="p">}</span>
 
-    int send_len = gstr::MailContent(contentparam.contenttxt, sizeof(contentparam.contenttxt), &quot;key&quot;);
-    if (send_len &gt; 0)
-    {
-        MailRoute::MailToUser(m_role-&gt;GetUserId(), SYSTEM_MAIL_REASON_INVALID, contentparam);
-    }
-}
+    <span class="kt">int</span> <span class="n">send_len</span> <span class="o">=</span> <span class="n">gstr</span><span class="o">::</span><span class="n">MailContent</span><span class="p">(</span><span class="n">contentparam</span><span class="p">.</span><span class="n">contenttxt</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">contentparam</span><span class="p">.</span><span class="n">contenttxt</span><span class="p">),</span> <span class="s">&quot;key&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">send_len</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">MailRoute</span><span class="o">::</span><span class="n">MailToUser</span><span class="p">(</span><span class="n">m_role</span><span class="o">-&gt;</span><span class="n">GetUserId</span><span class="p">(),</span> <span class="n">SYSTEM_MAIL_REASON_INVALID</span><span class="p">,</span> <span class="n">contentparam</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-// 简单的发奖励邮件
-gstr::MailContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), &quot;key&quot;);
-gamecommon::MailToUser(uid, rewards, gamestring::GAMESTRING_BUF);
-</code></pre>
+<span class="c1">// 简单的发奖励邮件</span>
+<span class="n">gstr</span><span class="o">::</span><span class="n">MailContent</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">),</span> <span class="s">&quot;key&quot;</span><span class="p">);</span>
+<span class="n">gamecommon</span><span class="o">::</span><span class="n">MailToUser</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">);</span>
+</pre></div>
+
 
 <h2 id="_4">发传闻</h2>
-<pre><code>// 发给全服
-{
-    int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), &quot;key&quot;,
-        );
+<div class="codehilite"><pre><span></span><span class="c1">// 发给全服</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sendlen</span> <span class="o">=</span> <span class="n">gstr</span><span class="o">::</span><span class="n">SysMsgContent</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">),</span> <span class="s">&quot;key&quot;</span><span class="p">,</span>
+        <span class="p">);</span>
 
-    if (sendlen &gt; 0)
-    {
-        SCENE_MGR-&gt;SystemMsgThread(gamestring::GAMESTRING_BUF, sendlen, SYS_MSG_CENTER_ROLL);
-    }
-}
+    <span class="k">if</span> <span class="p">(</span><span class="n">sendlen</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">SCENE_MGR</span><span class="o">-&gt;</span><span class="n">SystemMsgThread</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">,</span> <span class="n">sendlen</span><span class="p">,</span> <span class="n">SYS_MSG_CENTER_ROLL</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-// 发给国家
-{
-    int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), &quot;key&quot;,
-        );
+<span class="c1">// 发给国家</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sendlen</span> <span class="o">=</span> <span class="n">gstr</span><span class="o">::</span><span class="n">SysMsgContent</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">),</span> <span class="s">&quot;key&quot;</span><span class="p">,</span>
+        <span class="p">);</span>
 
-    if (sendlen &gt; 0)
-    {
-        SCENE_MGR-&gt;SystemMsgToCamp(camp_type, gamestring::GAMESTRING_BUF, sendlen);
-    }
-}
+    <span class="k">if</span> <span class="p">(</span><span class="n">sendlen</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">SCENE_MGR</span><span class="o">-&gt;</span><span class="n">SystemMsgToCamp</span><span class="p">(</span><span class="n">camp_type</span><span class="p">,</span> <span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">,</span> <span class="n">sendlen</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 
-</code></pre>
 
-<h2 id="_5">其他</h2>
-<pre><code>// 获取范围内的Obj对象
-ObjID obj_list[64] = {0};
-int count = scene-&gt;GetZoneMatrix()-&gt;GetObjByArea(center_pos, x_range, y_range, obj_list, sizeof(obj_list) / sizeof(obj_list[0]));
-for (int i = 0; i &lt; count; ++ i)
-{
-    // ...
-}
-</code></pre></div>
+<h2 id="_5">重算属性和战力</h2>
+<div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="n">XxX</span><span class="o">::</span><span class="n">ReCalcAttr</span><span class="p">(</span><span class="n">CharIntAttrs</span> <span class="o">&amp;</span><span class="n">base_add</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">is_recalc</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_recalc</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">m_attrs_add</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+
+        <span class="c1">// add m_attrs_add</span>
+    <span class="p">}</span>
+
+    <span class="n">m_role</span><span class="o">-&gt;</span><span class="n">GetCapability</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">ReCalcCap</span><span class="p">(</span><span class="n">CAPABILITY_TYPE_XXX</span><span class="p">,</span> <span class="n">m_attrs_add</span><span class="p">);</span>
+    <span class="n">m_role</span><span class="o">-&gt;</span><span class="n">GetCapability</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">AddCap</span><span class="p">(</span><span class="n">CAPABILITY_TYPE_XXX</span><span class="p">,</span> <span class="n">m_other_capability</span><span class="p">);</span> <span class="c1">// 如果有的话</span>
+
+    <span class="n">base_add</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">m_attrs_add</span><span class="p">.</span><span class="n">m_attrs</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="_6">其他</h2>
+<div class="codehilite"><pre><span></span><span class="c1">// 获取范围内的Obj对象</span>
+<span class="n">ObjID</span> <span class="n">obj_list</span><span class="p">[</span><span class="mi">64</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">scene</span><span class="o">-&gt;</span><span class="n">GetZoneMatrix</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetObjByArea</span><span class="p">(</span><span class="n">center_pos</span><span class="p">,</span> <span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="p">,</span> <span class="n">obj_list</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">obj_list</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">obj_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="o">++</span> <span class="n">i</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div></div>
         </div>
 
         <footer class="col-md-12">
             <hr>
+                <p>Copyright &copy; 2018 Diwen Liu</p>
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>var base_url = '../../..';</script>
-        <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
-        <script src="../../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/require.js"></script>
+        <script src="../../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -334,7 +362,47 @@ for (int i = 0; i &lt; count; ++ i)
             </div>
         </div>
     </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
+
 
     </body>
 </html>

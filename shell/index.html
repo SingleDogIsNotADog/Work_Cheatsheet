@@ -18,8 +18,8 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-	
-	<script src="../js/jquery-1.10.2.min.js"></script>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
         <script src="../js/bootstrap-3.0.3.min.js"></script>
         <script src="../js/highlight.pack.js"></script> 
     </head>
@@ -206,6 +206,9 @@
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
+                    <li>
+                        <a href="https://github.com/demon90s/Work_Cheatsheet"><i class="fa fa-github"></i> GitHub</a>
+                    </li>
             </ul>
         </div>
     </div>
@@ -239,334 +242,350 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="_1">常用快捷键</h1>
-<pre><code class="bash">CTRL+C              # 结束当前命令
-CTRL+D              # 删除光标前的字符，同 &lt;Delete&gt; ，或者没有内容时，退出会话，或者交互模式输入文件结束符EOF
-CTRL+K              # 删除光标位置到行末的内容
-CTRL+U              # 删除光标位置到行首的内容
-CTRL+W              # 删除光标左边的一个单词
-CTRL+Z              # 暂停前台进程返回 bash，需要时可用 fg 将其切换回前台
-</code></pre>
+<div class="codehilite"><pre><span></span>CTRL+C              <span class="c1"># 结束当前命令</span>
+CTRL+D              <span class="c1"># 删除光标前的字符，同 &lt;Delete&gt; ，或者没有内容时，退出会话，或者交互模式输入文件结束符EOF</span>
+CTRL+K              <span class="c1"># 删除光标位置到行末的内容</span>
+CTRL+U              <span class="c1"># 删除光标位置到行首的内容</span>
+CTRL+W              <span class="c1"># 删除光标左边的一个单词</span>
+CTRL+Z              <span class="c1"># 暂停前台进程返回 bash，需要时可用 fg 将其切换回前台</span>
+</pre></div>
+
 
 <h1 id="shell">Shell命令</h1>
 <h2 id="bash">Bash基本操作</h2>
-<pre><code class="bash">exit                # 退出当前登陆
-env                 # 显示环境变量
-echo $SHELL         # 显示你在使用什么 SHELL
+<div class="codehilite"><pre><span></span><span class="nb">exit</span>                <span class="c1"># 退出当前登陆</span>
+env                 <span class="c1"># 显示环境变量</span>
+<span class="nb">echo</span> <span class="nv">$SHELL</span>         <span class="c1"># 显示你在使用什么 SHELL</span>
 
-whereis bash        # 查找 bash 在哪里
-which bash          # 查找哪个程序对应命令 bash
+whereis bash        <span class="c1"># 查找 bash 在哪里</span>
+which bash          <span class="c1"># 查找哪个程序对应命令 bash</span>
 
-clear               # 清初屏幕内容
-reset               # 重置终端（当你不小心 cat 了一个二进制，终端状态乱掉时使用）
-</code></pre>
+clear               <span class="c1"># 清初屏幕内容</span>
+reset               <span class="c1"># 重置终端（当你不小心 cat 了一个二进制，终端状态乱掉时使用）</span>
+</pre></div>
+
 
 <h2 id="_2">目录操作</h2>
-<pre><code class="bash">cd                  # 返回自己 $HOME 目录
-cd {dirname}        # 进入目录
-cd -                # 回到之前的目录
-pwd                 # 显示当前所在目录
-mkdir {dirname}     # 创建目录
-mkdir -p {dirname}  # 递归创建目录
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span>                  <span class="c1"># 返回自己 $HOME 目录</span>
+<span class="nb">cd</span> <span class="o">{</span>dirname<span class="o">}</span>        <span class="c1"># 进入目录</span>
+<span class="nb">cd</span> -                <span class="c1"># 回到之前的目录</span>
+<span class="nb">pwd</span>                 <span class="c1"># 显示当前所在目录</span>
+mkdir <span class="o">{</span>dirname<span class="o">}</span>     <span class="c1"># 创建目录</span>
+mkdir -p <span class="o">{</span>dirname<span class="o">}</span>  <span class="c1"># 递归创建目录</span>
+</pre></div>
+
 
 <h2 id="_3">文件操作</h2>
-<pre><code class="bash">ls                  # 显示当前目录内容，后面可接目录名：ls {dir} 显示指定目录
-ls -l               # 列表方式显示目录内容，包括文件日期，大小，权限等信息
-ls -a               # 显示所有文件和目录，包括隐藏文件（.开头的文件/目录名）
-ln -s {fn} {link}   # 给指定文件创建一个软链接
-cp {src} {dest}     # 拷贝文件，cp -r dir1 dir2 可以递归拷贝（目录）
-rm {fn}             # 删除文件，rm -r 递归删除目录，rm -f 强制删除
-mv {src} {dest}     # 移动文件，如果 dest 是目录，则移动，是文件名则覆盖
-touch {fn}          # 创建或者更新一下制定文件
-cat {fn}            # 输出文件原始内容
-any_cmd &gt; {fn}      # 执行任意命令并将标准输出重定向到指定文件
-more {fn}           # 逐屏显示某文件内容，空格翻页，q 退出
-head {fn}           # 显示文件头部数行，可用 head -3 abc.txt 显示头三行
-tail {fn}           # 显示文件尾部数行，可用 tail -3 abc.txt 显示尾部三行
-tail -f {fn}        # 持续显示文件尾部数据，可用于监控日志
-vim {fn}            # 使用 vim 编辑文件
-diff {f1} {f2}      # 比较两个文件的内容
-wc {fn}             # 统计文件有多少行，多少个单词
-chmod 644 {fn}      # 修改文件权限为 644，可以接 -R 对目录循环改权限
-chown user1 {fn}    # 修改文件所有人为 user1, chown user1:group1 fn 可以修改组
-grep {pat} {fn}     # 在文件中查找出现过 pat 的内容
-grep -r {pat} .     # 在当前目录下递归查找所有出现过 pat 的文件内容
-</code></pre>
+<div class="codehilite"><pre><span></span>ls                  <span class="c1"># 显示当前目录内容，后面可接目录名：ls {dir} 显示指定目录</span>
+ls -l               <span class="c1"># 列表方式显示目录内容，包括文件日期，大小，权限等信息</span>
+ls -a               <span class="c1"># 显示所有文件和目录，包括隐藏文件（.开头的文件/目录名）</span>
+ln -s <span class="o">{</span>fn<span class="o">}</span> <span class="o">{</span>link<span class="o">}</span>   <span class="c1"># 给指定文件创建一个软链接</span>
+cp <span class="o">{</span>src<span class="o">}</span> <span class="o">{</span>dest<span class="o">}</span>     <span class="c1"># 拷贝文件，cp -r dir1 dir2 可以递归拷贝（目录）</span>
+rm <span class="o">{</span>fn<span class="o">}</span>             <span class="c1"># 删除文件，rm -r 递归删除目录，rm -f 强制删除</span>
+mv <span class="o">{</span>src<span class="o">}</span> <span class="o">{</span>dest<span class="o">}</span>     <span class="c1"># 移动文件，如果 dest 是目录，则移动，是文件名则覆盖</span>
+touch <span class="o">{</span>fn<span class="o">}</span>          <span class="c1"># 创建或者更新一下制定文件</span>
+cat <span class="o">{</span>fn<span class="o">}</span>            <span class="c1"># 输出文件原始内容</span>
+any_cmd &gt; <span class="o">{</span>fn<span class="o">}</span>      <span class="c1"># 执行任意命令并将标准输出重定向到指定文件</span>
+more <span class="o">{</span>fn<span class="o">}</span>           <span class="c1"># 逐屏显示某文件内容，空格翻页，q 退出</span>
+head <span class="o">{</span>fn<span class="o">}</span>           <span class="c1"># 显示文件头部数行，可用 head -3 abc.txt 显示头三行</span>
+tail <span class="o">{</span>fn<span class="o">}</span>           <span class="c1"># 显示文件尾部数行，可用 tail -3 abc.txt 显示尾部三行</span>
+tail -f <span class="o">{</span>fn<span class="o">}</span>        <span class="c1"># 持续显示文件尾部数据，可用于监控日志</span>
+vim <span class="o">{</span>fn<span class="o">}</span>            <span class="c1"># 使用 vim 编辑文件</span>
+diff <span class="o">{</span>f1<span class="o">}</span> <span class="o">{</span>f2<span class="o">}</span>      <span class="c1"># 比较两个文件的内容</span>
+wc <span class="o">{</span>fn<span class="o">}</span>             <span class="c1"># 统计文件有多少行，多少个单词</span>
+chmod <span class="m">644</span> <span class="o">{</span>fn<span class="o">}</span>      <span class="c1"># 修改文件权限为 644，可以接 -R 对目录循环改权限</span>
+chown user1 <span class="o">{</span>fn<span class="o">}</span>    <span class="c1"># 修改文件所有人为 user1, chown user1:group1 fn 可以修改组</span>
+grep <span class="o">{</span>pat<span class="o">}</span> <span class="o">{</span>fn<span class="o">}</span>     <span class="c1"># 在文件中查找出现过 pat 的内容</span>
+grep -r <span class="o">{</span>pat<span class="o">}</span> .     <span class="c1"># 在当前目录下递归查找所有出现过 pat 的文件内容</span>
+</pre></div>
+
 
 <h2 id="_4">用户管理</h2>
-<pre><code class="bash">whoami              # 显示我的用户名
-passwd              # 修改密码，passwd {user} 可以用于 root 修改别人密码
-last {user}         # 显示登陆记录
-w                   # 查看谁在线
-su -                # 切换到 root 用户并登陆（执行登陆脚本）
-su -{user}          # 切换到某用户并登陆（执行登陆脚本）
-id {user}           # 查看用户的 uid，gid 以及所属其他用户组
-</code></pre>
+<div class="codehilite"><pre><span></span>whoami              <span class="c1"># 显示我的用户名</span>
+passwd              <span class="c1"># 修改密码，passwd {user} 可以用于 root 修改别人密码</span>
+last <span class="o">{</span>user<span class="o">}</span>         <span class="c1"># 显示登陆记录</span>
+w                   <span class="c1"># 查看谁在线</span>
+su -                <span class="c1"># 切换到 root 用户并登陆（执行登陆脚本）</span>
+su -<span class="o">{</span>user<span class="o">}</span>          <span class="c1"># 切换到某用户并登陆（执行登陆脚本）</span>
+id <span class="o">{</span>user<span class="o">}</span>           <span class="c1"># 查看用户的 uid，gid 以及所属其他用户组</span>
+</pre></div>
+
 
 <h2 id="_5">进程管理</h2>
-<pre><code class="bash">ps                        # 查看当前会话进程
-ps ax                     # 查看所有进程，类似 ps -e
-ps aux                    # 查看所有进程详细信息，类似 ps -ef
-ps -u {user}              # 查看某用户进程
-ps aux | grep httpd       # 查看名为 httpd 的所有进程
-kill {pid}                # 结束进程
-kill -9 {pid}             # 强制结束进程，9/SIGKILL 是强制不可捕获结束信号
-kill -l                   # 查看所有信号
-kill -l TERM              # 查看 TERM 信号的编号
-top                       # 查看最活跃的进程
-top -u {user}             # 查看某用户最活跃的进程
-any_command &amp;             # 在后台运行某命令，也可用 CTRL+Z 将当前进程挂到后台
-jobs                      # 查看所有后台进程（jobs）
-bg                        # 查看后台进程，并切换过去
-fg                        # 切换后台进程到前台
-fg {job}                  # 切换特定后台进程到前台
-trap cmd sig1 sig2        # 在脚本中设置信号处理命令
-trap &quot;&quot; sig1 sig2         # 在脚本中屏蔽某信号
-trap - sig1 sig2          # 恢复默认信号处理行为
-</code></pre>
+<div class="codehilite"><pre><span></span>ps                        <span class="c1"># 查看当前会话进程</span>
+ps ax                     <span class="c1"># 查看所有进程，类似 ps -e</span>
+ps aux                    <span class="c1"># 查看所有进程详细信息，类似 ps -ef</span>
+ps -u <span class="o">{</span>user<span class="o">}</span>              <span class="c1"># 查看某用户进程</span>
+ps aux <span class="p">|</span> grep httpd       <span class="c1"># 查看名为 httpd 的所有进程</span>
+<span class="nb">kill</span> <span class="o">{</span>pid<span class="o">}</span>                <span class="c1"># 结束进程</span>
+<span class="nb">kill</span> -9 <span class="o">{</span>pid<span class="o">}</span>             <span class="c1"># 强制结束进程，9/SIGKILL 是强制不可捕获结束信号</span>
+<span class="nb">kill</span> -l                   <span class="c1"># 查看所有信号</span>
+<span class="nb">kill</span> -l TERM              <span class="c1"># 查看 TERM 信号的编号</span>
+top                       <span class="c1"># 查看最活跃的进程</span>
+top -u <span class="o">{</span>user<span class="o">}</span>             <span class="c1"># 查看某用户最活跃的进程</span>
+any_command <span class="p">&amp;</span>             <span class="c1"># 在后台运行某命令，也可用 CTRL+Z 将当前进程挂到后台</span>
+<span class="nb">jobs</span>                      <span class="c1"># 查看所有后台进程（jobs）</span>
+<span class="nb">bg</span>                        <span class="c1"># 查看后台进程，并切换过去</span>
+<span class="nb">fg</span>                        <span class="c1"># 切换后台进程到前台</span>
+<span class="nb">fg</span> <span class="o">{</span>job<span class="o">}</span>                  <span class="c1"># 切换特定后台进程到前台</span>
+<span class="nb">trap</span> cmd sig1 sig2        <span class="c1"># 在脚本中设置信号处理命令</span>
+<span class="nb">trap</span> <span class="s2">&quot;&quot;</span> sig1 sig2         <span class="c1"># 在脚本中屏蔽某信号</span>
+<span class="nb">trap</span> - sig1 sig2          <span class="c1"># 恢复默认信号处理行为</span>
+</pre></div>
+
 
 <h2 id="_6">其他命令</h2>
-<pre><code class="bash">ssh user@host             # 以用户 user 登陆到远程主机 host
-ssh -p {port} user@host   # 指定端口登陆主机
+<div class="codehilite"><pre><span></span>ssh user@host             <span class="c1"># 以用户 user 登陆到远程主机 host</span>
+ssh -p <span class="o">{</span>port<span class="o">}</span> user@host   <span class="c1"># 指定端口登陆主机</span>
 
-uname -a                  # 查看内核版本等信息
-man {help}                # 查看帮助
-uptime                    # 查看系统启动时间
-date                      # 显示日期
-cal                       # 显示日历
-vmstat                    # 显示内存和 CPU 使用情况
-vmstat 10                 # 每 10 秒打印一行内存和 CPU情况，CTRL+C 退出
-free                      # 显示内存和交换区使用情况
-df                        # 显示磁盘使用情况
-du                        # 显示当前目录占用，du . --max-depth=2 可以指定深度
+uname -a                  <span class="c1"># 查看内核版本等信息</span>
+man <span class="o">{</span>help<span class="o">}</span>                <span class="c1"># 查看帮助</span>
+uptime                    <span class="c1"># 查看系统启动时间</span>
+date                      <span class="c1"># 显示日期</span>
+cal                       <span class="c1"># 显示日历</span>
+vmstat                    <span class="c1"># 显示内存和 CPU 使用情况</span>
+vmstat <span class="m">10</span>                 <span class="c1"># 每 10 秒打印一行内存和 CPU情况，CTRL+C 退出</span>
+free                      <span class="c1"># 显示内存和交换区使用情况</span>
+df                        <span class="c1"># 显示磁盘使用情况</span>
+du                        <span class="c1"># 显示当前目录占用，du . --max-depth=2 可以指定深度</span>
 
-wget {url}                # 下载文件，可加 --no-check-certificate 忽略 ssl 验证
-sz {file}                 # 发送文件到终端，zmodem 协议
-rz                        # 接收终端发送过来的文件
+wget <span class="o">{</span>url<span class="o">}</span>                <span class="c1"># 下载文件，可加 --no-check-certificate 忽略 ssl 验证</span>
+sz <span class="o">{</span>file<span class="o">}</span>                 <span class="c1"># 发送文件到终端，zmodem 协议</span>
+rz                        <span class="c1"># 接收终端发送过来的文件</span>
 
-tar -zcv -f file.tar.gz {filelist} # 将文件打包成file.tar.gz
-tar -zxv -f file.tar.gz            # 在当前路径解压file.tar.gz
-</code></pre>
+tar -zcv -f file.tar.gz <span class="o">{</span>filelist<span class="o">}</span> <span class="c1"># 将文件打包成file.tar.gz</span>
+tar -zxv -f file.tar.gz            <span class="c1"># 在当前路径解压file.tar.gz</span>
+</pre></div>
+
 
 <h1 id="shell_1">Shell脚本</h1>
 <h2 id="_7">变量操作</h2>
-<pre><code class="bash">varname=value             # 定义变量
-echo $varname             # 查看变量内容
-${#varname}               # 返回字符串长度
+<div class="codehilite"><pre><span></span><span class="nv">varname</span><span class="o">=</span>value             <span class="c1"># 定义变量</span>
+<span class="nb">echo</span> <span class="nv">$varname</span>             <span class="c1"># 查看变量内容</span>
+<span class="si">${#</span><span class="nv">varname</span><span class="si">}</span>               <span class="c1"># 返回字符串长度</span>
 
-echo $$                   # 查看当前 shell 的进程号
-echo $?                   # 查看最近一条命令的返回码
-export VARNAME=value      # 设置环境变量（将会影响到子进程）
+<span class="nb">echo</span> <span class="nv">$$</span>                   <span class="c1"># 查看当前 shell 的进程号</span>
+<span class="nb">echo</span> <span class="nv">$?</span>                   <span class="c1"># 查看最近一条命令的返回码</span>
+<span class="nb">export</span> <span class="nv">VARNAME</span><span class="o">=</span>value      <span class="c1"># 设置环境变量（将会影响到子进程）</span>
 
-array[0]=valA             # 定义数组
-array[1]=valB
-array[2]=valC
-array=(valA valB valC)    # 另一种方式
+array<span class="o">[</span><span class="m">0</span><span class="o">]=</span>valA             <span class="c1"># 定义数组</span>
+array<span class="o">[</span><span class="m">1</span><span class="o">]=</span>valB
+array<span class="o">[</span><span class="m">2</span><span class="o">]=</span>valC
+<span class="nv">array</span><span class="o">=(</span>valA valB valC<span class="o">)</span>    <span class="c1"># 另一种方式</span>
 
-${array[i]}               # 取得数组中的元素
-${#array[@]}              # 取得数组的长度
-${#array[i]}              # 取得数组中某个变量的长度
+<span class="si">${</span><span class="nv">array</span><span class="p">[i]</span><span class="si">}</span>               <span class="c1"># 取得数组中的元素</span>
+<span class="si">${#</span><span class="nv">array</span><span class="p">[@]</span><span class="si">}</span>              <span class="c1"># 取得数组的长度</span>
+<span class="si">${#</span><span class="nv">array</span><span class="p">[i]</span><span class="si">}</span>              <span class="c1"># 取得数组中某个变量的长度</span>
 
-${varname:-word}          # 如果变量不为空则返回变量，否则返回 word
-${varname:=word}          # 如果变量不为空则返回变量，否则赋值成 word 并返回
-${varname:+word}          # 如果变量不为空则返回 word，否则返回 null
-${varname:offset:len}     # 取得字符串的子字符串`
+<span class="si">${</span><span class="nv">varname</span><span class="k">:-</span><span class="nv">word</span><span class="si">}</span>          <span class="c1"># 如果变量不为空则返回变量，否则返回 word</span>
+<span class="si">${</span><span class="nv">varname</span><span class="p">:=word</span><span class="si">}</span>          <span class="c1"># 如果变量不为空则返回变量，否则赋值成 word 并返回</span>
+<span class="si">${</span><span class="nv">varname</span><span class="p">:+word</span><span class="si">}</span>          <span class="c1"># 如果变量不为空则返回 word，否则返回 null</span>
+<span class="si">${</span><span class="nv">varname</span><span class="p">:</span><span class="nv">offset</span><span class="p">:</span><span class="nv">len</span><span class="si">}</span>     <span class="c1"># 取得字符串的子字符串`</span>
 
-${variable#pattern}       # 如果变量头部匹配 pattern，则删除最小匹配部分返回剩下的
-${variable##pattern}      # 如果变量头部匹配 pattern，则删除最大匹配部分返回剩下的
-${variable%pattern}       # 如果变量尾部匹配 pattern，则删除最小匹配部分返回剩下的
-${variable%%pattern}      # 如果变量尾部匹配 pattern，则删除最大匹配部分返回剩下的
-${variable/pattern/str}   # 将变量中第一个匹配 pattern 的替换成 str，并返回
-${variable//pattern/str}  # 将变量中所有匹配 pattern 的地方替换成 str 并返回
+<span class="si">${</span><span class="nv">variable</span><span class="p">#pattern</span><span class="si">}</span>       <span class="c1"># 如果变量头部匹配 pattern，则删除最小匹配部分返回剩下的</span>
+<span class="si">${</span><span class="nv">variable</span><span class="p">##pattern</span><span class="si">}</span>      <span class="c1"># 如果变量头部匹配 pattern，则删除最大匹配部分返回剩下的</span>
+<span class="si">${</span><span class="nv">variable</span><span class="p">%pattern</span><span class="si">}</span>       <span class="c1"># 如果变量尾部匹配 pattern，则删除最小匹配部分返回剩下的</span>
+<span class="si">${</span><span class="nv">variable</span><span class="p">%%pattern</span><span class="si">}</span>      <span class="c1"># 如果变量尾部匹配 pattern，则删除最大匹配部分返回剩下的</span>
+<span class="si">${</span><span class="nv">variable</span><span class="p">/pattern/str</span><span class="si">}</span>   <span class="c1"># 将变量中第一个匹配 pattern 的替换成 str，并返回</span>
+<span class="si">${</span><span class="nv">variable</span><span class="p">//pattern/str</span><span class="si">}</span>  <span class="c1"># 将变量中所有匹配 pattern 的地方替换成 str 并返回</span>
 
-$(cmd)                    # 运行cmd命令，并将标准输出内容捕获并返回
-varname=$(id -u user)     # 将用户名为 user 的 uid 赋值给 varname 变量
+<span class="k">$(</span>cmd<span class="k">)</span>                    <span class="c1"># 运行cmd命令，并将标准输出内容捕获并返回</span>
+<span class="nv">varname</span><span class="o">=</span><span class="k">$(</span>id -u user<span class="k">)</span>     <span class="c1"># 将用户名为 user 的 uid 赋值给 varname 变量</span>
 
-num=$((1 + 2))            # 计算 1+2 赋值给 num，使用 bash 独有的 $((..)) 计算
-num=$(($num + 1))         # 变量递增
-num=$((num + 1))          # 变量递增，双括号内的 $ 可以省略
-num=$((1 + (2 + 3) * 2))  # 复杂计算
-</code></pre>
+<span class="nv">num</span><span class="o">=</span><span class="k">$((</span><span class="m">1</span> <span class="o">+</span> <span class="m">2</span><span class="k">))</span>            <span class="c1"># 计算 1+2 赋值给 num，使用 bash 独有的 $((..)) 计算</span>
+<span class="nv">num</span><span class="o">=</span><span class="k">$((</span><span class="nv">$num</span> <span class="o">+</span> <span class="m">1</span><span class="k">))</span>         <span class="c1"># 变量递增</span>
+<span class="nv">num</span><span class="o">=</span><span class="k">$((</span>num <span class="o">+</span> <span class="m">1</span><span class="k">))</span>          <span class="c1"># 变量递增，双括号内的 $ 可以省略</span>
+<span class="nv">num</span><span class="o">=</span><span class="k">$((</span><span class="m">1</span> <span class="o">+</span> <span class="o">(</span><span class="m">2</span> <span class="o">+</span> <span class="m">3</span><span class="o">)</span> <span class="o">*</span> <span class="m">2</span><span class="k">))</span>  <span class="c1"># 复杂计算</span>
+</pre></div>
+
 
 <h2 id="_8">函数</h2>
-<pre><code class="bash"># 定义一个新函数
-function myfunc() {
-    # $1 代表第一个参数，$N 代表第 N 个参数
-    # $# 代表参数个数
-    # $0 代表被调用者自身的名字
-    # $@ 代表所有参数，类型是个数组 
-    # $* 空格链接起来的所有参数，类型是字符串
-    {shell commands ...}
-}
+<div class="codehilite"><pre><span></span><span class="c1"># 定义一个新函数</span>
+<span class="k">function</span> myfunc<span class="o">()</span> <span class="o">{</span>
+    <span class="c1"># $1 代表第一个参数，$N 代表第 N 个参数</span>
+    <span class="c1"># $# 代表参数个数</span>
+    <span class="c1"># $0 代表被调用者自身的名字</span>
+    <span class="c1"># $@ 代表所有参数，类型是个数组 </span>
+    <span class="c1"># $* 空格链接起来的所有参数，类型是字符串</span>
+    <span class="o">{</span>shell commands ...<span class="o">}</span>
+<span class="o">}</span>
 
-myfunc                    # 调用函数 myfunc 
-myfunc arg1 arg2 arg3     # 带参数的函数调用
-</code></pre>
+myfunc                    <span class="c1"># 调用函数 myfunc </span>
+myfunc arg1 arg2 arg3     <span class="c1"># 带参数的函数调用</span>
+</pre></div>
+
 
 <h2 id="_9">条件判断</h2>
-<pre><code class="bash">statement1 &amp;&amp; statement2  # and 操作符
-statement1 || statement2  # or 操作符
+<div class="codehilite"><pre><span></span>statement1 <span class="o">&amp;&amp;</span> statement2  <span class="c1"># and 操作符</span>
+statement1 <span class="o">||</span> statement2  <span class="c1"># or 操作符</span>
 
-exp1 -a exp2              # exp1 和 exp2 同时为真时返回真
-exp1 -o exp2              # exp1 和 exp2 有一个为真就返回真
-! expression              # 如果 expression 为假那返回真
+exp1 -a exp2              <span class="c1"># exp1 和 exp2 同时为真时返回真</span>
+exp1 -o exp2              <span class="c1"># exp1 和 exp2 有一个为真就返回真</span>
+! expression              <span class="c1"># 如果 expression 为假那返回真</span>
 
-str1 = str2               # 判断字符串相等，如 [ &quot;$x&quot; = &quot;$y&quot; ] &amp;&amp; echo yes
-str1 != str2              # 判断字符串不等，如 [ &quot;$x&quot; != &quot;$y&quot; ] &amp;&amp; echo yes
-str1 &lt; str2               # 字符串小于，如 [ &quot;$x&quot; \&lt; &quot;$y&quot; ] &amp;&amp; echo yes
-str2 &gt; str2               # 字符串大于，注意 &lt; 或 &gt; 是字面量，输入时要加反斜杆
--n str1                   # 判断字符串不为空（长度大于零）
--z str1                   # 判断字符串为空（长度等于零）
+<span class="nv">str1</span> <span class="o">=</span> str2               <span class="c1"># 判断字符串相等，如 [ &quot;$x&quot; = &quot;$y&quot; ] &amp;&amp; echo yes</span>
+str1 !<span class="o">=</span> str2              <span class="c1"># 判断字符串不等，如 [ &quot;$x&quot; != &quot;$y&quot; ] &amp;&amp; echo yes</span>
+str1 &lt; str2               <span class="c1"># 字符串小于，如 [ &quot;$x&quot; \&lt; &quot;$y&quot; ] &amp;&amp; echo yes</span>
+str2 &gt; str2               <span class="c1"># 字符串大于，注意 &lt; 或 &gt; 是字面量，输入时要加反斜杆</span>
+-n str1                   <span class="c1"># 判断字符串不为空（长度大于零）</span>
+-z str1                   <span class="c1"># 判断字符串为空（长度等于零）</span>
 
--a file                   # 判断文件存在，如 [ -a /tmp/abc ] &amp;&amp; echo &quot;exists&quot;
--d file                   # 判断文件存在，且该文件是一个目录
--f file                   # 判断文件存在，且该文件是一个普通文件（非目录等）
--r file                   # 判断文件存在，且可读
--w file                   # 判断文件存在，且可写
--x file                   # 判断文件存在，且执行
+-a file                   <span class="c1"># 判断文件存在，如 [ -a /tmp/abc ] &amp;&amp; echo &quot;exists&quot;</span>
+-d file                   <span class="c1"># 判断文件存在，且该文件是一个目录</span>
+-f file                   <span class="c1"># 判断文件存在，且该文件是一个普通文件（非目录等）</span>
+-r file                   <span class="c1"># 判断文件存在，且可读</span>
+-w file                   <span class="c1"># 判断文件存在，且可写</span>
+-x file                   <span class="c1"># 判断文件存在，且执行</span>
 
-num1 -eq num2             # 数字判断：num1 == num2
-num1 -ne num2             # 数字判断：num1 != num2
-num1 -lt num2             # 数字判断：num1 &lt; num2
-num1 -le num2             # 数字判断：num1 &lt;= num2
-num1 -gt num2             # 数字判断：num1 &gt; num2
-num1 -ge num2             # 数字判断：num1 &gt;= num2
-</code></pre>
+num1 -eq num2             <span class="c1"># 数字判断：num1 == num2</span>
+num1 -ne num2             <span class="c1"># 数字判断：num1 != num2</span>
+num1 -lt num2             <span class="c1"># 数字判断：num1 &lt; num2</span>
+num1 -le num2             <span class="c1"># 数字判断：num1 &lt;= num2</span>
+num1 -gt num2             <span class="c1"># 数字判断：num1 &gt; num2</span>
+num1 -ge num2             <span class="c1"># 数字判断：num1 &gt;= num2</span>
+</pre></div>
+
 
 <h2 id="if-test">分支控制：if 和经典 test</h2>
-<pre><code class="bash">test {expression}         # 判断条件为真的话 test 程序返回0 否则非零
-[ expression ]            # 判断条件为真的话返回0 否则非零
+<div class="codehilite"><pre><span></span><span class="nb">test</span> <span class="o">{</span>expression<span class="o">}</span>         <span class="c1"># 判断条件为真的话 test 程序返回0 否则非零</span>
+<span class="o">[</span> expression <span class="o">]</span>            <span class="c1"># 判断条件为真的话返回0 否则非零</span>
 
-test &quot;abc&quot; = &quot;def&quot;        # 查看返回值 echo $? 显示 1，因为条件为假
-test &quot;abc&quot; != &quot;def&quot;       # 查看返回值 echo $? 显示 0，因为条件为真
+<span class="nb">test</span> <span class="s2">&quot;abc&quot;</span> <span class="o">=</span> <span class="s2">&quot;def&quot;</span>        <span class="c1"># 查看返回值 echo $? 显示 1，因为条件为假</span>
+<span class="nb">test</span> <span class="s2">&quot;abc&quot;</span> !<span class="o">=</span> <span class="s2">&quot;def&quot;</span>       <span class="c1"># 查看返回值 echo $? 显示 0，因为条件为真</span>
 
-test -e /tmp; echo $?     # 调用 test 判断 /tmp 是否存在，并打印 test 的返回值
-[ -f /tmp ]; echo $?      # 和上面完全等价，/tmp 肯定是存在的，所以输出是 0
+<span class="nb">test</span> -e /tmp<span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>     <span class="c1"># 调用 test 判断 /tmp 是否存在，并打印 test 的返回值</span>
+<span class="o">[</span> -f /tmp <span class="o">]</span><span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>      <span class="c1"># 和上面完全等价，/tmp 肯定是存在的，所以输出是 0</span>
 
-test cond &amp;&amp; cmd1         # 判断条件为真时执行 cmd1
-[ cond ] &amp;&amp; cmd1          # 和上面完全等价
-[ cond ] &amp;&amp; cmd1 || cmd2  # 条件为真执行 cmd1 否则执行 cmd2
+<span class="nb">test</span> cond <span class="o">&amp;&amp;</span> cmd1         <span class="c1"># 判断条件为真时执行 cmd1</span>
+<span class="o">[</span> cond <span class="o">]</span> <span class="o">&amp;&amp;</span> cmd1          <span class="c1"># 和上面完全等价</span>
+<span class="o">[</span> cond <span class="o">]</span> <span class="o">&amp;&amp;</span> cmd1 <span class="o">||</span> cmd2  <span class="c1"># 条件为真执行 cmd1 否则执行 cmd2</span>
 
-# 判断 /etc/passwd 文件是否存在
-# 经典的 if 语句就是判断后面的命令返回值为0的话，认为条件为真，否则为假
-if test -e /etc/passwd; then
-    echo &quot;alright it exists ... &quot;
-else
-    echo &quot;it doesn't exist ... &quot;
-fi
+<span class="c1"># 判断 /etc/passwd 文件是否存在</span>
+<span class="c1"># 经典的 if 语句就是判断后面的命令返回值为0的话，认为条件为真，否则为假</span>
+<span class="k">if</span> <span class="nb">test</span> -e /etc/passwd<span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;alright it exists ... &quot;</span>
+<span class="k">else</span>
+    <span class="nb">echo</span> <span class="s2">&quot;it doesn&#39;t exist ... &quot;</span>
+<span class="k">fi</span>
 
-# 和上面完全等价，[ 是个和 test 一样的可执行程序，但最后一个参数必须为 ]
-# 这个名字为 &quot;[&quot; 的可执行程序一般就在 /bin 或 /usr/bin 下面，比 test 优雅些
-if [ -e /etc/passwd ]; then   
-    echo &quot;alright it exists ... &quot;
-else
-    echo &quot;it doesn't exist ... &quot;
-fi
+<span class="c1"># 和上面完全等价，[ 是个和 test 一样的可执行程序，但最后一个参数必须为 ]</span>
+<span class="c1"># 这个名字为 &quot;[&quot; 的可执行程序一般就在 /bin 或 /usr/bin 下面，比 test 优雅些</span>
+<span class="k">if</span> <span class="o">[</span> -e /etc/passwd <span class="o">]</span><span class="p">;</span> <span class="k">then</span>   
+    <span class="nb">echo</span> <span class="s2">&quot;alright it exists ... &quot;</span>
+<span class="k">else</span>
+    <span class="nb">echo</span> <span class="s2">&quot;it doesn&#39;t exist ... &quot;</span>
+<span class="k">fi</span>
 
-# 和上面两个完全等价
-[ -e /etc/passwd ] &amp;&amp; echo &quot;alright it exists&quot; || echo &quot;it doesn't exist&quot;
+<span class="c1"># 和上面两个完全等价</span>
+<span class="o">[</span> -e /etc/passwd <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;alright it exists&quot;</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;it doesn&#39;t exist&quot;</span>
 
-# 判断变量的值
-if [ &quot;$varname&quot; = &quot;foo&quot; ]; then
-    echo &quot;this is foo&quot;
-elif [ &quot;$varname&quot; = &quot;bar&quot; ]; then
-    echo &quot;this is bar&quot;
-else
-    echo &quot;neither&quot;
-fi
+<span class="c1"># 判断变量的值</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$varname</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;this is foo&quot;</span>
+<span class="k">elif</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$varname</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;this is bar&quot;</span>
+<span class="k">else</span>
+    <span class="nb">echo</span> <span class="s2">&quot;neither&quot;</span>
+<span class="k">fi</span>
 
-# 复杂条件判断，注意，小括号是字面量，实际输入时前面要加反斜杆
-if [ \( $x -gt 10 \) -a \( $x -lt 20 \) ]; then
-    echo &quot;yes, between 10 and 20&quot;
-fi
-</code></pre>
+<span class="c1"># 复杂条件判断，注意，小括号是字面量，实际输入时前面要加反斜杆</span>
+<span class="k">if</span> <span class="o">[</span> <span class="se">\(</span> <span class="nv">$x</span> -gt <span class="m">10</span> <span class="se">\)</span> -a <span class="se">\(</span> <span class="nv">$x</span> -lt <span class="m">20</span> <span class="se">\)</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;yes, between 10 and 20&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+
 
 <h2 id="while-for-case-until">流程控制：while / for / case / until</h2>
-<pre><code class="bash"># while 循环
-while condition; do
+<div class="codehilite"><pre><span></span><span class="c1"># while 循环</span>
+<span class="k">while</span> condition<span class="p">;</span> <span class="k">do</span>
     statements
-done
+<span class="k">done</span>
 
-i=1
-while [ $i -le 10 ]; do
-    echo $i; 
-    i=$(expr $i + 1)
-done
+<span class="nv">i</span><span class="o">=</span><span class="m">1</span>
+<span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le <span class="m">10</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+    <span class="nb">echo</span> <span class="nv">$i</span><span class="p">;</span> 
+    <span class="nv">i</span><span class="o">=</span><span class="k">$(</span>expr <span class="nv">$i</span> + <span class="m">1</span><span class="k">)</span>
+<span class="k">done</span>
 
-# for 循环：上面的 while 语句等价
-for i in {1..10}; do
-    echo $i
-done
+<span class="c1"># for 循环：上面的 while 语句等价</span>
+<span class="k">for</span> i in <span class="o">{</span><span class="m">1</span>..10<span class="o">}</span><span class="p">;</span> <span class="k">do</span>
+    <span class="nb">echo</span> <span class="nv">$i</span>
+<span class="k">done</span>
 
-for name [in list]; do
+<span class="k">for</span> name <span class="o">[</span>in list<span class="o">]</span><span class="p">;</span> <span class="k">do</span>
     statements
-done
+<span class="k">done</span>
 
-# for 列举某目录下面的所有文件
-for f in /home/*; do 
-    echo $f
-done
+<span class="c1"># for 列举某目录下面的所有文件</span>
+<span class="k">for</span> f in /home/*<span class="p">;</span> <span class="k">do</span> 
+    <span class="nb">echo</span> <span class="nv">$f</span>
+<span class="k">done</span>
 
-# case 判断
-case expression in 
-    pattern1 )
-        statements ;;
-    pattern2 )
-        statements ;;
-    * )
-        otherwise ;;
-esac
+<span class="c1"># case 判断</span>
+<span class="k">case</span> expression in 
+    pattern1 <span class="o">)</span>
+        statements <span class="p">;;</span>
+    pattern2 <span class="o">)</span>
+        statements <span class="p">;;</span>
+    * <span class="o">)</span>
+        otherwise <span class="p">;;</span>
+<span class="k">esac</span>
 
-# until 语句
-until condition; do
+<span class="c1"># until 语句</span>
+<span class="k">until</span> condition<span class="p">;</span> <span class="k">do</span>
     statements
-done
-</code></pre>
+<span class="k">done</span>
+</pre></div>
+
 
 <h2 id="_10">其他有趣的脚本</h2>
-<pre><code class="bash"># 将文件编码转换，并输出到文件，file_in和file_out可以是同一个文件
+<div class="codehilite"><pre><span></span><span class="c1"># 将文件编码转换，并输出到文件，file_in和file_out可以是同一个文件</span>
 iconv -f gb2312 -t utf8 file_in -o file_out
 
-# 将当前目录下的所有文件（包括子目录）的修改时间改为当前时间
-find ./* -name &quot;*&quot; -exec touch {} \;
+<span class="c1"># 将当前目录下的所有文件（包括子目录）的修改时间改为当前时间</span>
+find ./* -name <span class="s2">&quot;*&quot;</span> -exec touch <span class="o">{}</span> <span class="se">\;</span>
 
-showkey -a                           # 取得按键的 ASCII 码
-lsof -i port:80                      # 哪个程序在使用 80 端口？
-</code></pre>
+showkey -a                           <span class="c1"># 取得按键的 ASCII 码</span>
+lsof -i port:80                      <span class="c1"># 哪个程序在使用 80 端口？</span>
+</pre></div>
+
 
 <h1 id="_11">文本处理</h1>
 <h2 id="grep">grep</h2>
-<pre><code class="bash">grep 'Error' file                  # 在file中检索包含Error的行
-grep -r 'Error' *                  # 在当前目录及其子目录中检索包含Error的行
-grep -l 'Error' *                  # 在当前目录及其子目录中检索包含Error的行，只输出相关文件名
-grep -v 'Error' file               # 在file中检索包含Error的行，只输出不匹配的行
-</code></pre>
+<div class="codehilite"><pre><span></span>grep <span class="s1">&#39;Error&#39;</span> file                  <span class="c1"># 在file中检索包含Error的行</span>
+grep -r <span class="s1">&#39;Error&#39;</span> *                  <span class="c1"># 在当前目录及其子目录中检索包含Error的行</span>
+grep -l <span class="s1">&#39;Error&#39;</span> *                  <span class="c1"># 在当前目录及其子目录中检索包含Error的行，只输出相关文件名</span>
+grep -v <span class="s1">&#39;Error&#39;</span> file               <span class="c1"># 在file中检索包含Error的行，只输出不匹配的行</span>
+</pre></div>
+
 
 <h2 id="cut">cut</h2>
-<pre><code class="bash">cut -c 1-16                        # 截取每行头16个字符
-cut -c 1-16 file                   # 截取指定文件中每行头 16个字符
-cut -c3-                           # 截取每行从第三个字符开始到行末的内容
-cut -d':' -f5                      # 截取用冒号分隔的第五列内容
-cut -d';' -f2,10                   # 截取用分号分隔的第二和第十列内容
-cut -d' ' -f3-7                    # 截取空格分隔的三到七列
-echo &quot;hello&quot; | cut -c1-3           # 显示 hel
-echo &quot;hello sir&quot; | cut -d' ' -f2   # 显示 sir
-</code></pre>
+<div class="codehilite"><pre><span></span>cut -c <span class="m">1</span>-16                        <span class="c1"># 截取每行头16个字符</span>
+cut -c <span class="m">1</span>-16 file                   <span class="c1"># 截取指定文件中每行头 16个字符</span>
+cut -c3-                           <span class="c1"># 截取每行从第三个字符开始到行末的内容</span>
+cut -d<span class="s1">&#39;:&#39;</span> -f5                      <span class="c1"># 截取用冒号分隔的第五列内容</span>
+cut -d<span class="s1">&#39;;&#39;</span> -f2,10                   <span class="c1"># 截取用分号分隔的第二和第十列内容</span>
+cut -d<span class="s1">&#39; &#39;</span> -f3-7                    <span class="c1"># 截取空格分隔的三到七列</span>
+<span class="nb">echo</span> <span class="s2">&quot;hello&quot;</span> <span class="p">|</span> cut -c1-3           <span class="c1"># 显示 hel</span>
+<span class="nb">echo</span> <span class="s2">&quot;hello sir&quot;</span> <span class="p">|</span> cut -d<span class="s1">&#39; &#39;</span> -f2   <span class="c1"># 显示 sir</span>
+</pre></div>
+
 
 <h2 id="awk-sed">awk / sed</h2>
-<pre><code class="bash">awk '{print $5}' file              # 打印文件中以空格分隔的第五列
-awk -F ',' '{print $5}' file       # 打印文件中以逗号分隔的第五列
-awk '/str/ {print $2}' file        # 打印文件中包含 str 的所有行的第二列
-awk -F ',' '{print $NF}' file      # 打印逗号分隔的文件中的每行最后一列
+<div class="codehilite"><pre><span></span>awk <span class="s1">&#39;{print $5}&#39;</span> file              <span class="c1"># 打印文件中以空格分隔的第五列</span>
+awk -F <span class="s1">&#39;,&#39;</span> <span class="s1">&#39;{print $5}&#39;</span> file       <span class="c1"># 打印文件中以逗号分隔的第五列</span>
+awk <span class="s1">&#39;/str/ {print $2}&#39;</span> file        <span class="c1"># 打印文件中包含 str 的所有行的第二列</span>
+awk -F <span class="s1">&#39;,&#39;</span> <span class="s1">&#39;{print $NF}&#39;</span> file      <span class="c1"># 打印逗号分隔的文件中的每行最后一列</span>
 
-sed 's/regex/replace/g' file       # 替换文件中所有出现的字符串
-sed -i 's/find/replace/g' file     # 替换文件中所有出现的字符并且覆盖文件
-sed -i -r 's/^\s+//g' file         # 删除文件每行头部空格
-sed '/^$/d' file                   # 删除文件空行并打印
-sed -i 's/\s\+$//' file            # 删除文件每行末尾多余空格
+sed <span class="s1">&#39;s/regex/replace/g&#39;</span> file       <span class="c1"># 替换文件中所有出现的字符串</span>
+sed -i <span class="s1">&#39;s/find/replace/g&#39;</span> file     <span class="c1"># 替换文件中所有出现的字符并且覆盖文件</span>
+sed -i -r <span class="s1">&#39;s/^\s+//g&#39;</span> file         <span class="c1"># 删除文件每行头部空格</span>
+sed <span class="s1">&#39;/^$/d&#39;</span> file                   <span class="c1"># 删除文件空行并打印</span>
+sed -i <span class="s1">&#39;s/\s\+$//&#39;</span> file            <span class="c1"># 删除文件每行末尾多余空格</span>
 
-sed '1i\Hello' file                # 在文件file的第一行插入Hello
-</code></pre>
+sed <span class="s1">&#39;1i\Hello&#39;</span> file                <span class="c1"># 在文件file的第一行插入Hello</span>
+</pre></div>
+
 
 <h1 id="_12">参考资料</h1>
 <p>https://github.com/skywind3000/awesome-cheatsheets</p></div>
@@ -574,11 +593,15 @@ sed '1i\Hello' file                # 在文件file的第一行插入Hello
 
         <footer class="col-md-12">
             <hr>
+                <p>Copyright &copy; 2018 Diwen Liu</p>
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>var base_url = '..';</script>
-        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
-        <script src="../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -601,7 +624,47 @@ sed '1i\Hello' file                # 在文件file的第一行插入Hello
             </div>
         </div>
     </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
+
 
     </body>
 </html>
