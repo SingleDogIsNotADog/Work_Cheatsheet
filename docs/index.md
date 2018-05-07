@@ -1,3 +1,3 @@
-# Ready to work?
+# Work CheatSheet
 
-# No, Ready to play.
+多总结，多交流，多思考

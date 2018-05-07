@@ -1,10 +1,10 @@
-# <center>代码小片段</center>
+# 代码小片段
 
 ---
 
 ## 发协议
 
-```
+```c++
 // 给玩家发
 SEND_TO_ROLE
 
@@ -23,7 +23,7 @@ World::SendToAllGateway
 
 ## 发邮件
 
-```
+```c++
 {
 	MailContentParam contentparam;
 
@@ -52,7 +52,7 @@ gamecommon::MailToUser(uid, rewards, gamestring::GAMESTRING_BUF);
 
 ## 发传闻
 
-```
+```c++
 // 发给全服
 {
 	int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), "key",
@@ -77,9 +77,28 @@ gamecommon::MailToUser(uid, rewards, gamestring::GAMESTRING_BUF);
 
 ```
 
+## 重算属性和战力
+
+```c++
+void XxX::ReCalcAttr(CharIntAttrs &base_add, bool is_recalc)
+{
+	if (is_recalc)
+	{
+		m_attrs_add.Reset();
+
+		// add m_attrs_add
+	}
+
+	m_role->GetCapability()->ReCalcCap(CAPABILITY_TYPE_XXX, m_attrs_add);
+	m_role->GetCapability()->AddCap(CAPABILITY_TYPE_XXX, m_other_capability); // 如果有的话
+
+	base_add.Add(m_attrs_add.m_attrs);
+}
+```
+
 ## 其他
 
-```
+```c++
 // 获取范围内的Obj对象
 ObjID obj_list[64] = {0};
 int count = scene->GetZoneMatrix()->GetObjByArea(center_pos, x_range, y_range, obj_list, sizeof(obj_list) / sizeof(obj_list[0]));

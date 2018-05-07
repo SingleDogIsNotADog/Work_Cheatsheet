@@ -23,3 +23,5 @@ client: svn://192.168.9.60/ug04_cn/client/u3d_proj
 doc: svn://192.168.9.60/ug04_cn/doc/1-国战项目
 
 xls: svn://192.168.9.60/ug04_cn/common/xlsdata
+
+配置表生成工具：svn://192.168.9.60/tools/xlsparser
