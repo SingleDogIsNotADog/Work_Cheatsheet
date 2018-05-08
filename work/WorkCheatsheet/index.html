@@ -220,19 +220,19 @@
         <li class="main active"><a href="#work-cheatsheet">Work CheatSheet</a></li>
             <li><a href="#_1">插命令</a></li>
             <li><a href="#_2">将消耗物品设置为自动购买</a></li>
-            <li><a href="#_3">退出副本</a></li>
-            <li><a href="#_4">修改传闻</a></li>
-            <li><a href="#_5">修改错误码</a></li>
-            <li><a href="#_6">敏感词</a></li>
-            <li><a href="#_7">日志报错</a></li>
+            <li><a href="#_3">修改传闻</a></li>
+            <li><a href="#_4">修改错误码</a></li>
+            <li><a href="#_5">敏感词</a></li>
+            <li><a href="#_6">日志报错</a></li>
+            <li><a href="#_7">拉取开发服数据</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="work-cheatsheet">Work CheatSheet</h1>
 <h2 id="_1">插命令</h2>
-<div class="codehilite"><pre><span></span># 热更，更多类型见：RELOAD_CONFIG_TYPE
-insert into command (creator, type, cmd) values (&quot;background&quot;, 2, &quot;Cmd Reload 6 0 0&quot; );
+<div class="codehilite"><pre><span></span><span class="c1"># 热更，更多类型见：RELOAD_CONFIG_TYPE</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="nf">command</span> <span class="p">(</span><span class="n">creator</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span> <span class="k">values</span> <span class="p">(</span><span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Cmd Reload 6 0 0&quot;</span> <span class="p">);</span>
 </pre></div>
 
 
@@ -247,30 +247,33 @@ insert into command (creator, type, cmd) values (&quot;background&quot;, 2, &quo
 </li>
 </ul>
 <p>服务端相关接口：Knapsack::ConsumeItemAutoBuy</p>
-<h2 id="_3">退出副本</h2>
-<p>由服务端通知客户端通关，客户端请求退出副本。</p>
-<p>相关协议：</p>
-<ul>
-<li>
-<p>SC：5499</p>
-</li>
-<li>
-<p>CS：1153</p>
-</li>
-</ul>
-<h2 id="_4">修改传闻</h2>
+<h2 id="_3">修改传闻</h2>
 <p>打开传闻文件：config\serverconfig\string.xml</p>
 <p>找到对应的字符串，直接修改其内容即可。</p>
 <p>注意：不能调整%的位置，不能删除%，如果需要调整，就得找服务端改对应的代码。</p>
-<h2 id="_5">修改错误码</h2>
+<h2 id="_4">修改错误码</h2>
 <p>修改错误码需要服务端改代码。</p>
 <p>如果错误码提示很奇怪，那么有可能是客户端没有更新新的错误码。</p>
-<h2 id="_6">敏感词</h2>
+<h2 id="_5">敏感词</h2>
 <p>如果是名字类的敏感词，由服务端处理。</p>
 <p>如果是比较长的，比如聊天的，由客户端处理。</p>
-<h2 id="_7">日志报错</h2>
+<h2 id="_6">日志报错</h2>
 <p>SeriousError (Critical): [Knapsack::Init Error]</p>
-<p>可能是由于策划在itemmanager.xml中删除了某个item的配置，导致玩家身上的该物品读取配置失败。</p></div>
+<p>可能是由于策划在itemmanager.xml中删除了某个item的配置，导致玩家身上的该物品读取配置失败。</p>
+<h2 id="_7">拉取开发服数据</h2>
+<p>打开Navicat，菜单栏选工具 -&gt; 数据同步，选择要同步的数据库：</p>
+<p><img alt="数据同步" src="../../pic/数据同步.jpg" /></p>
+<p>点击开始同步开发服数据到本地数据库。</p>
+<p>然后设置local.xml，将开发服加入合服列表。</p>
+<div class="codehilite"><pre><span></span><span class="c">&lt;!-- 允许的服ID列表 --&gt;</span>
+<span class="nt">&lt;allow_server_id_list&gt;</span>
+    <span class="nt">&lt;server_id&gt;</span>2<span class="nt">&lt;/server_id&gt;</span>
+    <span class="nt">&lt;server_id&gt;</span>1<span class="nt">&lt;/server_id&gt;</span>    
+<span class="nt">&lt;/allow_server_id_list&gt;</span>
+</pre></div>
+
+
+<p>之后就可以使用开发服的角色登陆本地服了。</p></div>
         </div>
 
         <footer class="col-md-12">
