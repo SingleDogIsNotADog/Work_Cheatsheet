@@ -1,4 +1,4 @@
-# <center>GM命令</center>
+# GM命令
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## 插命令
 
-```
+```mysql
 # 热更，更多类型见：RELOAD_CONFIG_TYPE
 insert into command (creator, type, cmd) values ("background", 2, "Cmd Reload 6 0 0" );
 ```
@@ -16,16 +16,6 @@ insert into command (creator, type, cmd) values ("background", 2, "Cmd Reload 6 
 - 设置物品的字段：get_way，将第一个内容设置为0。
 
 服务端相关接口：Knapsack::ConsumeItemAutoBuy
-
-## 退出副本
-
- 由服务端通知客户端通关，客户端请求退出副本。
-
-相关协议：
-
-- SC：5499
-
-- CS：1153
 
 ## 修改传闻
 
@@ -52,3 +42,23 @@ insert into command (creator, type, cmd) values ("background", 2, "Cmd Reload 6 
 SeriousError (Critical): [Knapsack::Init Error]
 
 可能是由于策划在itemmanager.xml中删除了某个item的配置，导致玩家身上的该物品读取配置失败。
+
+## 拉取开发服数据
+
+打开Navicat，菜单栏选工具 -> 数据同步，选择要同步的数据库：
+
+![数据同步](../pic/数据同步.jpg)
+
+点击开始同步开发服数据到本地数据库。
+
+然后设置local.xml，将开发服加入合服列表。
+
+```xml
+<!-- 允许的服ID列表 -->
+<allow_server_id_list>
+	<server_id>2</server_id>
+	<server_id>1</server_id>	
+</allow_server_id_list>
+```
+
+之后就可以使用开发服的角色登陆本地服了。
