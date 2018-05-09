@@ -45,3 +45,5 @@ NOTE：该命令不能重置非法位置。
 切换大臣活动状态：/gm dachenactnextstate:1
 
 切换国旗活动状态：/gm flagactnextstate:1
+
+一键自动进阶形象系统：/gm autoupgradeall:
