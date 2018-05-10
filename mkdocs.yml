@@ -5,6 +5,12 @@ copyright: 'Copyright &copy; 2018 Diwen Liu'
 repo_url: https://github.com/demon90s/Work_Cheatsheet
 edit_uri: ""
 
+theme:
+  name: 'material'
+  language: 'zh'
+  feature:
+    tabs: true
+
 markdown_extensions:
   - admonition
   - codehilite
