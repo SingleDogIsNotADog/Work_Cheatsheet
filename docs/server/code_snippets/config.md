@@ -5,7 +5,7 @@
 **xxxconfig.hpp**
 
 ```
-// 系统配置（X-XXX.xls）
+// X-XXX.xls
 #ifndef __XXX_CONFIG_HPP__
 #define __XXX_CONFIG_HPP__
 
