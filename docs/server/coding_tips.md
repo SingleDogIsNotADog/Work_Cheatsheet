@@ -39,3 +39,37 @@ void OnFinish()
 ```
 
 要避免值为0的scene_key，其场景将被拒绝创建
+
+## 特殊形象
+
+玩家使用了特殊形象，那么需要把这个形象通知给其它玩家。
+
+有这几种情况需要通知：
+
+1. 玩家激活，把激活的信息发给（AOI）可视区域内的所有玩家
+
+2. 有新的玩家进入可视区域，把玩家的信息（包括激活信息）发给他
+
+3. 玩家登陆，告知玩家自己当前使用的形象
+
+然后客户端就可以根据玩家的特殊形象信息来做显示了。
+
+**第一种情况**，发送激活信息到AOI：
+
+```cpp
+static Protocol::SCXXX xxx;
+Scene *scene = m_role->GetScene();
+if (scene != NULL) 
+{
+    // 初始化协议
+    scene->GetZoneMatrix()->NotifyAreaMsg(m_role->GetObserHandle(), (void*)&xxx, sizeof(xxx));
+}
+```
+
+通常协议应该包含该玩家的objid，这样客户端才能正确显示。
+
+**第二种情况**，修改 `SCVisibleObjEnterRole`，这个协议会在一个Obj进入玩家视野时发送。
+
+添加相关形象的激活信息。
+
+**第三种情况**，修改`SCRoleInfoAck`，这个协议会在玩家登陆时发送。

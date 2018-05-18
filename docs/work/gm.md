@@ -20,9 +20,9 @@
 
 ## 移动
 
-重置位置：/gm resetpos:x y
+重置位置（无法切换地图，不能重置非法位置）：/gm resetpos:x y
 
-NOTE：该命令不能重置非法位置。
+移动位置（可切换地图）：/gm move:scene_id scene_key x y
 
 ## 国家相关
 
