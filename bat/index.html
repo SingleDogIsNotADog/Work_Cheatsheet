@@ -931,11 +931,19 @@ del /S /Q * &gt; nul 2&gt;&amp;1                  rem 此命令删掉了当前�
 
 title ug04_cn                           rem 把窗口标题设置为ug04_cn
 
+start proccess.exe                      rem 启动一个单独的窗口运行程序
+start /b proccess.exe                   rem 启动程序，但不创建新窗口，但程序会忽略CTRL + C
+
 @echo hello                             rem 输出hello，@的功能是让命令内容不回显
 @echo off                               rem 关闭命令回显
 echo.                                   rem 输出换行
 
 echo 完毕 &amp; pause &gt; nul                 rem 暂停，输出自定义的提示，这里是完毕
+
+taskkill /f /t /im proccess.exe         rem 强制终止进程及其子进程
+
+ping -n 3 127.0 &gt; nul                   rem 执行3次无效的ping（每次ping会间隔一小段时间），把输出丢弃
+timeout /t 3 &gt; nul                      rem 等待3秒，把输出丢弃
 </pre></div>
 
 

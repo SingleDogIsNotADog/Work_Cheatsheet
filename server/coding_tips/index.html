@@ -612,6 +612,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="特殊形象" class="md-nav__link">
+    特殊形象
+  </a>
+  
+</li>
+      
       
       
       
@@ -847,6 +854,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="特殊形象" class="md-nav__link">
+    特殊形象
+  </a>
+  
+</li>
+      
       
       
       
@@ -915,6 +929,36 @@
 
 
 <p>要避免值为0的scene_key，其场景将被拒绝创建</p>
+<h2 id="_2">特殊形象</h2>
+<p>玩家使用了特殊形象，那么需要把这个形象通知给其它玩家。</p>
+<p>有这几种情况需要通知：</p>
+<ol>
+<li>
+<p>玩家激活，把激活的信息发给（AOI）可视区域内的所有玩家</p>
+</li>
+<li>
+<p>有新的玩家进入可视区域，把玩家的信息（包括激活信息）发给他</p>
+</li>
+<li>
+<p>玩家登陆，告知玩家自己当前使用的形象</p>
+</li>
+</ol>
+<p>然后客户端就可以根据玩家的特殊形象信息来做显示了。</p>
+<p><strong>第一种情况</strong>，发送激活信息到AOI：</p>
+<div class="codehilite"><pre><span></span><span class="k">static</span> <span class="n">Protocol</span><span class="o">::</span><span class="n">SCXXX</span> <span class="n">xxx</span><span class="p">;</span>
+<span class="n">Scene</span> <span class="o">*</span><span class="n">scene</span> <span class="o">=</span> <span class="n">m_role</span><span class="o">-&gt;</span><span class="n">GetScene</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">scene</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> 
+<span class="p">{</span>
+    <span class="c1">// 初始化协议</span>
+    <span class="n">scene</span><span class="o">-&gt;</span><span class="n">GetZoneMatrix</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">NotifyAreaMsg</span><span class="p">(</span><span class="n">m_role</span><span class="o">-&gt;</span><span class="n">GetObserHandle</span><span class="p">(),</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">xxx</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">xxx</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>通常协议应该包含该玩家的objid，这样客户端才能正确显示。</p>
+<p><strong>第二种情况</strong>，修改 <code>SCVisibleObjEnterRole</code>，这个协议会在一个Obj进入玩家视野时发送。</p>
+<p>添加相关形象的激活信息。</p>
+<p><strong>第三种情况</strong>，修改<code>SCRoleInfoAck</code>，这个协议会在玩家登陆时发送。</p>
                 
                   
                 

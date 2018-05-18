@@ -1019,15 +1019,16 @@
 <p>把各种IModule模块注册进Game</p>
 </li>
 <li>
-<p>Game调用Run方法</p>
-</li>
-<li>
-<p>Game进入Loop循环</p>
+<p>Game调用Run -&gt; Loop</p>
 </li>
 <li>
 <p>依次执行IModule模块的Init，Start，Update方法</p>
 </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">进程正常结束方式</p>
+<p>当进程收到了SIGINT信号时（CTRL + C），Game开始调用IModule模块的Stop -&gt; Release方法，然后结束Game::Run调用。</p>
+</div>
 <h2 id="_3">客户端协议接收流程</h2>
 <ul>
 <li>
