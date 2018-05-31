@@ -8,6 +8,8 @@
 
 增加灵液： /gm addlingye:10000
 
+增加国家元宝: /gm addcampgold:1000
+
 ## 修改属性
 
 修改速度：/gm changespeed:2000

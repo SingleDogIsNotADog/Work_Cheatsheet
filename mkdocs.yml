@@ -8,8 +8,6 @@ edit_uri: ""
 theme:
   name: 'material'
   language: 'zh'
-  feature:
-    tabs: true
 
 markdown_extensions:
   - admonition
@@ -34,6 +32,7 @@ pages:
     - path: work/path.md
     - WorkCheateSheet: work/WorkCheatsheet.md
     - question & anwser: work/qa.md
+    - 常用英文: work/常用英文.md
   - server:
     - 开发环境搭建: server/开发环境搭建.md
     - 发版与热更: server/发版与热更.md
