@@ -1,8 +1,8 @@
-# 代码提交
+## 代码提交
 
 提交时忽略文件：.asset, main.unity
 
-# 如何修改View
+## 如何修改View
 
 - 运行游戏，切换到Scene面板，选中相关的UI，找到Hierarchy面板上对应的View
 
@@ -12,7 +12,7 @@
 
 - 编辑完毕Apply，再把它从Hierarchy面板移除，重启游戏观察改动
 
-# 如何从代码里获取一个UI对象
+## 如何从代码里获取一个UI对象
 
 在UI控件的父节点的Inspector面板中，找到UI Name Table组件，其中有其子节点对应的名字以及其对应的UI控件。
 
@@ -22,9 +22,9 @@
 self.reward_btn = self:FindObj("reward_btn")
 ```
 
-# UI操作
+## UI操作
 
-## 按钮
+### 按钮
 
 **创建：**
 
@@ -52,7 +52,7 @@ self:ListenEvent("reward_click", BindTool.Bind(self.RewardOnClick, self))
 
 这个reward_click名字可以在父节点的UI Name Table里添加定义。
 
-## 文本
+### 文本
 
 **创建：**
 

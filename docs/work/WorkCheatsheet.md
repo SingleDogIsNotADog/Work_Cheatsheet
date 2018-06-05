@@ -7,6 +7,14 @@
 insert into command (creator, type, cmd) values ("background", 2, "Cmd Reload 6 0 0" );
 ```
 
+creator不重要，无须关心。type指定通知哪一个进程，见枚举CMD_TYPE，cmd是具体通知程序的命令。
+
+进程处理入口：
+
+- loginserver: LoginServer::OnCmd
+
+- gameworld: System::OnCmd
+
 ## 服务端合代码步骤
 
 0. 拷贝相关配置表
