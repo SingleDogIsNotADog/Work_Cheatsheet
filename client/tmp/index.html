@@ -714,12 +714,78 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
-      
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        tmp
+      </label>
     
     <a href="./" title="tmp" class="md-nav__link md-nav__link--active">
       tmp
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="代码提交" class="md-nav__link">
+    代码提交
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view" title="如何修改View" class="md-nav__link">
+    如何修改View
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui" title="如何从代码里获取一个UI对象" class="md-nav__link">
+    如何从代码里获取一个UI对象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui_1" title="UI操作" class="md-nav__link">
+    UI操作
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="按钮" class="md-nav__link">
+    按钮
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="文本" class="md-nav__link">
+    文本
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -743,8 +809,63 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
   
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="代码提交" class="md-nav__link">
+    代码提交
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view" title="如何修改View" class="md-nav__link">
+    如何修改View
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui" title="如何从代码里获取一个UI对象" class="md-nav__link">
+    如何从代码里获取一个UI对象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui_1" title="UI操作" class="md-nav__link">
+    UI操作
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="按钮" class="md-nav__link">
+    按钮
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="文本" class="md-nav__link">
+    文本
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
   
 </nav>
                   </div>
@@ -757,9 +878,11 @@
               
                 
                 
-                <h1 id="_1">代码提交</h1>
+                  <h1>tmp</h1>
+                
+                <h2 id="_1">代码提交</h2>
 <p>提交时忽略文件：.asset, main.unity</p>
-<h1 id="view">如何修改View</h1>
+<h2 id="view">如何修改View</h2>
 <ul>
 <li>
 <p>运行游戏，切换到Scene面板，选中相关的UI，找到Hierarchy面板上对应的View</p>
@@ -774,15 +897,15 @@
 <p>编辑完毕Apply，再把它从Hierarchy面板移除，重启游戏观察改动</p>
 </li>
 </ul>
-<h1 id="ui">如何从代码里获取一个UI对象</h1>
+<h2 id="ui">如何从代码里获取一个UI对象</h2>
 <p>在UI控件的父节点的Inspector面板中，找到UI Name Table组件，其中有其子节点对应的名字以及其对应的UI控件。</p>
 <p>然后在代码里使用father:FindObj("name")来获取对象：</p>
 <div class="codehilite"><pre><span></span>self.reward_btn = self:FindObj(&quot;reward_btn&quot;)
 </pre></div>
 
 
-<h1 id="ui_1">UI操作</h1>
-<h2 id="_2">按钮</h2>
+<h2 id="ui_1">UI操作</h2>
+<h3 id="_2">按钮</h3>
 <p><strong>创建：</strong></p>
 <ul>
 <li>
@@ -808,7 +931,7 @@
 <p><strong>处理点击事件（UI Event Bind Click组件）：</strong></p>
 <p>self:ListenEvent("reward_click", BindTool.Bind(self.RewardOnClick, self))</p>
 <p>这个reward_click名字可以在父节点的UI Name Table里添加定义。</p>
-<h2 id="_3">文本</h2>
+<h3 id="_3">文本</h3>
 <p><strong>创建：</strong></p>
 <p>右键父节点 -&gt; UI -&gt; Text</p>
 <p>添加相关的组件。</p>

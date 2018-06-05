@@ -907,6 +907,16 @@
 </pre></div>
 
 
+<p>creator不重要，无须关心。type指定通知哪一个进程，见枚举CMD_TYPE，cmd是具体通知程序的命令。</p>
+<p>进程处理入口：</p>
+<ul>
+<li>
+<p>loginserver: LoginServer::OnCmd</p>
+</li>
+<li>
+<p>gameworld: System::OnCmd</p>
+</li>
+</ul>
 <h2 id="_2">服务端合代码步骤</h2>
 <ol>
 <li>
