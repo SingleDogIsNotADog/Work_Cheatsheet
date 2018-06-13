@@ -89,7 +89,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#_1" tabindex="1" class="md-skip">
+      <a href="#shell" tabindex="1" class="md-skip">
         跳转至
       </a>
     
@@ -273,9 +273,93 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        shell
+      </label>
+    
     <a href="./" title="shell" class="md-nav__link md-nav__link--active">
       shell
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="常用快捷键" class="md-nav__link">
+    常用快捷键
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell_1" title="Shell命令" class="md-nav__link">
+    Shell命令
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bash" title="Bash基本操作" class="md-nav__link">
+    Bash基本操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="目录操作" class="md-nav__link">
+    目录操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="文件操作" class="md-nav__link">
+    文件操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="用户管理" class="md-nav__link">
+    用户管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="进程管理" class="md-nav__link">
+    进程管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="其他命令" class="md-nav__link">
+    其他命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -746,6 +830,77 @@
     
   
   
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="常用快捷键" class="md-nav__link">
+    常用快捷键
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell_1" title="Shell命令" class="md-nav__link">
+    Shell命令
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bash" title="Bash基本操作" class="md-nav__link">
+    Bash基本操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="目录操作" class="md-nav__link">
+    目录操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="文件操作" class="md-nav__link">
+    文件操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="用户管理" class="md-nav__link">
+    用户管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="进程管理" class="md-nav__link">
+    进程管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="其他命令" class="md-nav__link">
+    其他命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -757,7 +912,9 @@
               
                 
                 
-                <h1 id="_1">常用快捷键</h1>
+                <h1 id="shell">Shell</h1>
+<hr />
+<h2 id="_1">常用快捷键</h2>
 <div class="codehilite"><pre><span></span>CTRL+C              <span class="c1"># 结束当前命令</span>
 CTRL+D              <span class="c1"># 删除光标前的字符，同 &lt;Delete&gt; ，或者没有内容时，退出会话，或者交互模式输入文件结束符EOF</span>
 CTRL+K              <span class="c1"># 删除光标位置到行末的内容</span>
@@ -767,8 +924,8 @@ CTRL+Z              <span class="c1"># 暂停前台进程返回 bash，需要时
 </pre></div>
 
 
-<h1 id="shell">Shell命令</h1>
-<h2 id="bash">Bash基本操作</h2>
+<h2 id="shell_1">Shell命令</h2>
+<h3 id="bash">Bash基本操作</h3>
 <div class="codehilite"><pre><span></span><span class="nb">exit</span>                <span class="c1"># 退出当前登陆</span>
 env                 <span class="c1"># 显示环境变量</span>
 <span class="nb">echo</span> <span class="nv">$SHELL</span>         <span class="c1"># 显示你在使用什么 SHELL</span>
@@ -781,7 +938,7 @@ reset               <span class="c1"># 重置终端（当你不小心 cat 了一
 </pre></div>
 
 
-<h2 id="_2">目录操作</h2>
+<h3 id="_2">目录操作</h3>
 <div class="codehilite"><pre><span></span><span class="nb">cd</span>                  <span class="c1"># 返回自己 $HOME 目录</span>
 <span class="nb">cd</span> <span class="o">{</span>dirname<span class="o">}</span>        <span class="c1"># 进入目录</span>
 <span class="nb">cd</span> -                <span class="c1"># 回到之前的目录</span>
@@ -791,7 +948,7 @@ mkdir -p <span class="o">{</span>dirname<span class="o">}</span>  <span class="c
 </pre></div>
 
 
-<h2 id="_3">文件操作</h2>
+<h3 id="_3">文件操作</h3>
 <div class="codehilite"><pre><span></span>ls                  <span class="c1"># 显示当前目录内容，后面可接目录名：ls {dir} 显示指定目录</span>
 ls -l               <span class="c1"># 列表方式显示目录内容，包括文件日期，大小，权限等信息</span>
 ls -a               <span class="c1"># 显示所有文件和目录，包括隐藏文件（.开头的文件/目录名）</span>
@@ -816,7 +973,7 @@ grep -r <span class="o">{</span>pat<span class="o">}</span> .     <span class="c
 </pre></div>
 
 
-<h2 id="_4">用户管理</h2>
+<h3 id="_4">用户管理</h3>
 <div class="codehilite"><pre><span></span>whoami              <span class="c1"># 显示我的用户名</span>
 passwd              <span class="c1"># 修改密码，passwd {user} 可以用于 root 修改别人密码</span>
 last <span class="o">{</span>user<span class="o">}</span>         <span class="c1"># 显示登陆记录</span>
@@ -827,7 +984,7 @@ id <span class="o">{</span>user<span class="o">}</span>           <span class="c
 </pre></div>
 
 
-<h2 id="_5">进程管理</h2>
+<h3 id="_5">进程管理</h3>
 <div class="codehilite"><pre><span></span>ps                        <span class="c1"># 查看当前会话进程</span>
 ps ax                     <span class="c1"># 查看所有进程，类似 ps -e</span>
 ps aux                    <span class="c1"># 查看所有进程详细信息，类似 ps -ef</span>
@@ -850,32 +1007,35 @@ any_command <span class="p">&amp;</span>             <span class="c1"># 在后�
 </pre></div>
 
 
-<h2 id="_6">其他命令</h2>
-<div class="codehilite"><pre><span></span>ssh user@host             <span class="c1"># 以用户 user 登陆到远程主机 host</span>
-ssh -p <span class="o">{</span>port<span class="o">}</span> user@host   <span class="c1"># 指定端口登陆主机</span>
+<h3 id="_6">其他命令</h3>
+<div class="codehilite"><pre><span></span>ssh user@host               <span class="c1"># 以用户 user 登陆到远程主机 host</span>
+ssh -p <span class="o">{</span>port<span class="o">}</span> user@host     <span class="c1"># 指定端口登陆主机</span>
 
-uname -a                  <span class="c1"># 查看内核版本等信息</span>
-man <span class="o">{</span>help<span class="o">}</span>                <span class="c1"># 查看帮助</span>
-uptime                    <span class="c1"># 查看系统启动时间</span>
-date                      <span class="c1"># 显示日期</span>
-cal                       <span class="c1"># 显示日历</span>
-vmstat                    <span class="c1"># 显示内存和 CPU 使用情况</span>
-vmstat <span class="m">10</span>                 <span class="c1"># 每 10 秒打印一行内存和 CPU情况，CTRL+C 退出</span>
-free                      <span class="c1"># 显示内存和交换区使用情况</span>
-df                        <span class="c1"># 显示磁盘使用情况</span>
-du                        <span class="c1"># 显示当前目录占用，du . --max-depth=2 可以指定深度</span>
+uname -a                    <span class="c1"># 查看内核版本等信息</span>
+man <span class="o">{</span>help<span class="o">}</span>                  <span class="c1"># 查看帮助</span>
+uptime                      <span class="c1"># 查看系统启动时间</span>
+date                        <span class="c1"># 显示日期</span>
+cal                         <span class="c1"># 显示日历</span>
+vmstat                      <span class="c1"># 显示内存和 CPU 使用情况</span>
+vmstat <span class="m">10</span>                   <span class="c1"># 每 10 秒打印一行内存和 CPU情况，CTRL+C 退出</span>
+free                        <span class="c1"># 显示内存和交换区使用情况</span>
+df                          <span class="c1"># 显示磁盘使用情况</span>
+du                          <span class="c1"># 显示当前目录占用，du . --max-depth=2 可以指定深度</span>
 
-wget <span class="o">{</span>url<span class="o">}</span>                <span class="c1"># 下载文件，可加 --no-check-certificate 忽略 ssl 验证</span>
-sz <span class="o">{</span>file<span class="o">}</span>                 <span class="c1"># 发送文件到终端，zmodem 协议</span>
-rz                        <span class="c1"># 接收终端发送过来的文件</span>
+wget <span class="o">{</span>url<span class="o">}</span>                  <span class="c1"># 下载文件，可加 --no-check-certificate 忽略 ssl 验证</span>
+sz <span class="o">{</span>file<span class="o">}</span>                   <span class="c1"># 发送文件到终端，zmodem 协议</span>
+rz                          <span class="c1"># 接收终端发送过来的文件</span>
 
 tar -zcv -f file.tar.gz <span class="o">{</span>filelist<span class="o">}</span> <span class="c1"># 将文件打包成file.tar.gz</span>
 tar -zxv -f file.tar.gz            <span class="c1"># 在当前路径解压file.tar.gz</span>
+
+yum list gcc                <span class="c1"># 搜索gcc相关的安装包</span>
+yum install gcc.x86_64      <span class="c1"># 安装这个包</span>
 </pre></div>
 
 
-<h1 id="shell_1">Shell脚本</h1>
-<h2 id="_7">变量操作</h2>
+<h1 id="shell_2">Shell脚本</h1>
+<h3 id="_7">变量操作</h3>
 <div class="codehilite"><pre><span></span><span class="nv">varname</span><span class="o">=</span>value             <span class="c1"># 定义变量</span>
 <span class="nb">echo</span> <span class="nv">$varname</span>             <span class="c1"># 查看变量内容</span>
 <span class="si">${#</span><span class="nv">varname</span><span class="si">}</span>               <span class="c1"># 返回字符串长度</span>
@@ -915,7 +1075,7 @@ array<span class="o">[</span><span class="m">2</span><span class="o">]=</span>va
 </pre></div>
 
 
-<h2 id="_8">函数</h2>
+<h3 id="_8">函数</h3>
 <div class="codehilite"><pre><span></span><span class="c1"># 定义一个新函数</span>
 <span class="k">function</span> myfunc<span class="o">()</span> <span class="o">{</span>
     <span class="c1"># $1 代表第一个参数，$N 代表第 N 个参数</span>
@@ -931,7 +1091,7 @@ myfunc arg1 arg2 arg3     <span class="c1"># 带参数的函数调用</span>
 </pre></div>
 
 
-<h2 id="_9">条件判断</h2>
+<h3 id="_9">条件判断</h3>
 <div class="codehilite"><pre><span></span>statement1 <span class="o">&amp;&amp;</span> statement2  <span class="c1"># and 操作符</span>
 statement1 <span class="o">||</span> statement2  <span class="c1"># or 操作符</span>
 
@@ -962,7 +1122,7 @@ num1 -ge num2             <span class="c1"># 数字判断：num1 &gt;= num2</spa
 </pre></div>
 
 
-<h2 id="if-test">分支控制：if 和经典 test</h2>
+<h3 id="if-test">分支控制：if 和经典 test</h3>
 <div class="codehilite"><pre><span></span><span class="nb">test</span> <span class="o">{</span>expression<span class="o">}</span>         <span class="c1"># 判断条件为真的话 test 程序返回0 否则非零</span>
 <span class="o">[</span> expression <span class="o">]</span>            <span class="c1"># 判断条件为真的话返回0 否则非零</span>
 
@@ -1011,7 +1171,7 @@ num1 -ge num2             <span class="c1"># 数字判断：num1 &gt;= num2</spa
 </pre></div>
 
 
-<h2 id="while-for-case-until">流程控制：while / for / case / until</h2>
+<h3 id="while-for-case-until">流程控制：while / for / case / until</h3>
 <div class="codehilite"><pre><span></span><span class="c1"># while 循环</span>
 <span class="k">while</span> condition<span class="p">;</span> <span class="k">do</span>
     statements
@@ -1054,7 +1214,7 @@ num1 -ge num2             <span class="c1"># 数字判断：num1 &gt;= num2</spa
 </pre></div>
 
 
-<h2 id="_10">其他有趣的脚本</h2>
+<h3 id="_10">其他有趣的脚本</h3>
 <div class="codehilite"><pre><span></span><span class="c1"># 将文件编码转换，并输出到文件，file_in和file_out可以是同一个文件</span>
 iconv -f gb2312 -t utf8 file_in -o file_out
 
@@ -1066,8 +1226,8 @@ lsof -i port:80                      <span class="c1"># 哪个程序在使用 80
 </pre></div>
 
 
-<h1 id="_11">文本处理</h1>
-<h2 id="grep">grep</h2>
+<h2 id="_11">文本处理</h2>
+<h3 id="grep">grep</h3>
 <div class="codehilite"><pre><span></span>grep <span class="s1">&#39;Error&#39;</span> file                  <span class="c1"># 在file中检索包含Error的行</span>
 grep -r <span class="s1">&#39;Error&#39;</span> *                  <span class="c1"># 在当前目录及其子目录中检索包含Error的行</span>
 grep -l <span class="s1">&#39;Error&#39;</span> *                  <span class="c1"># 在当前目录及其子目录中检索包含Error的行，只输出相关文件名</span>
@@ -1075,7 +1235,7 @@ grep -v <span class="s1">&#39;Error&#39;</span> file               <span class="
 </pre></div>
 
 
-<h2 id="cut">cut</h2>
+<h3 id="cut">cut</h3>
 <div class="codehilite"><pre><span></span>cut -c <span class="m">1</span>-16                        <span class="c1"># 截取每行头16个字符</span>
 cut -c <span class="m">1</span>-16 file                   <span class="c1"># 截取指定文件中每行头 16个字符</span>
 cut -c3-                           <span class="c1"># 截取每行从第三个字符开始到行末的内容</span>
@@ -1087,7 +1247,7 @@ cut -d<span class="s1">&#39; &#39;</span> -f3-7                    <span class="
 </pre></div>
 
 
-<h2 id="awk-sed">awk / sed</h2>
+<h3 id="awk-sed">awk / sed</h3>
 <div class="codehilite"><pre><span></span>awk <span class="s1">&#39;{print $5}&#39;</span> file              <span class="c1"># 打印文件中以空格分隔的第五列</span>
 awk -F <span class="s1">&#39;,&#39;</span> <span class="s1">&#39;{print $5}&#39;</span> file       <span class="c1"># 打印文件中以逗号分隔的第五列</span>
 awk <span class="s1">&#39;/str/ {print $2}&#39;</span> file        <span class="c1"># 打印文件中包含 str 的所有行的第二列</span>
@@ -1103,7 +1263,7 @@ sed <span class="s1">&#39;1i\Hello&#39;</span> file                <span class="
 </pre></div>
 
 
-<h1 id="_12">参考资料</h1>
+<h2 id="_12">参考资料</h2>
 <p>https://github.com/skywind3000/awesome-cheatsheets</p>
                 
                   
