@@ -460,56 +460,63 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="插命令" class="md-nav__link">
+  <a href="#_1" title="查询进程执行目录" class="md-nav__link">
+    查询进程执行目录
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="插命令" class="md-nav__link">
     插命令
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" title="服务端合代码步骤" class="md-nav__link">
+  <a href="#_3" title="服务端合代码步骤" class="md-nav__link">
     服务端合代码步骤
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" title="将消耗物品设置为自动购买" class="md-nav__link">
+  <a href="#_4" title="将消耗物品设置为自动购买" class="md-nav__link">
     将消耗物品设置为自动购买
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" title="修改传闻" class="md-nav__link">
+  <a href="#_5" title="修改传闻" class="md-nav__link">
     修改传闻
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" title="修改错误码" class="md-nav__link">
+  <a href="#_6" title="修改错误码" class="md-nav__link">
     修改错误码
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" title="敏感词" class="md-nav__link">
+  <a href="#_7" title="敏感词" class="md-nav__link">
     敏感词
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" title="日志报错" class="md-nav__link">
+  <a href="#_8" title="日志报错" class="md-nav__link">
     日志报错
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" title="拉取开发服数据" class="md-nav__link">
+  <a href="#_9" title="拉取开发服数据" class="md-nav__link">
     拉取开发服数据
   </a>
   
@@ -828,56 +835,63 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="插命令" class="md-nav__link">
+  <a href="#_1" title="查询进程执行目录" class="md-nav__link">
+    查询进程执行目录
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="插命令" class="md-nav__link">
     插命令
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" title="服务端合代码步骤" class="md-nav__link">
+  <a href="#_3" title="服务端合代码步骤" class="md-nav__link">
     服务端合代码步骤
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" title="将消耗物品设置为自动购买" class="md-nav__link">
+  <a href="#_4" title="将消耗物品设置为自动购买" class="md-nav__link">
     将消耗物品设置为自动购买
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" title="修改传闻" class="md-nav__link">
+  <a href="#_5" title="修改传闻" class="md-nav__link">
     修改传闻
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" title="修改错误码" class="md-nav__link">
+  <a href="#_6" title="修改错误码" class="md-nav__link">
     修改错误码
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" title="敏感词" class="md-nav__link">
+  <a href="#_7" title="敏感词" class="md-nav__link">
     敏感词
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" title="日志报错" class="md-nav__link">
+  <a href="#_8" title="日志报错" class="md-nav__link">
     日志报错
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" title="拉取开发服数据" class="md-nav__link">
+  <a href="#_9" title="拉取开发服数据" class="md-nav__link">
     拉取开发服数据
   </a>
   
@@ -901,7 +915,14 @@
                 
                 
                 <h1 id="work-cheatsheet">Work CheatSheet</h1>
-<h2 id="_1">插命令</h2>
+<hr />
+<h2 id="_1">查询进程执行目录</h2>
+<p>可用于查询外服某一个渠道的服务器进程目录。</p>
+<div class="codehilite"><pre><span></span>ps aux <span class="p">|</span> grep &lt;游戏服名&gt; <span class="c1"># 比如ug04_cn</span>
+</pre></div>
+
+
+<h2 id="_2">插命令</h2>
 <div class="codehilite"><pre><span></span><span class="c1"># 热更，更多类型见：RELOAD_CONFIG_TYPE</span>
 <span class="k">insert</span> <span class="k">into</span> <span class="nf">command</span> <span class="p">(</span><span class="n">creator</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span> <span class="k">values</span> <span class="p">(</span><span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Cmd Reload 6 0 0&quot;</span> <span class="p">);</span>
 </pre></div>
@@ -917,7 +938,7 @@
 <p>gameworld: System::OnCmd</p>
 </li>
 </ul>
-<h2 id="_2">服务端合代码步骤</h2>
+<h2 id="_3">服务端合代码步骤</h2>
 <ol>
 <li>
 <p>拷贝相关配置表</p>
@@ -938,7 +959,7 @@
 <p>OK</p>
 </li>
 </ol>
-<h2 id="_3">将消耗物品设置为自动购买</h2>
+<h2 id="_4">将消耗物品设置为自动购买</h2>
 <p>策划配置：</p>
 <ul>
 <li>
@@ -949,20 +970,20 @@
 </li>
 </ul>
 <p>服务端相关接口：Knapsack::ConsumeItemAutoBuy</p>
-<h2 id="_4">修改传闻</h2>
+<h2 id="_5">修改传闻</h2>
 <p>打开传闻文件：config\serverconfig\string.xml</p>
 <p>找到对应的字符串，直接修改其内容即可。</p>
 <p>注意：不能调整%的位置，不能删除%，如果需要调整，就得找服务端改对应的代码。</p>
-<h2 id="_5">修改错误码</h2>
+<h2 id="_6">修改错误码</h2>
 <p>修改错误码需要服务端改代码。</p>
 <p>如果错误码提示很奇怪，那么有可能是客户端没有更新新的错误码。</p>
-<h2 id="_6">敏感词</h2>
+<h2 id="_7">敏感词</h2>
 <p>如果是名字类的敏感词，由服务端处理。</p>
 <p>如果是比较长的，比如聊天的，由客户端处理。</p>
-<h2 id="_7">日志报错</h2>
+<h2 id="_8">日志报错</h2>
 <p>SeriousError (Critical): [Knapsack::Init Error]</p>
 <p>可能是由于策划在itemmanager.xml中删除了某个item的配置，导致玩家身上的该物品读取配置失败。</p>
-<h2 id="_8">拉取开发服数据</h2>
+<h2 id="_9">拉取开发服数据</h2>
 <p>打开Navicat，菜单栏选工具 -&gt; 数据同步，选择要同步的数据库：</p>
 <p><img alt="数据同步" src="../../pic/数据同步.jpg" /></p>
 <p>点击开始同步开发服数据到本地数据库。</p>

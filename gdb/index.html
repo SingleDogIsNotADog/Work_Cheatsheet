@@ -345,9 +345,66 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        gdb
+      </label>
+    
     <a href="./" title="gdb" class="md-nav__link md-nav__link--active">
       gdb
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gdb_1" title="令程序支持gdb调试" class="md-nav__link">
+    令程序支持gdb调试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="启动调试" class="md-nav__link">
+    启动调试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="常用调试命令" class="md-nav__link">
+    常用调试命令
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="使用脚本调试" class="md-nav__link">
+    使用脚本调试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="调试死循环" class="md-nav__link">
+    调试死循环
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -746,6 +803,50 @@
     
   
   
+    <label class="md-nav__title" for="toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gdb_1" title="令程序支持gdb调试" class="md-nav__link">
+    令程序支持gdb调试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="启动调试" class="md-nav__link">
+    启动调试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="常用调试命令" class="md-nav__link">
+    常用调试命令
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="使用脚本调试" class="md-nav__link">
+    使用脚本调试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="调试死循环" class="md-nav__link">
+    调试死循环
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -757,10 +858,12 @@
               
                 
                 
-                <h1 id="gdb">令程序支持gdb调试</h1>
+                <h1 id="gdb">GDB</h1>
+<hr />
+<h2 id="gdb_1">令程序支持gdb调试</h2>
 <p>需要开启编译选项-g</p>
 <p>如果想让程序能生成core文件，需要修改.bashrc，添加<code>ulimit -c unlimited</code>。</p>
-<h1 id="_1">启动调试</h1>
+<h2 id="_1">启动调试</h2>
 <p><strong>启动并调试一个程序</strong></p>
 <div class="codehilite"><pre><span></span>$ gdb prog
 </pre></div>
@@ -776,7 +879,7 @@
 </pre></div>
 
 
-<h1 id="_2">常用调试命令</h1>
+<h2 id="_2">常用调试命令</h2>
 <div class="codehilite"><pre><span></span>$ <span class="nb">set</span> args <span class="o">[</span>arg_list<span class="o">]</span> <span class="c1"># 设置程序的启动参数</span>
 $ bt                  <span class="c1"># 查看调用堆栈</span>
 $ f n                 <span class="c1"># 跳到第n个stack frame</span>
@@ -787,11 +890,11 @@ $ b file:line         <span class="c1"># 在文件的某一行设置断点</span
 $ delete <span class="nb">break</span>        <span class="c1"># 删除所有的断点</span>
 $ q                   <span class="c1"># 退出调试</span>
 $ c                   <span class="c1"># 继续执行程序</span>
-<span class="c1"># run                 # 开始执行程序</span>
+$ run                 <span class="c1"># 开始执行程序</span>
 </pre></div>
 
 
-<h1 id="_3">使用脚本调试</h1>
+<h2 id="_3">使用脚本调试</h2>
 <p>gdb加入参数-x script，即可使用脚本调试。</p>
 <p>脚本模板：</p>
 <div class="codehilite"><pre><span></span>b somewhere
@@ -801,7 +904,7 @@ q
 </pre></div>
 
 
-<h1 id="_4">调试死循环</h1>
+<h2 id="_4">调试死循环</h2>
 <p>直接gdb附加进程后，使用bt命令查看调用堆栈即可。</p>
                 
                   
