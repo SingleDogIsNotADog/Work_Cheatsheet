@@ -844,6 +844,21 @@
             "location": "/client/tmp/#_3",
             "text": "\u521b\u5efa\uff1a  \u53f3\u952e\u7236\u8282\u70b9 -> UI -> Text  \u6dfb\u52a0\u76f8\u5173\u7684\u7ec4\u4ef6\u3002  \u7ed1\u5b9a\u5230\u53d8\u91cf\uff1a  \u4e3aUI\u6dfb\u52a0\u4e00\u4e2aUI Variable Bind Text\u7ec4\u4ef6\uff0c\u7136\u540e\u6dfb\u52a0\u4e00\u4e2a\u7ed9\u5b83\u3002\u8fd9\u6837\u5f53\u8fd9\u4e2a\u53d8\u91cf\u4fee\u6539\u7684\u65f6\u5019\uff0c\u6587\u672c\u4e5f\u4f1a\u81ea\u52a8\u8ddf\u7740\u4fee\u6539\u3002",
             "title": "\u6587\u672c"
+        },
+        {
+            "location": "/client/\u6d41\u7a0b/",
+            "text": "\u6d41\u7a0b\n\n\n\n\n\u5ba2\u6237\u7aefView\u66f4\u65b0\u6d41\u7a0b\n\n\nOpen\u6d41\u7a0b\uff1a\n\n\nViewManager\n.\nInstance\n:\nOpen\n \n-- \u7531\u67d0\u4e9b\u4ea4\u4e92\u4e8b\u4ef6\u89e6\u53d1\n\n    \nBaseView\n:\nOpen\n\n        \nBaseView\n:\nOpenCallBack\n\n\n\n\n\n\nLoad\u6d41\u7a0b\uff1a\n\n\nBaseView\n:\nOpen\n\n    \nBaseView\n:\nLoad\n \n-- \u5982\u679c\u6ca1\u6709\u52a0\u8f7d\n\n        \nBaseView\n:\nPrefabLoadCallback\n\n            \nBaseView\n:\nLoadCallBack\n \n-- \u7531\u5b50\u7c7b\u5b9e\u73b0\u6b64\u65b9\u6cd5\n\n\n\n\n\n\nFlush\u6d41\u7a0b\uff1a\n\n\nBaseView\n:\nFlush\n \n-- \u5b50\u7c7b\u8c03\u7528\uff0c\u7531\u67d0\u4e9b\u4e8b\u4ef6\u89e6\u53d1\uff0c\u6bd4\u5982\u6536\u5230\u534f\u8bae\n\n    \nBaseView\n:\nFlushHelper\n\n            \nBaseView\n:\nOnFlush\n \n-- \u5b50\u7c7b\u5b9e\u73b0\u6b64\u65b9\u6cd5",
+            "title": "\u6d41\u7a0b"
+        },
+        {
+            "location": "/client/\u6d41\u7a0b/#_1",
+            "text": "",
+            "title": "\u6d41\u7a0b"
+        },
+        {
+            "location": "/client/\u6d41\u7a0b/#view",
+            "text": "Open\u6d41\u7a0b\uff1a  ViewManager . Instance : Open   -- \u7531\u67d0\u4e9b\u4ea4\u4e92\u4e8b\u4ef6\u89e6\u53d1 \n     BaseView : Open \n         BaseView : OpenCallBack   Load\u6d41\u7a0b\uff1a  BaseView : Open \n     BaseView : Load   -- \u5982\u679c\u6ca1\u6709\u52a0\u8f7d \n         BaseView : PrefabLoadCallback \n             BaseView : LoadCallBack   -- \u7531\u5b50\u7c7b\u5b9e\u73b0\u6b64\u65b9\u6cd5   Flush\u6d41\u7a0b\uff1a  BaseView : Flush   -- \u5b50\u7c7b\u8c03\u7528\uff0c\u7531\u67d0\u4e9b\u4e8b\u4ef6\u89e6\u53d1\uff0c\u6bd4\u5982\u6536\u5230\u534f\u8bae \n     BaseView : FlushHelper \n             BaseView : OnFlush   -- \u5b50\u7c7b\u5b9e\u73b0\u6b64\u65b9\u6cd5",
+            "title": "\u5ba2\u6237\u7aefView\u66f4\u65b0\u6d41\u7a0b"
         }
     ]
 }
