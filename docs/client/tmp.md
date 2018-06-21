@@ -1,3 +1,11 @@
+# 临时记录
+
+---
+
+## 客户端读取服列表
+
+相关配置在文件：global_config.lua，搜索` http://`。
+
 ## 代码提交
 
 提交时忽略文件：.asset, main.unity
