@@ -23,3 +23,5 @@ fi
 git add *
 git commit -m "commit"
 git push origin master
+
+python -m mkdocs gh-deploy --force
