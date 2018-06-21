@@ -714,6 +714,8 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
+      
+    
     
       <label class="md-nav__link md-nav__link--active" for="toc">
         tmp
@@ -727,12 +729,21 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="toc">目录</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="代码提交" class="md-nav__link">
+  <a href="#_2" title="客户端读取服列表" class="md-nav__link">
+    客户端读取服列表
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="代码提交" class="md-nav__link">
     代码提交
   </a>
   
@@ -761,14 +772,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" title="按钮" class="md-nav__link">
+  <a href="#_4" title="按钮" class="md-nav__link">
     按钮
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" title="文本" class="md-nav__link">
+  <a href="#_5" title="文本" class="md-nav__link">
     文本
   </a>
   
@@ -821,12 +832,21 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="toc">目录</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="代码提交" class="md-nav__link">
+  <a href="#_2" title="客户端读取服列表" class="md-nav__link">
+    客户端读取服列表
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="代码提交" class="md-nav__link">
     代码提交
   </a>
   
@@ -855,14 +875,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" title="按钮" class="md-nav__link">
+  <a href="#_4" title="按钮" class="md-nav__link">
     按钮
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" title="文本" class="md-nav__link">
+  <a href="#_5" title="文本" class="md-nav__link">
     文本
   </a>
   
@@ -890,9 +910,11 @@
               
                 
                 
-                  <h1>tmp</h1>
-                
-                <h2 id="_1">代码提交</h2>
+                <h1 id="_1">临时记录</h1>
+<hr />
+<h2 id="_2">客户端读取服列表</h2>
+<p>相关配置在文件：global_config.lua，搜索<code>http://</code>。</p>
+<h2 id="_3">代码提交</h2>
 <p>提交时忽略文件：.asset, main.unity</p>
 <h2 id="view">如何修改View</h2>
 <ul>
@@ -917,7 +939,7 @@
 
 
 <h2 id="ui_1">UI操作</h2>
-<h3 id="_2">按钮</h3>
+<h3 id="_4">按钮</h3>
 <p><strong>创建：</strong></p>
 <ul>
 <li>
@@ -943,7 +965,7 @@
 <p><strong>处理点击事件（UI Event Bind Click组件）：</strong></p>
 <p>self:ListenEvent("reward_click", BindTool.Bind(self.RewardOnClick, self))</p>
 <p>这个reward_click名字可以在父节点的UI Name Table里添加定义。</p>
-<h3 id="_3">文本</h3>
+<h3 id="_5">文本</h3>
 <p><strong>创建：</strong></p>
 <p>右键父节点 -&gt; UI -&gt; Text</p>
 <p>添加相关的组件。</p>
