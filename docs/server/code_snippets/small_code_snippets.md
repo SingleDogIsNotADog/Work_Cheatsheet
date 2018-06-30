@@ -75,6 +75,28 @@ gamecommon::MailToUser(uid, rewards, gamestring::GAMESTRING_BUF);
 	}
 }
 
+// 发给家族
+{
+	int sendlen = SNPRINTF(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), gamestring::g_guild_xxx, ...);
+
+	if (sendlen > 0)
+	{
+		guild->GuildSystemMsg(sendlen, gamestring::GAMESTRING_BUF);
+	}
+}
+
+// 为家族成员发送一个聊天信息（该成员在线）
+{
+	char buff[1024] = { 0 };
+
+	Protocol::CSChannelChat *cc = (Protocol::CSChannelChat *)buff;
+	cc->channel_type = chatdef::CHANNEL_TYPE_GUILD;
+	cc->msg_length = SNPRINTF(buff + sizeof(Protocol::CSChannelChat), sizeof(buff) - sizeof(Protocol::CSChannelChat),
+		gamestring::g_guild_xxx, ...);
+
+	ChatManager::Instance().OnChannelChat(role, cc, cc->msg_length + sizeof(Protocol::CSChannelChat));
+}
+
 ```
 
 ## 重算属性和战力
