@@ -942,6 +942,28 @@
         <span class="n">SCENE_MGR</span><span class="o">-&gt;</span><span class="n">SystemMsgToCamp</span><span class="p">(</span><span class="n">camp_type</span><span class="p">,</span> <span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">,</span> <span class="n">sendlen</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// 发给家族</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sendlen</span> <span class="o">=</span> <span class="n">SNPRINTF</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">),</span> <span class="n">gamestring</span><span class="o">::</span><span class="n">g_guild_xxx</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">sendlen</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">guild</span><span class="o">-&gt;</span><span class="n">GuildSystemMsg</span><span class="p">(</span><span class="n">sendlen</span><span class="p">,</span> <span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 为家族成员发送一个聊天信息（该成员在线）</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">buff</span><span class="p">[</span><span class="mi">1024</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+
+    <span class="n">Protocol</span><span class="o">::</span><span class="n">CSChannelChat</span> <span class="o">*</span><span class="n">cc</span> <span class="o">=</span> <span class="p">(</span><span class="n">Protocol</span><span class="o">::</span><span class="n">CSChannelChat</span> <span class="o">*</span><span class="p">)</span><span class="n">buff</span><span class="p">;</span>
+    <span class="n">cc</span><span class="o">-&gt;</span><span class="n">channel_type</span> <span class="o">=</span> <span class="n">chatdef</span><span class="o">::</span><span class="n">CHANNEL_TYPE_GUILD</span><span class="p">;</span>
+    <span class="n">cc</span><span class="o">-&gt;</span><span class="n">msg_length</span> <span class="o">=</span> <span class="n">SNPRINTF</span><span class="p">(</span><span class="n">buff</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Protocol</span><span class="o">::</span><span class="n">CSChannelChat</span><span class="p">),</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buff</span><span class="p">)</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Protocol</span><span class="o">::</span><span class="n">CSChannelChat</span><span class="p">),</span>
+        <span class="n">gamestring</span><span class="o">::</span><span class="n">g_guild_xxx</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="n">ChatManager</span><span class="o">::</span><span class="n">Instance</span><span class="p">().</span><span class="n">OnChannelChat</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">cc</span><span class="o">-&gt;</span><span class="n">msg_length</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Protocol</span><span class="o">::</span><span class="n">CSChannelChat</span><span class="p">));</span>
+<span class="p">}</span>
 </pre></div>
 
 
