@@ -916,6 +916,16 @@ q
 </pre></div>
 
 
+<p>可以在break后接commands命令，在每次触发断点后直接打印一些值：</p>
+<div class="codehilite"><pre><span></span>b somewhere
+commands
+printf &quot;%d\n&quot;, some_number
+c
+end
+c
+</pre></div>
+
+
 <h2 id="_4">调试死循环</h2>
 <p>直接gdb附加进程后，使用bt命令查看调用堆栈即可。</p>
                 
