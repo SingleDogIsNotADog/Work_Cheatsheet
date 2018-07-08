@@ -50,11 +50,22 @@ gdb加入参数-x script，即可使用脚本调试。
 
 脚本模板：
 
-```
+```gdb
 b somewhere
 c
 p some_variables
 q
+```
+
+可以在break后接commands命令，在每次触发断点后直接打印一些值：
+
+```gdb
+b somewhere
+commands
+printf "%d\n", some_number
+c
+end
+c
 ```
 
 ## 调试死循环
