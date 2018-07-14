@@ -9,6 +9,10 @@ theme:
   name: 'material'
   language: 'zh'
 
+extra:
+  search:
+    language: 'en, jp'
+
 markdown_extensions:
   - admonition
   - codehilite
