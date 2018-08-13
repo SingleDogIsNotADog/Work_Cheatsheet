@@ -20,14 +20,20 @@
 
 - 编辑完毕Apply，再把它从Hierarchy面板移除，重启游戏观察改动
 
-## 如何从代码里获取一个UI对象
+## 找到一个按钮在代码中的位置
 
-在UI控件的父节点的Inspector面板中，找到UI Name Table组件，其中有其子节点对应的名字以及其对应的UI控件。
+**在Hierarchy面板中找到GameObject的方法**
 
-然后在代码里使用father:FindObj("name")来获取对象：
+先切换到Scene视图。
 
-```
-self.reward_btn = self:FindObj("reward_btn")
+0. 如果知道GameObject的名字，就在Hierarchy面板中搜索框中搜索GameObject名字，搜索到后，按F键定位。
+
+0. 先点击一下其他面板的空白地方，再使用左键拖动一个矩形框选GameObject（或单击选择）。在Hierarchy面板找到对应的GameObject。
+
+在Inspector的UI Variable Bind Active(Script)组件中，找到Variables Name属性，然后在客户端代码里全局搜索，如果出现了这样的代码就代表找到了：
+
+```lua
+self.xxx = self:FindVariable("xxx")
 ```
 
 ## UI操作
