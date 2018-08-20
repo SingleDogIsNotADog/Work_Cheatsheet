@@ -460,8 +460,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="外服目录" class="md-nav__link">
-    外服目录
+  <a href="#_1" title="外服目录及日志查询" class="md-nav__link">
+    外服目录及日志查询
   </a>
   
 </li>
@@ -854,8 +854,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="外服目录" class="md-nav__link">
-    外服目录
+  <a href="#_1" title="外服目录及日志查询" class="md-nav__link">
+    外服目录及日志查询
   </a>
   
 </li>
@@ -942,7 +942,7 @@
                 
                 <h1 id="work-cheatsheet">Work CheatSheet</h1>
 <hr />
-<h2 id="_1">外服目录</h2>
+<h2 id="_1">外服目录及日志查询</h2>
 <p>下面的命令可用于查询外服某一个渠道的服务器进程目录。</p>
 <div class="codehilite"><pre><span></span>ps aux <span class="p">|</span> grep EXE <span class="p">|</span> grep <span class="o">{</span>游戏服名<span class="o">}</span> <span class="c1"># 比如ug04_cn</span>
 </pre></div>
@@ -957,6 +957,22 @@
 <p>日志目录：/data/game/agent/ug04_atx_s2/data/server/log/</p>
 </li>
 </ul>
+<p>查找日志的方法：</p>
+<ul>
+<li>
+<p>登陆外服</p>
+</li>
+<li>
+<p>查询进程所在的目录：ps aux | grep EXE | grep asq_s1/</p>
+</li>
+<li>
+<p>cd 到这个目录，然后打开 serverconfig.xml ，查看日志所在的目录</p>
+</li>
+<li>
+<p>cd 到日志目录，查看具体的日志</p>
+</li>
+</ul>
+<p>PS: 有一些日志会有备份，在目录： /data/game/agent/ug04_asq_s1/backup/server/log</p>
 <h2 id="_2">重置系统数据</h2>
 <p>先下线，等待10分钟(保证缓存数据库移除角色)，然后数据库中执行类似下面的脚本：</p>
 <div class="codehilite"><pre><span></span><span class="k">UPDATE</span> <span class="n">role_attr_detail2</span> <span class="kt">SET</span> <span class="n">mount_data</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="k">WHERE</span> <span class="n">role_id</span> <span class="o">=</span> <span class="mi">2097153</span><span class="p">;</span>
