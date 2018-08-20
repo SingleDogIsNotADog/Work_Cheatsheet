@@ -2,7 +2,7 @@
 
 ---
 
-## 外服目录
+## 外服目录及日志查询
 
 下面的命令可用于查询外服某一个渠道的服务器进程目录。
 
@@ -15,6 +15,18 @@ ps aux | grep EXE | grep {游戏服名} # 比如ug04_cn
 - 运行目录：/data/game/agent/ug04_atx_s2/server/2018071804/publish_release/
 
 - 日志目录：/data/game/agent/ug04_atx_s2/data/server/log/
+
+查找日志的方法：
+
+- 登陆外服
+
+- 查询进程所在的目录：ps aux | grep EXE | grep asq_s1/
+
+- cd 到这个目录，然后打开 serverconfig.xml ，查看日志所在的目录
+
+- cd 到日志目录，查看具体的日志
+
+PS: 有一些日志会有备份，在目录： /data/game/agent/ug04_asq_s1/backup/server/log
 
 ## 重置系统数据
 
