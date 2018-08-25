@@ -2,13 +2,19 @@
 
 ---
 
-## 查询进程执行目录
+## 外服目录
 
-可用于查询外服某一个渠道的服务器进程目录。
+下面的命令可用于查询外服某一个渠道的服务器进程目录。
 
 ```bash
-ps aux | grep <游戏服名> # 比如ug04_cn
+ps aux | grep EXE | grep {游戏服名} # 比如ug04_cn
 ```
+
+外服相关目录例子：
+
+- 运行目录：/data/game/agent/ug04_atx_s2/server/2018071804/publish_release/
+
+- 日志目录：/data/game/agent/ug04_atx_s2/data/server/log/
 
 ## 重置系统数据
 
