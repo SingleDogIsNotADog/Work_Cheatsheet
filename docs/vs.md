@@ -115,3 +115,7 @@
 - 项目中所有的cpp文件开头都需要`#include "stdafx.h"`
 
 - OK
+
+**vs2015安装其他的插件**
+
+菜单栏 Tools -> Extensions and Updates，右上方搜索即可，比如搜索VisualSVN。

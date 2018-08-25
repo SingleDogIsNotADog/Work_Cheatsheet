@@ -46,8 +46,8 @@ World::SendToAllGateway
 }
 
 // 简单的发奖励邮件
-gstr::MailContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), "key");
-gamecommon::MailToUser(uid, rewards, gamestring::GAMESTRING_BUF);
+gstr::MailContent(gstr::GSTR_BUF, sizeof(gstr::GSTR_BUF), "key");
+gamecommon::MailToUser(uid, rewards, gstr::GSTR_BUF);
 ```
 
 ## 发传闻
@@ -55,33 +55,33 @@ gamecommon::MailToUser(uid, rewards, gamestring::GAMESTRING_BUF);
 ```c++
 // 发给全服
 {
-	int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), "key",
+	int sendlen = gstr::SysMsgContent(gstr::GSTR_BUF, sizeof(gstr::GSTR_BUF), "key",
 		);
 
 	if (sendlen > 0)
 	{
-		SCENE_MGR->SystemMsgThread(gamestring::GAMESTRING_BUF, sendlen, SYS_MSG_CENTER_ROLL);
+		SCENE_MGR->SystemMsgThread(gstr::GSTR_BUF, sendlen, SYS_MSG_CENTER_ROLL);
 	}
 }
 
 // 发给国家
 {
-	int sendlen = gstr::SysMsgContent(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), "key",
+	int sendlen = gstr::SysMsgContent(gstr::GSTR_BUF, sizeof(gstr::GSTR_BUF), "key",
 		);
 	
 	if (sendlen > 0)
 	{
-		SCENE_MGR->SystemMsgToCamp(camp_type, gamestring::GAMESTRING_BUF, sendlen);
+		SCENE_MGR->SystemMsgToCamp(camp_type, gstr::GSTR_BUF, sendlen);
 	}
 }
 
 // 发给家族
 {
-	int sendlen = SNPRINTF(gamestring::GAMESTRING_BUF, sizeof(gamestring::GAMESTRING_BUF), gamestring::g_guild_xxx, ...);
+	int sendlen = SNPRINTF(gstr::GSTR_BUF, sizeof(gstr::GSTR_BUF), gamestring::g_guild_xxx, ...);
 
 	if (sendlen > 0)
 	{
-		guild->GuildSystemMsg(sendlen, gamestring::GAMESTRING_BUF);
+		guild->GuildSystemMsg(sendlen, gstr::GSTR_BUF);
 	}
 }
 

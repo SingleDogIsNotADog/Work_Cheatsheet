@@ -2,7 +2,7 @@
 
 ## 目录
 
-共享目录：`\\192.168.9.60\asset`
+共享目录：`\\192.168.9.52\3d`
 
 host目录：`C:\Windows\System32\drivers\etc`
 
