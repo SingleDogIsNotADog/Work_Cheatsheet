@@ -915,41 +915,41 @@
 <span class="p">}</span>
 
 <span class="c1">// 简单的发奖励邮件</span>
-<span class="n">gstr</span><span class="o">::</span><span class="n">MailContent</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">),</span> <span class="s">&quot;key&quot;</span><span class="p">);</span>
-<span class="n">gamecommon</span><span class="o">::</span><span class="n">MailToUser</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">);</span>
+<span class="n">gstr</span><span class="o">::</span><span class="n">MailContent</span><span class="p">(</span><span class="n">gstr</span><span class="o">::</span><span class="n">GSTR_BUF</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">gstr</span><span class="o">::</span><span class="n">GSTR_BUF</span><span class="p">),</span> <span class="s">&quot;key&quot;</span><span class="p">);</span>
+<span class="n">gamecommon</span><span class="o">::</span><span class="n">MailToUser</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">gstr</span><span class="o">::</span><span class="n">GSTR_BUF</span><span class="p">);</span>
 </pre></div>
 
 
 <h2 id="_4">发传闻</h2>
 <div class="codehilite"><pre><span></span><span class="c1">// 发给全服</span>
 <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">sendlen</span> <span class="o">=</span> <span class="n">gstr</span><span class="o">::</span><span class="n">SysMsgContent</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">),</span> <span class="s">&quot;key&quot;</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">sendlen</span> <span class="o">=</span> <span class="n">gstr</span><span class="o">::</span><span class="n">SysMsgContent</span><span class="p">(</span><span class="n">gstr</span><span class="o">::</span><span class="n">GSTR_BUF</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">gstr</span><span class="o">::</span><span class="n">GSTR_BUF</span><span class="p">),</span> <span class="s">&quot;key&quot;</span><span class="p">,</span>
         <span class="p">);</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">sendlen</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="n">SCENE_MGR</span><span class="o">-&gt;</span><span class="n">SystemMsgThread</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">,</span> <span class="n">sendlen</span><span class="p">,</span> <span class="n">SYS_MSG_CENTER_ROLL</span><span class="p">);</span>
+        <span class="n">SCENE_MGR</span><span class="o">-&gt;</span><span class="n">SystemMsgThread</span><span class="p">(</span><span class="n">gstr</span><span class="o">::</span><span class="n">GSTR_BUF</span><span class="p">,</span> <span class="n">sendlen</span><span class="p">,</span> <span class="n">SYS_MSG_CENTER_ROLL</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// 发给国家</span>
 <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">sendlen</span> <span class="o">=</span> <span class="n">gstr</span><span class="o">::</span><span class="n">SysMsgContent</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">),</span> <span class="s">&quot;key&quot;</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">sendlen</span> <span class="o">=</span> <span class="n">gstr</span><span class="o">::</span><span class="n">SysMsgContent</span><span class="p">(</span><span class="n">gstr</span><span class="o">::</span><span class="n">GSTR_BUF</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">gstr</span><span class="o">::</span><span class="n">GSTR_BUF</span><span class="p">),</span> <span class="s">&quot;key&quot;</span><span class="p">,</span>
         <span class="p">);</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">sendlen</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="n">SCENE_MGR</span><span class="o">-&gt;</span><span class="n">SystemMsgToCamp</span><span class="p">(</span><span class="n">camp_type</span><span class="p">,</span> <span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">,</span> <span class="n">sendlen</span><span class="p">);</span>
+        <span class="n">SCENE_MGR</span><span class="o">-&gt;</span><span class="n">SystemMsgToCamp</span><span class="p">(</span><span class="n">camp_type</span><span class="p">,</span> <span class="n">gstr</span><span class="o">::</span><span class="n">GSTR_BUF</span><span class="p">,</span> <span class="n">sendlen</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// 发给家族</span>
 <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">sendlen</span> <span class="o">=</span> <span class="n">SNPRINTF</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">),</span> <span class="n">gamestring</span><span class="o">::</span><span class="n">g_guild_xxx</span><span class="p">,</span> <span class="p">...);</span>
+    <span class="kt">int</span> <span class="n">sendlen</span> <span class="o">=</span> <span class="n">SNPRINTF</span><span class="p">(</span><span class="n">gstr</span><span class="o">::</span><span class="n">GSTR_BUF</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">gstr</span><span class="o">::</span><span class="n">GSTR_BUF</span><span class="p">),</span> <span class="n">gamestring</span><span class="o">::</span><span class="n">g_guild_xxx</span><span class="p">,</span> <span class="p">...);</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">sendlen</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="n">guild</span><span class="o">-&gt;</span><span class="n">GuildSystemMsg</span><span class="p">(</span><span class="n">sendlen</span><span class="p">,</span> <span class="n">gamestring</span><span class="o">::</span><span class="n">GAMESTRING_BUF</span><span class="p">);</span>
+        <span class="n">guild</span><span class="o">-&gt;</span><span class="n">GuildSystemMsg</span><span class="p">(</span><span class="n">sendlen</span><span class="p">,</span> <span class="n">gstr</span><span class="o">::</span><span class="n">GSTR_BUF</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
