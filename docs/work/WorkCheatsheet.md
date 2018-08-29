@@ -10,11 +10,24 @@
 ps aux | grep <游戏服名> # 比如ug04_cn
 ```
 
+## 重置系统数据
+
+先下线，等待10分钟(保证缓存数据库移除角色)，然后数据库中执行类似下面的脚本：
+
+```mysql
+UPDATE role_attr_detail2 SET mount_data = '' WHERE role_id = 2097153;
+```
+
+重新上线后即完成重置。
+
 ## 插命令
 
 ```mysql
 # 热更，更多类型见：RELOAD_CONFIG_TYPE
 insert into command (creator, type, cmd) values ("background", 2, "Cmd Reload 6 0 0" );
+
+# 禁止注册角色
+insert into command (creator, type, cmd) values ("background", 2, "CmdToForbiddenRegisterRole 1" ); # 1禁止，0开放
 ```
 
 creator不重要，无须关心。type指定通知哪一个进程，见枚举CMD_TYPE，cmd是具体通知程序的命令。
@@ -24,6 +37,8 @@ creator不重要，无须关心。type指定通知哪一个进程，见枚举CMD
 - loginserver: LoginServer::OnCmd
 
 - gameworld: System::OnCmd
+
+如果需要编写插命令的代码，就需要在这里添加。然后告知运维具体的命令和命令的类型，类型为1表示用于loginserver，为2则代表用于gameworld。
 
 ## 服务端合代码步骤
 

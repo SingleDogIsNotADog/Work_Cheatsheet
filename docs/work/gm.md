@@ -10,7 +10,7 @@
 
 增加国家元宝: /gm addcampgold:1000
 
-## 修改属性
+## 属性相关
 
 修改速度：/gm changespeed:2000
 
@@ -19,6 +19,8 @@
 修改当前血量：/gm sethp:1000
 
 回复：/gm recover:
+
+打印玩家属性：/gm printattrs:
 
 ## 移动
 
