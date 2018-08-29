@@ -754,6 +754,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="其他流程" class="md-nav__link">
+    其他流程
+  </a>
+  
+</li>
+      
       
       
       
@@ -797,6 +804,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="其他流程" class="md-nav__link">
+    其他流程
+  </a>
+  
+</li>
+      
       
       
       
@@ -815,12 +829,13 @@
                 
                 
                 <h1 id="_1">流程</h1>
+<p>服务端也应该熟悉一些客户端的代码，方便自行调试，找到问题。</p>
 <hr />
 <h2 id="view">客户端View更新流程</h2>
 <p><strong>Open流程：</strong></p>
 <div class="codehilite"><pre><span></span><span class="n">ViewManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">:</span><span class="n">Open</span> <span class="c1">-- 由某些交互事件触发</span>
     <span class="n">BaseView</span><span class="p">:</span><span class="n">Open</span>
-        <span class="n">BaseView</span><span class="p">:</span><span class="n">OpenCallBack</span>
+        <span class="n">BaseView</span><span class="p">:</span><span class="n">OpenCallBack</span> <span class="c1">-- 由子类实现此方法</span>
 </pre></div>
 
 
@@ -836,6 +851,24 @@
 <div class="codehilite"><pre><span></span><span class="n">BaseView</span><span class="p">:</span><span class="n">Flush</span> <span class="c1">-- 子类调用，由某些事件触发，比如收到协议</span>
     <span class="n">BaseView</span><span class="p">:</span><span class="n">FlushHelper</span>
             <span class="n">BaseView</span><span class="p">:</span><span class="n">OnFlush</span> <span class="c1">-- 子类实现此方法</span>
+</pre></div>
+
+
+<p><strong>Close流程</strong></p>
+<div class="codehilite"><pre><span></span><span class="n">BaseView</span><span class="p">:</span><span class="n">Close</span> <span class="c1">-- 由子类调用</span>
+    <span class="n">BaseView</span><span class="p">:</span><span class="n">CloseCallBack</span> <span class="c1">-- 由子类实现</span>
+            <span class="n">BaseView</span><span class="p">:</span><span class="n">Release</span>
+                <span class="n">BaseView</span><span class="p">:</span><span class="n">ReleaseCallBack</span> <span class="c1">-- 由子类实现</span>
+</pre></div>
+
+
+<h2 id="_2">其他流程</h2>
+<p><strong>创建一个怪物的流程</strong></p>
+<div class="codehilite"><pre><span></span><span class="n">Scene</span><span class="p">:</span><span class="n">OnVisibleObjEnterMonster</span> <span class="c1">-- 收到AOI协议</span>
+    <span class="n">self</span><span class="p">:</span><span class="n">CreateMonster</span>
+        <span class="n">Scene</span><span class="p">:</span><span class="n">CreateObj</span>
+            <span class="n">SceneObj</span><span class="p">:</span><span class="n">Init</span>
+                <span class="n">SceneObj</span><span class="p">:</span><span class="n">InitShow</span> <span class="o">/</span> <span class="n">Monster</span><span class="p">:</span><span class="n">InitShow</span>
 </pre></div>
                 
                   
