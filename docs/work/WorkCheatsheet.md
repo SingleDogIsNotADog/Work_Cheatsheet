@@ -26,8 +26,11 @@ UPDATE role_attr_detail2 SET mount_data = '' WHERE role_id = 2097153;
 # 热更，更多类型见：RELOAD_CONFIG_TYPE
 insert into command (creator, type, cmd) values ("background", 2, "Cmd Reload 6 0 0" );
 
-# 禁止注册角色
-insert into command (creator, type, cmd) values ("background", 2, "CmdToForbiddenRegisterRole 1" ); # 1禁止，0开放
+# 封号
+insert into command (creator, type, cmd) values ("background", 1, "Cmd Forbid pname forbid_time" );
+
+# 封号 .e.g
+insert into command (creator, type, cmd) values ("background", 1, "Forbid dev_liudiwen_2 3600" );
 ```
 
 creator不重要，无须关心。type指定通知哪一个进程，见枚举CMD_TYPE，cmd是具体通知程序的命令。
