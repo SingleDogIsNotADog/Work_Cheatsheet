@@ -17,7 +17,7 @@
       
         <meta name="lang:clipboard.copied" content="已复制">
       
-        <meta name="lang:search.language" content="jp">
+        <meta name="lang:search.language" content="en, jp">
       
         <meta name="lang:search.pipeline.stopwords" content="True">
       
@@ -959,8 +959,11 @@
 <div class="codehilite"><pre><span></span><span class="c1"># 热更，更多类型见：RELOAD_CONFIG_TYPE</span>
 <span class="k">insert</span> <span class="k">into</span> <span class="nf">command</span> <span class="p">(</span><span class="n">creator</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span> <span class="k">values</span> <span class="p">(</span><span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Cmd Reload 6 0 0&quot;</span> <span class="p">);</span>
 
-<span class="c1"># 禁止注册角色</span>
-<span class="k">insert</span> <span class="k">into</span> <span class="nf">command</span> <span class="p">(</span><span class="n">creator</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span> <span class="k">values</span> <span class="p">(</span><span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;CmdToForbiddenRegisterRole 1&quot;</span> <span class="p">);</span> <span class="c1"># 1禁止，0开放</span>
+<span class="c1"># 封号</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="nf">command</span> <span class="p">(</span><span class="n">creator</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span> <span class="k">values</span> <span class="p">(</span><span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Cmd Forbid pname forbid_time&quot;</span> <span class="p">);</span>
+
+<span class="c1"># 封号 .e.g</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="nf">command</span> <span class="p">(</span><span class="n">creator</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span> <span class="k">values</span> <span class="p">(</span><span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Forbid dev_liudiwen_2 3600&quot;</span> <span class="p">);</span>
 </pre></div>
 
 
@@ -1117,6 +1120,8 @@
           <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
           
             
+          
+            
               
                 <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
               
@@ -1125,6 +1130,8 @@
               
             
           
+          
+            <script src="../../assets/javascripts/lunr/lunr.multi.js"></script>
           
         
       
